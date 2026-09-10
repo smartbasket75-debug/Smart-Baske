@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Smart Basket | Online Shopping</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f5f6f8;
+      color: #222;
+    }
+
+    header {
+      background: #111;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 32px;
+      letter-spacing: 1px;
+    }
+
+    header p {
+      margin-top: 7px;
+      color: #ddd;
+    }
+
+    .hero {
+      background: white;
+      text-align: center;
+      padding: 55px 20px;
+    }
+
+    .hero h2 {
+      font-size: 36px;
+      margin-bottom: 12px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: #666;
+      margin-bottom: 25px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #111;
+      color: white;
+      text-decoration: none;
+      padding: 13px 25px;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    .section {
+      padding: 40px 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .section h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 28px;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .product {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+    }
+
+    .product .image {
+      height: 160px;
+      background: #eee;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 55px;
+      margin-bottom: 15px;
+    }
+
+    .product h3 {
+      margin-bottom: 8px;
+    }
+
+    .price {
+      font-size: 21px;
+      font-weight: bold;
+      margin: 10px 0 15px;
+    }
+
+    .order {
+      background: #111;
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .order h2 {
+      margin-bottom: 12px;
+    }
+
+    .order p {
+      margin-bottom: 20px;
+      color: #ddd;
+    }
+
+    .whatsapp {
+      display: inline-block;
+      background: #25D366;
+      color: white;
+      text-decoration: none;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    footer {
+      background: #000;
+      color: #aaa;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>SMART BASKET</h1>
+    <p>Your Online Shopping Store</p>
+  </header>
+
+  <section class="hero">
+    <h2>Shop Smart. Shop Easy.</h2>
+    <p>Quality Products • Best Prices • Home Delivery</p>
+    <a href="#products" class="btn">View Products</a>
+  </section>
+
+  <section class="section" id="products">
+    <h2>Our Products</h2>
+
+    <div class="products">
+
+      <div class="product">
+        <div class="image">👟</div>
+        <h3>Premium Shoes</h3>
+        <p>Stylish & Comfortable</p>
+        <div class="price">₹699</div>
+        <a class="btn" href="https://wa.me/919999999999?text=I%20want%20to%20order%20Premium%20Shoes">
+          Order Now
+        </a>
+      </div>
+
+      <div class="product">
+        <div class="image">🎁</div>
+        <h3>Gift Products</h3>
+        <p>Perfect for Every Occasion</p>
+        <div class="price">₹349</div>
+        <a class="btn" href="https://wa.me/919999999999?text=I%20want%20to%20order%20Gift%20Product">
+          Order Now
+        </a>
+      </div>
+
+      <div class="product">
+        <div class="image">🛍️</div>
+        <h3>Fashion Products</h3>
+        <p>Latest Trending Products</p>
+        <div class="price">₹499</div>
+        <a class="btn" href="https://wa.me/919999999999?text=I%20want%20to%20order%20Fashion%20Product">
+          Order Now
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="order">
+    <h2>Cash On Delivery Available 🚚</h2>
+    <p>Order your favourite products directly through WhatsApp.</p>
+
+    <a class="whatsapp"
+       href="https://wa.me/919999999999?text=Hello%20Smart%20Basket%2C%20I%20want%20to%20place%20an%20order.">
+      💬 Order on WhatsApp
+    </a>
+  </section>
+
+  <footer>
+    © 2026 Smart Basket. All Rights Reserved.
+  </footer>
+
+</body>
+</html>
