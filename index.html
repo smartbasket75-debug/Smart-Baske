@@ -1,473 +1,1029 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+import { useEffect, useMemo, useState } from "react";
+import {
+  Flower2,
+  Search,
+  ShoppingBag,
+  X,
+  Plus,
+  Minus,
+} from "lucide-react";
 
-  <title>Smart Baske In | Shop Smart</title>
+type Product = {
+  id: number;
+  name: string;
+  price: number;
+  oldPrice: number;
+  image: string;
+  category: string;
+};
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
+type CartItem = Product & {
+  quantity: number;
+};
 
-    body {
-      background: #f7f7f7;
-      color: #222;
-    }
+const products: Product[] = [
+  {
+    id: 1,
+    name: "Premium Travel Bag",
+    price: 999,
+    oldPrice: 1499,
+    category: "Fashion",
+    image:
+      "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=900&q=80",
+  },
+  {
+    id: 2,
+    name: "Wireless Headphones",
+    price: 1299,
+    oldPrice: 1999,
+    category: "Electronics",
+    image:
+      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=900&q=80",
+  },
+  {
+    id: 3,
+    name: "Luxury Smart Watch",
+    price: 1799,
+    oldPrice: 2999,
+    category: "Electronics",
+    image:
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=80",
+  },
+  {
+    id: 4,
+    name: "Classic Sneakers",
+    price: 1499,
+    oldPrice: 2499,
+    category: "Fashion",
+    image:
+      "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=900&q=80",
+  },
+  {
+    id: 5,
+    name: "Premium Sunglasses",
+    price: 799,
+    oldPrice: 1299,
+    category: "Accessories",
+    image:
+      "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=900&q=80",
+  },
+  {
+    id: 6,
+    name: "Minimal Desk Lamp",
+    price: 1199,
+    oldPrice: 1699,
+    category: "Home",
+    image:
+      "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=900&q=80",
+  },
+];
 
-    /* OFFER BAR */
-    .offer-bar {
-      background: #111;
-      color: white;
-      text-align: center;
-      padding: 12px;
-      font-size: 14px;
-    }
+const entrance = "cubic-bezier(0.16, 1, 0.3, 1)";
+const overlayEase = "cubic-bezier(0.76, 0, 0.24, 1)";
 
-    /* NAVBAR */
-    nav {
-      background: white;
-      padding: 18px 7%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-    }
+export default function App() {
+  const [mounted, setMounted] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [cartOpen, setCartOpen] = useState(false);
+  const [checkoutOpen, setCheckoutOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [search, setSearch] = useState("");
+  const [cart, setCart] = useState<CartItem[]>([]);
 
-    .logo {
-      font-size: 25px;
-      font-weight: bold;
-    }
+  useEffect(() => {
+    const timer = setTimeout(() => setMounted(true), 100);
+    return () => clearTimeout(timer);
+  }, []);
 
-    .logo span {
-      color: #ff6b00;
-    }
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 40);
+    };
 
-    .nav-links {
-      display: flex;
-      gap: 25px;
-      list-style: none;
-    }
+    window.addEventListener("scroll", handleScroll);
 
-    .nav-links a {
-      text-decoration: none;
-      color: #222;
-    }
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
-    .cart-btn {
-      background: #111;
-      color: white;
-      padding: 10px 18px;
-      border-radius: 25px;
-      cursor: pointer;
-    }
+  useEffect(() => {
+    document.body.style.overflow =
+      menuOpen || cartOpen || checkoutOpen ? "hidden" : "";
 
-    /* HERO */
-    .hero {
-      min-height: 500px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 60px 10%;
-      background: linear-gradient(135deg, #f5e8e0, #e8eef7);
-    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen, cartOpen, checkoutOpen]);
 
-    .hero-text {
-      max-width: 500px;
-    }
+  const filteredProducts = useMemo(() => {
+    return products.filter((product) =>
+      product.name.toLowerCase().includes(search.toLowerCase())
+    );
+  }, [search]);
 
-    .hero h1 {
-      font-size: 55px;
-      margin-bottom: 20px;
-    }
+  const cartCount = cart.reduce(
+    (total, item) => total + item.quantity,
+    0
+  );
 
-    .hero h1 span {
-      color: #ff6b00;
-    }
+  const subtotal = cart.reduce(
+    (total, item) => total + item.price * item.quantity,
+    0
+  );
 
-    .hero p {
-      font-size: 18px;
-      margin-bottom: 25px;
-      color: #555;
-    }
+  const discount = Math.round(subtotal * 0.2);
+  const total = subtotal - discount;
 
-    .hero button {
-      padding: 15px 30px;
-      border: none;
-      background: #111;
-      color: white;
-      border-radius: 30px;
-      font-size: 16px;
-      cursor: pointer;
-    }
+  const addToCart = (product: Product) => {
+    setCart((current) => {
+      const exists = current.find(
+        (item) => item.id === product.id
+      );
 
-    .hero img {
-      width: 420px;
-      max-width: 45%;
-      border-radius: 20px;
-    }
-
-    /* FEATURES */
-    .features {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      padding: 40px 8%;
-      flex-wrap: wrap;
-    }
-
-    .feature {
-      background: white;
-      padding: 20px 30px;
-      border-radius: 15px;
-      min-width: 220px;
-      text-align: center;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
-    }
-
-    /* PRODUCTS */
-    .products-section {
-      padding: 60px 8%;
-    }
-
-    .section-title {
-      text-align: center;
-      font-size: 35px;
-      margin-bottom: 40px;
-    }
-
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 25px;
-    }
-
-    .product-card {
-      background: white;
-      border-radius: 18px;
-      overflow: hidden;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-      transition: 0.3s;
-    }
-
-    .product-card:hover {
-      transform: translateY(-8px);
-    }
-
-    .product-card img {
-      width: 100%;
-      height: 250px;
-      object-fit: cover;
-    }
-
-    .product-info {
-      padding: 18px;
-    }
-
-    .product-info h3 {
-      margin-bottom: 10px;
-    }
-
-    .price {
-      font-size: 20px;
-      font-weight: bold;
-      color: #ff6b00;
-    }
-
-    .old-price {
-      text-decoration: line-through;
-      color: #888;
-      font-size: 14px;
-      margin-left: 8px;
-    }
-
-    .product-card button {
-      width: 100%;
-      margin-top: 15px;
-      padding: 12px;
-      background: #111;
-      color: white;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-    }
-
-    /* DISCOUNT */
-    .discount {
-      margin: 60px 8%;
-      padding: 50px;
-      border-radius: 20px;
-      text-align: center;
-      background: #111;
-      color: white;
-    }
-
-    .discount h2 {
-      font-size: 35px;
-      margin-bottom: 15px;
-    }
-
-    .discount span {
-      color: #ffb000;
-    }
-
-    /* COD */
-    .cod {
-      background: #e8fff0;
-      padding: 40px;
-      text-align: center;
-      margin-top: 40px;
-    }
-
-    /* FOOTER */
-    footer {
-      background: #111;
-      color: white;
-      padding: 40px 8%;
-      text-align: center;
-      margin-top: 50px;
-    }
-
-    @media(max-width: 768px) {
-
-      .nav-links {
-        display: none;
+      if (exists) {
+        return current.map((item) =>
+          item.id === product.id
+            ? {
+                ...item,
+                quantity: item.quantity + 1,
+              }
+            : item
+        );
       }
 
-      .hero {
-        flex-direction: column;
-        text-align: center;
-      }
+      return [
+        ...current,
+        {
+          ...product,
+          quantity: 1,
+        },
+      ];
+    });
+  };
 
-      .hero h1 {
-        font-size: 38px;
-      }
+  const updateQuantity = (
+    id: number,
+    change: number
+  ) => {
+    setCart((current) =>
+      current
+        .map((item) =>
+          item.id === id
+            ? {
+                ...item,
+                quantity: item.quantity + change,
+              }
+            : item
+        )
+        .filter((item) => item.quantity > 0)
+    );
+  };
 
-      .hero img {
-        max-width: 100%;
-        margin-top: 30px;
-      }
-    }
+  const scrollToProducts = () => {
+    setMenuOpen(false);
 
-  </style>
-</head>
+    setTimeout(() => {
+      document
+        .getElementById("products")
+        ?.scrollIntoView({
+          behavior: "smooth",
+        });
+    }, 200);
+  };
 
-<body>
+  const menuLinks = [
+    "Home",
+    "Story",
+    "Collection",
+    "Products",
+    "Inquire",
+  ];
 
-  <!-- OFFER BAR -->
-  <div class="offer-bar">
-    🎉 FIRST ORDER? GET 20% OFF | Use Code: FIRST20
-  </div>
+  return (
+    <main className="min-h-screen bg-black text-white">
 
-  <!-- NAVBAR -->
-  <nav>
-    <div class="logo">
-      Smart <span>Baske In</span>
-    </div>
+      {/* NAVBAR */}
 
-    <ul class="nav-links">
-      <li><a href="#">Home</a></li>
-      <li><a href="#products">Shop</a></li>
-      <li><a href="#">Categories</a></li>
-      <li><a href="#">Contact</a></li>
-    </ul>
+      <header
+        className={`fixed top-0 left-0 z-50 w-full transition duration-500 ${
+          scrolled
+            ? "bg-black/80 backdrop-blur-md"
+            : "bg-transparent"
+        }`}
+      >
+        <div className="mx-auto flex h-16 max-w-[1440px] items-center justify-between px-6 md:h-20 md:px-10">
 
-    <div class="cart-btn">
-      🛒 Cart (<span id="cart-count">0</span>)
-    </div>
-  </nav>
+          {/* LOGO */}
 
+          <a
+            href="#"
+            className={`z-50 text-xl font-semibold tracking-tight text-white transition-all duration-700 md:text-2xl ${
+              mounted
+                ? "translate-y-0 opacity-100"
+                : "-translate-y-4 opacity-0"
+            }`}
+            style={{
+              transitionTimingFunction: entrance,
+            }}
+          >
+            Smart Baske In
+          </a>
 
-  <!-- HERO -->
-  <section class="hero">
+          {/* DESKTOP NAV BUTTON */}
 
-    <div class="hero-text">
-      <h1>
-        Shop Smart.<br>
-        Live <span>Better.</span>
-      </h1>
-
-      <p>
-        Trending products delivered to your doorstep.
-        Easy shopping with Cash on Delivery available.
-      </p>
-
-      <button onclick="document.getElementById('products').scrollIntoView()">
-        Shop Now
-      </button>
-    </div>
-
-    <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=800"
-         alt="Product">
-  </section>
-
-
-  <!-- FEATURES -->
-  <section class="features">
-
-    <div class="feature">
-      🚚 <h3>Fast Delivery</h3>
-      <p>Quick delivery to your location.</p>
-    </div>
-
-    <div class="feature">
-      💵 <h3>Cash on Delivery</h3>
-      <p>Pay when your product arrives.</p>
-    </div>
-
-    <div class="feature">
-      🎁 <h3>First Order Discount</h3>
-      <p>Get 20% OFF on your first order.</p>
-    </div>
-
-  </section>
-
-
-  <!-- PRODUCTS -->
-  <section class="products-section" id="products">
-
-    <h2 class="section-title">
-      Trending Products
-    </h2>
-
-    <div class="products">
-
-      <div class="product-card">
-        <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=600">
-
-        <div class="product-info">
-          <h3>Premium Handbag</h3>
-
-          <span class="price">₹999</span>
-          <span class="old-price">₹1499</span>
-
-          <button onclick="addToCart()">
-            Add to Cart
+          <button
+            onClick={() =>
+              setMenuOpen(!menuOpen)
+            }
+            className={`z-50 hidden items-center gap-2 rounded-full border border-white/20 px-5 py-2 text-sm text-white/90 transition-all duration-700 hover:bg-white/10 md:flex ${
+              mounted
+                ? "translate-y-0 opacity-100"
+                : "-translate-y-4 opacity-0"
+            }`}
+            style={{
+              transitionTimingFunction: entrance,
+              transitionDelay: mounted
+                ? "200ms"
+                : "0ms",
+            }}
+          >
+            {menuOpen
+              ? "Close"
+              : "Navigate"}
           </button>
+
+          {/* RIGHT */}
+
+          <div className="z-50 flex items-center gap-5">
+
+            <button
+              onClick={() =>
+                setCartOpen(true)
+              }
+              className="hidden items-center gap-2 md:flex"
+            >
+              <ShoppingBag className="h-6 w-6" />
+
+              <span className="text-sm">
+                {cartCount}
+              </span>
+            </button>
+
+            <Flower2
+              className={`hidden h-7 w-7 text-white/90 transition-all duration-700 md:block ${
+                mounted
+                  ? "translate-y-0 opacity-100"
+                  : "-translate-y-4 opacity-0"
+              }`}
+              style={{
+                transitionTimingFunction:
+                  entrance,
+                transitionDelay: mounted
+                  ? "400ms"
+                  : "0ms",
+              }}
+            />
+
+            {/* MOBILE HAMBURGER */}
+
+            <button
+              aria-label="Toggle menu"
+              onClick={() =>
+                setMenuOpen(!menuOpen)
+              }
+              className={`flex h-8 w-8 flex-col items-center justify-center gap-1.5 transition-all duration-700 md:hidden ${
+                mounted
+                  ? "translate-y-0 opacity-100"
+                  : "-translate-y-4 opacity-0"
+              }`}
+              style={{
+                transitionTimingFunction:
+                  entrance,
+                transitionDelay: mounted
+                  ? "200ms"
+                  : "0ms",
+              }}
+            >
+              <span
+                className={`h-[2px] w-6 bg-white transition duration-500 ${
+                  menuOpen
+                    ? "translate-y-[4px] rotate-45"
+                    : ""
+                }`}
+                style={{
+                  transitionTimingFunction:
+                    overlayEase,
+                }}
+              />
+
+              <span
+                className={`h-[2px] w-6 bg-white transition duration-500 ${
+                  menuOpen
+                    ? "-translate-y-[4px] -rotate-45"
+                    : ""
+                }`}
+                style={{
+                  transitionTimingFunction:
+                    overlayEase,
+                }}
+              />
+            </button>
+
+          </div>
+        </div>
+      </header>
+
+      {/* OVERLAY MENU */}
+
+      <div
+        className={`fixed inset-0 z-40 flex flex-col items-center justify-center bg-black transition-all duration-700 ${
+          menuOpen
+            ? "visible opacity-100"
+            : "invisible opacity-0"
+        }`}
+        style={{
+          transitionTimingFunction:
+            overlayEase,
+        }}
+      >
+        <div className="flex flex-col items-center gap-8">
+
+          {menuLinks.map(
+            (link, index) => (
+              <button
+                key={link}
+                onClick={() => {
+                  if (
+                    link === "Products" ||
+                    link === "Collection"
+                  ) {
+                    scrollToProducts();
+                  } else if (
+                    link === "Home"
+                  ) {
+                    setMenuOpen(false);
+
+                    window.scrollTo({
+                      top: 0,
+                      behavior: "smooth",
+                    });
+                  } else {
+                    setMenuOpen(false);
+                  }
+                }}
+                className={`font-instrument text-4xl text-white transition-all duration-[600ms] hover:opacity-60 md:text-6xl ${
+                  menuOpen
+                    ? "translate-y-0 opacity-100"
+                    : "translate-y-6 opacity-0"
+                }`}
+                style={{
+                  transitionTimingFunction:
+                    overlayEase,
+                  transitionDelay: menuOpen
+                    ? `${
+                        150 +
+                        index * 80
+                      }ms`
+                    : "0ms",
+                }}
+              >
+                {link}
+              </button>
+            )
+          )}
+
         </div>
       </div>
 
+      {/* HERO */}
 
-      <div class="product-card">
-        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600">
+      <section className="relative flex h-screen w-full items-end justify-center overflow-hidden">
 
-        <div class="product-info">
-          <h3>Wireless Headphones</h3>
+        {/* VIDEO */}
 
-          <span class="price">₹1,299</span>
-          <span class="old-price">₹1999</span>
-
-          <button onclick="addToCart()">
-            Add to Cart
-          </button>
+        <div
+          className={`absolute inset-0 transition-all duration-[1400ms] ${
+            mounted
+              ? "scale-100 opacity-100"
+              : "scale-105 opacity-0"
+          }`}
+          style={{
+            transitionTimingFunction:
+              entrance,
+            transitionDelay: mounted
+              ? "300ms"
+              : "0ms",
+          }}
+        >
+          <video
+            src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260819_212700_3bb9329b-5c50-4257-a09b-ca85cf3654a3.mp4"
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="h-full w-full object-cover"
+          />
         </div>
+
+        {/* HERO TEXT */}
+
+        <div className="relative z-10 mx-auto max-w-4xl px-6 pb-16 text-center md:pb-24">
+
+          <h1
+            className={`font-instrument mb-5 text-[2.5rem] leading-[0.95] text-white transition-all duration-[900ms] sm:text-5xl md:mb-6 md:text-6xl lg:text-7xl ${
+              mounted
+                ? "translate-y-0 opacity-100"
+                : "translate-y-8 opacity-0"
+            }`}
+            style={{
+              transitionTimingFunction:
+                entrance,
+              transitionDelay: mounted
+                ? "400ms"
+                : "0ms",
+            }}
+          >
+            A carefully curated
+            <br className="hidden sm:block" />
+            {" "}
+            collection beyond compare
+          </h1>
+
+          <p
+            className={`mx-auto mb-8 max-w-md text-base text-white/70 transition-all duration-[900ms] md:mb-10 md:text-lg ${
+              mounted
+                ? "translate-y-0 opacity-100"
+                : "translate-y-8 opacity-0"
+            }`}
+            style={{
+              transitionTimingFunction:
+                entrance,
+              transitionDelay: mounted
+                ? "600ms"
+                : "0ms",
+            }}
+          >
+            Discover trending products,
+            carefully selected for you.
+          </p>
+
+          <button
+            onClick={scrollToProducts}
+            className={`inline-block rounded-full bg-white px-8 py-3.5 text-sm font-medium text-black transition-all duration-[900ms] hover:bg-white/90 md:text-base ${
+              mounted
+                ? "translate-y-0 opacity-100"
+                : "translate-y-8 opacity-0"
+            }`}
+            style={{
+              transitionTimingFunction:
+                entrance,
+              transitionDelay: mounted
+                ? "800ms"
+                : "0ms",
+            }}
+          >
+            Shop Collection
+          </button>
+
+        </div>
+      </section>
+
+      {/* OFFER BAR */}
+
+      <section className="border-y border-white/10 bg-black px-6 py-6 text-center">
+
+        <p className="text-sm tracking-wide text-white/80 md:text-base">
+          🎉 FIRST ORDER? GET{" "}
+
+          <span className="font-semibold text-white">
+            20% OFF
+          </span>
+
+          {" "}— USE CODE: FIRST20
+        </p>
+
+      </section>
+
+      {/* PRODUCTS */}
+
+      <section
+        id="products"
+        className="bg-black px-6 py-20 md:px-10 md:py-28"
+      >
+
+        <div className="mx-auto max-w-[1440px]">
+
+          <div className="mb-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+
+            <div>
+
+              <p className="mb-3 text-xs uppercase tracking-[0.3em] text-white/40">
+                Smart Baske In
+              </p>
+
+              <h2 className="font-instrument text-5xl leading-none text-white md:text-6xl">
+                Our Collection
+              </h2>
+
+            </div>
+
+            {/* SEARCH */}
+
+            <div className="flex w-full items-center gap-3 border-b border-white/20 pb-3 md:max-w-sm">
+
+              <Search className="h-5 w-5 text-white/50" />
+
+              <input
+                value={search}
+                onChange={(e) =>
+                  setSearch(e.target.value)
+                }
+                placeholder="Search products"
+                className="w-full bg-transparent text-sm text-white outline-none placeholder:text-white/30"
+              />
+
+            </div>
+
+          </div>
+
+          {/* PRODUCT GRID */}
+
+          <div className="grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+
+            {filteredProducts.map(
+              (product) => (
+
+                <article
+                  key={product.id}
+                  className="group"
+                >
+
+                  <div className="relative aspect-[3/4] overflow-hidden bg-zinc-900">
+
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                    />
+
+                    <div className="absolute left-4 top-4 rounded-full bg-black/70 px-3 py-1 text-xs text-white backdrop-blur">
+                      {product.category}
+                    </div>
+
+                  </div>
+
+                  <div className="pt-5">
+
+                    <div className="flex items-start justify-between gap-4">
+
+                      <div>
+
+                        <h3 className="text-lg text-white">
+                          {product.name}
+                        </h3>
+
+                        <p className="mt-1 text-sm text-white/40">
+                          Premium Collection
+                        </p>
+
+                      </div>
+
+                      <div className="text-right">
+
+                        <p className="text-white">
+                          ₹
+                          {product.price.toLocaleString()}
+                        </p>
+
+                        <p className="text-xs text-white/40 line-through">
+                          ₹
+                          {product.oldPrice.toLocaleString()}
+                        </p>
+
+                      </div>
+
+                    </div>
+
+                    <div className="mt-5 flex gap-3">
+
+                      <button
+                        onClick={() =>
+                          addToCart(product)
+                        }
+                        className="flex-1 rounded-full bg-white py-3 text-sm font-medium text-black transition hover:bg-white/90"
+                      >
+                        Add to Cart
+                      </button>
+
+                      <button
+                        onClick={() => {
+                          addToCart(product);
+                          setCartOpen(true);
+                        }}
+                        className="rounded-full border border-white/20 px-5 py-3 text-sm text-white hover:bg-white/10"
+                      >
+                        Buy
+                      </button>
+
+                    </div>
+
+                  </div>
+
+                </article>
+              )
+            )}
+
+          </div>
+
+          {filteredProducts.length === 0 && (
+
+            <p className="py-20 text-center text-white/40">
+              No products found.
+            </p>
+
+          )}
+
+        </div>
+      </section>
+
+      {/* COD */}
+
+      <section className="border-y border-white/10 bg-zinc-950 px-6 py-20 text-center">
+
+        <p className="mb-4 text-xs uppercase tracking-[0.3em] text-white/40">
+          Easy Shopping
+        </p>
+
+        <h2 className="font-instrument text-5xl text-white md:text-6xl">
+          Cash on Delivery
+        </h2>
+
+        <p className="mx-auto mt-6 max-w-lg text-white/60">
+          Order your favorite products today
+          and pay when your order arrives.
+        </p>
+
+      </section>
+
+      {/* CART DRAWER */}
+
+      <div
+        className={`fixed inset-0 z-[60] ${
+          cartOpen
+            ? "pointer-events-auto"
+            : "pointer-events-none"
+        }`}
+      >
+
+        <div
+          onClick={() =>
+            setCartOpen(false)
+          }
+          className={`absolute inset-0 bg-black/70 transition ${
+            cartOpen
+              ? "opacity-100"
+              : "opacity-0"
+          }`}
+        />
+
+        <aside
+          className={`absolute right-0 top-0 flex h-full w-full max-w-md flex-col bg-zinc-950 p-6 transition-transform duration-500 ${
+            cartOpen
+              ? "translate-x-0"
+              : "translate-x-full"
+          }`}
+        >
+
+          <div className="flex items-center justify-between border-b border-white/10 pb-5">
+
+            <h2 className="font-instrument text-3xl">
+              Your Cart
+            </h2>
+
+            <button
+              onClick={() =>
+                setCartOpen(false)
+              }
+            >
+              <X />
+            </button>
+
+          </div>
+
+          <div className="flex-1 overflow-y-auto py-6">
+
+            {cart.length === 0 && (
+
+              <p className="text-center text-white/40">
+                Your cart is empty.
+              </p>
+
+            )}
+
+            <div className="space-y-5">
+
+              {cart.map(
+                (item) => (
+
+                  <div
+                    key={item.id}
+                    className="flex gap-4 border-b border-white/10 pb-5"
+                  >
+
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      className="h-20 w-16 object-cover"
+                    />
+
+                    <div className="flex flex-1 flex-col justify-between">
+
+                      <div className="flex justify-between gap-3">
+
+                        <div>
+
+                          <h3 className="text-sm">
+                            {item.name}
+                          </h3>
+
+                          <p className="mt-1 text-sm text-white/50">
+                            ₹
+                            {item.price.toLocaleString()}
+                          </p>
+
+                        </div>
+
+                        <p className="text-sm">
+
+                          ₹
+                          {(
+                            item.price *
+                            item.quantity
+                          ).toLocaleString()}
+
+                        </p>
+
+                      </div>
+
+                      {/* QUANTITY */}
+
+                      <div className="flex items-center gap-3">
+
+                        <button
+                          onClick={() =>
+                            updateQuantity(
+                              item.id,
+                              -1
+                            )
+                          }
+                          className="flex h-7 w-7 items-center justify-center rounded-full border border-white/20"
+                        >
+                          <Minus size={14} />
+                        </button>
+
+                        <span className="text-sm">
+                          {item.quantity}
+                        </span>
+
+                        <button
+                          onClick={() =>
+                            updateQuantity(
+                              item.id,
+                              1
+                            )
+                          }
+                          className="flex h-7 w-7 items-center justify-center rounded-full border border-white/20"
+                        >
+                          <Plus size={14} />
+                        </button>
+
+                      </div>
+
+                    </div>
+
+                  </div>
+                )
+              )}
+
+            </div>
+
+          </div>
+
+          {/* TOTAL */}
+
+          <div className="border-t border-white/10 pt-5">
+
+            <div className="mb-3 flex justify-between text-sm text-white/60">
+
+              <span>
+                Subtotal
+              </span>
+
+              <span>
+                ₹
+                {subtotal.toLocaleString()}
+              </span>
+
+            </div>
+
+            <div className="mb-3 flex justify-between text-sm text-green-400">
+
+              <span>
+                First Order Discount
+                (20%)
+              </span>
+
+              <span>
+                -₹
+                {discount.toLocaleString()}
+              </span>
+
+            </div>
+
+            <div className="mb-6 flex justify-between text-lg">
+
+              <span>
+                Total
+              </span>
+
+              <span>
+                ₹
+                {total.toLocaleString()}
+              </span>
+
+            </div>
+
+            <button
+              onClick={() => {
+                if (
+                  cart.length === 0
+                ) {
+                  alert(
+                    "Your cart is empty!"
+                  );
+
+                  return;
+                }
+
+                setCartOpen(false);
+                setCheckoutOpen(true);
+              }}
+              className="w-full rounded-full bg-white py-4 text-sm font-medium text-black"
+            >
+              Checkout — Cash on Delivery
+            </button>
+
+          </div>
+
+        </aside>
+
       </div>
 
+      {/* CHECKOUT */}
 
-      <div class="product-card">
-        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600">
+      <div
+        className={`fixed inset-0 z-[70] flex items-center justify-center bg-black/80 px-4 transition ${
+          checkoutOpen
+            ? "visible opacity-100"
+            : "invisible opacity-0"
+        }`}
+      >
 
-        <div class="product-info">
-          <h3>Stylish Shoes</h3>
+        <div className="relative max-h-[90vh] w-full max-w-xl overflow-y-auto bg-zinc-950 p-6 md:p-10">
 
-          <span class="price">₹1,499</span>
-          <span class="old-price">₹2499</span>
-
-          <button onclick="addToCart()">
-            Add to Cart
+          <button
+            onClick={() =>
+              setCheckoutOpen(false)
+            }
+            className="absolute right-5 top-5"
+          >
+            <X />
           </button>
+
+          <p className="mb-3 text-xs uppercase tracking-[0.3em] text-white/40">
+            Secure Checkout
+          </p>
+
+          <h2 className="font-instrument text-4xl">
+            Cash on Delivery
+          </h2>
+
+          <p className="mt-3 text-sm text-white/50">
+            Pay when your order arrives.
+          </p>
+
+          <form
+            className="mt-8 space-y-5"
+            onSubmit={(e) => {
+              e.preventDefault();
+
+              alert(
+                `Order placed successfully! 🎉\n\nTotal: ₹${total.toLocaleString()}\nPayment: Cash on Delivery`
+              );
+
+              setCart([]);
+              setCheckoutOpen(false);
+            }}
+          >
+
+            <input
+              required
+              placeholder="Full Name"
+              className="w-full border-b border-white/20 bg-transparent py-4 text-white outline-none placeholder:text-white/30"
+            />
+
+            <input
+              required
+              type="tel"
+              placeholder="Phone Number"
+              className="w-full border-b border-white/20 bg-transparent py-4 text-white outline-none placeholder:text-white/30"
+            />
+
+            <textarea
+              required
+              placeholder="Full Address"
+              className="min-h-24 w-full border-b border-white/20 bg-transparent py-4 text-white outline-none placeholder:text-white/30"
+            />
+
+            <div className="grid gap-5 md:grid-cols-2">
+
+              <input
+                required
+                placeholder="City"
+                className="border-b border-white/20 bg-transparent py-4 text-white outline-none placeholder:text-white/30"
+              />
+
+              <input
+                required
+                placeholder="Pincode"
+                className="border-b border-white/20 bg-transparent py-4 text-white outline-none placeholder:text-white/30"
+              />
+
+            </div>
+
+            <div className="border border-white/10 p-5">
+
+              <div className="flex justify-between text-white/60">
+
+                <span>
+                  Payment
+                </span>
+
+                <span>
+                  Cash on Delivery
+                </span>
+
+              </div>
+
+              <div className="mt-4 flex justify-between text-lg">
+
+                <span>
+                  Total
+                </span>
+
+                <span>
+                  ₹
+                  {total.toLocaleString()}
+                </span>
+
+              </div>
+
+            </div>
+
+            <button
+              type="submit"
+              className="w-full rounded-full bg-white py-4 text-black"
+            >
+              Place COD Order
+            </button>
+
+          </form>
+
         </div>
+
       </div>
 
+    </main>
+  );
+}  @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap');
 
-      <div class="product-card">
-        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600">
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-        <div class="product-info">
-          <h3>Smart Watch</h3>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-          <span class="price">₹1,799</span>
-          <span class="old-price">₹2999</span>
+html,
+body {
+  overflow-x: hidden;
+  background: black;
+}
 
-          <button onclick="addToCart()">
-            Add to Cart
-          </button>
-        </div>
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- DISCOUNT -->
-  <section class="discount">
-
-    <h2>
-      🎉 Get <span>20% OFF</span>
-    </h2>
-
-    <p>
-      On your first purchase at Smart Baske In
-    </p>
-
-    <h3 style="margin-top:20px">
-      Use Code: FIRST20
-    </h3>
-
-  </section>
-
-
-  <!-- COD -->
-  <section class="cod">
-
-    <h2>💵 Cash on Delivery Available</h2>
-
-    <p style="margin-top:10px">
-      Order now and pay when you receive your product.
-    </p>
-
-  </section>
-
-
-  <!-- FOOTER -->
-  <footer>
-
-    <h2>Smart Baske In</h2>
-
-    <p style="margin-top:15px">
-      Shop Smart. Live Better.
-    </p>
-
-    <p style="margin-top:20px">
-      © 2026 Smart Baske In. All Rights Reserved.
-    </p>
-
-  </footer>
-
-
-  <script>
-
-    let cartCount = 0;
-
-    function addToCart() {
-
-      cartCount++;
-
-      document.getElementById("cart-count").innerText = cartCount;
-
-      alert("Product added to cart!");
-
-    }
-
-  </script>
-
-</body>
-</html>
+.font-instrument {
+  font-family: 'Instrument Serif', serif;
+}
