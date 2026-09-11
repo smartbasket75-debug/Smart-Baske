@@ -1,965 +1,473 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <title>LTX — The world model</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --retake-ease: cubic-bezier(0.22, 1, 0.36, 1);
-            --retake-slow-ease: cubic-bezier(0.65, 0, 0.35, 1);
-            --cap-left: -5px;
-            --cap-width: calc(20% + 5px);
-            --glass-x: 24%;
-            --glass-y: 8%;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        *, *::before, *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+  <title>Smart Baske In | Shop Smart</title>
 
-        body {
-            font-family: 'Manrope', system-ui, sans-serif;
-            background: #000;
-            color: #fff;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            overflow-x: hidden;
-            width: 100vw;
-            height: 100vh;
-            height: 100dvh;
-        }
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
 
-        ::selection {
-            background: rgba(255, 255, 255, 0.2);
-        }
+    body {
+      background: #f7f7f7;
+      color: #222;
+    }
 
-        :focus-visible {
-            outline: 2px solid #fff;
-            outline-offset: 3px;
-        }
+    /* OFFER BAR */
+    .offer-bar {
+      background: #111;
+      color: white;
+      text-align: center;
+      padding: 12px;
+      font-size: 14px;
+    }
 
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border: 0;
-        }
+    /* NAVBAR */
+    nav {
+      background: white;
+      padding: 18px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    }
 
-        .stage {
-            position: relative;
-            isolation: isolate;
-            width: 100%;
-            height: 100vh;
-            height: 100dvh;
-            overflow: hidden;
-            background: #000;
-        }
+    .logo {
+      font-size: 25px;
+      font-weight: bold;
+    }
 
-        /* Media layer z-index: 0 */
-        .media {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-            z-index: 0;
-            pointer-events: none;
-            visibility: hidden;
-        }
-        .media.active {
-            visibility: visible;
-        }
+    .logo span {
+      color: #ff6b00;
+    }
 
-        /* Hero copy z-index: 10 */
-        .hero {
-            position: absolute;
-            inset: 0;
-            z-index: 10;
-            pointer-events: none;
-        }
+    .nav-links {
+      display: flex;
+      gap: 25px;
+      list-style: none;
+    }
 
-        .hero h1 {
-            position: absolute;
-            top: 35.9%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: min(901px, calc(100vw - 48px));
-            font-size: clamp(62px, 6.8vw, 100px);
-            font-weight: 500;
-            line-height: 0.8;
-            letter-spacing: -0.04em;
-            white-space: nowrap;
-            text-shadow: 0 2px 12px rgb(0 0 0 / 0.14);
-            display: flex;
-            gap: 0.22em;
-        }
+    .nav-links a {
+      text-decoration: none;
+      color: #222;
+    }
 
-        .hero h1 span {
-            display: inline-block;
-            transition: opacity 900ms var(--retake-ease), filter 900ms var(--retake-ease), transform 900ms var(--retake-ease);
-        }
-        .hero h1 span:nth-child(1) { transition-delay: 0ms; }
-        .hero h1 span:nth-child(2) { transition-delay: 90ms; }
-        .hero h1 span:nth-child(3) { transition-delay: 180ms; }
+    .cart-btn {
+      background: #111;
+      color: white;
+      padding: 10px 18px;
+      border-radius: 25px;
+      cursor: pointer;
+    }
 
-        .stage.title-hidden .hero h1 span {
-            opacity: 0;
-            filter: blur(12px);
-            transform: translateY(-10px);
-        }
+    /* HERO */
+    .hero {
+      min-height: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 60px 10%;
+      background: linear-gradient(135deg, #f5e8e0, #e8eef7);
+    }
 
-        .hero p {
-            position: absolute;
-            top: calc(46.78% + 94px);
-            left: 50%;
-            transform: translateX(-50%);
-            width: min(734px, calc(100vw - 48px));
-            font-size: clamp(14px, 1.25vw, 18px);
-            font-weight: 400;
-            line-height: 1.2;
-            letter-spacing: -0.04em;
-            text-shadow: 0 1px 8px rgb(0 0 0 / 0.16);
-            transition: opacity 500ms var(--retake-ease);
-        }
+    .hero-text {
+      max-width: 500px;
+    }
 
-        /* Controller z-index: 20 */
-        .controller {
-            position: absolute;
-            top: 46.78%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: min(880px, calc(100vw - 48px));
-            height: 72px;
-            z-index: 20;
-        }
+    .hero h1 {
+      font-size: 55px;
+      margin-bottom: 20px;
+    }
 
-        .track {
-            position: absolute;
-            top: 4px;
-            left: 0;
-            width: 100%;
-            height: 64px;
-            border-radius: 999px;
-            background: rgb(24 55 82 / 0.31);
-            border: 1px solid rgb(255 255 255 / 0.2);
-            backdrop-filter: blur(9px) saturate(126%) contrast(108%) brightness(103%);
-            -webkit-backdrop-filter: blur(9px) saturate(126%) contrast(108%) brightness(103%);
-            box-shadow: 
-                0 14px 38px rgb(4 24 43 / 0.16),
-                0 2px 7px rgb(4 24 43 / 0.1),
-                inset 1px 1px 0 rgb(255 255 255 / 0.48),
-                inset -1px -1px 0 rgb(21 49 73 / 0.14),
-                inset 0 0 0 0.5px rgb(255 255 255 / 0.16);
-            transition: left 980ms var(--retake-slow-ease), width 980ms var(--retake-slow-ease), opacity 400ms linear 650ms, background 400ms var(--retake-ease), border-color 400ms var(--retake-ease), box-shadow 400ms var(--retake-ease);
-        }
+    .hero h1 span {
+      color: #ff6b00;
+    }
 
-        .track::before, .capsule::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: inherit;
-            pointer-events: none;
-            background: 
-                radial-gradient(120% 150% at var(--glass-x, 24%) var(--glass-y, 8%), rgb(255 255 255 / 0.25), rgb(255 255 255 / 0) 53%),
-                linear-gradient(115deg, rgb(255 255 255 / 0.10), rgb(255 255 255 / 0) 42%);
-            z-index: 1;
-        }
+    .hero p {
+      font-size: 18px;
+      margin-bottom: 25px;
+      color: #555;
+    }
 
-        .track::after, .capsule::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: inherit;
-            pointer-events: none;
-            padding: 1px;
-            background: conic-gradient(from 225deg, #7fe3ff, rgb(255 255 255 / 0.35), #ffffff, #ffd7e6, rgb(255 255 255 / 0.35), #7fe3ff);
-            -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-            mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            z-index: 2;
-        }
-        .track::after { opacity: 0.27; }
-        .capsule::after { opacity: 0.30; }
+    .hero button {
+      padding: 15px 30px;
+      border: none;
+      background: #111;
+      color: white;
+      border-radius: 30px;
+      font-size: 16px;
+      cursor: pointer;
+    }
 
-        .capsule {
-            position: absolute;
-            top: -1px;
-            height: 72px;
-            left: var(--cap-left, -5px);
-            width: var(--cap-width, calc(20% + 5px));
-            border-radius: 999px;
-            background: rgb(246 251 255 / 0.24);
-            border: 1px solid rgb(255 255 255 / 0.28);
-            backdrop-filter: blur(13px) saturate(128%) contrast(107%) brightness(105%);
-            -webkit-backdrop-filter: blur(13px) saturate(128%) contrast(107%) brightness(105%);
-            box-shadow: 
-                0 11px 28px rgb(4 24 43 / 0.17),
-                0 2px 6px rgb(4 24 43 / 0.1),
-                inset 1px 1px 0 rgb(255 255 255 / 0.62),
-                inset -1px -1px 0 rgb(20 49 73 / 0.18),
-                inset 0 0 12px rgb(255 255 255 / 0.055);
-            transition: left 620ms var(--retake-ease), width 620ms var(--retake-ease), background 400ms var(--retake-ease);
-            pointer-events: none;
-            z-index: 3;
-        }
+    .hero img {
+      width: 420px;
+      max-width: 45%;
+      border-radius: 20px;
+    }
 
-        .cells {
-            position: absolute;
-            inset: 0;
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            align-items: center;
-            z-index: 4;
-        }
+    /* FEATURES */
+    .features {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 40px 8%;
+      flex-wrap: wrap;
+    }
 
-        .cell {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-            padding: 0 14px;
-            font-family: 'Manrope', system-ui, sans-serif;
-            font-size: 23px;
-            font-weight: 400;
-            line-height: 1.2;
-            letter-spacing: -0.04em;
-            white-space: nowrap;
-            color: #fff;
-            background: transparent;
-            border: 0;
-            cursor: pointer;
-            transition: opacity 420ms var(--retake-ease), filter 420ms var(--retake-ease), transform 980ms var(--retake-slow-ease);
-        }
+    .feature {
+      background: white;
+      padding: 20px 30px;
+      border-radius: 15px;
+      min-width: 220px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+    }
 
-        .cell.prompt-label {
-            cursor: default;
-            transition: opacity 300ms var(--retake-ease);
-        }
+    /* PRODUCTS */
+    .products-section {
+      padding: 60px 8%;
+    }
 
-        .controller.dim-prompt .prompt-label {
-            opacity: 0.5;
-        }
+    .section-title {
+      text-align: center;
+      font-size: 35px;
+      margin-bottom: 40px;
+    }
 
-        .cell button {
-            all: unset;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            height: 100%;
-            cursor: pointer;
-        }
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 25px;
+    }
 
-        /* Controller collapsed state */
-        .controller.collapsed .track {
-            left: calc(50% - 96px);
-            width: 192px;
-            opacity: 0;
-            pointer-events: none;
-        }
+    .product-card {
+      background: white;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+      transition: 0.3s;
+    }
 
-        .controller.collapsed .capsule {
-            left: calc(50% - 100px) !important;
-            width: 200px !important;
-            background: rgb(246 251 255 / 0.14);
-            pointer-events: auto;
-        }
+    .product-card:hover {
+      transform: translateY(-8px);
+    }
 
-        .controller.collapsed .cell:not(.active-cell) {
-            opacity: 0;
-            filter: blur(10px);
-            transform: scale(0.94);
-            pointer-events: none;
-        }
+    .product-card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
 
-        .controller.collapsed .active-cell {
-            position: absolute;
-            left: calc(50% - 100px);
-            width: 200px;
-            justify-content: center;
-        }
+    .product-info {
+      padding: 18px;
+    }
 
-        .controller.collapsed .active-cell button {
-            text-decoration: underline;
-            text-underline-offset: 3px;
-            text-decoration-thickness: 1px;
-            animation: resetReveal 520ms var(--retake-ease) forwards;
-        }
+    .product-info h3 {
+      margin-bottom: 10px;
+    }
 
-        @keyframes resetReveal {
-            0% { opacity: 0; filter: blur(10px); }
-            100% { opacity: 1; filter: blur(0); }
-        }
+    .price {
+      font-size: 20px;
+      font-weight: bold;
+      color: #ff6b00;
+    }
 
-        /* Header z-index: 30 */
-        header {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            display: grid;
-            grid-template-columns: auto 1fr auto;
-            align-items: center;
-            padding: calc(58px + env(safe-area-inset-top)) 40px 40px;
-            text-shadow: 0 1px 6px rgb(0 0 0 / 0.18);
-            z-index: 30;
-            pointer-events: none;
-        }
+    .old-price {
+      text-decoration: line-through;
+      color: #888;
+      font-size: 14px;
+      margin-left: 8px;
+    }
 
-        header > * {
-            pointer-events: auto;
-        }
+    .product-card button {
+      width: 100%;
+      margin-top: 15px;
+      padding: 12px;
+      background: #111;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
 
-        .logo-link {
-            display: inline-flex;
-            align-items: center;
-            text-decoration: none;
-            color: #fff;
-        }
+    /* DISCOUNT */
+    .discount {
+      margin: 60px 8%;
+      padding: 50px;
+      border-radius: 20px;
+      text-align: center;
+      background: #111;
+      color: white;
+    }
 
-        .logo-svg {
-            height: 24px;
-            width: auto;
-            display: block;
-        }
+    .discount h2 {
+      font-size: 35px;
+      margin-bottom: 15px;
+    }
 
-        .header-meta {
-            display: flex;
-            align-items: center;
-            margin-left: clamp(48px, 5vw, 70px);
-            gap: clamp(28px, 3vw, 44px);
-            font-size: 18px;
-            line-height: 1.2;
-            letter-spacing: -0.04em;
-            color: rgba(255, 255, 255, 0.9);
-        }
+    .discount span {
+      color: #ffb000;
+    }
 
-        .try-now-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 152px;
-            height: 38px;
-            border-radius: 999px;
-            border: 1px solid rgb(255 255 255 / 0.75);
-            background: transparent;
-            color: #fff;
-            font-family: 'Manrope', system-ui, sans-serif;
-            font-size: 18px;
-            font-weight: 500;
-            text-decoration: none;
-            transition: color 300ms ease, background 300ms ease, border-color 300ms ease;
-        }
+    /* COD */
+    .cod {
+      background: #e8fff0;
+      padding: 40px;
+      text-align: center;
+      margin-top: 40px;
+    }
 
-        .try-now-btn:hover, .try-now-btn:focus-visible {
-            background: #fff;
-            color: #0b1a26;
-            border-color: #fff;
-        }
+    /* FOOTER */
+    footer {
+      background: #111;
+      color: white;
+      padding: 40px 8%;
+      text-align: center;
+      margin-top: 50px;
+    }
 
-        /* Notice / Status z-index: 40 */
-        .notice-region {
-            position: absolute;
-            bottom: 24px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 40;
-            text-align: center;
-            pointer-events: none;
-        }
+    @media(max-width: 768px) {
 
-        .status-message {
-            font-size: 14px;
-            color: rgba(255, 255, 255, 0.7);
-            background: rgba(0, 0, 0, 0.6);
-            padding: 8px 16px;
-            border-radius: 99px;
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            opacity: 0;
-            transition: opacity 300ms ease;
-        }
+      .nav-links {
+        display: none;
+      }
 
-        .status-message.visible {
-            opacity: 1;
-        }
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
 
-        .retry-btn {
-            margin-top: 8px;
-            background: #fff;
-            color: #000;
-            border: none;
-            padding: 6px 14px;
-            border-radius: 4px;
-            font-weight: 600;
-            cursor: pointer;
-            pointer-events: auto;
-        }
+      .hero h1 {
+        font-size: 38px;
+      }
 
-        /* Responsive Styles */
-        @media (max-width: 900px) {
-            header {
-                padding: calc(24px + env(safe-area-inset-top)) 24px 24px;
-            }
-            .header-meta {
-                font-size: 14px;
-                gap: 22px;
-                margin-left: 34px;
-            }
-            .try-now-btn {
-                width: 116px;
-                height: 36px;
-                font-size: 14px;
-            }
-            .cell {
-                font-size: clamp(17px, 2.5vw, 24px);
-            }
-        }
+      .hero img {
+        max-width: 100%;
+        margin-top: 30px;
+      }
+    }
 
-        @media (max-width: 700px) {
-            header {
-                padding-left: 18px;
-                padding-right: 18px;
-                grid-template-columns: auto 1fr;
-            }
-            .logo-svg {
-                height: 21px;
-            }
-            .header-meta {
-                font-size: 12px;
-                margin-left: 18px;
-                gap: 14px;
-            }
-            .header-meta .smarter-faster {
-                display: none;
-            }
-            .try-now-btn {
-                width: 92px;
-                height: 34px;
-                font-size: 13px;
-                position: relative;
-            }
-            .try-now-btn::after {
-                content: '';
-                position: absolute;
-                inset: -6px -10px;
-            }
-            header {
-                grid-template-columns: auto auto;
-                justify-content: space-between;
-            }
-            header .header-meta {
-                justify-self: end;
-                margin-right: 12px;
-                margin-left: 0;
-            }
-
-            .hero h1 {
-                top: 34%;
-                width: calc(100vw - 40px);
-                font-size: clamp(48px, 14vw, 64px);
-                line-height: 0.88;
-                white-space: normal;
-                flex-wrap: wrap;
-            }
-
-            .hero p {
-                top: 77%;
-                width: calc(100vw - 44px);
-                font-size: 14px;
-            }
-
-            .controller {
-                top: 53%;
-                width: calc(100vw - 40px);
-                height: 156px;
-            }
-
-            .track {
-                top: 0;
-                height: 156px;
-                border-radius: 28px;
-            }
-
-            .cells {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                grid-template-rows: 48px 54px 54px;
-                align-items: center;
-                inset: 0;
-            }
-
-            .cell.prompt-label {
-                grid-column: 1 / -1;
-                border-bottom: 1px solid rgb(255 255 255 / 0.12);
-                justify-content: center;
-            }
-
-            .cell {
-                font-size: 17px;
-                padding: 0 10px;
-                border: 0.5px solid rgb(255 255 255 / 0.06);
-            }
-
-            .capsule {
-                opacity: 0;
-                pointer-events: none;
-            }
-
-            .controller.collapsed .capsule {
-                opacity: 1 !important;
-                left: 50% !important;
-                top: 4vh;
-                top: 4dvh;
-                transform: translate(-50%, -50%);
-                width: 196px !important;
-                height: 64px !important;
-                border-radius: 999px;
-                background: rgb(246 251 255 / 0.18) !important;
-                pointer-events: auto;
-            }
-
-            .controller.collapsed .active-cell {
-                position: absolute;
-                left: 50%;
-                top: 4vh;
-                top: 4dvh;
-                transform: translate(-50%, -50%);
-                width: 196px;
-                height: 64px;
-                justify-content: center;
-            }
-        }
-
-        @media (max-width: 700px) and (max-height: 700px) {
-            .controller { top: 50%; }
-            .hero p { top: calc(50% + 168px); width: calc(100vw - 32px); font-size: 13px; }
-        }
-
-        @media (max-height: 520px) and (orientation: landscape) {
-            .hero h1 { top: 20%; font-size: clamp(34px, 8vh, 56px); }
-            .controller { top: 50%; }
-            .hero p { top: auto; bottom: 8px; font-size: 13px; }
-        }
-
-        @media (max-width: 700px) and (max-height: 520px) and (orientation: landscape) {
-            .hero h1 { top: 12%; font-size: clamp(28px, 7vh, 44px); }
-            .controller { top: 46%; height: 118px; }
-            .track { height: 118px; }
-            .cells { grid-template-rows: 36px 41px 41px; }
-            .cell { font-size: 15px; }
-            .hero p { bottom: 6px; font-size: 12px; }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
-                transition-duration: 1ms !important;
-                transition-delay: 0ms !important;
-                animation-duration: 1ms !important;
-                animation-delay: 0ms !important;
-            }
-        }
-    </style>
+  </style>
 </head>
+
 <body>
-    <div class="stage" id="stage">
-        <!-- 8 Video elements -->
-        <!-- Clothing (video-1 / video-1-reverse) -->
-        <video class="media active" id="vid-clothing-fwd" src="https://pub-86dc5b5484314368ac5436a674b0d919.r2.dev/designs/video-1.mp4" muted playsinline preload="auto" aria-hidden="true"></video>
-        <video class="media" id="vid-clothing-rev" src="https://pub-86dc5b5484314368ac5436a674b0d919.r2.dev/designs/video-1-reverse.mp4" muted playsinline preload="auto" aria-hidden="true"></video>
 
-        <!-- Scene (video-2 / video-2-reverse) -->
-        <video class="media" id="vid-scene-fwd" src="https://pub-86dc5b5484314368ac5436a674b0d919.r2.dev/designs/video-2.mp4" muted playsinline preload="auto" aria-hidden="true"></video>
-        <video class="media" id="vid-scene-rev" src="https://pub-86dc5b5484314368ac5436a674b0d919.r2.dev/designs/video-2-reverse.mp4" muted playsinline preload="auto" aria-hidden="true"></video>
+  <!-- OFFER BAR -->
+  <div class="offer-bar">
+    🎉 FIRST ORDER? GET 20% OFF | Use Code: FIRST20
+  </div>
 
-        <!-- Lighting (video-3 / video-3-reverse) -->
-        <video class="media" id="vid-lighting-fwd" src="https://pub-86dc5b5484314368ac5436a674b0d919.r2.dev/designs/video-3.mp4" muted playsinline preload="auto" aria-hidden="true"></video>
-        <video class="media" id="vid-lighting-rev" src="https://pub-86dc5b5484314368ac5436a674b0d919.r2.dev/designs/video-3-reverse.mp4" muted playsinline preload="auto" aria-hidden="true"></video>
-
-        <!-- Cast (video-4 / video-4-reverse) -->
-        <video class="media" id="vid-cast-fwd" src="https://pub-86dc5b5484314368ac5436a674b0d919.r2.dev/designs/video-4.mp4" muted playsinline preload="auto" aria-hidden="true"></video>
-        <video class="media" id="vid-cast-rev" src="https://pub-86dc5b5484314368ac5436a674b0d919.r2.dev/designs/video-4-reverse.mp4" muted playsinline preload="auto" aria-hidden="true"></video>
-
-        <!-- Hero Copy -->
-        <div class="hero">
-            <h1><span>The</span> <span>world</span> <span>model</span></h1>
-            <p>LTX builds open world models that give you full control, from production-grade video to systems that understand and operate in the physical world.</p>
-        </div>
-
-        <!-- Controller -->
-        <div class="controller" id="controller" role="group" aria-label="Scene state controller">
-            <div class="track glass" id="track"></div>
-            <div class="capsule glass" id="capsule"></div>
-            <div class="cells" id="cells">
-                <div class="cell prompt-label" aria-hidden="true">Select state &rarr;</div>
-                <button class="cell" data-index="1" data-target="scene" aria-label="Switch Scene">Scene</button>
-                <button class="cell" data-index="2" data-target="lighting" aria-label="Switch Lighting">Lighting</button>
-                <button class="cell" data-index="3" data-target="clothing" aria-label="Switch Clothing">Clothing</button>
-                <button class="cell" data-index="4" data-target="cast" aria-label="Switch Cast">Cast</button>
-            </div>
-        </div>
-
-        <!-- Header -->
-        <header>
-            <a href="https://ltx.io" class="logo-link" aria-label="LTX home">
-                <svg class="logo-svg" viewBox="0 0 75 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M0 32V0h6.4v26.5h16.8V32H0z" fill="#fff"/>
-                    <path d="M30.4 32V0h6.4v32h-6.4z" fill="#fff"/>
-                    <path d="M44.8 32V0h6.4l15.2 22V0h6.4v32h-6.4L44.8 10V32h-6.4z" fill="#fff"/>
-                </svg>
-            </a>
-            <div class="header-meta">
-                <span>LTX-2.5 is here</span>
-                <span class="smarter-faster">Smarter. Faster</span>
-            </div>
-            <a href="https://app.ltx.io/" class="try-now-btn" target="_blank" rel="noopener noreferrer">Try now</a>
-        </header>
-
-        <!-- Live Region & Notice -->
-        <div class="notice-region" aria-live="polite">
-            <div class="status-message" id="statusMessage"></div>
-        </div>
+  <!-- NAVBAR -->
+  <nav>
+    <div class="logo">
+      Smart <span>Baske In</span>
     </div>
 
-    <script>
-        (function() {
-            'use strict';
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#products">Shop</a></li>
+      <li><a href="#">Categories</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
 
-            var clipsConfig = {
-                clothing: { fwd: 'vid-clothing-fwd', rev: 'vid-clothing-rev', fwdDur: 2.08, revDur: 2.08, holdOffset: 0.08 },
-                scene:    { fwd: 'vid-scene-fwd',    rev: 'vid-scene-rev',    fwdDur: 2.08, revDur: 2.08, holdOffset: 0.18 },
-                lighting: { fwd: 'vid-lighting-fwd', rev: 'vid-lighting-rev', fwdDur: 2.08, revDur: 2.04, holdOffset: 0.08 },
-                cast:     { fwd: 'vid-cast-fwd',     rev: 'vid-cast-rev',     fwdDur: 3.00, revDur: 2.48, holdOffset: 0.08 }
-            };
+    <div class="cart-btn">
+      🛒 Cart (<span id="cart-count">0</span>)
+    </div>
+  </nav>
 
-            var state = 'base';
-            var playbackState = 'loading'; // loading, ready, playing, error
-            var activeTransitionToken = 0;
-            var focusedIndex = 0;
-            var currentActiveKey = 'clothing'; // default loaded base frame
 
-            var stageEl = document.getElementById('stage');
-            var controllerEl = document.getElementById('controller');
-            var trackEl = document.getElementById('track');
-            var capsuleEl = document.getElementById('capsule');
-            var cellsEl = document.getElementById('cells');
-            var buttons = Array.prototype.slice.call(cellsEl.querySelectorAll('button'));
-            var statusMsg = document.getElementById('statusMessage');
+  <!-- HERO -->
+  <section class="hero">
 
-            var positions = [
-                { left: '-5px', width: 'calc(20% + 5px)' },
-                { left: '20%', width: '20%' },
-                { left: '40%', width: '20%' },
-                { left: '60%', width: '20%' },
-                { left: '80%', width: 'calc(20% + 5px)' }
-            ];
+    <div class="hero-text">
+      <h1>
+        Shop Smart.<br>
+        Live <span>Better.</span>
+      </h1>
 
-            function setStatus(msg, isError) {
-                statusMsg.textContent = msg;
-                statusMsg.classList.add('visible');
-                if (isError) {
-                    statusMsg.innerHTML = msg + '<br><button class="retry-btn" id="retryBtn">Retry</button>';
-                    var rb = document.getElementById('retryBtn');
-                    if (rb) {
-                        rb.onclick = function() {
-                            statusMsg.classList.remove('visible');
-                            initApp();
-                        };
-                    }
-                } else {
-                    setTimeout(function() {
-                        if (statusMsg.textContent === msg) {
-                            statusMsg.classList.remove('visible');
-                        }
-                    }, 3500);
-                }
-            }
+      <p>
+        Trending products delivered to your doorstep.
+        Easy shopping with Cash on Delivery available.
+      </p>
 
-            // Glass movement mouse effect
-            controllerEl.addEventListener('mousemove', function(e) {
-                var rect = controllerEl.getBoundingClientRect();
-                var x = ((e.clientX - rect.left) / rect.width) * 100;
-                var y = ((e.clientY - rect.top) / rect.height) * 100;
-                controllerEl.style.setProperty('--glass-x', x + '%');
-                controllerEl.style.setProperty('--glass-y', y + '%');
-            });
+      <button onclick="document.getElementById('products').scrollIntoView()">
+        Shop Now
+      </button>
+    </div>
 
-            function updateCapsule(idx) {
-                if (idx < 0 || idx > 4) return;
-                var p = positions[idx];
-                controllerEl.style.setProperty('--cap-left', p.left);
-                controllerEl.style.setProperty('--cap-width', p.width);
-                if (idx > 0) {
-                    controllerEl.classList.add('dim-prompt');
-                } else {
-                    controllerEl.classList.remove('dim-prompt');
-                }
-            }
+    <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=800"
+         alt="Product">
+  </section>
 
-            // Hover and focus handlers for buttons
-            buttons.forEach(function(btn, i) {
-                var cellIndex = i + 1;
-                btn.addEventListener('mouseenter', function() {
-                    if (state === 'base' && playbackState === 'ready') {
-                        focusedIndex = cellIndex;
-                        updateCapsule(cellIndex);
-                    }
-                });
-                btn.addEventListener('focus', function() {
-                    if (state === 'base' && playbackState === 'ready') {
-                        focusedIndex = cellIndex;
-                        updateCapsule(cellIndex);
-                    }
-                });
-                btn.addEventListener('blur', function() {
-                    setTimeout(function() {
-                        var activeEl = document.activeElement;
-                        var isStillInControls = buttons.some(function(b) { return b === activeEl; });
-                        if (!isStillInControls && state === 'base') {
-                            focusedIndex = 0;
-                            updateCapsule(0);
-                        }
-                    }, 10);
-                });
-            });
 
-            controllerEl.addEventListener('mouseleave', function() {
-                if (state === 'base' && document.activeElement && !buttons.some(function(b) { return b === document.activeElement; })) {
-                    focusedIndex = 0;
-                    updateCapsule(0);
-                }
-            });
+  <!-- FEATURES -->
+  <section class="features">
 
-            // Preload & initialization check
-            var allVideos = Array.prototype.slice.call(document.querySelectorAll('video'));
-            
-            function checkAllReady() {
-                var readyCount = 0;
-                allVideos.forEach(function(v) {
-                    if (v.readyState >= 2) readyCount++;
-                });
-                if (readyCount >= allVideos.length) {
-                    playbackState = 'ready';
-                    // Ensure base frame (clothing fwd at 0) is visible and paused
-                    var baseVid = document.getElementById('vid-clothing-fwd');
-                    baseVid.currentTime = 0;
-                    baseVid.classList.add('active');
-                }
-            }
+    <div class="feature">
+      🚚 <h3>Fast Delivery</h3>
+      <p>Quick delivery to your location.</p>
+    </div>
 
-            allVideos.forEach(function(v) {
-                v.addEventListener('loadeddata', checkAllReady);
-                v.load();
-            });
+    <div class="feature">
+      💵 <h3>Cash on Delivery</h3>
+      <p>Pay when your product arrives.</p>
+    </div>
 
-            // Fallback check after 1.5s in case loadeddata already fired
-            setTimeout(checkAllReady, 1500);
+    <div class="feature">
+      🎁 <h3>First Order Discount</h3>
+      <p>Get 20% OFF on your first order.</p>
+    </div>
 
-            // Seam-safe player helper
-            function playTransition(targetKey, isReverse) {
-                var token = ++activeTransitionToken;
-                playbackState = 'playing';
+  </section>
 
-                var config = clipsConfig[targetKey];
-                var vidId = isReverse ? config.rev : config.fwd;
-                var targetVid = document.getElementById(vidId);
-                var activeVid = document.querySelector('.media.active');
 
-                // Disable all buttons immediately
-                buttons.forEach(function(b) {
-                    b.disabled = true;
-                    b.setAttribute('aria-hidden', 'true');
-                    b.setAttribute('tabindex', '-1');
-                });
+  <!-- PRODUCTS -->
+  <section class="products-section" id="products">
 
-                if (!isReverse) {
-                    // Forward UI choreography
-                    controllerEl.classList.add('collapsed');
-                    stageEl.classList.add('title-hidden');
-                    currentActiveKey = targetKey;
-                } else {
-                    // Reverse UI choreography: expand bar back
-                    controllerEl.classList.remove('collapsed');
-                }
+    <h2 class="section-title">
+      Trending Products
+    </h2>
 
-                // Keep previous frame visible and paused
-                if (activeVid && activeVid !== targetVid) {
-                    activeVid.pause();
-                }
+    <div class="products">
 
-                // Rewind target video and await seeked if needed
-                var seekPromise = Promise.resolve();
-                if (targetVid.currentTime > 0.001) {
-                    seekPromise = new Promise(function(resolve) {
-                        function onSeeked() {
-                            targetVid.removeEventListener('seeked', onSeeked);
-                            resolve();
-                        }
-                        targetVid.addEventListener('seeked', onSeeked);
-                        targetVid.currentTime = 0;
-                    });
-                } else {
-                    targetVid.currentTime = 0;
-                }
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=600">
 
-                seekPromise.then(function() {
-                    if (token !== activeTransitionToken) return;
+        <div class="product-info">
+          <h3>Premium Handbag</h3>
 
-                    var playPromise = targetVid.play();
-                    if (playPromise && typeof playPromise.catch === 'function') {
-                        playPromise.catch(function(err) {
-                            if (token !== activeTransitionToken) return;
-                            playbackState = 'error';
-                            setStatus('Playback error occurred.', true);
-                        });
-                    }
+          <span class="price">₹999</span>
+          <span class="old-price">₹1499</span>
 
-                    // Frame readiness check via rVFC or ticks
-                    var frameReadyPromise = new Promise(function(resolve, reject) {
-                        var timeoutTimer = setTimeout(function() {
-                            reject(new Error('First-frame timeout'));
-                        }, 12000);
+          <button onclick="addToCart()">
+            Add to Cart
+          </button>
+        </div>
+      </div>
 
-                        function checkFrame() {
-                            if (token !== activeTransitionToken) {
-                                clearTimeout(timeoutTimer);
-                                return;
-                            }
-                            if (targetVid.readyState >= 2 && targetVid.currentTime <= 0.5) {
-                                clearTimeout(timeoutTimer);
-                                resolve();
-                            } else {
-                                requestAnimationFrame(checkFrame);
-                            }
-                        }
 
-                        if ('requestVideoFrameCallback' in HTMLVideoElement.prototype) {
-                            targetVid.requestVideoFrameCallback(function(now, metadata) {
-                                if (token !== activeTransitionToken) {
-                                    clearTimeout(timeoutTimer);
-                                    return;
-                                }
-                                clearTimeout(timeoutTimer);
-                                resolve();
-                            });
-                        } else {
-                            checkFrame();
-                        }
-                    });
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600">
 
-                    frameReadyPromise.then(function() {
-                        if (token !== activeTransitionToken) return;
+        <div class="product-info">
+          <h3>Wireless Headphones</h3>
 
-                        // Atomic visibility switch
-                        allVideos.forEach(function(v) { v.classList.remove('active'); });
-                        targetVid.classList.add('active');
+          <span class="price">₹1,299</span>
+          <span class="old-price">₹1999</span>
 
-                        // Monitor active video near hold time
-                        var duration = isReverse ? config.revDur : config.fwdDur;
-                        var holdOffset = isReverse ? (targetKey === 'scene' ? 0.18 : 0.08) : config.holdOffset;
-                        var stopTime = Math.max(0, duration - holdOffset);
+          <button onclick="addToCart()">
+            Add to Cart
+          </button>
+        </div>
+      </div>
 
-                        function monitorPlayback() {
-                            if (token !== activeTransitionToken) return;
-                            if (targetVid.currentTime >= stopTime || targetVid.ended) {
-                                targetVid.pause();
-                                targetVid.currentTime = stopTime;
-                                onTransitionComplete(targetKey, isReverse);
-                            } else {
-                                requestAnimationFrame(monitorPlayback);
-                            }
-                        }
-                        requestAnimationFrame(monitorPlayback);
 
-                    }).catch(function(err) {
-                        if (token !== activeTransitionToken) return;
-                        playbackState = 'error';
-                        setStatus('Failed to load transition frame.', true);
-                    });
-                });
-            }
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600">
 
-            function onTransitionComplete(targetKey, isReverse) {
-                playbackState = 'ready';
-                if (!isReverse) {
-                    state = targetKey;
-                    // Switch active button to Reset state
-                    var activeBtn = buttons.find(function(b) { return b.getAttribute('data-target') === targetKey; });
-                    if (activeBtn) {
-                        activeBtn.classList.add('active-cell');
-                        activeBtn.textContent = 'Reset';
-                        activeBtn.disabled = false;
-                        activeBtn.removeAttribute('aria-hidden');
-                        activeBtn.removeAttribute('tabindex');
-                        activeBtn.focus({ preventScroll: true });
-                    }
-                } else {
-                    state = 'base';
-                    // Restore original button labels
-                    buttons.forEach(function(b) {
-                        var tgt = b.getAttribute('data-target');
-                        if (tgt === 'scene') b.textContent = 'Scene';
-                        if (tgt === 'lighting') b.textContent = 'Lighting';
-                        if (tgt === 'clothing') b.textContent = 'Clothing';
-                        if (tgt === 'cast') b.textContent = 'Cast';
-                        b.classList.remove('active-cell');
-                        b.disabled = false;
-                        b.removeAttribute('aria-hidden');
-                        b.removeAttribute('tabindex');
-                    });
-                    stageEl.classList.remove('title-hidden');
-                    updateCapsule(0);
-                }
-            }
+        <div class="product-info">
+          <h3>Stylish Shoes</h3>
 
-            // Click handling on buttons
-            buttons.forEach(function(btn) {
-                btn.addEventListener('click', function() {
-                    if (playbackState !== 'ready') return;
-                    var targetKey = btn.getAttribute('data-target');
+          <span class="price">₹1,499</span>
+          <span class="old-price">₹2499</span>
 
-                    if (state === 'base') {
-                        playTransition(targetKey, false);
-                    } else if (state === targetKey && btn.textContent === 'Reset') {
-                        playTransition(targetKey, true);
-                    }
-                });
-            });
+          <button onclick="addToCart()">
+            Add to Cart
+          </button>
+        </div>
+      </div>
 
-            function initApp() {
-                playbackState = 'ready';
-                state = 'base';
-                allVideos.forEach(function(v) { v.pause(); v.currentTime = 0; });
-                var baseVid = document.getElementById('vid-clothing-fwd');
-                baseVid.classList.add('active');
-                controllerEl.classList.remove('collapsed');
-                stageEl.classList.remove('title-hidden');
-                buttons.forEach(function(b, i) {
-                    var tgt = ['scene', 'lighting', 'clothing', 'cast'][i];
-                    b.textContent = tgt.charAt(0).toUpperCase() + tgt.slice(1);
-                    b.classList.remove('active-cell');
-                    b.disabled = false;
-                    b.removeAttribute('aria-hidden');
-                    b.removeAttribute('tabindex');
-                });
-                updateCapsule(0);
-            }
 
-        })();
-    </script>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600">
+
+        <div class="product-info">
+          <h3>Smart Watch</h3>
+
+          <span class="price">₹1,799</span>
+          <span class="old-price">₹2999</span>
+
+          <button onclick="addToCart()">
+            Add to Cart
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- DISCOUNT -->
+  <section class="discount">
+
+    <h2>
+      🎉 Get <span>20% OFF</span>
+    </h2>
+
+    <p>
+      On your first purchase at Smart Baske In
+    </p>
+
+    <h3 style="margin-top:20px">
+      Use Code: FIRST20
+    </h3>
+
+  </section>
+
+
+  <!-- COD -->
+  <section class="cod">
+
+    <h2>💵 Cash on Delivery Available</h2>
+
+    <p style="margin-top:10px">
+      Order now and pay when you receive your product.
+    </p>
+
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer>
+
+    <h2>Smart Baske In</h2>
+
+    <p style="margin-top:15px">
+      Shop Smart. Live Better.
+    </p>
+
+    <p style="margin-top:20px">
+      © 2026 Smart Baske In. All Rights Reserved.
+    </p>
+
+  </footer>
+
+
+  <script>
+
+    let cartCount = 0;
+
+    function addToCart() {
+
+      cartCount++;
+
+      document.getElementById("cart-count").innerText = cartCount;
+
+      alert("Product added to cart!");
+
+    }
+
+  </script>
+
 </body>
 </html>
