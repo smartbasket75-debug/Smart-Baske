@@ -1,1029 +1,1183 @@
-import { useEffect, useMemo, useState } from "react";
-import {
-  Flower2,
-  Search,
-  ShoppingBag,
-  X,
-  Plus,
-  Minus,
-} from "lucide-react";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-type Product = {
-  id: number;
-  name: string;
-  price: number;
-  oldPrice: number;
-  image: string;
-  category: string;
-};
+  <title>Smart Baske In</title>
 
-type CartItem = Product & {
-  quantity: number;
-};
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-const products: Product[] = [
-  {
-    id: 1,
-    name: "Premium Travel Bag",
-    price: 999,
-    oldPrice: 1499,
-    category: "Fashion",
-    image:
-      "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=900&q=80",
-  },
-  {
-    id: 2,
-    name: "Wireless Headphones",
-    price: 1299,
-    oldPrice: 1999,
-    category: "Electronics",
-    image:
-      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=900&q=80",
-  },
-  {
-    id: 3,
-    name: "Luxury Smart Watch",
-    price: 1799,
-    oldPrice: 2999,
-    category: "Electronics",
-    image:
-      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=80",
-  },
-  {
-    id: 4,
-    name: "Classic Sneakers",
-    price: 1499,
-    oldPrice: 2499,
-    category: "Fashion",
-    image:
-      "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=900&q=80",
-  },
-  {
-    id: 5,
-    name: "Premium Sunglasses",
-    price: 799,
-    oldPrice: 1299,
-    category: "Accessories",
-    image:
-      "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=900&q=80",
-  },
-  {
-    id: 6,
-    name: "Minimal Desk Lamp",
-    price: 1199,
-    oldPrice: 1699,
-    category: "Home",
-    image:
-      "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=900&q=80",
-  },
-];
+  <link
+    href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap"
+    rel="stylesheet"
+  >
 
-const entrance = "cubic-bezier(0.16, 1, 0.3, 1)";
-const overlayEase = "cubic-bezier(0.76, 0, 0.24, 1)";
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-export default function App() {
-  const [mounted, setMounted] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [cartOpen, setCartOpen] = useState(false);
-  const [checkoutOpen, setCheckoutOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const [search, setSearch] = useState("");
-  const [cart, setCart] = useState<CartItem[]>([]);
+    html,
+    body {
+      overflow-x: hidden;
+      background: #000;
+      font-family: Arial, Helvetica, sans-serif;
+    }
 
-  useEffect(() => {
-    const timer = setTimeout(() => setMounted(true), 100);
-    return () => clearTimeout(timer);
-  }, []);
+    body.menu-open {
+      overflow: hidden;
+    }
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 40);
-    };
+    .font-instrument {
+      font-family: 'Instrument Serif', serif;
+    }
 
-    window.addEventListener("scroll", handleScroll);
+    :root {
+      --entrance: cubic-bezier(0.16, 1, 0.3, 1);
+      --overlay: cubic-bezier(0.76, 0, 0.24, 1);
+    }
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+    /* ================= NAVBAR ================= */
 
-  useEffect(() => {
-    document.body.style.overflow =
-      menuOpen || cartOpen || checkoutOpen ? "hidden" : "";
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      transition: 0.5s;
+    }
 
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [menuOpen, cartOpen, checkoutOpen]);
+    .navbar.scrolled {
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(15px);
+    }
 
-  const filteredProducts = useMemo(() => {
-    return products.filter((product) =>
-      product.name.toLowerCase().includes(search.toLowerCase())
-    );
-  }, [search]);
+    .nav-inner {
+      max-width: 1440px;
+      height: 64px;
+      margin: auto;
+      padding: 0 24px;
 
-  const cartCount = cart.reduce(
-    (total, item) => total + item.quantity,
-    0
-  );
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
 
-  const subtotal = cart.reduce(
-    (total, item) => total + item.price * item.quantity,
-    0
-  );
+    .logo {
+      color: white;
+      text-decoration: none;
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: -0.5px;
+      z-index: 101;
 
-  const discount = Math.round(subtotal * 0.2);
-  const total = subtotal - discount;
+      opacity: 0;
+      transform: translateY(-16px);
+      transition: all 700ms var(--entrance);
+    }
 
-  const addToCart = (product: Product) => {
-    setCart((current) => {
-      const exists = current.find(
-        (item) => item.id === product.id
-      );
+    .nav-loaded .logo {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-      if (exists) {
-        return current.map((item) =>
-          item.id === product.id
-            ? {
-                ...item,
-                quantity: item.quantity + 1,
-              }
-            : item
-        );
+    .nav-center {
+      z-index: 101;
+    }
+
+    .navigate-btn {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 999px;
+
+      padding: 8px 20px;
+
+      color: rgba(255,255,255,0.9);
+      cursor: pointer;
+
+      font-size: 14px;
+
+      opacity: 0;
+      transform: translateY(-16px);
+
+      transition:
+        background 0.3s,
+        opacity 700ms var(--entrance) 200ms,
+        transform 700ms var(--entrance) 200ms;
+    }
+
+    .nav-loaded .navigate-btn {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .navigate-btn:hover {
+      background: rgba(255,255,255,0.1);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      z-index: 101;
+    }
+
+    .flower {
+      color: rgba(255,255,255,0.9);
+      font-size: 30px;
+
+      opacity: 0;
+      transform: translateY(-16px);
+
+      transition:
+        opacity 700ms var(--entrance) 400ms,
+        transform 700ms var(--entrance) 400ms;
+    }
+
+    .nav-loaded .flower {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .cart-button {
+      background: none;
+      border: none;
+      color: white;
+
+      cursor: pointer;
+      font-size: 14px;
+
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .mobile-menu {
+      display: none;
+      width: 32px;
+      height: 32px;
+
+      border: none;
+      background: transparent;
+
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      gap: 6px;
+      cursor: pointer;
+      z-index: 101;
+    }
+
+    .hamburger-bar {
+      width: 24px;
+      height: 2px;
+      background: white;
+
+      transition: 500ms var(--overlay);
+    }
+
+    .mobile-menu.open .hamburger-bar:first-child {
+      transform: rotate(45deg) translateY(4px);
+    }
+
+    .mobile-menu.open .hamburger-bar:last-child {
+      transform: rotate(-45deg) translateY(-4px);
+    }
+
+    /* ================= OVERLAY ================= */
+
+    .menu-overlay {
+      position: fixed;
+      inset: 0;
+
+      z-index: 90;
+
+      background: black;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      opacity: 0;
+      visibility: hidden;
+
+      transition: all 700ms var(--overlay);
+    }
+
+    .menu-overlay.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .menu-links {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .menu-links a {
+      text-decoration: none;
+      color: white;
+
+      font-family: 'Instrument Serif', serif;
+      font-size: 40px;
+
+      opacity: 0;
+      transform: translateY(24px);
+
+      transition:
+        opacity 600ms var(--overlay),
+        transform 600ms var(--overlay);
+    }
+
+    .menu-links a:hover {
+      opacity: 0.6;
+    }
+
+    .menu-overlay.open .menu-links a {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .menu-overlay.open .menu-links a:nth-child(1) {
+      transition-delay: 150ms;
+    }
+
+    .menu-overlay.open .menu-links a:nth-child(2) {
+      transition-delay: 230ms;
+    }
+
+    .menu-overlay.open .menu-links a:nth-child(3) {
+      transition-delay: 310ms;
+    }
+
+    .menu-overlay.open .menu-links a:nth-child(4) {
+      transition-delay: 390ms;
+    }
+
+    /* ================= HERO ================= */
+
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+
+      overflow: hidden;
+
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    .hero-video-wrap {
+      position: absolute;
+      inset: 0;
+
+      opacity: 0;
+      transform: scale(1.05);
+
+      transition:
+        opacity 1400ms var(--entrance),
+        transform 1400ms var(--entrance);
+    }
+
+    .hero-video-wrap.loaded {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .hero-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 10;
+
+      width: 100%;
+      max-width: 1000px;
+
+      margin: 0 auto;
+      padding: 0 24px 64px;
+
+      text-align: center;
+    }
+
+    .hero-title,
+    .hero-text,
+    .hero-cta {
+      opacity: 0;
+      transform: translateY(32px);
+    }
+
+    .hero-content.loaded .hero-title {
+      opacity: 1;
+      transform: translateY(0);
+
+      transition:
+        opacity 900ms var(--entrance) 400ms,
+        transform 900ms var(--entrance) 400ms;
+    }
+
+    .hero-content.loaded .hero-text {
+      opacity: 1;
+      transform: translateY(0);
+
+      transition:
+        opacity 900ms var(--entrance) 600ms,
+        transform 900ms var(--entrance) 600ms;
+    }
+
+    .hero-content.loaded .hero-cta {
+      opacity: 1;
+      transform: translateY(0);
+
+      transition:
+        opacity 900ms var(--entrance) 800ms,
+        transform 900ms var(--entrance) 800ms;
+    }
+
+    .hero-title {
+      font-family: 'Instrument Serif', serif;
+
+      color: white;
+
+      font-size: 2.5rem;
+      line-height: 0.95;
+
+      margin-bottom: 20px;
+    }
+
+    .hero-text {
+      max-width: 450px;
+      margin: 0 auto 32px;
+
+      color: rgba(255,255,255,0.7);
+
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .hero-cta {
+      display: inline-block;
+
+      background: white;
+      color: black;
+
+      padding: 14px 32px;
+
+      border-radius: 999px;
+
+      text-decoration: none;
+
+      font-size: 14px;
+      font-weight: 500;
+
+      cursor: pointer;
+
+      border: none;
+    }
+
+    .hero-cta:hover {
+      background: rgba(255,255,255,0.9);
+    }
+
+    /* ================= OFFER ================= */
+
+    .offer {
+      background: black;
+      color: rgba(255,255,255,0.8);
+
+      border-top: 1px solid rgba(255,255,255,0.1);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+
+      padding: 24px;
+
+      text-align: center;
+
+      font-size: 14px;
+    }
+
+    /* ================= PRODUCTS ================= */
+
+    .products-section {
+      background: black;
+      color: white;
+
+      padding: 80px 24px;
+    }
+
+    .products-container {
+      max-width: 1440px;
+      margin: auto;
+    }
+
+    .products-header {
+      display: flex;
+      flex-direction: column;
+
+      gap: 30px;
+
+      margin-bottom: 50px;
+    }
+
+    .small-title {
+      margin-bottom: 12px;
+
+      color: rgba(255,255,255,0.4);
+
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+    }
+
+    .section-title {
+      font-family: 'Instrument Serif', serif;
+
+      font-size: 48px;
+      line-height: 1;
+    }
+
+    .search-box {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      width: 100%;
+
+      padding-bottom: 12px;
+
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .search-box input {
+      width: 100%;
+
+      background: transparent;
+      border: none;
+      outline: none;
+
+      color: white;
+      font-size: 14px;
+    }
+
+    .search-box input::placeholder {
+      color: rgba(255,255,255,0.3);
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+
+      gap: 50px 24px;
+    }
+
+    .product-card {
+      width: 100%;
+    }
+
+    .product-image {
+      position: relative;
+
+      width: 100%;
+      aspect-ratio: 3 / 4;
+
+      overflow: hidden;
+      background: #18181b;
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+
+      transition: transform 700ms;
+    }
+
+    .product-card:hover .product-image img {
+      transform: scale(1.05);
+    }
+
+    .category {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+
+      padding: 6px 12px;
+
+      border-radius: 999px;
+
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(10px);
+
+      font-size: 11px;
+    }
+
+    .product-info {
+      padding-top: 20px;
+    }
+
+    .product-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+    .product-name {
+      font-size: 18px;
+      margin-bottom: 7px;
+    }
+
+    .product-subtitle {
+      color: rgba(255,255,255,0.4);
+      font-size: 14px;
+    }
+
+    .price {
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .old-price {
+      color: rgba(255,255,255,0.4);
+
+      font-size: 12px;
+      text-decoration: line-through;
+
+      margin-top: 5px;
+    }
+
+    .product-actions {
+      display: flex;
+      gap: 10px;
+
+      margin-top: 20px;
+    }
+
+    .add-btn {
+      flex: 1;
+
+      padding: 13px;
+
+      background: white;
+      color: black;
+
+      border: none;
+      border-radius: 999px;
+
+      cursor: pointer;
+
+      font-weight: 500;
+    }
+
+    .buy-btn {
+      padding: 13px 20px;
+
+      background: transparent;
+      color: white;
+
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 999px;
+
+      cursor: pointer;
+    }
+
+    /* ================= COD ================= */
+
+    .cod-section {
+      background: #09090b;
+
+      border-top: 1px solid rgba(255,255,255,0.1);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+
+      padding: 80px 24px;
+
+      color: white;
+      text-align: center;
+    }
+
+    .cod-title {
+      font-family: 'Instrument Serif', serif;
+      font-size: 48px;
+    }
+
+    .cod-text {
+      max-width: 500px;
+      margin: 20px auto 0;
+
+      color: rgba(255,255,255,0.6);
+      line-height: 1.6;
+    }
+
+    /* ================= CART ================= */
+
+    .cart-overlay {
+      position: fixed;
+      inset: 0;
+
+      z-index: 200;
+
+      pointer-events: none;
+    }
+
+    .cart-overlay.active {
+      pointer-events: auto;
+    }
+
+    .cart-bg {
+      position: absolute;
+      inset: 0;
+
+      background: rgba(0,0,0,0.7);
+
+      opacity: 0;
+
+      transition: 0.3s;
+    }
+
+    .cart-overlay.active .cart-bg {
+      opacity: 1;
+    }
+
+    .cart {
+      position: absolute;
+      top: 0;
+      right: 0;
+
+      width: 100%;
+      max-width: 450px;
+      height: 100%;
+
+      background: #09090b;
+
+      padding: 24px;
+
+      display: flex;
+      flex-direction: column;
+
+      transform: translateX(100%);
+
+      transition: transform 500ms var(--overlay);
+    }
+
+    .cart-overlay.active .cart {
+      transform: translateX(0);
+    }
+
+    .cart-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      padding-bottom: 20px;
+
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .cart-title {
+      font-family: 'Instrument Serif', serif;
+      font-size: 32px;
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+
+      color: white;
+      font-size: 26px;
+
+      cursor: pointer;
+    }
+
+    .cart-items {
+      flex: 1;
+
+      overflow-y: auto;
+
+      padding: 24px 0;
+    }
+
+    .empty-cart {
+      text-align: center;
+      color: rgba(255,255,255,0.4);
+
+      margin-top: 40px;
+    }
+
+    .cart-item {
+      display: flex;
+      gap: 15px;
+
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .cart-item img {
+      width: 65px;
+      height: 85px;
+
+      object-fit: cover;
+    }
+
+    .cart-item-info {
+      flex: 1;
+    }
+
+    .cart-item-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .cart-item-name {
+      font-size: 14px;
+    }
+
+    .cart-item-price {
+      color: rgba(255,255,255,0.6);
+      font-size: 13px;
+
+      margin-top: 6px;
+    }
+
+    .quantity {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      margin-top: 15px;
+    }
+
+    .quantity button {
+      width: 28px;
+      height: 28px;
+
+      border-radius: 50%;
+
+      background: transparent;
+      color: white;
+
+      border: 1px solid rgba(255,255,255,0.2);
+
+      cursor: pointer;
+    }
+
+    .cart-footer {
+      padding-top: 20px;
+
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .total-row {
+      display: flex;
+      justify-content: space-between;
+
+      margin-bottom: 14px;
+
+      font-size: 14px;
+      color: rgba(255,255,255,0.6);
+    }
+
+    .discount {
+      color: #4ade80;
+    }
+
+    .final-total {
+      color: white;
+      font-size: 18px;
+    }
+
+    .checkout-btn {
+      width: 100%;
+
+      margin-top: 15px;
+
+      padding: 16px;
+
+      background: white;
+      color: black;
+
+      border: none;
+      border-radius: 999px;
+
+      font-weight: 600;
+
+      cursor: pointer;
+    }
+
+    /* ================= CHECKOUT ================= */
+
+    .checkout-overlay {
+      position: fixed;
+      inset: 0;
+
+      z-index: 300;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 20px;
+
+      background: rgba(0,0,0,0.85);
+
+      opacity: 0;
+      visibility: hidden;
+
+      transition: 0.3s;
+    }
+
+    .checkout-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .checkout-box {
+      position: relative;
+
+      width: 100%;
+      max-width: 600px;
+
+      max-height: 90vh;
+      overflow-y: auto;
+
+      padding: 30px;
+
+      background: #09090b;
+      color: white;
+    }
+
+    .checkout-box h2 {
+      font-family: 'Instrument Serif', serif;
+      font-size: 40px;
+    }
+
+    .checkout-description {
+      margin-top: 10px;
+      color: rgba(255,255,255,0.5);
+      font-size: 14px;
+    }
+
+    .checkout-form {
+      margin-top: 30px;
+    }
+
+    .checkout-form input,
+    .checkout-form textarea {
+      width: 100%;
+
+      margin-bottom: 20px;
+      padding: 14px 0;
+
+      background: transparent;
+
+      border: none;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+
+      outline: none;
+
+      color: white;
+
+      font-size: 15px;
+    }
+
+    .checkout-form textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .checkout-summary {
+      padding: 20px;
+
+      border: 1px solid rgba(255,255,255,0.1);
+
+      margin-bottom: 20px;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+
+      margin-bottom: 15px;
+
+      color: rgba(255,255,255,0.6);
+    }
+
+    .place-order {
+      width: 100%;
+
+      padding: 16px;
+
+      border: none;
+      border-radius: 999px;
+
+      background: white;
+      color: black;
+
+      font-weight: 600;
+
+      cursor: pointer;
+    }
+
+    /* ================= RESPONSIVE ================= */
+
+    @media (min-width: 640px) {
+      .hero-title {
+        font-size: 48px;
       }
 
-      return [
-        ...current,
-        {
-          ...product,
-          quantity: 1,
-        },
-      ];
-    });
-  };
+      .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
 
-  const updateQuantity = (
-    id: number,
-    change: number
-  ) => {
-    setCart((current) =>
-      current
-        .map((item) =>
-          item.id === id
-            ? {
-                ...item,
-                quantity: item.quantity + change,
-              }
-            : item
-        )
-        .filter((item) => item.quantity > 0)
-    );
-  };
+    @media (min-width: 768px) {
 
-  const scrollToProducts = () => {
-    setMenuOpen(false);
+      .nav-inner {
+        height: 80px;
+        padding: 0 40px;
+      }
 
-    setTimeout(() => {
-      document
-        .getElementById("products")
-        ?.scrollIntoView({
-          behavior: "smooth",
-        });
-    }, 200);
-  };
+      .logo {
+        font-size: 24px;
+      }
 
-  const menuLinks = [
-    "Home",
-    "Story",
-    "Collection",
-    "Products",
-    "Inquire",
-  ];
+      .mobile-menu {
+        display: none;
+      }
 
-  return (
-    <main className="min-h-screen bg-black text-white">
+      .nav-center {
+        display: block;
+      }
 
-      {/* NAVBAR */}
+      .flower,
+      .cart-button {
+        display: flex;
+      }
 
-      <header
-        className={`fixed top-0 left-0 z-50 w-full transition duration-500 ${
-          scrolled
-            ? "bg-black/80 backdrop-blur-md"
-            : "bg-transparent"
-        }`}
-      >
-        <div className="mx-auto flex h-16 max-w-[1440px] items-center justify-between px-6 md:h-20 md:px-10">
+      .hero-content {
+        padding-bottom: 96px;
+      }
 
-          {/* LOGO */}
+      .hero-title {
+        font-size: 60px;
+        margin-bottom: 24px;
+      }
 
-          <a
-            href="#"
-            className={`z-50 text-xl font-semibold tracking-tight text-white transition-all duration-700 md:text-2xl ${
-              mounted
-                ? "translate-y-0 opacity-100"
-                : "-translate-y-4 opacity-0"
-            }`}
-            style={{
-              transitionTimingFunction: entrance,
-            }}
-          >
+      .hero-text {
+        font-size: 18px;
+        margin-bottom: 40px;
+      }
+
+      .hero-cta {
+        font-size: 16px;
+      }
+
+      .menu-links a {
+        font-size: 60px;
+      }
+
+      .products-section {
+        padding: 110px 40px;
+      }
+
+      .products-header {
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: space-between;
+      }
+
+      .search-box {
+        max-width: 350px;
+      }
+
+      .products-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .section-title,
+      .cod-title {
+        font-size: 60px;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .hero-title {
+        font-size: 72px;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .nav-center,
+      .flower,
+      .cart-button {
+        display: none;
+      }
+
+      .mobile-menu {
+        display: flex;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ================= NAVBAR ================= -->
+
+  <header class="navbar" id="navbar">
+    <div class="nav-inner" id="navInner">
+
+      <a href="#" class="logo">
+        Smart Baske In
+      </a>
+
+      <div class="nav-center">
+        <button class="navigate-btn" id="menuButton">
+          Navigate
+        </button>
+      </div>
+
+      <div class="nav-right">
+
+        <button class="cart-button" id="cartButton">
+          🛍 Cart
+          <span id="cartCount">0</span>
+        </button>
+
+        <div class="flower">
+          ❋
+        </div>
+
+        <button
+          class="mobile-menu"
+          id="mobileMenu"
+          aria-label="Toggle menu"
+        >
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+
+      </div>
+
+    </div>
+  </header>
+
+
+  <!-- ================= MENU ================= -->
+
+  <div class="menu-overlay" id="menuOverlay">
+
+    <div class="menu-links">
+
+      <a href="#" data-menu="home">
+        Home
+      </a>
+
+      <a href="#">
+        Story
+      </a>
+
+      <a href="#products" data-menu="products">
+        Collection
+      </a>
+
+      <a href="#products" data-menu="products">
+        Products
+      </a>
+
+      <a href="#">
+        Inquire
+      </a>
+
+    </div>
+
+  </div>
+
+
+  <!-- ================= HERO ================= -->
+
+  <section class="hero" id="home">
+
+    <div class="hero-video-wrap" id="videoWrap">
+
+      <video
+        class="hero-video"
+        src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260819_212700_3bb9329b-5c50-4257-a09b-ca85cf3654a3.mp4"
+        autoplay
+        muted
+        loop
+        playsinline
+      ></video>
+
+    </div>
+
+
+    <div class="hero-content" id="heroContent">
+
+      <h1 class="hero-title">
+        A carefully curated<br class="hero-break">
+        collection beyond compare
+      </h1>
+
+      <p class="hero-text">
+        Discover trending products, carefully selected for you.
+      </p>
+
+      <button class="hero-cta" id="shopNow">
+        Shop Collection
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= OFFER ================= -->
+
+  <section class="offer">
+    🎉 FIRST ORDER? GET <strong>20% OFF</strong>
+    — USE CODE: FIRST20
+  </section>
+
+
+  <!-- ================= PRODUCTS ================= -->
+
+  <section class="products-section" id="products">
+
+    <div class="products-container">
+
+      <div class="products-header">
+
+        <div>
+
+          <p class="small-title">
             Smart Baske In
-          </a>
-
-          {/* DESKTOP NAV BUTTON */}
-
-          <button
-            onClick={() =>
-              setMenuOpen(!menuOpen)
-            }
-            className={`z-50 hidden items-center gap-2 rounded-full border border-white/20 px-5 py-2 text-sm text-white/90 transition-all duration-700 hover:bg-white/10 md:flex ${
-              mounted
-                ? "translate-y-0 opacity-100"
-                : "-translate-y-4 opacity-0"
-            }`}
-            style={{
-              transitionTimingFunction: entrance,
-              transitionDelay: mounted
-                ? "200ms"
-                : "0ms",
-            }}
-          >
-            {menuOpen
-              ? "Close"
-              : "Navigate"}
-          </button>
-
-          {/* RIGHT */}
-
-          <div className="z-50 flex items-center gap-5">
-
-            <button
-              onClick={() =>
-                setCartOpen(true)
-              }
-              className="hidden items-center gap-2 md:flex"
-            >
-              <ShoppingBag className="h-6 w-6" />
-
-              <span className="text-sm">
-                {cartCount}
-              </span>
-            </button>
-
-            <Flower2
-              className={`hidden h-7 w-7 text-white/90 transition-all duration-700 md:block ${
-                mounted
-                  ? "translate-y-0 opacity-100"
-                  : "-translate-y-4 opacity-0"
-              }`}
-              style={{
-                transitionTimingFunction:
-                  entrance,
-                transitionDelay: mounted
-                  ? "400ms"
-                  : "0ms",
-              }}
-            />
-
-            {/* MOBILE HAMBURGER */}
-
-            <button
-              aria-label="Toggle menu"
-              onClick={() =>
-                setMenuOpen(!menuOpen)
-              }
-              className={`flex h-8 w-8 flex-col items-center justify-center gap-1.5 transition-all duration-700 md:hidden ${
-                mounted
-                  ? "translate-y-0 opacity-100"
-                  : "-translate-y-4 opacity-0"
-              }`}
-              style={{
-                transitionTimingFunction:
-                  entrance,
-                transitionDelay: mounted
-                  ? "200ms"
-                  : "0ms",
-              }}
-            >
-              <span
-                className={`h-[2px] w-6 bg-white transition duration-500 ${
-                  menuOpen
-                    ? "translate-y-[4px] rotate-45"
-                    : ""
-                }`}
-                style={{
-                  transitionTimingFunction:
-                    overlayEase,
-                }}
-              />
-
-              <span
-                className={`h-[2px] w-6 bg-white transition duration-500 ${
-                  menuOpen
-                    ? "-translate-y-[4px] -rotate-45"
-                    : ""
-                }`}
-                style={{
-                  transitionTimingFunction:
-                    overlayEase,
-                }}
-              />
-            </button>
-
-          </div>
-        </div>
-      </header>
-
-      {/* OVERLAY MENU */}
-
-      <div
-        className={`fixed inset-0 z-40 flex flex-col items-center justify-center bg-black transition-all duration-700 ${
-          menuOpen
-            ? "visible opacity-100"
-            : "invisible opacity-0"
-        }`}
-        style={{
-          transitionTimingFunction:
-            overlayEase,
-        }}
-      >
-        <div className="flex flex-col items-center gap-8">
-
-          {menuLinks.map(
-            (link, index) => (
-              <button
-                key={link}
-                onClick={() => {
-                  if (
-                    link === "Products" ||
-                    link === "Collection"
-                  ) {
-                    scrollToProducts();
-                  } else if (
-                    link === "Home"
-                  ) {
-                    setMenuOpen(false);
-
-                    window.scrollTo({
-                      top: 0,
-                      behavior: "smooth",
-                    });
-                  } else {
-                    setMenuOpen(false);
-                  }
-                }}
-                className={`font-instrument text-4xl text-white transition-all duration-[600ms] hover:opacity-60 md:text-6xl ${
-                  menuOpen
-                    ? "translate-y-0 opacity-100"
-                    : "translate-y-6 opacity-0"
-                }`}
-                style={{
-                  transitionTimingFunction:
-                    overlayEase,
-                  transitionDelay: menuOpen
-                    ? `${
-                        150 +
-                        index * 80
-                      }ms`
-                    : "0ms",
-                }}
-              >
-                {link}
-              </button>
-            )
-          )}
-
-        </div>
-      </div>
-
-      {/* HERO */}
-
-      <section className="relative flex h-screen w-full items-end justify-center overflow-hidden">
-
-        {/* VIDEO */}
-
-        <div
-          className={`absolute inset-0 transition-all duration-[1400ms] ${
-            mounted
-              ? "scale-100 opacity-100"
-              : "scale-105 opacity-0"
-          }`}
-          style={{
-            transitionTimingFunction:
-              entrance,
-            transitionDelay: mounted
-              ? "300ms"
-              : "0ms",
-          }}
-        >
-          <video
-            src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260819_212700_3bb9329b-5c50-4257-a09b-ca85cf3654a3.mp4"
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="h-full w-full object-cover"
-          />
-        </div>
-
-        {/* HERO TEXT */}
-
-        <div className="relative z-10 mx-auto max-w-4xl px-6 pb-16 text-center md:pb-24">
-
-          <h1
-            className={`font-instrument mb-5 text-[2.5rem] leading-[0.95] text-white transition-all duration-[900ms] sm:text-5xl md:mb-6 md:text-6xl lg:text-7xl ${
-              mounted
-                ? "translate-y-0 opacity-100"
-                : "translate-y-8 opacity-0"
-            }`}
-            style={{
-              transitionTimingFunction:
-                entrance,
-              transitionDelay: mounted
-                ? "400ms"
-                : "0ms",
-            }}
-          >
-            A carefully curated
-            <br className="hidden sm:block" />
-            {" "}
-            collection beyond compare
-          </h1>
-
-          <p
-            className={`mx-auto mb-8 max-w-md text-base text-white/70 transition-all duration-[900ms] md:mb-10 md:text-lg ${
-              mounted
-                ? "translate-y-0 opacity-100"
-                : "translate-y-8 opacity-0"
-            }`}
-            style={{
-              transitionTimingFunction:
-                entrance,
-              transitionDelay: mounted
-                ? "600ms"
-                : "0ms",
-            }}
-          >
-            Discover trending products,
-            carefully selected for you.
           </p>
 
-          <button
-            onClick={scrollToProducts}
-            className={`inline-block rounded-full bg-white px-8 py-3.5 text-sm font-medium text-black transition-all duration-[900ms] hover:bg-white/90 md:text-base ${
-              mounted
-                ? "translate-y-0 opacity-100"
-                : "translate-y-8 opacity-0"
-            }`}
-            style={{
-              transitionTimingFunction:
-                entrance,
-              transitionDelay: mounted
-                ? "800ms"
-                : "0ms",
-            }}
-          >
-            Shop Collection
-          </button>
-
-        </div>
-      </section>
-
-      {/* OFFER BAR */}
-
-      <section className="border-y border-white/10 bg-black px-6 py-6 text-center">
-
-        <p className="text-sm tracking-wide text-white/80 md:text-base">
-          🎉 FIRST ORDER? GET{" "}
-
-          <span className="font-semibold text-white">
-            20% OFF
-          </span>
-
-          {" "}— USE CODE: FIRST20
-        </p>
-
-      </section>
-
-      {/* PRODUCTS */}
-
-      <section
-        id="products"
-        className="bg-black px-6 py-20 md:px-10 md:py-28"
-      >
-
-        <div className="mx-auto max-w-[1440px]">
-
-          <div className="mb-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-
-            <div>
-
-              <p className="mb-3 text-xs uppercase tracking-[0.3em] text-white/40">
-                Smart Baske In
-              </p>
-
-              <h2 className="font-instrument text-5xl leading-none text-white md:text-6xl">
-                Our Collection
-              </h2>
-
-            </div>
-
-            {/* SEARCH */}
-
-            <div className="flex w-full items-center gap-3 border-b border-white/20 pb-3 md:max-w-sm">
-
-              <Search className="h-5 w-5 text-white/50" />
-
-              <input
-                value={search}
-                onChange={(e) =>
-                  setSearch(e.target.value)
-                }
-                placeholder="Search products"
-                className="w-full bg-transparent text-sm text-white outline-none placeholder:text-white/30"
-              />
-
-            </div>
-
-          </div>
-
-          {/* PRODUCT GRID */}
-
-          <div className="grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
-
-            {filteredProducts.map(
-              (product) => (
-
-                <article
-                  key={product.id}
-                  className="group"
-                >
-
-                  <div className="relative aspect-[3/4] overflow-hidden bg-zinc-900">
-
-                    <img
-                      src={product.image}
-                      alt={product.name}
-                      className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
-                    />
-
-                    <div className="absolute left-4 top-4 rounded-full bg-black/70 px-3 py-1 text-xs text-white backdrop-blur">
-                      {product.category}
-                    </div>
-
-                  </div>
-
-                  <div className="pt-5">
-
-                    <div className="flex items-start justify-between gap-4">
-
-                      <div>
-
-                        <h3 className="text-lg text-white">
-                          {product.name}
-                        </h3>
-
-                        <p className="mt-1 text-sm text-white/40">
-                          Premium Collection
-                        </p>
-
-                      </div>
-
-                      <div className="text-right">
-
-                        <p className="text-white">
-                          ₹
-                          {product.price.toLocaleString()}
-                        </p>
-
-                        <p className="text-xs text-white/40 line-through">
-                          ₹
-                          {product.oldPrice.toLocaleString()}
-                        </p>
-
-                      </div>
-
-                    </div>
-
-                    <div className="mt-5 flex gap-3">
-
-                      <button
-                        onClick={() =>
-                          addToCart(product)
-                        }
-                        className="flex-1 rounded-full bg-white py-3 text-sm font-medium text-black transition hover:bg-white/90"
-                      >
-                        Add to Cart
-                      </button>
-
-                      <button
-                        onClick={() => {
-                          addToCart(product);
-                          setCartOpen(true);
-                        }}
-                        className="rounded-full border border-white/20 px-5 py-3 text-sm text-white hover:bg-white/10"
-                      >
-                        Buy
-                      </button>
-
-                    </div>
-
-                  </div>
-
-                </article>
-              )
-            )}
-
-          </div>
-
-          {filteredProducts.length === 0 && (
-
-            <p className="py-20 text-center text-white/40">
-              No products found.
-            </p>
-
-          )}
-
-        </div>
-      </section>
-
-      {/* COD */}
-
-      <section className="border-y border-white/10 bg-zinc-950 px-6 py-20 text-center">
-
-        <p className="mb-4 text-xs uppercase tracking-[0.3em] text-white/40">
-          Easy Shopping
-        </p>
-
-        <h2 className="font-instrument text-5xl text-white md:text-6xl">
-          Cash on Delivery
-        </h2>
-
-        <p className="mx-auto mt-6 max-w-lg text-white/60">
-          Order your favorite products today
-          and pay when your order arrives.
-        </p>
-
-      </section>
-
-      {/* CART DRAWER */}
-
-      <div
-        className={`fixed inset-0 z-[60] ${
-          cartOpen
-            ? "pointer-events-auto"
-            : "pointer-events-none"
-        }`}
-      >
-
-        <div
-          onClick={() =>
-            setCartOpen(false)
-          }
-          className={`absolute inset-0 bg-black/70 transition ${
-            cartOpen
-              ? "opacity-100"
-              : "opacity-0"
-          }`}
-        />
-
-        <aside
-          className={`absolute right-0 top-0 flex h-full w-full max-w-md flex-col bg-zinc-950 p-6 transition-transform duration-500 ${
-            cartOpen
-              ? "translate-x-0"
-              : "translate-x-full"
-          }`}
-        >
-
-          <div className="flex items-center justify-between border-b border-white/10 pb-5">
-
-            <h2 className="font-instrument text-3xl">
-              Your Cart
-            </h2>
-
-            <button
-              onClick={() =>
-                setCartOpen(false)
-              }
-            >
-              <X />
-            </button>
-
-          </div>
-
-          <div className="flex-1 overflow-y-auto py-6">
-
-            {cart.length === 0 && (
-
-              <p className="text-center text-white/40">
-                Your cart is empty.
-              </p>
-
-            )}
-
-            <div className="space-y-5">
-
-              {cart.map(
-                (item) => (
-
-                  <div
-                    key={item.id}
-                    className="flex gap-4 border-b border-white/10 pb-5"
-                  >
-
-                    <img
-                      src={item.image}
-                      alt={item.name}
-                      className="h-20 w-16 object-cover"
-                    />
-
-                    <div className="flex flex-1 flex-col justify-between">
-
-                      <div className="flex justify-between gap-3">
-
-                        <div>
-
-                          <h3 className="text-sm">
-                            {item.name}
-                          </h3>
-
-                          <p className="mt-1 text-sm text-white/50">
-                            ₹
-                            {item.price.toLocaleString()}
-                          </p>
-
-                        </div>
-
-                        <p className="text-sm">
-
-                          ₹
-                          {(
-                            item.price *
-                            item.quantity
-                          ).toLocaleString()}
-
-                        </p>
-
-                      </div>
-
-                      {/* QUANTITY */}
-
-                      <div className="flex items-center gap-3">
-
-                        <button
-                          onClick={() =>
-                            updateQuantity(
-                              item.id,
-                              -1
-                            )
-                          }
-                          className="flex h-7 w-7 items-center justify-center rounded-full border border-white/20"
-                        >
-                          <Minus size={14} />
-                        </button>
-
-                        <span className="text-sm">
-                          {item.quantity}
-                        </span>
-
-                        <button
-                          onClick={() =>
-                            updateQuantity(
-                              item.id,
-                              1
-                            )
-                          }
-                          className="flex h-7 w-7 items-center justify-center rounded-full border border-white/20"
-                        >
-                          <Plus size={14} />
-                        </button>
-
-                      </div>
-
-                    </div>
-
-                  </div>
-                )
-              )}
-
-            </div>
-
-          </div>
-
-          {/* TOTAL */}
-
-          <div className="border-t border-white/10 pt-5">
-
-            <div className="mb-3 flex justify-between text-sm text-white/60">
-
-              <span>
-                Subtotal
-              </span>
-
-              <span>
-                ₹
-                {subtotal.toLocaleString()}
-              </span>
-
-            </div>
-
-            <div className="mb-3 flex justify-between text-sm text-green-400">
-
-              <span>
-                First Order Discount
-                (20%)
-              </span>
-
-              <span>
-                -₹
-                {discount.toLocaleString()}
-              </span>
-
-            </div>
-
-            <div className="mb-6 flex justify-between text-lg">
-
-              <span>
-                Total
-              </span>
-
-              <span>
-                ₹
-                {total.toLocaleString()}
-              </span>
-
-            </div>
-
-            <button
-              onClick={() => {
-                if (
-                  cart.length === 0
-                ) {
-                  alert(
-                    "Your cart is empty!"
-                  );
-
-                  return;
-                }
-
-                setCartOpen(false);
-                setCheckoutOpen(true);
-              }}
-              className="w-full rounded-full bg-white py-4 text-sm font-medium text-black"
-            >
-              Checkout — Cash on Delivery
-            </button>
-
-          </div>
-
-        </aside>
-
-      </div>
-
-      {/* CHECKOUT */}
-
-      <div
-        className={`fixed inset-0 z-[70] flex items-center justify-center bg-black/80 px-4 transition ${
-          checkoutOpen
-            ? "visible opacity-100"
-            : "invisible opacity-0"
-        }`}
-      >
-
-        <div className="relative max-h-[90vh] w-full max-w-xl overflow-y-auto bg-zinc-950 p-6 md:p-10">
-
-          <button
-            onClick={() =>
-              setCheckoutOpen(false)
-            }
-            className="absolute right-5 top-5"
-          >
-            <X />
-          </button>
-
-          <p className="mb-3 text-xs uppercase tracking-[0.3em] text-white/40">
-            Secure Checkout
-          </p>
-
-          <h2 className="font-instrument text-4xl">
-            Cash on Delivery
+          <h2 class="section-title">
+            Our Collection
           </h2>
-
-          <p className="mt-3 text-sm text-white/50">
-            Pay when your order arrives.
-          </p>
-
-          <form
-            className="mt-8 space-y-5"
-            onSubmit={(e) => {
-              e.preventDefault();
-
-              alert(
-                `Order placed successfully! 🎉\n\nTotal: ₹${total.toLocaleString()}\nPayment: Cash on Delivery`
-              );
-
-              setCart([]);
-              setCheckoutOpen(false);
-            }}
-          >
-
-            <input
-              required
-              placeholder="Full Name"
-              className="w-full border-b border-white/20 bg-transparent py-4 text-white outline-none placeholder:text-white/30"
-            />
-
-            <input
-              required
-              type="tel"
-              placeholder="Phone Number"
-              className="w-full border-b border-white/20 bg-transparent py-4 text-white outline-none placeholder:text-white/30"
-            />
-
-            <textarea
-              required
-              placeholder="Full Address"
-              className="min-h-24 w-full border-b border-white/20 bg-transparent py-4 text-white outline-none placeholder:text-white/30"
-            />
-
-            <div className="grid gap-5 md:grid-cols-2">
-
-              <input
-                required
-                placeholder="City"
-                className="border-b border-white/20 bg-transparent py-4 text-white outline-none placeholder:text-white/30"
-              />
-
-              <input
-                required
-                placeholder="Pincode"
-                className="border-b border-white/20 bg-transparent py-4 text-white outline-none placeholder:text-white/30"
-              />
-
-            </div>
-
-            <div className="border border-white/10 p-5">
-
-              <div className="flex justify-between text-white/60">
-
-                <span>
-                  Payment
-                </span>
-
-                <span>
-                  Cash on Delivery
-                </span>
-
-              </div>
-
-              <div className="mt-4 flex justify-between text-lg">
-
-                <span>
-                  Total
-                </span>
-
-                <span>
-                  ₹
-                  {total.toLocaleString()}
-                </span>
-
-              </div>
-
-            </div>
-
-            <button
-              type="submit"
-              className="w-full rounded-full bg-white py-4 text-black"
-            >
-              Place COD Order
-            </button>
-
-          </form>
-
-        </div>
-
-      </div>
-
-    </main>
-  );
-}  @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap');
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html,
-body {
-  overflow-x: hidden;
-  background: black;
-}
-
-.font-instrument {
-  font-family: 'Instrument Serif', serif;
-}
