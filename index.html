@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Smart Basket IN | Shop Smart. Live Better.</title>
+<title>Smart Basket IN | Premium Store</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=DM+Sans:wght@400;500;600;700&display=swap');
 
 *{
   box-sizing:border-box;
@@ -21,32 +21,34 @@ body{
   color:#111;
 }
 
-a{
-  text-decoration:none;
-  color:inherit;
-}
-
 button{
   font-family:inherit;
   cursor:pointer;
 }
 
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+/* TOP BAR */
+
 .topbar{
   background:#111;
-  color:#fff;
+  color:white;
   text-align:center;
   padding:10px;
   font-size:13px;
-  letter-spacing:.5px;
 }
+
+/* NAV */
 
 nav{
   position:sticky;
   top:0;
   z-index:50;
-  background:rgba(247,244,238,.96);
-  backdrop-filter:blur(10px);
-  border-bottom:1px solid #ddd6c8;
+  background:#f7f4ee;
+  border-bottom:1px solid #ddd;
 }
 
 .nav-inner{
@@ -56,12 +58,11 @@ nav{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  gap:20px;
 }
 
 .logo{
   font-family:"Cormorant Garamond",serif;
-  font-size:29px;
+  font-size:30px;
   font-weight:700;
 }
 
@@ -71,45 +72,40 @@ nav{
 
 .nav-links{
   display:flex;
-  gap:22px;
+  gap:25px;
   font-size:14px;
-}
-
-.nav-links a:hover{
-  color:#b38a38;
 }
 
 .cart-btn{
   background:#111;
-  color:#fff;
+  color:white;
   border:0;
-  padding:11px 16px;
+  padding:11px 17px;
   border-radius:30px;
 }
+
+/* HERO */
 
 .hero{
   min-height:500px;
   display:flex;
-  align-items:center;
   justify-content:center;
+  align-items:center;
   text-align:center;
-  padding:70px 20px;
-  background:
-    linear-gradient(rgba(0,0,0,.62),rgba(0,0,0,.62)),
-    url("https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1800&q=85")
-    center/cover;
-  color:#fff;
-}
+  padding:60px 20px;
+  color:white;
 
-.hero-content{
-  max-width:800px;
+  background:
+  linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.65)),
+  url("https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1800&q=85")
+  center/cover;
 }
 
 .hero-small{
+  color:#d5b15e;
   letter-spacing:4px;
   font-size:13px;
-  color:#d8b86a;
-  margin-bottom:18px;
+  margin-bottom:15px;
 }
 
 .hero h1{
@@ -121,173 +117,131 @@ nav{
 
 .hero p{
   font-size:17px;
+  margin-bottom:25px;
   color:#eee;
-  margin-bottom:28px;
 }
 
 .gold-btn{
   background:#c49a48;
   color:#111;
   border:0;
-  padding:14px 25px;
+  padding:14px 28px;
   border-radius:30px;
   font-weight:700;
 }
 
+/* SECTION */
+
 .section{
-  max-width:1200px;
+  max-width:1100px;
   margin:auto;
   padding:65px 20px;
 }
 
-.section-title{
+.title{
   text-align:center;
   margin-bottom:35px;
 }
 
-.section-title small{
+.title small{
   color:#b38a38;
   letter-spacing:3px;
 }
 
-.section-title h2{
+.title h2{
   font-family:"Cormorant Garamond",serif;
-  font-size:46px;
-  margin-top:5px;
+  font-size:45px;
 }
+
+/* TRUST */
 
 .trust{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:15px;
-  margin-bottom:55px;
 }
 
 .trust-card{
-  background:#fff;
+  background:white;
   padding:25px;
-  border:1px solid #e4ded2;
   text-align:center;
+  border:1px solid #e4ded2;
   border-radius:12px;
 }
 
 .trust-card strong{
   display:block;
-  margin-bottom:7px;
+  margin-bottom:6px;
 }
 
-.controls{
+/* PRODUCT */
+
+.product-area{
   display:flex;
-  gap:10px;
-  flex-wrap:wrap;
   justify-content:center;
-  margin-bottom:30px;
-}
-
-.search{
-  width:min(400px,100%);
-  padding:13px 16px;
-  border:1px solid #ccc;
-  border-radius:30px;
-  outline:none;
-}
-
-.filter{
-  border:1px solid #ccc;
-  background:#fff;
-  padding:11px 17px;
-  border-radius:30px;
-}
-
-.filter.active{
-  background:#111;
-  color:#fff;
-}
-
-.products{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:20px;
 }
 
 .product{
-  background:#fff;
-  border:1px solid #e4ded2;
-  border-radius:15px;
+  width:100%;
+  max-width:500px;
+  background:white;
+  border:1px solid #ddd;
+  border-radius:18px;
   overflow:hidden;
-  transition:.25s;
-}
-
-.product:hover{
-  transform:translateY(-5px);
-  box-shadow:0 12px 30px rgba(0,0,0,.08);
+  box-shadow:0 10px 30px rgba(0,0,0,.08);
 }
 
 .product-image{
-  height:250px;
-  background:#f0ede7;
-  position:relative;
-  overflow:hidden;
+  height:420px;
+  background:#f1eee8;
 }
 
 .product-image img{
   width:100%;
   height:100%;
-  object-fit:cover;
-}
-
-.badge{
-  position:absolute;
-  top:12px;
-  left:12px;
-  background:#111;
-  color:#fff;
-  padding:6px 9px;
-  font-size:11px;
-  border-radius:20px;
+  object-fit:contain;
 }
 
 .product-info{
-  padding:18px;
+  padding:25px;
 }
 
 .category{
   color:#a47c30;
-  font-size:11px;
+  font-size:12px;
   text-transform:uppercase;
-  letter-spacing:1px;
+  letter-spacing:2px;
 }
 
 .product h3{
-  font-size:16px;
-  margin:7px 0 10px;
-  min-height:40px;
+  font-size:22px;
+  margin:10px 0;
 }
 
 .price{
-  font-size:20px;
+  font-size:28px;
   font-weight:700;
 }
 
 .old-price{
+  font-size:15px;
   color:#999;
   text-decoration:line-through;
-  font-size:13px;
-  margin-left:7px;
+  margin-left:8px;
 }
 
 .product-buttons{
   display:flex;
-  gap:8px;
-  margin-top:15px;
+  gap:10px;
+  margin-top:20px;
 }
 
 .product-buttons button{
   flex:1;
-  padding:10px;
+  padding:14px;
   border-radius:8px;
   border:0;
-  font-weight:600;
+  font-weight:700;
 }
 
 .view-btn{
@@ -296,26 +250,25 @@ nav{
 
 .buy-btn{
   background:#111;
-  color:#fff;
+  color:white;
 }
+
+/* ABOUT */
 
 .about{
   background:#111;
-  color:#fff;
+  color:white;
   text-align:center;
-}
-
-.about-inner{
-  max-width:750px;
-  margin:auto;
 }
 
 .about h2{
   font-family:"Cormorant Garamond",serif;
-  font-size:45px;
   color:#d5b15e;
+  font-size:45px;
   margin-bottom:15px;
 }
+
+/* FOOTER */
 
 footer{
   background:#080808;
@@ -324,7 +277,7 @@ footer{
 }
 
 .footer-inner{
-  max-width:1200px;
+  max-width:1100px;
   margin:auto;
   display:grid;
   grid-template-columns:2fr 1fr 1fr;
@@ -332,7 +285,7 @@ footer{
 }
 
 footer h3{
-  color:#fff;
+  color:white;
   margin-bottom:12px;
 }
 
@@ -340,6 +293,8 @@ footer p{
   margin:7px 0;
   font-size:14px;
 }
+
+/* WHATSAPP */
 
 .whatsapp{
   position:fixed;
@@ -349,26 +304,25 @@ footer p{
   height:58px;
   border-radius:50%;
   background:#25d366;
-  color:#fff;
+  color:white;
   display:flex;
   justify-content:center;
   align-items:center;
-  font-size:27px;
+  font-size:25px;
   z-index:100;
-  box-shadow:0 5px 20px rgba(0,0,0,.25);
 }
 
-/* PRODUCT MODAL */
+/* MODAL */
 
 .modal{
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,.7);
+  background:rgba(0,0,0,.75);
   display:none;
   justify-content:center;
   align-items:center;
-  z-index:200;
   padding:20px;
+  z-index:200;
 }
 
 .modal.show{
@@ -376,40 +330,39 @@ footer p{
 }
 
 .modal-box{
-  background:#fff;
   width:min(900px,100%);
   max-height:90vh;
   overflow:auto;
+  background:white;
   border-radius:18px;
-  position:relative;
   padding:25px;
+  position:relative;
 }
 
 .close{
   position:absolute;
-  right:18px;
+  right:15px;
   top:15px;
-  background:#111;
-  color:#fff;
+  width:36px;
+  height:36px;
   border:0;
-  width:35px;
-  height:35px;
   border-radius:50%;
+  background:#111;
+  color:white;
   font-size:20px;
-  z-index:2;
 }
 
 .detail{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:30px;
-  padding-top:15px;
+  padding-top:10px;
 }
 
 .detail-main{
-  background:#f3f0ea;
+  height:420px;
+  background:#f1eee8;
   border-radius:12px;
-  height:430px;
   overflow:hidden;
 }
 
@@ -423,16 +376,14 @@ footer p{
   display:flex;
   gap:8px;
   margin-top:10px;
-  overflow-x:auto;
 }
 
 .thumb{
   width:75px;
   height:75px;
   object-fit:cover;
-  border:2px solid transparent;
   border-radius:8px;
-  cursor:pointer;
+  border:2px solid transparent;
 }
 
 .thumb.active{
@@ -443,35 +394,31 @@ footer p{
   padding:20px 5px;
 }
 
-.detail-info .category{
-  margin-bottom:8px;
-}
-
 .detail-info h2{
   font-family:"Cormorant Garamond",serif;
   font-size:40px;
   line-height:1;
-  margin-bottom:15px;
+  margin:10px 0;
 }
 
 .detail-price{
-  font-size:27px;
+  font-size:28px;
   font-weight:700;
   margin:15px 0;
 }
 
-.detail-description{
+.description{
   color:#555;
   line-height:1.7;
   margin-bottom:25px;
 }
 
-.detail-actions{
+.detail-buttons{
   display:flex;
   gap:10px;
 }
 
-.detail-actions button{
+.detail-buttons button{
   flex:1;
   padding:14px;
   border:0;
@@ -479,13 +426,13 @@ footer p{
   font-weight:700;
 }
 
-.add-cart{
+.add{
   background:#eee;
 }
 
-.buy-now{
+.buy{
   background:#111;
-  color:#fff;
+  color:white;
 }
 
 /* CART */
@@ -496,12 +443,11 @@ footer p{
   right:-430px;
   width:min(430px,100%);
   height:100vh;
-  background:#fff;
+  background:white;
   z-index:300;
-  transition:.3s;
-  box-shadow:-5px 0 30px rgba(0,0,0,.2);
   padding:25px;
-  overflow:auto;
+  transition:.3s;
+  box-shadow:-5px 0 25px rgba(0,0,0,.2);
 }
 
 .cart-panel.open{
@@ -511,20 +457,15 @@ footer p{
 .cart-head{
   display:flex;
   justify-content:space-between;
-  align-items:center;
   border-bottom:1px solid #ddd;
   padding-bottom:15px;
-}
-
-.cart-items{
-  margin:20px 0;
 }
 
 .cart-item{
   display:flex;
   gap:12px;
-  border-bottom:1px solid #eee;
   padding:15px 0;
+  border-bottom:1px solid #eee;
 }
 
 .cart-item img{
@@ -534,108 +475,51 @@ footer p{
   border-radius:8px;
 }
 
-.cart-item-info{
+.cart-info{
   flex:1;
 }
 
 .remove{
-  border:0;
   background:none;
-  color:#c00;
-  font-size:12px;
+  border:0;
+  color:red;
+  margin-top:5px;
 }
 
-.cart-total{
-  font-size:21px;
+.total{
+  font-size:22px;
   font-weight:700;
   margin:20px 0;
 }
 
-.checkout-btn{
+.checkout{
   width:100%;
   background:#25d366;
-  color:#fff;
+  color:white;
   border:0;
   padding:15px;
   border-radius:8px;
   font-weight:700;
 }
 
-/* CHECKOUT */
+/* MOBILE */
 
-.checkout{
-  display:none;
-}
+@media(max-width:700px){
 
-.checkout.show{
-  display:block;
-}
+  .nav-links{
+    display:none;
+  }
 
-.checkout input,
-.checkout textarea,
-.checkout select{
-  width:100%;
-  padding:12px;
-  border:1px solid #ccc;
-  border-radius:7px;
-  margin:6px 0 12px;
-  font-family:inherit;
-}
-
-.payment-box{
-  background:#f5f1e8;
-  padding:15px;
-  border-radius:10px;
-  margin:10px 0 15px;
-  font-size:14px;
-}
-
-@media(max-width:900px){
-  .products{
-    grid-template-columns:repeat(2,1fr);
+  .hero h1{
+    font-size:50px;
   }
 
   .trust{
     grid-template-columns:1fr;
   }
 
-  .footer-inner{
-    grid-template-columns:1fr;
-  }
-
-  .hero h1{
-    font-size:55px;
-  }
-}
-
-@media(max-width:600px){
-  .nav-links{
-    display:none;
-  }
-
-  .hero{
-    min-height:440px;
-  }
-
-  .hero h1{
-    font-size:48px;
-  }
-
-  .products{
-    grid-template-columns:1fr 1fr;
-    gap:10px;
-  }
-
   .product-image{
-    height:190px;
-  }
-
-  .product-info{
-    padding:12px;
-  }
-
-  .product h3{
-    font-size:14px;
+    height:330px;
   }
 
   .detail{
@@ -649,262 +533,350 @@ footer p{
   .detail-info h2{
     font-size:32px;
   }
+
+  .footer-inner{
+    grid-template-columns:1fr;
+  }
+
 }
+
 </style>
 </head>
 
 <body>
 
+<!-- TOP -->
+
 <div class="topbar">
 FIRST ORDER? GET 20% OFF
 </div>
 
+<!-- NAV -->
+
 <nav>
-  <div class="nav-inner">
 
-    <a href="#" class="logo">
-      Smart <span>Basket</span> IN
-    </a>
+<div class="nav-inner">
 
-    <div class="nav-links">
-      <a href="#shop">Shop</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-    </div>
+<a class="logo" href="#">
+Smart <span>Basket</span> IN
+</a>
 
-    <button class="cart-btn" onclick="openCart()">
-      🛒 Cart <span id="cartCount">0</span>
-    </button>
+<div class="nav-links">
+<a href="#shop">Shop</a>
+<a href="#about">About</a>
+<a href="#contact">Contact</a>
+</div>
 
-  </div>
+<button class="cart-btn" onclick="openCart()">
+🛒 Cart <span id="cartCount">0</span>
+</button>
+
+</div>
+
 </nav>
+
+<!-- HERO -->
 
 <section class="hero">
 
-  <div class="hero-content">
+<div>
 
-    <div class="hero-small">
-      SMART BASKET • PREMIUM STORE
-    </div>
+<div class="hero-small">
+SMART BASKET • PREMIUM STORE
+</div>
 
-    <h1>
-      SHOP<br>
-      SMARTER
-    </h1>
+<h1>
+SHOP<br>SMARTER
+</h1>
 
-    <p>
-      Premium quality. Smart choices. Budget friendly.
-    </p>
+<p>
+Premium quality. Smart choices. Budget friendly.
+</p>
 
-    <a href="#shop">
-      <button class="gold-btn">
-        SHOP NOW
-      </button>
-    </a>
+<a href="#shop">
+<button class="gold-btn">
+SHOP NOW
+</button>
+</a>
 
-  </div>
+</div>
 
 </section>
+
+<!-- TRUST -->
 
 <section class="section">
 
-  <div class="trust">
+<div class="trust">
 
-    <div class="trust-card">
-      <strong>🚚 Fast Delivery</strong>
-      Delivery across India
-    </div>
+<div class="trust-card">
+<strong>🚚 Fast Delivery</strong>
+Delivery across India
+</div>
 
-    <div class="trust-card">
-      <strong>🔄 Easy Returns</strong>
-      7 day return available
-    </div>
+<div class="trust-card">
+<strong>🔄 Easy Returns</strong>
+7 day return available
+</div>
 
-    <div class="trust-card">
-      <strong>⭐ Trusted Store</strong>
-      Trusted by 100+ customers
-    </div>
+<div class="trust-card">
+<strong>⭐ Trusted Store</strong>
+Trusted by 100+ customers
+</div>
 
-  </div>
+</div>
 
 </section>
+
+<!-- PRODUCT -->
 
 <section class="section" id="shop">
 
-  <div class="section-title">
+<div class="title">
 
-    <small>SMART COLLECTION</small>
+<small>OUR PRODUCT</small>
 
-    <h2>Featured Products</h2>
+<h2>Featured Product</h2>
 
-  </div>
+</div>
 
-  <div class="controls">
+<div class="product-area">
 
-    <input
-      class="search"
-      id="search"
-      type="text"
-      placeholder="Search products..."
-      oninput="renderProducts()"
-    >
+<div class="product">
 
-    <button class="filter active" onclick="setCategory('All',this)">
-      All
-    </button>
+<div class="product-image">
 
-    <button class="filter" onclick="setCategory('Home',this)">
-      Home
-    </button>
+<img
+src="images/cleaning-brush-1.jpeg"
+alt="Cordless Rechargeable Electric Cleaning Brush"
+>
 
-    <button class="filter" onclick="setCategory('Kitchen',this)">
-      Kitchen
-    </button>
+</div>
 
-    <button class="filter" onclick="setCategory('Electric',this)">
-      Electric
-    </button>
+<div class="product-info">
 
-    <button class="filter" onclick="setCategory('Trending',this)">
-      Trending
-    </button>
+<div class="category">
+Electric
+</div>
 
-  </div>
+<h3>
+Cordless Rechargeable Electric Cleaning Brush
+</h3>
 
-  <div class="products" id="products"></div>
+<div class="price">
+
+₹1300
+
+<span class="old-price">
+₹1699
+</span>
+
+</div>
+
+<div class="product-buttons">
+
+<button
+class="view-btn"
+onclick="openProduct()"
+>
+View Product
+</button>
+
+<button
+class="buy-btn"
+onclick="buyNow()"
+>
+Buy Now
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
 
 </section>
+
+<!-- ABOUT -->
 
 <section class="about" id="about">
 
-  <div class="section">
+<div class="section">
 
-    <div class="about-inner">
+<h2>
+Smart Shopping Starts Here.
+</h2>
 
-      <h2>Smart Shopping Starts Here.</h2>
+<p>
+Useful products. Premium quality. Smart prices.
+</p>
 
-      <p>
-        At Smart Basket IN, we bring useful, stylish and
-        affordable products directly to you.
-        Premium for less.
-      </p>
-
-    </div>
-
-  </div>
+</div>
 
 </section>
 
+<!-- FOOTER -->
+
 <footer id="contact">
 
-  <div class="footer-inner">
+<div class="footer-inner">
 
-    <div>
-      <h3>Smart Basket IN</h3>
+<div>
 
-      <p>
-        Premium quality. Smart choices.
-      </p>
+<h3>Smart Basket IN</h3>
 
-      <p>
-        📍 India
-      </p>
-    </div>
+<p>
+Premium quality. Smart choices.
+</p>
 
-    <div>
+</div>
 
-      <h3>Contact</h3>
+<div>
 
-      <p>
-        WhatsApp: 8921678447
-      </p>
+<h3>Contact</h3>
 
-      <p>
-        Email: smartbasket75@gmail.com
-      </p>
+<p>
+WhatsApp: 8921678447
+</p>
 
-    </div>
+<p>
+smartbasket75@gmail.com
+</p>
 
-    <div>
+</div>
 
-      <h3>Policies</h3>
+<div>
 
-      <p>🚚 Shipping: 1–10 days</p>
-      <p>🔄 Returns: Within 7 days</p>
-      <p>💳 COD Available</p>
+<h3>Policies</h3>
 
-    </div>
+<p>🚚 Shipping: 1–10 days</p>
 
-  </div>
+<p>🔄 Returns: Within 7 days</p>
+
+<p>💳 COD Available</p>
+
+</div>
+
+</div>
 
 </footer>
 
+<!-- WHATSAPP -->
+
 <a
-  class="whatsapp"
-  href="https://wa.me/918921678447?text=Hi%20Smart%20Basket%2C%20I%E2%80%99m%20interested%20in%20this%20product"
-  target="_blank"
+class="whatsapp"
+href="https://wa.me/918921678447?text=Hi%20Smart%20Basket%2C%20I%E2%80%99m%20interested%20in%20this%20product"
+target="_blank"
 >
-  ☎
+☎
 </a>
 
 <!-- PRODUCT MODAL -->
 
 <div class="modal" id="productModal">
 
-  <div class="modal-box">
+<div class="modal-box">
 
-    <button class="close" onclick="closeProduct()">
-      ×
-    </button>
+<button
+class="close"
+onclick="closeProduct()"
+>
+×
+</button>
 
-    <div class="detail">
+<div class="detail">
 
-      <div>
+<div>
 
-        <div class="detail-main">
-          <img id="detailImage" src="" alt="Product">
-        </div>
+<div class="detail-main">
 
-        <div class="thumbs" id="thumbs"></div>
+<img
+id="mainImage"
+src="images/cleaning-brush-1.jpeg"
+alt="Cleaning Brush"
+>
 
-      </div>
+</div>
 
-      <div class="detail-info">
+<div class="thumbs">
 
-        <div class="category" id="detailCategory"></div>
+<img
+class="thumb active"
+src="images/cleaning-brush-1.jpeg"
+onclick="changeImage(this)"
+>
 
-        <h2 id="detailName"></h2>
+<img
+class="thumb"
+src="images/cleaning-brush-2.jpeg"
+onclick="changeImage(this)"
+>
 
-        <div class="detail-price">
-          ₹<span id="detailPrice"></span>
-          <span class="old-price" id="detailOldPrice"></span>
-        </div>
+<img
+class="thumb"
+src="images/cleaning-brush-3.jpeg"
+onclick="changeImage(this)"
+>
 
-        <p class="detail-description" id="detailDescription"></p>
+</div>
 
-        <div class="detail-actions">
+</div>
 
-          <button
-            class="add-cart"
-            onclick="addDetailToCart()"
-          >
-            Add To Cart
-          </button>
+<div class="detail-info">
 
-          <button
-            class="buy-now"
-            onclick="detailBuyNow()"
-          >
-            Buy Now
-          </button>
+<div class="category">
+Electric
+</div>
 
-        </div>
+<h2>
+Cordless Rechargeable Electric Cleaning Brush
+</h2>
 
-      </div>
+<div class="detail-price">
 
-    </div>
+₹1300
 
-  </div>
+<span class="old-price">
+₹1699
+</span>
+
+</div>
+
+<p class="description">
+
+Cordless rechargeable electric cleaning brush
+with multiple brush heads.
+
+Suitable for bathroom, tiles, sink, kitchen,
+glass, car and other cleaning areas.
+
+</p>
+
+<div class="detail-buttons">
+
+<button
+class="add"
+onclick="addToCart()"
+>
+Add To Cart
+</button>
+
+<button
+class="buy"
+onclick="buyNow()"
+>
+Buy Now
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
 
 </div>
 
@@ -912,457 +884,100 @@ FIRST ORDER? GET 20% OFF
 
 <div class="cart-panel" id="cartPanel">
 
-  <div class="cart-head">
+<div class="cart-head">
 
-    <h2>Your Cart</h2>
+<h2>Your Cart</h2>
 
-    <button
-      class="close"
-      onclick="closeCart()"
-    >
-      ×
-    </button>
+<button
+class="close"
+onclick="closeCart()"
+>
+×
+</button>
 
-  </div>
+</div>
 
-  <div
-    class="cart-items"
-    id="cartItems"
-  ></div>
+<div id="cartItems">
+</div>
 
-  <div
-    class="cart-total"
-    id="cartTotal"
-  >
-    Total: ₹0
-  </div>
+<div class="total" id="cartTotal">
+Total: ₹0
+</div>
 
-  <button
-    class="checkout-btn"
-    onclick="showCheckout()"
-  >
-    Continue to Checkout
-  </button>
-
-  <div class="checkout" id="checkout">
-
-    <h3 style="margin-top:25px">
-      Customer Details
-    </h3>
-
-    <input
-      id="customerName"
-      placeholder="Full Name"
-    >
-
-    <input
-      id="customerMobile"
-      placeholder="Mobile Number"
-      type="tel"
-    >
-
-    <textarea
-      id="customerAddress"
-      placeholder="Full Address"
-      rows="3"
-    ></textarea>
-
-    <input
-      id="customerCity"
-      placeholder="City"
-    >
-
-    <input
-      id="customerState"
-      placeholder="State"
-    >
-
-    <input
-      id="customerPin"
-      placeholder="PIN Code"
-    >
-
-    <div class="payment-box">
-
-      <strong>Payment Options</strong>
-
-      <br><br>
-
-      <b>UPI:</b> k63653390@okicici
-
-      <br><br>
-
-      <b>COD:</b> ₹100 advance required
-
-    </div>
-
-    <button
-      class="checkout-btn"
-      onclick="sendOrder()"
-    >
-      Order on WhatsApp
-    </button>
-
-  </div>
+<button
+class="checkout"
+onclick="sendCartOrder()"
+>
+Order on WhatsApp
+</button>
 
 </div>
 
 <script>
 
-const products = [
+/* PRODUCT */
 
-  {
-    id:1,
-    name:"Premium Home Organizer",
-    category:"Home",
-    price:499,
-    oldPrice:699,
-    image:"https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80",
-    description:"Useful premium home organizer for everyday storage."
-  },
+const product = {
 
-  {
-    id:2,
-    name:"Kitchen Storage Box",
-    category:"Kitchen",
-    price:399,
-    oldPrice:599,
-    image:"https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=800&q=80",
-    description:"Smart storage solution for your kitchen."
-  },
+name:"Cordless Rechargeable Electric Cleaning Brush",
 
-  {
-    id:3,
-    name:"LED Rechargeable Light",
-    category:"Electric",
-    price:299,
-    oldPrice:499,
-    image:"https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=800&q=80",
-    description:"Rechargeable LED light for home and emergency use."
-  },
+price:1300,
 
-  {
-    id:4,
-    name:"Smart Cleaning Tool",
-    category:"Trending",
-    price:349,
-    oldPrice:499,
-    image:"https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=800&q=80",
-    description:"Useful cleaning product for your home."
-  },
+oldPrice:1699,
 
-  {
-    id:5,
-    name:"Kitchen Utility Set",
-    category:"Kitchen",
-    price:449,
-    oldPrice:699,
-    image:"https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=800&q=80",
-    description:"Practical kitchen utility set."
-  },
+images:[
+"images/cleaning-brush-1.jpeg",
+"images/cleaning-brush-2.jpeg",
+"images/cleaning-brush-3.jpeg"
+]
 
-  {
-    id:6,
-    name:"Premium Storage Basket",
-    category:"Home",
-    price:499,
-    oldPrice:699,
-    image:"https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80",
-    description:"Modern storage basket for home organization."
-  },
+};
 
-  {
-    id:7,
-    name:"Electric Utility Gadget",
-    category:"Electric",
-    price:599,
-    oldPrice:799,
-    image:"https://images.unsplash.com/photo-1550009158-9ebf69173e03?auto=format&fit=crop&w=800&q=80",
-    description:"Useful electric gadget for everyday use."
-  },
+let cartQty = 0;
 
-  {
-    id:8,
-    name:"Trending Home Product",
-    category:"Trending",
-    price:299,
-    oldPrice:499,
-    image:"https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=80",
-    description:"Trending useful product for your home."
-  },
 
-  {
-    id:9,
-    name:"Kitchen Essentials",
-    category:"Kitchen",
-    price:399,
-    oldPrice:599,
-    image:"https://images.unsplash.com/photo-1556911220-e15b29be8c0f?auto=format&fit=crop&w=800&q=80",
-    description:"Useful kitchen essentials."
-  },
+/* PRODUCT MODAL */
 
-  {
-    id:10,
-    name:"Home Utility Product",
-    category:"Home",
-    price:349,
-    oldPrice:499,
-    image:"https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&w=800&q=80",
-    description:"Smart utility product for everyday life."
-  },
+function openProduct(){
 
-  /* =========================
-     YOUR NEW MACHINE
-     ========================= */
-
-  {
-    id:11,
-
-    name:"Cordless Rechargeable Electric Cleaning Brush",
-
-    category:"Electric",
-
-    price:1300,
-
-    oldPrice:1699,
-
-    image:"images/cleaning-brush-1.jpeg",
-
-    images:[
-      "images/cleaning-brush-1.jpeg",
-      "images/cleaning-brush-2.jpeg",
-      "images/cleaning-brush-3.jpeg"
-    ],
-
-    description:
-    "Cordless rechargeable electric cleaning brush with multiple brush heads. Suitable for bathroom, tiles, sink, kitchen, glass, car and other cleaning areas."
-  }
-
-];
-
-let currentCategory = "All";
-
-let cart = [];
-
-let selectedProduct = null;
-
-
-/* SHOW PRODUCTS */
-
-function renderProducts(){
-
-  const container =
-    document.getElementById("products");
-
-  const search =
-    document
-    .getElementById("search")
-    .value
-    .toLowerCase();
-
-  const filtered =
-    products.filter(product => {
-
-      const categoryMatch =
-        currentCategory === "All" ||
-        product.category === currentCategory;
-
-      const searchMatch =
-        product.name
-        .toLowerCase()
-        .includes(search);
-
-      return categoryMatch && searchMatch;
-
-    });
-
-  container.innerHTML = "";
-
-  filtered.forEach(product => {
-
-    container.innerHTML += `
-
-      <div class="product">
-
-        <div class="product-image">
-
-          <img
-            src="${product.image}"
-            alt="${product.name}"
-            onerror="this.style.display='none'"
-          >
-
-          ${
-            product.id === 11
-            ?
-            `<div class="badge">NEW</div>`
-            :
-            ""
-          }
-
-        </div>
-
-        <div class="product-info">
-
-          <div class="category">
-            ${product.category}
-          </div>
-
-          <h3>
-            ${product.name}
-          </h3>
-
-          <div class="price">
-
-            ₹${product.price}
-
-            <span class="old-price">
-              ₹${product.oldPrice}
-            </span>
-
-          </div>
-
-          <div class="product-buttons">
-
-            <button
-              class="view-btn"
-              onclick="openProduct(${product.id})"
-            >
-              View Product
-            </button>
-
-            <button
-              class="buy-btn"
-              onclick="buyNow(${product.id})"
-            >
-              Buy Now
-            </button>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    `;
-
-  });
-
-}
-
-
-/* CATEGORY */
-
-function setCategory(category, button){
-
-  currentCategory = category;
-
-  document
-    .querySelectorAll(".filter")
-    .forEach(btn =>
-      btn.classList.remove("active")
-    );
-
-  button.classList.add("active");
-
-  renderProducts();
-
-}
-
-
-/* PRODUCT DETAILS */
-
-function openProduct(id){
-
-  const product =
-    products.find(p => p.id === id);
-
-  if(!product) return;
-
-  selectedProduct = product;
-
-  document.getElementById("detailCategory")
-    .textContent = product.category;
-
-  document.getElementById("detailName")
-    .textContent = product.name;
-
-  document.getElementById("detailPrice")
-    .textContent = product.price;
-
-  document.getElementById("detailOldPrice")
-    .textContent = "₹" + product.oldPrice;
-
-  document.getElementById("detailDescription")
-    .textContent = product.description;
-
-  document.getElementById("detailImage")
-    .src = product.image;
-
-  const thumbs =
-    document.getElementById("thumbs");
-
-  thumbs.innerHTML = "";
-
-  const images =
-    product.images || [product.image];
-
-  images.forEach((img,index) => {
-
-    thumbs.innerHTML += `
-
-      <img
-        class="thumb ${index === 0 ? "active" : ""}"
-        src="${img}"
-        onclick="changeDetailImage('${img}',this)"
-      >
-
-    `;
-
-  });
-
-  document
-    .getElementById("productModal")
-    .classList.add("show");
-
-}
-
-
-function changeDetailImage(src, element){
-
-  document.getElementById("detailImage")
-    .src = src;
-
-  document
-    .querySelectorAll(".thumb")
-    .forEach(t =>
-      t.classList.remove("active")
-    );
-
-  element.classList.add("active");
+document
+.getElementById("productModal")
+.classList.add("show");
 
 }
 
 
 function closeProduct(){
 
-  document
-    .getElementById("productModal")
-    .classList.remove("show");
+document
+.getElementById("productModal")
+.classList.remove("show");
+
+}
+
+
+function changeImage(element){
+
+document
+.getElementById("mainImage")
+.src = element.src;
+
+document
+.querySelectorAll(".thumb")
+.forEach(img =>
+img.classList.remove("active")
+);
+
+element.classList.add("active");
 
 }
 
 
 /* BUY NOW */
 
-function buyNow(id){
+function buyNow(){
 
-  const product =
-    products.find(p => p.id === id);
-
-  if(!product) return;
-
-  const message =
+const message =
 `Hi Smart Basket, I'm interested in this product.
 
 Product: ${product.name}
@@ -1371,281 +986,152 @@ Price: ₹${product.price}
 
 Please share order details.`;
 
-  const url =
-    "https://wa.me/918921678447?text=" +
-    encodeURIComponent(message);
+const url =
+"https://wa.me/918921678447?text="
++
+encodeURIComponent(message);
 
-  window.open(url,"_blank");
-
-}
-
-
-function detailBuyNow(){
-
-  if(!selectedProduct) return;
-
-  buyNow(selectedProduct.id);
+window.open(url,"_blank");
 
 }
 
 
 /* CART */
 
-function addToCart(product){
+function addToCart(){
 
-  const existing =
-    cart.find(item =>
-      item.id === product.id
-    );
+cartQty++;
 
-  if(existing){
+document
+.getElementById("cartCount")
+.textContent = cartQty;
 
-    existing.qty++;
+renderCart();
 
-  }else{
+closeProduct();
 
-    cart.push({
-      ...product,
-      qty:1
-    });
-
-  }
-
-  updateCart();
+openCart();
 
 }
 
 
-function addDetailToCart(){
+function renderCart(){
 
-  if(!selectedProduct) return;
+const container =
+document.getElementById("cartItems");
 
-  addToCart(selectedProduct);
+if(cartQty === 0){
 
-  closeProduct();
+container.innerHTML =
+"<p>Your cart is empty.</p>";
 
-  openCart();
+return;
+
+}
+
+container.innerHTML = `
+
+<div class="cart-item">
+
+<img src="${product.images[0]}">
+
+<div class="cart-info">
+
+<strong>
+${product.name}
+</strong>
+
+<p>
+₹${product.price} × ${cartQty}
+</p>
+
+<button
+class="remove"
+onclick="removeCart()"
+>
+Remove
+</button>
+
+</div>
+
+</div>
+
+`;
+
+document
+.getElementById("cartTotal")
+.textContent =
+"Total: ₹" + (product.price * cartQty);
 
 }
 
 
-function updateCart(){
+function removeCart(){
 
-  const count =
-    cart.reduce(
-      (sum,item) =>
-        sum + item.qty,
-      0
-    );
+cartQty = 0;
 
-  document.getElementById("cartCount")
-    .textContent = count;
+document
+.getElementById("cartCount")
+.textContent = 0;
 
-  const items =
-    document.getElementById("cartItems");
-
-  items.innerHTML = "";
-
-  if(cart.length === 0){
-
-    items.innerHTML =
-      "<p>Your cart is empty.</p>";
-
-  }
-
-  cart.forEach(item => {
-
-    items.innerHTML += `
-
-      <div class="cart-item">
-
-        <img src="${item.image}">
-
-        <div class="cart-item-info">
-
-          <strong>
-            ${item.name}
-          </strong>
-
-          <p>
-            ₹${item.price} × ${item.qty}
-          </p>
-
-          <button
-            class="remove"
-            onclick="removeFromCart(${item.id})"
-          >
-            Remove
-          </button>
-
-        </div>
-
-      </div>
-
-    `;
-
-  });
-
-  const total =
-    cart.reduce(
-      (sum,item) =>
-        sum + item.price * item.qty,
-      0
-    );
-
-  document.getElementById("cartTotal")
-    .textContent =
-    "Total: ₹" + total;
+renderCart();
 
 }
 
 
-function removeFromCart(id){
-
-  cart =
-    cart.filter(item =>
-      item.id !== id
-    );
-
-  updateCart();
-
-}
-
+/* CART PANEL */
 
 function openCart(){
 
-  document
-    .getElementById("cartPanel")
-    .classList.add("open");
+document
+.getElementById("cartPanel")
+.classList.add("open");
+
+renderCart();
 
 }
 
 
 function closeCart(){
 
-  document
-    .getElementById("cartPanel")
-    .classList.remove("open");
+document
+.getElementById("cartPanel")
+.classList.remove("open");
 
 }
 
 
-function showCheckout(){
+/* CART WHATSAPP ORDER */
 
-  if(cart.length === 0){
+function sendCartOrder(){
 
-    alert("Your cart is empty.");
+if(cartQty === 0){
 
-    return;
+alert("Your cart is empty.");
 
-  }
-
-  document
-    .getElementById("checkout")
-    .classList.add("show");
+return;
 
 }
 
+const message =
+`Hi Smart Basket, I want to order this product.
 
-/* SEND ORDER */
+Product: ${product.name}
 
-function sendOrder(){
+Quantity: ${cartQty}
 
-  if(cart.length === 0){
-
-    alert("Cart is empty.");
-
-    return;
-
-  }
-
-  const name =
-    document.getElementById("customerName").value.trim();
-
-  const mobile =
-    document.getElementById("customerMobile").value.trim();
-
-  const address =
-    document.getElementById("customerAddress").value.trim();
-
-  const city =
-    document.getElementById("customerCity").value.trim();
-
-  const state =
-    document.getElementById("customerState").value.trim();
-
-  const pin =
-    document.getElementById("customerPin").value.trim();
-
-  if(!name ||
-     !mobile ||
-     !address ||
-     !city ||
-     !state ||
-     !pin){
-
-    alert("Please fill all customer details.");
-
-    return;
-
-  }
-
-  let orderText =
-`🛍️ NEW SMART BASKET ORDER
-
-👤 Name: ${name}
-
-📱 Mobile: ${mobile}
-
-🏠 Address: ${address}
-
-🏙️ City: ${city}
-
-📍 State: ${state}
-
-📮 PIN: ${pin}
-
-🛒 PRODUCTS:
-`;
-
-  let total = 0;
-
-  cart.forEach(item => {
-
-    const itemTotal =
-      item.price * item.qty;
-
-    total += itemTotal;
-
-    orderText +=
-`\n• ${item.name}
-  Qty: ${item.qty}
-  Price: ₹${itemTotal}
-`;
-
-  });
-
-  orderText +=
-`\n💰 TOTAL: ₹${total}
-
-Payment: COD / UPI
+Price: ₹${product.price * cartQty}
 
 Please confirm my order.`;
 
-  const url =
-    "https://wa.me/918921678447?text=" +
-    encodeURIComponent(orderText);
+const url =
+"https://wa.me/918921678447?text="
++
+encodeURIComponent(message);
 
-  window.open(url,"_blank");
+window.open(url,"_blank");
 
 }
-
-
-/* INITIAL LOAD */
-
-renderProducts();
-
-updateCart();
 
 </script>
 
