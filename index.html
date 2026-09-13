@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Smart Baske IN | Shop Smart. Live Better.</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,15 +11,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-
-/* =========================
-   GLOBAL
-========================= */
-
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
+}
+
+:root{
+  --dark:#171717;
+  --cream:#f7f4ef;
+  --ease:cubic-bezier(.16,1,.3,1);
 }
 
 html{
@@ -29,17 +29,18 @@ html{
 
 body{
   font-family:"DM Sans",sans-serif;
-  background:#f7f4ef;
-  color:#171717;
+  background:var(--cream);
+  color:var(--dark);
   overflow-x:hidden;
 }
 
 button,input,textarea{
-  font-family:inherit;
+  font:inherit;
 }
 
 button{
   cursor:pointer;
+  border:0;
 }
 
 a{
@@ -47,9 +48,7 @@ a{
   color:inherit;
 }
 
-/* =========================
-   OFFER BAR
-========================= */
+/* OFFER BAR */
 
 .offer-bar{
   background:#171717;
@@ -61,9 +60,7 @@ a{
   letter-spacing:2px;
 }
 
-/* =========================
-   NAVBAR
-========================= */
+/* NAVBAR */
 
 nav{
   position:sticky;
@@ -81,12 +78,14 @@ nav{
   display:flex;
   align-items:center;
   justify-content:space-between;
+  gap:18px;
 }
 
 .logo{
   font-family:"Cormorant Garamond",serif;
   font-size:31px;
   font-weight:700;
+  white-space:nowrap;
 }
 
 .nav-links{
@@ -103,15 +102,12 @@ nav{
 .cart-btn{
   background:#171717;
   color:#fff;
-  border:none;
   padding:11px 18px;
   border-radius:30px;
   font-weight:600;
 }
 
-/* =========================
-   HERO
-========================= */
+/* HERO */
 
 .hero{
   min-height:620px;
@@ -128,7 +124,6 @@ nav{
 
 .hero-content{
   max-width:900px;
-  animation:fadeUp 1s ease;
 }
 
 .hero-tag{
@@ -164,6 +159,7 @@ nav{
 
 .primary-btn,
 .secondary-btn{
+  display:inline-block;
   padding:15px 28px;
   border-radius:30px;
   font-size:14px;
@@ -189,9 +185,35 @@ nav{
   color:#fff;
 }
 
-/* =========================
-   TRUST
-========================= */
+/* HOME PAGE ANIMATION */
+
+@keyframes rise{
+  from{
+    opacity:0;
+    transform:translate3d(0,18px,0);
+  }
+
+  to{
+    opacity:1;
+    transform:translate3d(0,0,0);
+  }
+}
+
+.home-rise{
+  opacity:0;
+  animation:rise .9s var(--ease) both;
+  animation-delay:calc(var(--i,0)*70ms);
+}
+
+@media(prefers-reduced-motion:reduce){
+  .home-rise{
+    opacity:1;
+    animation:none!important;
+    transform:none!important;
+  }
+}
+
+/* TRUST */
 
 .trust{
   max-width:1200px;
@@ -230,9 +252,7 @@ nav{
   margin-top:5px;
 }
 
-/* =========================
-   SECTION
-========================= */
+/* SECTIONS */
 
 section{
   padding:90px 20px;
@@ -260,9 +280,7 @@ section{
   margin-top:7px;
 }
 
-/* =========================
-   CATEGORIES
-========================= */
+/* CATEGORIES */
 
 .categories{
   display:flex;
@@ -286,9 +304,7 @@ section{
   color:#fff;
 }
 
-/* =========================
-   SEARCH
-========================= */
+/* SEARCH */
 
 .search-box{
   max-width:650px;
@@ -304,9 +320,7 @@ section{
   background:#fff;
 }
 
-/* =========================
-   PRODUCTS
-========================= */
+/* PRODUCTS */
 
 .product-grid{
   display:grid;
@@ -394,14 +408,11 @@ section{
   padding:13px;
   background:#171717;
   color:#fff;
-  border:none;
   border-radius:30px;
   font-weight:600;
 }
 
-/* =========================
-   INFO SECTION
-========================= */
+/* ABOUT */
 
 .about-box{
   background:#171717;
@@ -423,9 +434,7 @@ section{
   line-height:1.8;
 }
 
-/* =========================
-   PAYMENT
-========================= */
+/* PAYMENT */
 
 .info-grid{
   display:grid;
@@ -460,9 +469,7 @@ section{
   word-break:break-word;
 }
 
-/* =========================
-   FOOTER
-========================= */
+/* FOOTER */
 
 footer{
   background:#fff;
@@ -489,9 +496,7 @@ footer{
   color:#666;
 }
 
-/* =========================
-   WHATSAPP
-========================= */
+/* WHATSAPP */
 
 .whatsapp{
   position:fixed;
@@ -510,9 +515,7 @@ footer{
   box-shadow:0 10px 30px rgba(0,0,0,.2);
 }
 
-/* =========================
-   CART
-========================= */
+/* CART */
 
 .cart-panel{
   position:fixed;
@@ -547,7 +550,6 @@ footer{
 
 .close-btn{
   background:none;
-  border:none;
   font-size:30px;
 }
 
@@ -558,7 +560,6 @@ footer{
 
 .remove-btn{
   margin-top:6px;
-  border:none;
   background:none;
   color:#c33;
 }
@@ -572,16 +573,13 @@ footer{
 .checkout-btn{
   width:100%;
   padding:15px;
-  border:none;
   background:#171717;
   color:#fff;
   border-radius:30px;
   font-weight:600;
 }
 
-/* =========================
-   MODAL
-========================= */
+/* CHECKOUT */
 
 .modal{
   position:fixed;
@@ -603,3 +601,1018 @@ footer{
   max-width:100%;
   max-height:90vh;
   overflow-y:auto;
+  background:#fff;
+  border-radius:22px;
+  padding:28px;
+}
+
+.modal-box h2{
+  font-family:"Cormorant Garamond",serif;
+  font-size:42px;
+  margin-bottom:10px;
+}
+
+.modal-box p{
+  color:#666;
+  font-size:13px;
+  line-height:1.6;
+  margin-bottom:18px;
+}
+
+.form-group{
+  margin:12px 0;
+}
+
+.form-group label{
+  display:block;
+  font-size:12px;
+  font-weight:700;
+  margin-bottom:6px;
+}
+
+.form-group input,
+.form-group textarea{
+  width:100%;
+  padding:13px;
+  border:1px solid #ddd6ce;
+  border-radius:10px;
+  outline:none;
+}
+
+.payment-option{
+  border:1px solid #e5ddd5;
+  border-radius:14px;
+  padding:14px;
+  margin-top:12px;
+}
+
+.payment-option strong{
+  display:block;
+  margin-bottom:5px;
+}
+
+.payment-option span{
+  font-size:12px;
+  color:#666;
+}
+
+.order-btn{
+  width:100%;
+  margin-top:18px;
+  padding:15px;
+  background:#171717;
+  color:#fff;
+  border-radius:30px;
+  font-weight:600;
+}
+
+.modal-close{
+  float:right;
+  background:none;
+  font-size:25px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+  .product-grid{
+    grid-template-columns:repeat(3,1fr);
+  }
+
+  .trust-box{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:700px){
+
+  .nav-links{
+    display:none;
+  }
+
+  .nav-container{
+    padding:15px 16px;
+  }
+
+  .logo{
+    font-size:27px;
+  }
+
+  .cart-btn{
+    padding:10px 14px;
+    font-size:12px;
+  }
+
+  .hero{
+    min-height:560px;
+    padding:65px 18px;
+  }
+
+  .hero h1{
+    font-size:clamp(52px,17vw,82px);
+  }
+
+  section{
+    padding:65px 16px;
+  }
+
+  .section-title h2{
+    font-size:44px;
+  }
+
+  .product-grid{
+    grid-template-columns:repeat(2,1fr);
+    gap:13px;
+  }
+
+  .product-image{
+    height:190px;
+  }
+
+  .product-info{
+    padding:13px;
+  }
+
+  .info-grid{
+    grid-template-columns:1fr;
+  }
+
+  .about-box h2{
+    font-size:48px;
+  }
+
+  .trust{
+    padding:0 12px;
+  }
+
+  .trust-box{
+    padding:20px 12px;
+    gap:14px;
+  }
+
+  .cart-panel{
+    width:100%;
+  }
+}
+
+@media(max-width:390px){
+
+  .product-grid{
+    grid-template-columns:1fr;
+  }
+
+  .hero h1{
+    font-size:55px;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="offer-bar">
+FIRST ORDER? GET 20% OFF
+</div>
+
+<nav>
+  <div class="nav-container">
+
+    <a href="#" class="logo">
+      Smart Baske IN
+    </a>
+
+    <div class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#products">Shop</a>
+      <a href="#payment">Payment</a>
+      <a href="#contact">Contact</a>
+    </div>
+
+    <button class="cart-btn" onclick="openCart()">
+      Cart (<span id="cartCount">0</span>)
+    </button>
+
+  </div>
+</nav>
+
+<main id="home">
+
+<section class="hero">
+
+  <div class="hero-content">
+
+    <span class="hero-tag">
+      SMART SHOPPING • BETTER LIVING
+    </span>
+
+    <h1>
+      Shop Smart.<br>
+      Live Better.
+    </h1>
+
+    <p>
+      Discover useful everyday products, premium finds and trending essentials at Smart Baske IN.
+    </p>
+
+    <div class="hero-buttons">
+
+      <a class="primary-btn" href="#products">
+        Shop Now
+      </a>
+
+      <a class="secondary-btn" href="#payment">
+        Payment Info
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+<div class="trust">
+
+  <div class="trust-box">
+
+    <div class="trust-item">
+      <div>🚚</div>
+      <h4>Fast Support</h4>
+      <p>Quick order assistance</p>
+    </div>
+
+    <div class="trust-item">
+      <div>💵</div>
+      <h4>COD Available</h4>
+      <p>₹100 advance for COD</p>
+    </div>
+
+    <div class="trust-item">
+      <div>💳</div>
+      <h4>UPI Payment</h4>
+      <p>Simple & secure payment</p>
+    </div>
+
+    <div class="trust-item">
+      <div>💬</div>
+      <h4>WhatsApp Order</h4>
+      <p>Easy direct ordering</p>
+    </div>
+
+  </div>
+
+</div>
+
+<section id="products">
+
+<div class="container">
+
+  <div class="section-title">
+    <span>SHOP THE COLLECTION</span>
+    <h2>Trending Products</h2>
+  </div>
+
+  <div class="categories">
+
+    <button class="category-btn active" onclick="filterProducts('all',this)">
+      All
+    </button>
+
+    <button class="category-btn" onclick="filterProducts('Home',this)">
+      Home
+    </button>
+
+    <button class="category-btn" onclick="filterProducts('Beauty',this)">
+      Beauty
+    </button>
+
+    <button class="category-btn" onclick="filterProducts('Fashion',this)">
+      Fashion
+    </button>
+
+    <button class="category-btn" onclick="filterProducts('Electronics',this)">
+      Electronics
+    </button>
+
+  </div>
+
+  <div class="search-box">
+
+    <input
+      id="searchInput"
+      oninput="renderProducts()"
+      placeholder="Search products..."
+    >
+
+  </div>
+
+  <div class="product-grid" id="productGrid"></div>
+
+</div>
+
+</section>
+
+<section>
+
+<div class="container">
+
+<div class="about-box">
+
+<h2>Everything You Need, In One Basket.</h2>
+
+<p>
+Smart Baske IN brings together useful and trending products with simple ordering through WhatsApp and flexible payment options.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="payment">
+
+<div class="container">
+
+<div class="section-title">
+<span>ORDER & PAYMENT</span>
+<h2>Simple Checkout</h2>
+</div>
+
+<div class="info-grid">
+
+<div class="info-card">
+
+<h3>💳 UPI Payment</h3>
+
+<p>
+Pay directly using the UPI ID below after confirming your order.
+</p>
+
+<div class="info-value">
+k63653390@okicici
+</div>
+
+</div>
+
+<div class="info-card">
+
+<h3>💵 Cash on Delivery</h3>
+
+<p>
+Cash on Delivery is available with a ₹100 advance payment to confirm the order.
+</p>
+
+<div class="info-value">
+COD Advance: ₹100
+</div>
+
+</div>
+
+<div class="info-card">
+
+<h3>💬 WhatsApp Order</h3>
+
+<p>
+For quick ordering and support, contact us directly on WhatsApp.
+</p>
+
+<div class="info-value">
+8921678447
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+<footer id="contact">
+
+<div class="footer-logo">
+Smart Baske IN
+</div>
+
+<p class="footer-text">
+Shop Smart. Live Better.
+</p>
+
+<div class="footer-contact">
+
+Support: smartbasket75@gmail.com<br>
+
+Owner: irshadiqu@gmail.com<br>
+
+WhatsApp: 8921678447
+
+</div>
+
+</footer>
+
+<a
+class="whatsapp"
+href="https://wa.me/918921678447"
+target="_blank"
+aria-label="WhatsApp"
+>
+☏
+</a>
+
+<!-- CART -->
+
+<div class="cart-panel" id="cartPanel">
+
+<div class="cart-header">
+
+<h2>Your Cart</h2>
+
+<button class="close-btn" onclick="closeCart()">
+×
+</button>
+
+</div>
+
+<div id="cartItems">
+<p>Your cart is empty.</p>
+</div>
+
+<div class="cart-total">
+Total: ₹<span id="cartTotal">0</span>
+</div>
+
+<button class="checkout-btn" onclick="openCheckout()">
+Proceed to Checkout
+</button>
+
+</div>
+
+<!-- CHECKOUT -->
+
+<div class="modal" id="checkoutModal">
+
+<div class="modal-box">
+
+<button class="modal-close" onclick="closeCheckout()">
+×
+</button>
+
+<h2>Checkout</h2>
+
+<p>
+Enter your details. You can complete payment and confirm your order through WhatsApp.
+</p>
+
+<div class="form-group">
+
+<label>Name</label>
+
+<input
+id="customerName"
+placeholder="Your name"
+>
+
+</div>
+
+<div class="form-group">
+
+<label>Phone</label>
+
+<input
+id="customerPhone"
+placeholder="Phone number"
+>
+
+</div>
+
+<div class="form-group">
+
+<label>Address</label>
+
+<textarea
+id="customerAddress"
+rows="3"
+placeholder="Delivery address"
+></textarea>
+
+</div>
+
+<div class="payment-option">
+
+<strong>UPI Payment</strong>
+
+<span>
+UPI ID: k63653390@okicici
+</span>
+
+</div>
+
+<div class="payment-option">
+
+<strong>Cash on Delivery</strong>
+
+<span>
+₹100 advance payment required for COD confirmation.
+</span>
+
+</div>
+
+<button
+class="order-btn"
+onclick="sendWhatsAppOrder()"
+>
+Confirm Order on WhatsApp
+</button>
+
+</div>
+
+</div>
+
+<script>
+
+const products = [
+
+{
+id:1,
+name:"Multipurpose Storage Organizer",
+category:"Home",
+price:599,
+old:799,
+img:"https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=700&q=80"
+},
+
+{
+id:2,
+name:"Portable Mini Fan",
+category:"Electronics",
+price:649,
+old:899,
+img:"https://images.unsplash.com/photo-1585338107529-13afc5f4a52b?auto=format&fit=crop&w=700&q=80"
+},
+
+{
+id:3,
+name:"Premium Water Bottle",
+category:"Home",
+price:449,
+old:699,
+img:"https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=700&q=80"
+},
+
+{
+id:4,
+name:"Wireless Earbuds Case",
+category:"Electronics",
+price:499,
+old:799,
+img:"https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?auto=format&fit=crop&w=700&q=80"
+},
+
+{
+id:5,
+name:"Everyday Tote Bag",
+category:"Fashion",
+price:549,
+old:899,
+img:"https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=700&q=80"
+},
+
+{
+id:6,
+name:"Skincare Essentials Set",
+category:"Beauty",
+price:699,
+old:1099,
+img:"https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=700&q=80"
+},
+
+{
+id:7,
+name:"LED Desk Lamp",
+category:"Home",
+price:749,
+old:1199,
+img:"https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=700&q=80"
+},
+
+{
+id:8,
+name:"Smart Phone Stand",
+category:"Electronics",
+price:399,
+old:649,
+img:"https://images.unsplash.com/photo-1512428559087-560fa5ceab42?auto=format&fit=crop&w=700&q=80"
+},
+
+{
+id:9,
+name:"Minimal Wrist Watch",
+category:"Fashion",
+price:899,
+old:1499,
+img:"https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=700&q=80"
+},
+
+{
+id:10,
+name:"Travel Cosmetic Pouch",
+category:"Beauty",
+price:479,
+old:749,
+img:"https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=700&q=80"
+},
+
+{
+id:11,
+name:"Kitchen Storage Jar Set",
+category:"Home",
+price:699,
+old:999,
+img:"https://images.unsplash.com/photo-1583845112203-454c2f8c0b3f?auto=format&fit=crop&w=700&q=80"
+},
+
+{
+id:12,
+name:"Bluetooth Speaker",
+category:"Electronics",
+price:799,
+old:1299,
+img:"https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?auto=format&fit=crop&w=700&q=80"
+}
+
+];
+
+let selectedCategory = "all";
+
+let cart = [];
+
+/* RENDER PRODUCTS */
+
+function renderProducts(){
+
+const q = document
+.getElementById("searchInput")
+.value
+.toLowerCase();
+
+const list = products.filter(p =>
+
+(selectedCategory === "all" ||
+p.category === selectedCategory)
+
+&&
+
+p.name.toLowerCase().includes(q)
+
+);
+
+document.getElementById("productGrid").innerHTML =
+
+list.map(p => `
+
+<article class="product-card">
+
+<div class="product-image">
+
+<img
+src="${p.img}"
+alt="${p.name}"
+loading="lazy"
+>
+
+</div>
+
+<div class="product-info">
+
+<span class="badge">
+TRENDING
+</span>
+
+<h3>
+${p.name}
+</h3>
+
+<div class="product-category">
+${p.category}
+</div>
+
+<div class="price-row">
+
+<span class="price">
+₹${p.price}
+</span>
+
+<span class="old-price">
+₹${p.old}
+</span>
+
+</div>
+
+<button
+class="add-cart"
+onclick="addToCart(${p.id})"
+>
+Add to Cart
+</button>
+
+</div>
+
+</article>
+
+`).join("")
+
+||
+
+"<p>No products found.</p>";
+
+}
+
+/* FILTER */
+
+function filterProducts(cat,btn){
+
+selectedCategory = cat;
+
+document
+.querySelectorAll(".category-btn")
+.forEach(b => b.classList.remove("active"));
+
+btn.classList.add("active");
+
+renderProducts();
+
+}
+
+/* ADD CART */
+
+function addToCart(id){
+
+const p = products.find(x => x.id === id);
+
+const item = cart.find(x => x.id === id);
+
+if(item){
+
+item.qty++;
+
+}else{
+
+cart.push({
+...p,
+qty:1
+});
+
+}
+
+updateCart();
+
+}
+
+/* UPDATE CART */
+
+function updateCart(){
+
+document
+.getElementById("cartCount")
+.textContent = cart.reduce(
+(a,b) => a + b.qty,
+0
+);
+
+document
+.getElementById("cartItems")
+.innerHTML = cart.length
+
+?
+
+cart.map(i => `
+
+<div class="cart-item">
+
+<strong>
+${i.name}
+</strong>
+
+<br>
+
+₹${i.price} × ${i.qty}
+
+<br>
+
+<button
+class="remove-btn"
+onclick="removeCart(${i.id})"
+>
+Remove
+</button>
+
+</div>
+
+`).join("")
+
+:
+
+"<p>Your cart is empty.</p>";
+
+document
+.getElementById("cartTotal")
+.textContent = cart.reduce(
+(a,b) => a + b.price * b.qty,
+0
+);
+
+}
+
+/* REMOVE CART */
+
+function removeCart(id){
+
+cart = cart.filter(
+x => x.id !== id
+);
+
+updateCart();
+
+}
+
+/* CART OPEN */
+
+function openCart(){
+
+document
+.getElementById("cartPanel")
+.classList
+.add("active");
+
+}
+
+function closeCart(){
+
+document
+.getElementById("cartPanel")
+.classList
+.remove("active");
+
+}
+
+/* CHECKOUT */
+
+function openCheckout(){
+
+if(!cart.length){
+
+alert("Your cart is empty.");
+
+return;
+
+}
+
+document
+.getElementById("checkoutModal")
+.classList
+.add("active");
+
+}
+
+function closeCheckout(){
+
+document
+.getElementById("checkoutModal")
+.classList
+.remove("active");
+
+}
+
+/* WHATSAPP ORDER */
+
+function sendWhatsAppOrder(){
+
+const name =
+document
+.getElementById("customerName")
+.value
+.trim();
+
+const phone =
+document
+.getElementById("customerPhone")
+.value
+.trim();
+
+const address =
+document
+.getElementById("customerAddress")
+.value
+.trim();
+
+if(!name || !phone || !address){
+
+alert("Please fill all delivery details.");
+
+return;
+
+}
+
+const items = cart.map(i =>
+
+`${i.name} x${i.qty} - ₹${i.price * i.qty}`
+
+).join("\n");
+
+const total = cart.reduce(
+
+(a,b) => a + b.price * b.qty,
+
+0
+
+);
+
+const message =
+
+`Hello Smart Baske IN!
+
+Name: ${name}
+Phone: ${phone}
+Address: ${address}
+
+Order:
+${items}
+
+Total: ₹${total}
+
+Payment options:
+UPI: k63653390@okicici
+
+OR
+
+COD with ₹100 advance.`;
+
+const url =
+
+"https://wa.me/918921678447?text="
+
++
+
+encodeURIComponent(message);
+
+window.open(
+url,
+"_blank"
+);
+
+}
+
+/* HOME PAGE ENTRANCE ANIMATION */
+
+(function(){
+
+const groups = [
+
+[".offer-bar",0],
+
+[".logo",1],
+
+[".nav-links a",2],
+
+[".cart-btn",6],
+
+[".hero-tag",8],
+
+[".hero h1",10],
+
+[".hero p",12],
+
+[".hero-buttons",14]
+
+];
+
+groups.forEach(([selector,start]) => {
+
+document
+.querySelectorAll(selector)
+.forEach((element,index) => {
+
+element.classList.add("home-rise");
+
+element.style.setProperty(
+"--i",
+start + index
+);
+
+});
+
+});
+
+})();
+
+/* START */
+
+renderProducts();
+
+</script>
+
+</body>
+</html>
