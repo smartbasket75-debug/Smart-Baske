@@ -4,21 +4,36 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Smart Basket IN | Premium Store</title>
+<title>Smart Basket | Premium Store</title>
+
+<meta name="description" content="Smart Basket - Premium quality. Smart choices. Budget friendly.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=DM+Sans:wght@400;500;600;700&display=swap');
 
 *{
-  box-sizing:border-box;
   margin:0;
   padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
 }
 
 body{
   font-family:"DM Sans",sans-serif;
-  background:#f7f4ee;
-  color:#111;
+  background:#080808;
+  color:#f5f1e8;
+  line-height:1.6;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
 }
 
 button{
@@ -26,174 +41,242 @@ button{
   cursor:pointer;
 }
 
-a{
-  text-decoration:none;
-  color:inherit;
-}
-
-/* TOP BAR */
-
-.topbar{
-  background:#111;
-  color:white;
+.offer-bar{
+  background:#c9a45c;
+  color:#090909;
   text-align:center;
-  padding:10px;
-  font-size:13px;
+  padding:8px 15px;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:1px;
 }
 
-/* NAV */
-
-nav{
+.navbar{
   position:sticky;
   top:0;
   z-index:50;
-  background:#f7f4ee;
-  border-bottom:1px solid #ddd;
+  background:rgba(8,8,8,.94);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(201,164,92,.18);
 }
 
 .nav-inner{
   max-width:1200px;
   margin:auto;
-  padding:17px 20px;
+  padding:18px 20px;
   display:flex;
-  justify-content:space-between;
   align-items:center;
+  justify-content:space-between;
 }
 
 .logo{
   font-family:"Cormorant Garamond",serif;
-  font-size:30px;
+  font-size:31px;
   font-weight:700;
+  letter-spacing:2px;
+  color:#d7b66c;
 }
 
 .logo span{
-  color:#b38a38;
+  display:block;
+  font-family:"DM Sans",sans-serif;
+  font-size:8px;
+  letter-spacing:4px;
+  color:#aaa;
+  margin-top:-7px;
 }
 
 .nav-links{
   display:flex;
   gap:25px;
-  font-size:14px;
+  align-items:center;
+}
+
+.nav-links a{
+  font-size:13px;
+  color:#ccc;
+}
+
+.nav-links a:hover{
+  color:#d7b66c;
 }
 
 .cart-btn{
-  background:#111;
-  color:white;
-  border:0;
-  padding:11px 17px;
+  border:1px solid #d7b66c;
+  background:transparent;
+  color:#d7b66c;
+  padding:9px 15px;
   border-radius:30px;
+  font-size:12px;
+  font-weight:700;
 }
-
-/* HERO */
 
 .hero{
-  min-height:500px;
+  min-height:600px;
   display:flex;
-  justify-content:center;
   align-items:center;
-  text-align:center;
-  padding:60px 20px;
-  color:white;
-
+  position:relative;
+  overflow:hidden;
   background:
-  linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.65)),
-  url("https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1800&q=85")
-  center/cover;
+    radial-gradient(circle at 75% 40%,rgba(201,164,92,.14),transparent 30%),
+    #080808;
 }
 
-.hero-small{
-  color:#d5b15e;
-  letter-spacing:4px;
-  font-size:13px;
-  margin-bottom:15px;
+.hero-inner{
+  width:100%;
+  max-width:1200px;
+  margin:auto;
+  padding:75px 20px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:50px;
+  align-items:center;
+}
+
+.eyebrow{
+  color:#d7b66c;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:3px;
+  margin-bottom:18px;
 }
 
 .hero h1{
   font-family:"Cormorant Garamond",serif;
-  font-size:70px;
-  line-height:.95;
-  margin-bottom:20px;
+  font-size:clamp(50px,7vw,90px);
+  line-height:.9;
+  font-weight:600;
+  margin-bottom:25px;
+}
+
+.hero h1 span{
+  color:#d7b66c;
 }
 
 .hero p{
-  font-size:17px;
-  margin-bottom:25px;
-  color:#eee;
+  max-width:480px;
+  color:#aaa;
+  font-size:16px;
+  margin-bottom:30px;
 }
 
-.gold-btn{
-  background:#c49a48;
-  color:#111;
-  border:0;
-  padding:14px 28px;
-  border-radius:30px;
+.hero-buttons{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
+  padding:13px 23px;
+  border-radius:4px;
+  font-size:13px;
+  font-weight:700;
+  border:1px solid #d7b66c;
+}
+
+.btn-gold{
+  background:#d7b66c;
+  color:#080808;
+}
+
+.btn-outline{
+  background:transparent;
+  color:#d7b66c;
+}
+
+.hero-image{
+  position:relative;
+}
+
+.hero-image img{
+  width:100%;
+  max-height:500px;
+  object-fit:contain;
+  border-radius:12px;
+  display:block;
+}
+
+.section{
+  max-width:1200px;
+  margin:auto;
+  padding:80px 20px;
+}
+
+.section-title{
+  text-align:center;
+  margin-bottom:45px;
+}
+
+.section-title small{
+  color:#d7b66c;
+  font-size:11px;
+  letter-spacing:3px;
   font-weight:700;
 }
 
-/* SECTION */
-
-.section{
-  max-width:1100px;
-  margin:auto;
-  padding:65px 20px;
-}
-
-.title{
-  text-align:center;
-  margin-bottom:35px;
-}
-
-.title small{
-  color:#b38a38;
-  letter-spacing:3px;
-}
-
-.title h2{
+.section-title h2{
   font-family:"Cormorant Garamond",serif;
-  font-size:45px;
+  font-size:48px;
+  margin-top:8px;
 }
-
-/* TRUST */
 
 .trust{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:15px;
+  margin-bottom:30px;
 }
 
 .trust-card{
-  background:white;
-  padding:25px;
+  border:1px solid rgba(201,164,92,.2);
+  padding:25px 20px;
   text-align:center;
-  border:1px solid #e4ded2;
-  border-radius:12px;
+  background:#0e0e0e;
+  border-radius:8px;
 }
 
 .trust-card strong{
   display:block;
-  margin-bottom:6px;
+  color:#d7b66c;
+  font-size:15px;
+  margin-bottom:5px;
 }
 
-/* PRODUCT */
-
-.product-area{
-  display:flex;
-  justify-content:center;
+.trust-card span{
+  color:#888;
+  font-size:12px;
 }
 
-.product{
-  width:100%;
-  max-width:500px;
-  background:white;
-  border:1px solid #ddd;
-  border-radius:18px;
+.product-grid{
+  display:grid;
+  grid-template-columns:repeat(1,1fr);
+  max-width:430px;
+  margin:auto;
+}
+
+.product-card{
+  background:#101010;
+  border:1px solid rgba(201,164,92,.2);
+  border-radius:10px;
   overflow:hidden;
-  box-shadow:0 10px 30px rgba(0,0,0,.08);
+  transition:.3s;
+}
+
+.product-card:hover{
+  transform:translateY(-5px);
+  border-color:rgba(201,164,92,.5);
 }
 
 .product-image{
-  height:420px;
-  background:#f1eee8;
+  height:390px;
+  background:#f1f1f1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:15px;
 }
 
 .product-image img{
@@ -203,126 +286,134 @@ nav{
 }
 
 .product-info{
-  padding:25px;
+  padding:22px;
 }
 
-.category{
-  color:#a47c30;
-  font-size:12px;
-  text-transform:uppercase;
+.product-tag{
+  color:#d7b66c;
+  font-size:10px;
   letter-spacing:2px;
+  font-weight:700;
+  text-transform:uppercase;
 }
 
-.product h3{
-  font-size:22px;
-  margin:10px 0;
+.product-info h3{
+  font-family:"Cormorant Garamond",serif;
+  font-size:28px;
+  line-height:1.05;
+  margin:8px 0 12px;
+}
+
+.price-row{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:15px;
 }
 
 .price{
-  font-size:28px;
+  font-size:24px;
+  color:#d7b66c;
   font-weight:700;
 }
 
 .old-price{
-  font-size:15px;
-  color:#999;
+  color:#777;
   text-decoration:line-through;
-  margin-left:8px;
-}
-
-.product-buttons{
-  display:flex;
-  gap:10px;
-  margin-top:20px;
-}
-
-.product-buttons button{
-  flex:1;
-  padding:14px;
-  border-radius:8px;
-  border:0;
-  font-weight:700;
-}
-
-.view-btn{
-  background:#eee;
-}
-
-.buy-btn{
-  background:#111;
-  color:white;
-}
-
-/* ABOUT */
-
-.about{
-  background:#111;
-  color:white;
-  text-align:center;
-}
-
-.about h2{
-  font-family:"Cormorant Garamond",serif;
-  color:#d5b15e;
-  font-size:45px;
-  margin-bottom:15px;
-}
-
-/* FOOTER */
-
-footer{
-  background:#080808;
-  color:#bbb;
-  padding:45px 20px;
-}
-
-.footer-inner{
-  max-width:1100px;
-  margin:auto;
-  display:grid;
-  grid-template-columns:2fr 1fr 1fr;
-  gap:30px;
-}
-
-footer h3{
-  color:white;
-  margin-bottom:12px;
-}
-
-footer p{
-  margin:7px 0;
   font-size:14px;
 }
 
-/* WHATSAPP */
+.product-info p{
+  color:#999;
+  font-size:13px;
+  margin-bottom:20px;
+}
+
+.product-actions{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+
+.action-btn{
+  padding:12px;
+  border-radius:4px;
+  border:1px solid #d7b66c;
+  background:transparent;
+  color:#d7b66c;
+  font-weight:700;
+  font-size:12px;
+}
+
+.action-btn.primary{
+  background:#d7b66c;
+  color:#080808;
+}
+
+.about{
+  background:#0e0e0e;
+  border-top:1px solid rgba(201,164,92,.15);
+  border-bottom:1px solid rgba(201,164,92,.15);
+}
+
+.about-box{
+  max-width:750px;
+  margin:auto;
+  text-align:center;
+}
+
+.about-box p{
+  color:#999;
+  font-size:15px;
+}
+
+.contact{
+  text-align:center;
+}
+
+.contact p{
+  color:#999;
+  margin:8px 0;
+}
+
+footer{
+  border-top:1px solid rgba(201,164,92,.15);
+  padding:35px 20px;
+  text-align:center;
+  color:#777;
+  font-size:12px;
+}
+
+footer strong{
+  color:#d7b66c;
+}
 
 .whatsapp{
   position:fixed;
-  right:20px;
-  bottom:20px;
+  right:18px;
+  bottom:18px;
+  z-index:80;
   width:58px;
   height:58px;
   border-radius:50%;
-  background:#25d366;
+  background:#25D366;
   color:white;
   display:flex;
-  justify-content:center;
   align-items:center;
-  font-size:25px;
-  z-index:100;
+  justify-content:center;
+  font-size:27px;
+  box-shadow:0 8px 30px rgba(0,0,0,.4);
 }
-
-/* MODAL */
 
 .modal{
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,.75);
+  background:rgba(0,0,0,.82);
+  z-index:100;
   display:none;
-  justify-content:center;
   align-items:center;
-  padding:20px;
-  z-index:200;
+  justify-content:center;
+  padding:15px;
 }
 
 .modal.show{
@@ -330,43 +421,45 @@ footer p{
 }
 
 .modal-box{
-  width:min(900px,100%);
+  width:100%;
+  max-width:900px;
   max-height:90vh;
   overflow:auto;
-  background:white;
-  border-radius:18px;
-  padding:25px;
+  background:#101010;
+  border:1px solid rgba(201,164,92,.3);
+  border-radius:12px;
+  padding:20px;
   position:relative;
 }
 
 .close{
   position:absolute;
   right:15px;
-  top:15px;
-  width:36px;
-  height:36px;
-  border:0;
+  top:12px;
+  width:35px;
+  height:35px;
   border-radius:50%;
-  background:#111;
-  color:white;
+  background:#222;
+  border:1px solid #444;
+  color:#fff;
   font-size:20px;
 }
 
-.detail{
+.modal-content{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:30px;
-  padding-top:10px;
+  gap:25px;
+  margin-top:20px;
 }
 
-.detail-main{
+.modal-main-image{
+  background:#f1f1f1;
+  border-radius:8px;
   height:420px;
-  background:#f1eee8;
-  border-radius:12px;
-  overflow:hidden;
+  padding:10px;
 }
 
-.detail-main img{
+.modal-main-image img{
   width:100%;
   height:100%;
   object-fit:contain;
@@ -379,63 +472,80 @@ footer p{
 }
 
 .thumb{
-  width:75px;
-  height:75px;
-  object-fit:cover;
-  border-radius:8px;
+  width:70px;
+  height:70px;
+  background:#eee;
   border:2px solid transparent;
+  border-radius:5px;
+  padding:3px;
 }
 
 .thumb.active{
-  border-color:#b38a38;
+  border-color:#d7b66c;
 }
 
-.detail-info{
-  padding:20px 5px;
+.thumb img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
 }
 
-.detail-info h2{
+.modal-details{
+  padding:10px;
+}
+
+.modal-details .tag{
+  color:#d7b66c;
+  font-size:11px;
+  letter-spacing:2px;
+}
+
+.modal-details h2{
   font-family:"Cormorant Garamond",serif;
-  font-size:40px;
+  font-size:38px;
   line-height:1;
-  margin:10px 0;
+  margin:10px 0 15px;
 }
 
-.detail-price{
+.modal-details .desc{
+  color:#999;
+  font-size:14px;
+  margin-bottom:20px;
+}
+
+.feature-list{
+  list-style:none;
+  margin-bottom:20px;
+}
+
+.feature-list li{
+  color:#bbb;
+  font-size:13px;
+  margin:8px 0;
+}
+
+.feature-list li::before{
+  content:"✓";
+  color:#d7b66c;
+  margin-right:8px;
+}
+
+.modal-price{
+  color:#d7b66c;
   font-size:28px;
   font-weight:700;
-  margin:15px 0;
-}
-
-.description{
-  color:#555;
-  line-height:1.7;
-  margin-bottom:25px;
-}
-
-.detail-buttons{
-  display:flex;
-  gap:10px;
-}
-
-.detail-buttons button{
-  flex:1;
-  padding:14px;
-  border:0;
-  border-radius:8px;
-  font-weight:700;
-}
-
-.add{
-  background:#eee;
+  margin-bottom:20px;
 }
 
 .buy{
-  background:#111;
-  color:white;
+  width:100%;
+  border:0;
+  padding:14px;
+  background:#d7b66c;
+  color:#080808;
+  font-weight:700;
+  border-radius:4px;
 }
-
-/* CART */
 
 .cart-panel{
   position:fixed;
@@ -443,11 +553,12 @@ footer p{
   right:-430px;
   width:min(430px,100%);
   height:100vh;
-  background:white;
-  z-index:300;
-  padding:25px;
+  background:#101010;
+  z-index:120;
+  border-left:1px solid rgba(201,164,92,.25);
   transition:.3s;
-  box-shadow:-5px 0 25px rgba(0,0,0,.2);
+  padding:25px;
+  overflow:auto;
 }
 
 .cart-panel.open{
@@ -457,87 +568,108 @@ footer p{
 .cart-head{
   display:flex;
   justify-content:space-between;
-  border-bottom:1px solid #ddd;
-  padding-bottom:15px;
+  align-items:center;
+  margin-bottom:30px;
+}
+
+.cart-head h2{
+  font-family:"Cormorant Garamond",serif;
+  font-size:32px;
+}
+
+.cart-close{
+  background:none;
+  border:0;
+  color:#fff;
+  font-size:25px;
 }
 
 .cart-item{
   display:flex;
   gap:12px;
   padding:15px 0;
-  border-bottom:1px solid #eee;
+  border-bottom:1px solid #252525;
 }
 
 .cart-item img{
   width:75px;
   height:75px;
-  object-fit:cover;
-  border-radius:8px;
+  object-fit:contain;
+  background:#eee;
+  border-radius:5px;
 }
 
-.cart-info{
+.cart-item-info{
   flex:1;
 }
 
-.remove{
-  background:none;
-  border:0;
-  color:red;
-  margin-top:5px;
+.cart-item-info strong{
+  display:block;
+  font-size:13px;
 }
 
-.total{
-  font-size:22px;
+.cart-item-info span{
+  color:#d7b66c;
+  font-size:14px;
+}
+
+.empty{
+  color:#777;
+  text-align:center;
+  padding:50px 10px;
+}
+
+.cart-total{
+  display:flex;
+  justify-content:space-between;
+  padding:20px 0;
   font-weight:700;
-  margin:20px 0;
 }
 
-.checkout{
-  width:100%;
-  background:#25d366;
-  color:white;
-  border:0;
-  padding:15px;
-  border-radius:8px;
-  font-weight:700;
-}
-
-/* MOBILE */
-
-@media(max-width:700px){
+@media(max-width:800px){
 
   .nav-links{
     display:none;
   }
 
-  .hero h1{
-    font-size:50px;
+  .hero-inner{
+    grid-template-columns:1fr;
+    padding-top:55px;
+    text-align:center;
+  }
+
+  .hero p{
+    margin-left:auto;
+    margin-right:auto;
+  }
+
+  .hero-buttons{
+    justify-content:center;
+  }
+
+  .hero-image{
+    order:-1;
+  }
+
+  .hero-image img{
+    max-height:320px;
   }
 
   .trust{
     grid-template-columns:1fr;
   }
 
-  .product-image{
-    height:330px;
-  }
-
-  .detail{
+  .modal-content{
     grid-template-columns:1fr;
   }
 
-  .detail-main{
+  .modal-main-image{
     height:300px;
   }
 
-  .detail-info h2{
+  .modal-details h2{
     font-size:32px;
   }
-
-  .footer-inner{
-    grid-template-columns:1fr;
-  }
-
 }
 
 </style>
@@ -545,595 +677,51 @@ footer p{
 
 <body>
 
-<!-- TOP -->
-
-<div class="topbar">
-FIRST ORDER? GET 20% OFF
+<div class="offer-bar">
+  PREMIUM QUALITY • SMART CHOICES • BUDGET FRIENDLY
 </div>
 
-<!-- NAV -->
+<nav class="navbar">
+  <div class="nav-inner">
 
-<nav>
+    <a href="#" class="logo">
+      SMART BASKET
+      <span>PREMIUM STORE</span>
+    </a>
 
-<div class="nav-inner">
+    <div class="nav-links">
+      <a href="#shop">Shop</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <button class="cart-btn" onclick="openCart()">
+        Cart (<span id="cartCount">0</span>)
+      </button>
+    </div>
 
-<a class="logo" href="#">
-Smart <span>Basket</span> IN
-</a>
+    <button class="cart-btn" onclick="openCart()">
+      Cart (<span id="mobileCartCount">0</span>)
+    </button>
 
-<div class="nav-links">
-<a href="#shop">Shop</a>
-<a href="#about">About</a>
-<a href="#contact">Contact</a>
-</div>
-
-<button class="cart-btn" onclick="openCart()">
-🛒 Cart <span id="cartCount">0</span>
-</button>
-
-</div>
-
+  </div>
 </nav>
-
-<!-- HERO -->
 
 <section class="hero">
 
-<div>
-
-<div class="hero-small">
-SMART BASKET • PREMIUM STORE
-</div>
-
-<h1>
-SHOP<br>SMARTER
-</h1>
-
-<p>
-Premium quality. Smart choices. Budget friendly.
-</p>
-
-<a href="#shop">
-<button class="gold-btn">
-SHOP NOW
-</button>
-</a>
-
-</div>
-
-</section>
-
-<!-- TRUST -->
-
-<section class="section">
-
-<div class="trust">
-
-<div class="trust-card">
-<strong>🚚 Fast Delivery</strong>
-Delivery across India
-</div>
-
-<div class="trust-card">
-<strong>🔄 Easy Returns</strong>
-7 day return available
-</div>
-
-<div class="trust-card">
-<strong>⭐ Trusted Store</strong>
-Trusted by 100+ customers
-</div>
-
-</div>
-
-</section>
-
-<!-- PRODUCT -->
-
-<section class="section" id="shop">
-
-<div class="title">
-
-<small>OUR PRODUCT</small>
-
-<h2>Featured Product</h2>
-
-</div>
-
-<div class="product-area">
-
-<div class="product">
-
-<div class="product-image">
-
-<img
-src="images/cleaning-brush-1.jpeg"
-alt="Cordless Rechargeable Electric Cleaning Brush"
->
-
-</div>
-
-<div class="product-info">
-
-<div class="category">
-Electric
-</div>
-
-<h3>
-Cordless Rechargeable Electric Cleaning Brush
-</h3>
-
-<div class="price">
-
-₹1300
-
-<span class="old-price">
-₹1699
-</span>
-
-</div>
-
-<div class="product-buttons">
-
-<button
-class="view-btn"
-onclick="openProduct()"
->
-View Product
-</button>
-
-<button
-class="buy-btn"
-onclick="buyNow()"
->
-Buy Now
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- ABOUT -->
-
-<section class="about" id="about">
-
-<div class="section">
-
-<h2>
-Smart Shopping Starts Here.
-</h2>
-
-<p>
-Useful products. Premium quality. Smart prices.
-</p>
-
-</div>
-
-</section>
-
-<!-- FOOTER -->
-
-<footer id="contact">
-
-<div class="footer-inner">
-
-<div>
-
-<h3>Smart Basket IN</h3>
-
-<p>
-Premium quality. Smart choices.
-</p>
-
-</div>
-
-<div>
-
-<h3>Contact</h3>
-
-<p>
-WhatsApp: 8921678447
-</p>
-
-<p>
-smartbasket75@gmail.com
-</p>
-
-</div>
-
-<div>
-
-<h3>Policies</h3>
-
-<p>🚚 Shipping: 1–10 days</p>
-
-<p>🔄 Returns: Within 7 days</p>
-
-<p>💳 COD Available</p>
-
-</div>
-
-</div>
-
-</footer>
-
-<!-- WHATSAPP -->
-
-<a
-class="whatsapp"
-href="https://wa.me/918921678447?text=Hi%20Smart%20Basket%2C%20I%E2%80%99m%20interested%20in%20this%20product"
-target="_blank"
->
-☎
-</a>
-
-<!-- PRODUCT MODAL -->
-
-<div class="modal" id="productModal">
-
-<div class="modal-box">
-
-<button
-class="close"
-onclick="closeProduct()"
->
-×
-</button>
-
-<div class="detail">
-
-<div>
-
-<div class="detail-main">
-
-<img
-id="mainImage"
-src="images/cleaning-brush-1.jpeg"
-alt="Cleaning Brush"
->
-
-</div>
-
-<div class="thumbs">
-
-<img
-class="thumb active"
-src="images/cleaning-brush-1.jpeg"
-onclick="changeImage(this)"
->
-
-<img
-class="thumb"
-src="images/cleaning-brush-2.jpeg"
-onclick="changeImage(this)"
->
-
-<img
-class="thumb"
-src="images/cleaning-brush-3.jpeg"
-onclick="changeImage(this)"
->
-
-</div>
-
-</div>
-
-<div class="detail-info">
-
-<div class="category">
-Electric
-</div>
-
-<h2>
-Cordless Rechargeable Electric Cleaning Brush
-</h2>
-
-<div class="detail-price">
-
-₹1300
-
-<span class="old-price">
-₹1699
-</span>
-
-</div>
-
-<p class="description">
-
-Cordless rechargeable electric cleaning brush
-with multiple brush heads.
-
-Suitable for bathroom, tiles, sink, kitchen,
-glass, car and other cleaning areas.
-
-</p>
-
-<div class="detail-buttons">
-
-<button
-class="add"
-onclick="addToCart()"
->
-Add To Cart
-</button>
-
-<button
-class="buy"
-onclick="buyNow()"
->
-Buy Now
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- CART -->
-
-<div class="cart-panel" id="cartPanel">
-
-<div class="cart-head">
-
-<h2>Your Cart</h2>
-
-<button
-class="close"
-onclick="closeCart()"
->
-×
-</button>
-
-</div>
-
-<div id="cartItems">
-</div>
-
-<div class="total" id="cartTotal">
-Total: ₹0
-</div>
-
-<button
-class="checkout"
-onclick="sendCartOrder()"
->
-Order on WhatsApp
-</button>
-
-</div>
-
-<script>
-
-/* PRODUCT */
-
-const product = {
-
-name:"Cordless Rechargeable Electric Cleaning Brush",
-
-price:1300,
-
-oldPrice:1699,
-
-images:[
-"images/cleaning-brush-1.jpeg",
-"images/cleaning-brush-2.jpeg",
-"images/cleaning-brush-3.jpeg"
-]
-
-};
-
-let cartQty = 0;
-
-
-/* PRODUCT MODAL */
-
-function openProduct(){
-
-document
-.getElementById("productModal")
-.classList.add("show");
-
-}
-
-
-function closeProduct(){
-
-document
-.getElementById("productModal")
-.classList.remove("show");
-
-}
-
-
-function changeImage(element){
-
-document
-.getElementById("mainImage")
-.src = element.src;
-
-document
-.querySelectorAll(".thumb")
-.forEach(img =>
-img.classList.remove("active")
-);
-
-element.classList.add("active");
-
-}
-
-
-/* BUY NOW */
-
-function buyNow(){
-
-const message =
-`Hi Smart Basket, I'm interested in this product.
-
-Product: ${product.name}
-
-Price: ₹${product.price}
-
-Please share order details.`;
-
-const url =
-"https://wa.me/918921678447?text="
-+
-encodeURIComponent(message);
-
-window.open(url,"_blank");
-
-}
-
-
-/* CART */
-
-function addToCart(){
-
-cartQty++;
-
-document
-.getElementById("cartCount")
-.textContent = cartQty;
-
-renderCart();
-
-closeProduct();
-
-openCart();
-
-}
-
-
-function renderCart(){
-
-const container =
-document.getElementById("cartItems");
-
-if(cartQty === 0){
-
-container.innerHTML =
-"<p>Your cart is empty.</p>";
-
-return;
-
-}
-
-container.innerHTML = `
-
-<div class="cart-item">
-
-<img src="${product.images[0]}">
-
-<div class="cart-info">
-
-<strong>
-${product.name}
-</strong>
-
-<p>
-₹${product.price} × ${cartQty}
-</p>
-
-<button
-class="remove"
-onclick="removeCart()"
->
-Remove
-</button>
-
-</div>
-
-</div>
-
-`;
-
-document
-.getElementById("cartTotal")
-.textContent =
-"Total: ₹" + (product.price * cartQty);
-
-}
-
-
-function removeCart(){
-
-cartQty = 0;
-
-document
-.getElementById("cartCount")
-.textContent = 0;
-
-renderCart();
-
-}
-
-
-/* CART PANEL */
-
-function openCart(){
-
-document
-.getElementById("cartPanel")
-.classList.add("open");
-
-renderCart();
-
-}
-
-
-function closeCart(){
-
-document
-.getElementById("cartPanel")
-.classList.remove("open");
-
-}
-
-
-/* CART WHATSAPP ORDER */
-
-function sendCartOrder(){
-
-if(cartQty === 0){
-
-alert("Your cart is empty.");
-
-return;
-
-}
-
-const message =
-`Hi Smart Basket, I want to order this product.
-
-Product: ${product.name}
-
-Quantity: ${cartQty}
-
-Price: ₹${product.price * cartQty}
-
-Please confirm my order.`;
-
-const url =
-"https://wa.me/918921678447?text="
-+
-encodeURIComponent(message);
-
-window.open(url,"_blank");
-
-}
-
-</script>
-
-</body>
-</html>
+  <div class="hero-inner">
+
+    <div>
+      <div class="eyebrow">SMART BASKET • PREMIUM STORE</div>
+
+      <h1>
+        SHOP<br>
+        <span>SMARTER.</span>
+      </h1>
+
+      <p>
+        Premium quality. Smart choices. Budget friendly.
+        Discover useful products selected for modern everyday living.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#shop" class="btn btn-gold">SHOP NOW</a>
+        <a href="#about
