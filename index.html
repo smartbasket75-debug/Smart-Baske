@@ -6,46 +6,19 @@
 
 <title>Smart Basket IN | Shop Smart. Live Better.</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-
 <style>
-
-:root{
-  --bg:#f7f4ef;
-  --dark:#171717;
-  --muted:#777;
-  --card:#ffffff;
-  --border:#e8e0d7;
-  --accent:#e9d7c4;
-}
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap');
 
 *{
+  box-sizing:border-box;
   margin:0;
   padding:0;
-  box-sizing:border-box;
-}
-
-html{
-  scroll-behavior:smooth;
 }
 
 body{
   font-family:"DM Sans",sans-serif;
-  background:var(--bg);
-  color:var(--dark);
-  overflow-x:hidden;
-}
-
-button,
-input{
-  font-family:inherit;
-}
-
-button{
-  cursor:pointer;
+  background:#f7f4ee;
+  color:#111;
 }
 
 a{
@@ -53,449 +26,320 @@ a{
   color:inherit;
 }
 
-/* OFFER BAR */
-
-.offer-bar{
-  background:#171717;
-  color:#fff;
-  text-align:center;
-  padding:11px;
-  font-size:11px;
-  font-weight:700;
-  letter-spacing:2px;
+button{
+  font-family:inherit;
+  cursor:pointer;
 }
 
-/* NAV */
+.topbar{
+  background:#111;
+  color:#fff;
+  text-align:center;
+  padding:10px;
+  font-size:13px;
+  letter-spacing:.5px;
+}
 
 nav{
   position:sticky;
   top:0;
-  z-index:1000;
-  background:rgba(247,244,239,.92);
-  backdrop-filter:blur(18px);
-  border-bottom:1px solid var(--border);
+  z-index:50;
+  background:rgba(247,244,238,.96);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid #ddd6c8;
 }
 
-.nav-container{
-  max-width:1300px;
+.nav-inner{
+  max-width:1200px;
   margin:auto;
-  padding:17px 24px;
+  padding:17px 20px;
   display:flex;
-  align-items:center;
   justify-content:space-between;
+  align-items:center;
   gap:20px;
 }
 
 .logo{
   font-family:"Cormorant Garamond",serif;
-  font-size:32px;
+  font-size:29px;
   font-weight:700;
+}
+
+.logo span{
+  color:#b38a38;
 }
 
 .nav-links{
   display:flex;
-  gap:25px;
-  font-size:13px;
-  font-weight:600;
+  gap:22px;
+  font-size:14px;
 }
 
 .nav-links a:hover{
-  opacity:.5;
+  color:#b38a38;
 }
 
 .cart-btn{
-  background:var(--dark);
+  background:#111;
   color:#fff;
   border:0;
-  padding:11px 18px;
+  padding:11px 16px;
   border-radius:30px;
-  font-weight:700;
 }
 
-/* HERO */
-
 .hero{
-  min-height:620px;
+  min-height:500px;
   display:flex;
   align-items:center;
   justify-content:center;
   text-align:center;
-  padding:80px 20px;
-
+  padding:70px 20px;
   background:
-    radial-gradient(circle at 10% 20%,#ead9c5,transparent 35%),
-    radial-gradient(circle at 90% 80%,#ddd0c0,transparent 35%);
-
-  overflow:hidden;
+    linear-gradient(rgba(0,0,0,.62),rgba(0,0,0,.62)),
+    url("https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1800&q=85")
+    center/cover;
+  color:#fff;
 }
 
 .hero-content{
-  max-width:900px;
-  animation:fadeUp 1s ease both;
+  max-width:800px;
 }
 
-.hero-tag{
-  display:inline-block;
-  padding:9px 18px;
-  border:1px solid #222;
-  border-radius:30px;
-  font-size:10px;
-  letter-spacing:2px;
-  margin-bottom:25px;
+.hero-small{
+  letter-spacing:4px;
+  font-size:13px;
+  color:#d8b86a;
+  margin-bottom:18px;
 }
 
 .hero h1{
   font-family:"Cormorant Garamond",serif;
-  font-size:clamp(55px,9vw,110px);
-  line-height:.9;
-  letter-spacing:-3px;
+  font-size:70px;
+  line-height:.95;
+  margin-bottom:20px;
 }
 
 .hero p{
-  max-width:600px;
-  margin:28px auto;
-  color:#555;
-  line-height:1.7;
+  font-size:17px;
+  color:#eee;
+  margin-bottom:28px;
 }
 
-.hero-buttons{
-  display:flex;
-  justify-content:center;
-  gap:12px;
-  flex-wrap:wrap;
-}
-
-.primary-btn,
-.secondary-btn{
-  padding:15px 28px;
+.gold-btn{
+  background:#c49a48;
+  color:#111;
+  border:0;
+  padding:14px 25px;
   border-radius:30px;
-  font-size:14px;
   font-weight:700;
-  transition:.3s;
 }
 
-.primary-btn{
-  background:#171717;
-  color:#fff;
-}
-
-.secondary-btn{
-  border:1px solid #171717;
-}
-
-.primary-btn:hover,
-.secondary-btn:hover{
-  transform:translateY(-3px);
-}
-
-/* TRUST */
-
-.trust{
+.section{
   max-width:1200px;
-  margin:-35px auto 0;
-  position:relative;
-  z-index:2;
-  padding:0 20px;
-}
-
-.trust-box{
-  background:#fff;
-  padding:28px;
-  border-radius:22px;
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:20px;
-  box-shadow:0 20px 60px rgba(0,0,0,.08);
-}
-
-.trust-item{
-  text-align:center;
-}
-
-.trust-item div{
-  font-size:26px;
-}
-
-.trust-item h4{
-  margin-top:8px;
-  font-size:14px;
-}
-
-.trust-item p{
-  margin-top:5px;
-  font-size:11px;
-  color:#777;
-}
-
-/* SECTIONS */
-
-section{
-  padding:90px 20px;
-}
-
-.container{
-  max-width:1300px;
   margin:auto;
+  padding:65px 20px;
 }
 
 .section-title{
   text-align:center;
-  margin-bottom:40px;
+  margin-bottom:35px;
 }
 
-.section-title span{
-  font-size:10px;
+.section-title small{
+  color:#b38a38;
   letter-spacing:3px;
-  color:#777;
 }
 
 .section-title h2{
   font-family:"Cormorant Garamond",serif;
-  font-size:clamp(42px,5vw,62px);
-  margin-top:8px;
+  font-size:46px;
+  margin-top:5px;
 }
 
-/* SEARCH */
-
-.search-box{
-  max-width:650px;
-  margin:0 auto 25px;
+.trust{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
+  margin-bottom:55px;
 }
 
-.search-box input{
-  width:100%;
-  border:1px solid var(--border);
-  padding:17px 20px;
-  border-radius:40px;
-  outline:none;
+.trust-card{
   background:#fff;
-  font-size:14px;
+  padding:25px;
+  border:1px solid #e4ded2;
+  text-align:center;
+  border-radius:12px;
 }
 
-/* CATEGORIES */
+.trust-card strong{
+  display:block;
+  margin-bottom:7px;
+}
 
-.categories{
+.controls{
   display:flex;
-  flex-wrap:wrap;
   gap:10px;
+  flex-wrap:wrap;
   justify-content:center;
-  margin-bottom:35px;
+  margin-bottom:30px;
 }
 
-.category-btn{
-  background:#fff;
-  border:1px solid var(--border);
-  padding:12px 18px;
+.search{
+  width:min(400px,100%);
+  padding:13px 16px;
+  border:1px solid #ccc;
   border-radius:30px;
-  font-size:12px;
-  font-weight:700;
+  outline:none;
 }
 
-.category-btn.active,
-.category-btn:hover{
-  background:#171717;
+.filter{
+  border:1px solid #ccc;
+  background:#fff;
+  padding:11px 17px;
+  border-radius:30px;
+}
+
+.filter.active{
+  background:#111;
   color:#fff;
 }
 
-/* PRODUCTS */
-
-.product-grid{
+.products{
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  gap:22px;
+  gap:20px;
 }
 
-.product-card{
+.product{
   background:#fff;
-  border:1px solid var(--border);
-  border-radius:20px;
+  border:1px solid #e4ded2;
+  border-radius:15px;
   overflow:hidden;
-  transition:.35s;
-  animation:fadeUp .6s ease both;
+  transition:.25s;
 }
 
-.product-card:hover{
-  transform:translateY(-7px);
-  box-shadow:0 20px 50px rgba(0,0,0,.1);
+.product:hover{
+  transform:translateY(-5px);
+  box-shadow:0 12px 30px rgba(0,0,0,.08);
 }
 
 .product-image{
-  height:260px;
-  background:#eee8e0;
-  overflow:hidden;
+  height:250px;
+  background:#f0ede7;
   position:relative;
+  overflow:hidden;
 }
 
 .product-image img{
   width:100%;
   height:100%;
   object-fit:cover;
-  transition:.5s;
-}
-
-.product-card:hover .product-image img{
-  transform:scale(1.07);
-}
-
-.view-product{
-  position:absolute;
-  bottom:12px;
-  left:50%;
-  transform:translateX(-50%);
-  background:#fff;
-  border:0;
-  padding:9px 15px;
-  border-radius:20px;
-  font-size:11px;
-  font-weight:700;
-  box-shadow:0 5px 20px rgba(0,0,0,.15);
-}
-
-.product-info{
-  padding:17px;
 }
 
 .badge{
-  display:inline-block;
-  font-size:9px;
-  font-weight:700;
-  letter-spacing:1px;
+  position:absolute;
+  top:12px;
+  left:12px;
+  background:#111;
+  color:#fff;
   padding:6px 9px;
-  border-radius:20px;
-  background:#f1e7dc;
-  margin-bottom:9px;
-}
-
-.product-info h3{
-  font-size:15px;
-  line-height:1.4;
-  min-height:42px;
-}
-
-.product-category{
   font-size:11px;
-  color:#888;
-  margin:7px 0;
+  border-radius:20px;
 }
 
-.price-row{
-  display:flex;
-  align-items:center;
-  gap:9px;
-  margin:13px 0;
+.product-info{
+  padding:18px;
+}
+
+.category{
+  color:#a47c30;
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:1px;
+}
+
+.product h3{
+  font-size:16px;
+  margin:7px 0 10px;
+  min-height:40px;
 }
 
 .price{
-  font-size:19px;
+  font-size:20px;
   font-weight:700;
 }
 
 .old-price{
-  font-size:12px;
   color:#999;
   text-decoration:line-through;
+  font-size:13px;
+  margin-left:7px;
 }
 
-.add-cart{
-  width:100%;
-  padding:13px;
+.product-buttons{
+  display:flex;
+  gap:8px;
+  margin-top:15px;
+}
+
+.product-buttons button{
+  flex:1;
+  padding:10px;
+  border-radius:8px;
   border:0;
-  border-radius:30px;
-  background:#171717;
-  color:#fff;
-  font-weight:700;
-  transition:.3s;
+  font-weight:600;
 }
 
-.add-cart:hover{
-  opacity:.85;
+.view-btn{
+  background:#eee;
 }
 
-/* ABOUT */
-
-.about-box{
-  background:#171717;
+.buy-btn{
+  background:#111;
   color:#fff;
-  padding:70px 25px;
-  border-radius:30px;
+}
+
+.about{
+  background:#111;
+  color:#fff;
   text-align:center;
 }
 
-.about-box h2{
+.about-inner{
+  max-width:750px;
+  margin:auto;
+}
+
+.about h2{
   font-family:"Cormorant Garamond",serif;
-  font-size:60px;
+  font-size:45px;
+  color:#d5b15e;
+  margin-bottom:15px;
 }
 
-.about-box p{
-  max-width:650px;
-  margin:20px auto;
+footer{
+  background:#080808;
   color:#bbb;
-  line-height:1.8;
+  padding:45px 20px;
 }
 
-/* INFO */
-
-.info-grid{
+.footer-inner{
+  max-width:1200px;
+  margin:auto;
   display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:20px;
+  grid-template-columns:2fr 1fr 1fr;
+  gap:30px;
 }
 
-.info-card{
-  background:#fff;
-  padding:28px;
-  border:1px solid var(--border);
-  border-radius:20px;
-}
-
-.info-card h3{
+footer h3{
+  color:#fff;
   margin-bottom:12px;
 }
 
-.info-card p{
-  color:#666;
-  font-size:13px;
-  line-height:1.7;
+footer p{
+  margin:7px 0;
+  font-size:14px;
 }
-
-.info-value{
-  margin-top:15px;
-  padding:13px;
-  background:#f3eee8;
-  border-radius:10px;
-  font-size:13px;
-  font-weight:700;
-  word-break:break-word;
-}
-
-/* FOOTER */
-
-footer{
-  background:#fff;
-  padding:60px 20px 30px;
-  border-top:1px solid var(--border);
-  text-align:center;
-}
-
-.footer-logo{
-  font-family:"Cormorant Garamond",serif;
-  font-size:40px;
-  font-weight:700;
-}
-
-.footer-text{
-  color:#777;
-  margin-top:10px;
-}
-
-.footer-contact{
-  margin-top:22px;
-  font-size:13px;
-  line-height:1.9;
-  color:#666;
-}
-
-/* WHATSAPP */
 
 .whatsapp{
   position:fixed;
@@ -507,11 +351,141 @@ footer{
   background:#25d366;
   color:#fff;
   display:flex;
-  align-items:center;
   justify-content:center;
-  font-size:26px;
-  z-index:5000;
-  box-shadow:0 10px 30px rgba(0,0,0,.2);
+  align-items:center;
+  font-size:27px;
+  z-index:100;
+  box-shadow:0 5px 20px rgba(0,0,0,.25);
+}
+
+/* PRODUCT MODAL */
+
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.7);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:200;
+  padding:20px;
+}
+
+.modal.show{
+  display:flex;
+}
+
+.modal-box{
+  background:#fff;
+  width:min(900px,100%);
+  max-height:90vh;
+  overflow:auto;
+  border-radius:18px;
+  position:relative;
+  padding:25px;
+}
+
+.close{
+  position:absolute;
+  right:18px;
+  top:15px;
+  background:#111;
+  color:#fff;
+  border:0;
+  width:35px;
+  height:35px;
+  border-radius:50%;
+  font-size:20px;
+  z-index:2;
+}
+
+.detail{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:30px;
+  padding-top:15px;
+}
+
+.detail-main{
+  background:#f3f0ea;
+  border-radius:12px;
+  height:430px;
+  overflow:hidden;
+}
+
+.detail-main img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+}
+
+.thumbs{
+  display:flex;
+  gap:8px;
+  margin-top:10px;
+  overflow-x:auto;
+}
+
+.thumb{
+  width:75px;
+  height:75px;
+  object-fit:cover;
+  border:2px solid transparent;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+.thumb.active{
+  border-color:#b38a38;
+}
+
+.detail-info{
+  padding:20px 5px;
+}
+
+.detail-info .category{
+  margin-bottom:8px;
+}
+
+.detail-info h2{
+  font-family:"Cormorant Garamond",serif;
+  font-size:40px;
+  line-height:1;
+  margin-bottom:15px;
+}
+
+.detail-price{
+  font-size:27px;
+  font-weight:700;
+  margin:15px 0;
+}
+
+.detail-description{
+  color:#555;
+  line-height:1.7;
+  margin-bottom:25px;
+}
+
+.detail-actions{
+  display:flex;
+  gap:10px;
+}
+
+.detail-actions button{
+  flex:1;
+  padding:14px;
+  border:0;
+  border-radius:8px;
+  font-weight:700;
+}
+
+.add-cart{
+  background:#eee;
+}
+
+.buy-now{
+  background:#111;
+  color:#fff;
 }
 
 /* CART */
@@ -519,1009 +493,1161 @@ footer{
 .cart-panel{
   position:fixed;
   top:0;
-  right:-450px;
-  width:420px;
-  max-width:100%;
+  right:-430px;
+  width:min(430px,100%);
   height:100vh;
   background:#fff;
-  z-index:4000;
+  z-index:300;
+  transition:.3s;
+  box-shadow:-5px 0 30px rgba(0,0,0,.2);
   padding:25px;
-  transition:.4s;
-  box-shadow:-20px 0 60px rgba(0,0,0,.15);
-  overflow-y:auto;
+  overflow:auto;
 }
 
-.cart-panel.active{
+.cart-panel.open{
   right:0;
 }
 
-.cart-header{
+.cart-head{
   display:flex;
-  align-items:center;
   justify-content:space-between;
-  margin-bottom:20px;
+  align-items:center;
+  border-bottom:1px solid #ddd;
+  padding-bottom:15px;
 }
 
-.cart-header h2{
-  font-family:"Cormorant Garamond",serif;
-  font-size:36px;
-}
-
-.close-btn{
-  border:0;
-  background:none;
-  font-size:30px;
+.cart-items{
+  margin:20px 0;
 }
 
 .cart-item{
   display:flex;
-  justify-content:space-between;
-  gap:15px;
-  padding:15px 0;
+  gap:12px;
   border-bottom:1px solid #eee;
+  padding:15px 0;
 }
 
-.cart-item strong{
-  font-size:13px;
+.cart-item img{
+  width:75px;
+  height:75px;
+  object-fit:cover;
+  border-radius:8px;
 }
 
-.remove-btn{
-  display:block;
+.cart-item-info{
+  flex:1;
+}
+
+.remove{
   border:0;
   background:none;
-  color:#c33;
-  margin-top:7px;
+  color:#c00;
   font-size:12px;
 }
 
 .cart-total{
-  font-size:20px;
+  font-size:21px;
   font-weight:700;
-  margin:25px 0;
+  margin:20px 0;
 }
 
 .checkout-btn{
   width:100%;
-  border:0;
-  background:#171717;
+  background:#25d366;
   color:#fff;
+  border:0;
   padding:15px;
-  border-radius:30px;
+  border-radius:8px;
   font-weight:700;
 }
 
-/* CHECKOUT MODAL */
+/* CHECKOUT */
 
-.modal{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.65);
+.checkout{
   display:none;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
-  z-index:6000;
 }
 
-.modal.active{
-  display:flex;
-}
-
-.modal-box{
-  width:520px;
-  max-width:100%;
-  max-height:90vh;
-  overflow-y:auto;
-  background:#fff;
-  padding:30px;
-  border-radius:25px;
-}
-
-.modal-box h2{
-  font-family:"Cormorant Garamond",serif;
-  font-size:40px;
-  margin-bottom:20px;
-}
-
-.payment-option{
-  border:1px solid var(--border);
-  padding:17px;
-  border-radius:15px;
-  margin-bottom:12px;
-}
-
-.payment-option h4{
-  margin-bottom:7px;
-}
-
-.modal-close{
-  float:right;
-  border:0;
-  background:none;
-  font-size:25px;
-}
-
-.whatsapp-order{
+.checkout.show{
   display:block;
-  margin-top:20px;
-  text-align:center;
-  background:#25d366;
-  color:#fff;
+}
+
+.checkout input,
+.checkout textarea,
+.checkout select{
+  width:100%;
+  padding:12px;
+  border:1px solid #ccc;
+  border-radius:7px;
+  margin:6px 0 12px;
+  font-family:inherit;
+}
+
+.payment-box{
+  background:#f5f1e8;
   padding:15px;
-  border-radius:30px;
-  font-weight:700;
-}
-
-/* PRODUCT DETAIL MODAL */
-
-.product-detail{
-  width:700px;
-}
-
-.main-product-image{
-  width:100%;
-  height:400px;
-  border-radius:18px;
-  overflow:hidden;
-  background:#eee8e0;
-}
-
-.main-product-image img{
-  width:100%;
-  height:100%;
-  object-fit:contain;
-}
-
-.product-thumbnails{
-  display:flex;
-  gap:10px;
-  margin-top:12px;
-  overflow-x:auto;
-}
-
-.product-thumbnail{
-  width:75px;
-  height:75px;
-  flex:0 0 75px;
-  border:2px solid transparent;
   border-radius:10px;
-  overflow:hidden;
-  cursor:pointer;
+  margin:10px 0 15px;
+  font-size:14px;
 }
 
-.product-thumbnail.active{
-  border-color:#171717;
-}
-
-.product-thumbnail img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-.detail-info{
-  padding-top:20px;
-}
-
-.detail-info h2{
-  font-family:"Cormorant Garamond",serif;
-  font-size:38px;
-}
-
-.detail-price{
-  font-size:25px;
-  font-weight:700;
-  margin:10px 0;
-}
-
-.detail-description{
-  color:#666;
-  line-height:1.7;
-  font-size:13px;
-  margin:15px 0;
-}
-
-.detail-buttons{
-  display:flex;
-  gap:10px;
-}
-
-.detail-buttons button{
-  flex:1;
-  border:0;
-  padding:14px;
-  border-radius:30px;
-  font-weight:700;
-}
-
-.detail-cart{
-  background:#171717;
-  color:#fff;
-}
-
-.detail-buy{
-  background:#25d366;
-  color:#fff;
-}
-
-/* ANIMATION */
-
-@keyframes fadeUp{
-  from{
-    opacity:0;
-    transform:translateY(25px);
+@media(max-width:900px){
+  .products{
+    grid-template-columns:repeat(2,1fr);
   }
 
-  to{
-    opacity:1;
-    transform:translateY(0);
+  .trust{
+    grid-template-columns:1fr;
+  }
+
+  .footer-inner{
+    grid-template-columns:1fr;
+  }
+
+  .hero h1{
+    font-size:55px;
   }
 }
 
-/* RESPONSIVE */
-
-@media(max-width:1000px){
-
-  .product-grid{
-    grid-template-columns:repeat(3,1fr);
-  }
-
-}
-
-@media(max-width:750px){
-
+@media(max-width:600px){
   .nav-links{
     display:none;
   }
 
-  .trust-box{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .product-grid{
-    grid-template-columns:repeat(2,1fr);
-    gap:14px;
-  }
-
-  .product-image{
-    height:210px;
-  }
-
-  .info-grid{
-    grid-template-columns:1fr;
-  }
-
-  .about-box h2{
-    font-size:45px;
-  }
-
-  .main-product-image{
-    height:300px;
-  }
-
-}
-
-@media(max-width:480px){
-
-  .logo{
-    font-size:26px;
+  .hero{
+    min-height:440px;
   }
 
   .hero h1{
-    font-size:58px;
+    font-size:48px;
+  }
+
+  .products{
+    grid-template-columns:1fr 1fr;
+    gap:10px;
   }
 
   .product-image{
-    height:180px;
+    height:190px;
   }
 
   .product-info{
-    padding:13px;
+    padding:12px;
   }
 
-  .cart-panel{
-    width:100%;
+  .product h3{
+    font-size:14px;
   }
 
-  .product-detail{
-    padding:20px;
+  .detail{
+    grid-template-columns:1fr;
   }
 
-  .main-product-image{
-    height:250px;
+  .detail-main{
+    height:300px;
   }
 
   .detail-info h2{
-    font-size:30px;
+    font-size:32px;
   }
-
 }
-
 </style>
 </head>
 
 <body>
 
-<!-- OFFER BAR -->
-
-<div class="offer-bar">
+<div class="topbar">
 FIRST ORDER? GET 20% OFF
 </div>
 
-
-<!-- NAV -->
-
 <nav>
+  <div class="nav-inner">
 
-<div class="nav-container">
+    <a href="#" class="logo">
+      Smart <span>Basket</span> IN
+    </a>
 
-<a href="#" class="logo">
-Smart Basket IN
-</a>
+    <div class="nav-links">
+      <a href="#shop">Shop</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
 
-<div class="nav-links">
+    <button class="cart-btn" onclick="openCart()">
+      🛒 Cart <span id="cartCount">0</span>
+    </button>
 
-<a href="#products">Shop</a>
-
-<a href="#about">About</a>
-
-<a href="#payment">Payment</a>
-
-<a href="#contact">Contact</a>
-
-</div>
-
-<button class="cart-btn" onclick="openCart()">
-Cart (<span id="cartCount">0</span>)
-</button>
-
-</div>
-
+  </div>
 </nav>
-
-
-<!-- HERO -->
 
 <section class="hero">
 
-<div class="hero-content">
+  <div class="hero-content">
 
-<div class="hero-tag">
-PREMIUM EVERYDAY SHOPPING
-</div>
+    <div class="hero-small">
+      SMART BASKET • PREMIUM STORE
+    </div>
 
-<h1>
-Shop Smart.<br>
-Live Better.
-</h1>
+    <h1>
+      SHOP<br>
+      SMARTER
+    </h1>
 
-<p>
-Discover useful products for your home, kitchen and everyday life.
-Premium products, easy ordering and simple payment options.
-</p>
+    <p>
+      Premium quality. Smart choices. Budget friendly.
+    </p>
 
-<div class="hero-buttons">
+    <a href="#shop">
+      <button class="gold-btn">
+        SHOP NOW
+      </button>
+    </a>
 
-<a href="#products" class="primary-btn">
-Shop Now
-</a>
-
-<a
-href="https://wa.me/918921678447"
-target="_blank"
-class="secondary-btn"
->
-WhatsApp Us
-</a>
-
-</div>
-
-</div>
+  </div>
 
 </section>
 
+<section class="section">
 
-<!-- TRUST -->
+  <div class="trust">
 
-<div class="trust">
+    <div class="trust-card">
+      <strong>🚚 Fast Delivery</strong>
+      Delivery across India
+    </div>
 
-<div class="trust-box">
+    <div class="trust-card">
+      <strong>🔄 Easy Returns</strong>
+      7 day return available
+    </div>
 
-<div class="trust-item">
+    <div class="trust-card">
+      <strong>⭐ Trusted Store</strong>
+      Trusted by 100+ customers
+    </div>
 
-<div>🚚</div>
-
-<h4>
-Fast Support
-</h4>
-
-<p>
-Easy WhatsApp ordering
-</p>
-
-</div>
-
-
-<div class="trust-item">
-
-<div>💳</div>
-
-<h4>
-UPI Payment
-</h4>
-
-<p>
-Quick and secure
-</p>
-
-</div>
-
-
-<div class="trust-item">
-
-<div>💵</div>
-
-<h4>
-Cash on Delivery
-</h4>
-
-<p>
-₹100 advance required
-</p>
-
-</div>
-
-
-<div class="trust-item">
-
-<div>🎁</div>
-
-<h4>
-20% OFF
-</h4>
-
-<p>
-For your first order
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-
-<!-- PRODUCTS -->
-
-<section id="products">
-
-<div class="container">
-
-<div class="section-title">
-
-<span>
-SHOP COLLECTION
-</span>
-
-<h2>
-Find Something Useful
-</h2>
-
-</div>
-
-
-<div class="search-box">
-
-<input
-type="text"
-id="searchInput"
-placeholder="Search products..."
-oninput="renderProducts()"
->
-
-</div>
-
-
-<div class="categories">
-
-<button
-class="category-btn active"
-onclick="setCategory('All',this)"
->
-All
-</button>
-
-<button
-class="category-btn"
-onclick="setCategory('Home',this)"
->
-Home
-</button>
-
-<button
-class="category-btn"
-onclick="setCategory('Kitchen',this)"
->
-Kitchen
-</button>
-
-<button
-class="category-btn"
-onclick="setCategory('Electric',this)"
->
-Electric
-</button>
-
-<button
-class="category-btn"
-onclick="setCategory('Trending',this)"
->
-Trending
-</button>
-
-</div>
-
-
-<div
-class="product-grid"
-id="productGrid"
->
-</div>
-
-</div>
+  </div>
 
 </section>
 
+<section class="section" id="shop">
 
-<!-- ABOUT -->
+  <div class="section-title">
 
-<section id="about">
+    <small>SMART COLLECTION</small>
 
-<div class="container">
+    <h2>Featured Products</h2>
 
-<div class="about-box">
+  </div>
 
-<h2>
-Smart Shopping.<br>
-Simple Living.
-</h2>
+  <div class="controls">
 
-<p>
-Smart Basket IN brings together useful home, kitchen,
-electric and trending products in one simple shopping experience.
-</p>
+    <input
+      class="search"
+      id="search"
+      type="text"
+      placeholder="Search products..."
+      oninput="renderProducts()"
+    >
 
-</div>
+    <button class="filter active" onclick="setCategory('All',this)">
+      All
+    </button>
 
-</div>
+    <button class="filter" onclick="setCategory('Home',this)">
+      Home
+    </button>
 
-</section>
+    <button class="filter" onclick="setCategory('Kitchen',this)">
+      Kitchen
+    </button>
 
+    <button class="filter" onclick="setCategory('Electric',this)">
+      Electric
+    </button>
 
-<!-- PAYMENT -->
+    <button class="filter" onclick="setCategory('Trending',this)">
+      Trending
+    </button>
 
-<section id="payment">
+  </div>
 
-<div class="container">
-
-<div class="section-title">
-
-<span>
-PAYMENT & DELIVERY
-</span>
-
-<h2>
-Simple Ways To Order
-</h2>
-
-</div>
-
-
-<div class="info-grid">
-
-
-<div class="info-card">
-
-<h3>
-💳 UPI Payment
-</h3>
-
-<p>
-Pay directly using our UPI ID after confirming your order.
-</p>
-
-<div class="info-value">
-k63653390@okicici
-</div>
-
-</div>
-
-
-<div class="info-card">
-
-<h3>
-💵 Cash On Delivery
-</h3>
-
-<p>
-COD is available. A ₹100 advance payment is required
-to confirm your Cash on Delivery order.
-</p>
-
-<div class="info-value">
-₹100 COD Advance
-</div>
-
-</div>
-
-
-<div class="info-card">
-
-<h3>
-📱 WhatsApp Order
-</h3>
-
-<p>
-Send us your product details on WhatsApp and
-we will help you complete your order.
-</p>
-
-<div class="info-value">
-8921678447
-</div>
-
-</div>
-
-
-</div>
-
-</div>
+  <div class="products" id="products"></div>
 
 </section>
 
+<section class="about" id="about">
 
-<!-- FOOTER -->
+  <div class="section">
+
+    <div class="about-inner">
+
+      <h2>Smart Shopping Starts Here.</h2>
+
+      <p>
+        At Smart Basket IN, we bring useful, stylish and
+        affordable products directly to you.
+        Premium for less.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
 
 <footer id="contact">
 
-<div class="footer-logo">
-Smart Basket IN
-</div>
+  <div class="footer-inner">
 
-<p class="footer-text">
-Shop Smart. Live Better.
-</p>
+    <div>
+      <h3>Smart Basket IN</h3>
 
-<div class="footer-contact">
+      <p>
+        Premium quality. Smart choices.
+      </p>
 
-WhatsApp: 8921678447<br>
+      <p>
+        📍 India
+      </p>
+    </div>
 
-Support: smartbasket75@gmail.com<br>
+    <div>
 
-Owner: irshadiqu@gmail.com
+      <h3>Contact</h3>
 
-</div>
+      <p>
+        WhatsApp: 8921678447
+      </p>
+
+      <p>
+        Email: smartbasket75@gmail.com
+      </p>
+
+    </div>
+
+    <div>
+
+      <h3>Policies</h3>
+
+      <p>🚚 Shipping: 1–10 days</p>
+      <p>🔄 Returns: Within 7 days</p>
+      <p>💳 COD Available</p>
+
+    </div>
+
+  </div>
 
 </footer>
 
-
-<!-- WHATSAPP -->
-
 <a
-class="whatsapp"
-href="https://wa.me/918921678447"
-target="_blank"
+  class="whatsapp"
+  href="https://wa.me/918921678447?text=Hi%20Smart%20Basket%2C%20I%E2%80%99m%20interested%20in%20this%20product"
+  target="_blank"
 >
-💬
+  ☎
 </a>
 
+<!-- PRODUCT MODAL -->
+
+<div class="modal" id="productModal">
+
+  <div class="modal-box">
+
+    <button class="close" onclick="closeProduct()">
+      ×
+    </button>
+
+    <div class="detail">
+
+      <div>
+
+        <div class="detail-main">
+          <img id="detailImage" src="" alt="Product">
+        </div>
+
+        <div class="thumbs" id="thumbs"></div>
+
+      </div>
+
+      <div class="detail-info">
+
+        <div class="category" id="detailCategory"></div>
+
+        <h2 id="detailName"></h2>
+
+        <div class="detail-price">
+          ₹<span id="detailPrice"></span>
+          <span class="old-price" id="detailOldPrice"></span>
+        </div>
+
+        <p class="detail-description" id="detailDescription"></p>
+
+        <div class="detail-actions">
+
+          <button
+            class="add-cart"
+            onclick="addDetailToCart()"
+          >
+            Add To Cart
+          </button>
+
+          <button
+            class="buy-now"
+            onclick="detailBuyNow()"
+          >
+            Buy Now
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
 
 <!-- CART -->
 
-<div
-class="cart-panel"
-id="cartPanel"
->
+<div class="cart-panel" id="cartPanel">
 
-<div class="cart-header">
+  <div class="cart-head">
 
-<h2>
-Your Cart
-</h2>
+    <h2>Your Cart</h2>
 
-<button
-class="close-btn"
-onclick="closeCart()"
->
-×
-</button>
+    <button
+      class="close"
+      onclick="closeCart()"
+    >
+      ×
+    </button>
 
-</div>
+  </div>
 
+  <div
+    class="cart-items"
+    id="cartItems"
+  ></div>
 
-<div id="cartItems">
-</div>
+  <div
+    class="cart-total"
+    id="cartTotal"
+  >
+    Total: ₹0
+  </div>
 
+  <button
+    class="checkout-btn"
+    onclick="showCheckout()"
+  >
+    Continue to Checkout
+  </button>
 
-<div class="cart-total">
+  <div class="checkout" id="checkout">
 
-Total: ₹<span id="cartTotal">0</span>
+    <h3 style="margin-top:25px">
+      Customer Details
+    </h3>
 
-</div>
+    <input
+      id="customerName"
+      placeholder="Full Name"
+    >
 
+    <input
+      id="customerMobile"
+      placeholder="Mobile Number"
+      type="tel"
+    >
 
-<button
-class="checkout-btn"
-onclick="openCheckout()"
->
-Proceed To Checkout
-</button>
+    <textarea
+      id="customerAddress"
+      placeholder="Full Address"
+      rows="3"
+    ></textarea>
 
-</div>
+    <input
+      id="customerCity"
+      placeholder="City"
+    >
 
+    <input
+      id="customerState"
+      placeholder="State"
+    >
 
-<!-- CHECKOUT MODAL -->
+    <input
+      id="customerPin"
+      placeholder="PIN Code"
+    >
 
-<div
-class="modal"
-id="checkoutModal"
->
+    <div class="payment-box">
 
-<div class="modal-box">
+      <strong>Payment Options</strong>
 
-<button
-class="modal-close"
-onclick="closeCheckout()"
->
-×
-</button>
+      <br><br>
 
-<h2>
-Checkout
-</h2>
+      <b>UPI:</b> k63653390@okicici
 
+      <br><br>
 
-<div class="payment-option">
+      <b>COD:</b> ₹100 advance required
 
-<h4>
-💳 Direct UPI Payment
-</h4>
+    </div>
 
-<p>
-After payment, send your order screenshot
-and product details on WhatsApp.
-</p>
+    <button
+      class="checkout-btn"
+      onclick="sendOrder()"
+    >
+      Order on WhatsApp
+    </button>
 
-<div class="info-value">
-UPI: k63653390@okicici
-</div>
-
-</div>
-
-
-<div class="payment-option">
-
-<h4>
-💵 Cash On Delivery
-</h4>
-
-<p>
-Pay ₹100 advance to confirm your COD order.
-Remaining amount can be paid on delivery.
-</p>
-
-<div class="info-value">
-COD Advance: ₹100
-</div>
-
-</div>
-
-
-<a
-id="checkoutWhatsApp"
-class="whatsapp-order"
-target="_blank"
->
-Order on WhatsApp
-</a>
+  </div>
 
 </div>
-
-</div>
-
-
-<!-- PRODUCT DETAIL MODAL -->
-
-<div
-class="modal"
-id="productModal"
->
-
-<div class="modal-box product-detail">
-
-<button
-class="modal-close"
-onclick="closeProductModal()"
->
-×
-</button>
-
-
-<div class="main-product-image">
-
-<img
-id="detailMainImage"
-src=""
-alt=""
->
-
-</div>
-
-
-<div
-class="product-thumbnails"
-id="productThumbnails"
->
-</div>
-
-
-<div class="detail-info">
-
-<h2 id="detailName">
-</h2>
-
-<div class="detail-price">
-₹<span id="detailPrice"></span>
-</div>
-
-<p
-class="detail-description"
-id="detailDescription"
->
-</p>
-
-
-<div class="detail-buttons">
-
-<button
-class="detail-cart"
-id="detailCartButton"
->
-Add To Cart
-</button>
-
-<button
-class="detail-buy"
-id="detailBuyButton"
->
-Buy Now
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
 
 <script>
 
-/* =========================================
-   PRODUCT DATA
-   ========================================= */
-
 const products = [
 
-{
-id:1,
-name:"Multipurpose Electric Cooking Pot",
-category:"Electric",
-price:1200,
-oldPrice:1500,
-image:"https://images.unsplash.com/photo-1585515656973-d4b0f7a0a3c4?auto=format&fit=crop&w=600&q=80",
-images:[
-"https://images.unsplash.com/photo-1585515656973-d4b0f7a0a3c4?auto=format&fit=crop&w=800&q=80"
-],
-description:"Useful electric cooking pot for everyday cooking."
-},
+  {
+    id:1,
+    name:"Premium Home Organizer",
+    category:"Home",
+    price:499,
+    oldPrice:699,
+    image:"https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80",
+    description:"Useful premium home organizer for everyday storage."
+  },
 
-{
-id:2,
-name:"Mini Electric Kettle",
-category:"Electric",
-price:999,
-oldPrice:1299,
-image:"https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=600&q=80",
-images:[
-"https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=800&q=80"
-],
-description:"Compact electric kettle suitable for everyday use."
-},
+  {
+    id:2,
+    name:"Kitchen Storage Box",
+    category:"Kitchen",
+    price:399,
+    oldPrice:599,
+    image:"https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=800&q=80",
+    description:"Smart storage solution for your kitchen."
+  },
 
-{
-id:3,
-name:"Multipurpose Kitchen Organizer",
-category:"Kitchen",
-price:650,
-oldPrice:899,
-image:"https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=600&q=80",
-images:[
-"https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=800&q=80"
-],
-description:"Keep your kitchen organized and clean."
-},
+  {
+    id:3,
+    name:"LED Rechargeable Light",
+    category:"Electric",
+    price:299,
+    oldPrice:499,
+    image:"https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=800&q=80",
+    description:"Rechargeable LED light for home and emergency use."
+  },
 
-{
-id:4,
-name:"Premium Storage Basket",
-category:"Home",
-price:450,
-oldPrice:699,
-image:"https://images.unsplash.com/photo-1556228578-8c89e6adf883?auto=format&fit=crop&w=600&q=80",
-images:[
-"https://images.unsplash.com/photo-1556228578-8c89e6adf883?auto=format&fit=crop&w=800&q=80"
-],
-description:"Simple and useful storage solution for your home."
-},
+  {
+    id:4,
+    name:"Smart Cleaning Tool",
+    category:"Trending",
+    price:349,
+    oldPrice:499,
+    image:"https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=800&q=80",
+    description:"Useful cleaning product for your home."
+  },
 
-{
-id:5,
-name:"Useful Home Cleaning Tool",
-category:"Home",
-price:550,
-oldPrice:799,
-image:"https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=600&q=80",
-images:[
-"https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=800&q=80"
-],
-description:"Useful cleaning accessory for everyday home cleaning."
-},
+  {
+    id:5,
+    name:"Kitchen Utility Set",
+    category:"Kitchen",
+    price:449,
+    oldPrice:699,
+    image:"https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=800&q=80",
+    description:"Practical kitchen utility set."
+  },
 
-{
-id:6,
-name:"Electric Egg Cooker",
-category:"Electric",
-price:900,
-oldPrice:1200,
-image:"https://images.unsplash.com/photo-1585238342028-4d4c9f7b3f4d?auto=format&fit=crop&w=600&q=80",
-images:[
-"https://images.unsplash.com/photo-1585238342028-4d4c9f7b3f4d?auto=format&fit=crop&w=800&q=80"
-],
-description:"Convenient electric egg cooker for quick cooking."
-},
+  {
+    id:6,
+    name:"Premium Storage Basket",
+    category:"Home",
+    price:499,
+    oldPrice:699,
+    image:"https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80",
+    description:"Modern storage basket for home organization."
+  },
 
-{
-id:7,
-name:"Modern Kitchen Storage Box",
-category:"Kitchen",
-price:500,
-oldPrice:750,
-image:"https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=600&q=80",
-images:[
-"https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=800&q=80"
-],
-description:"Modern storage solution for your kitchen."
-},
+  {
+    id:7,
+    name:"Electric Utility Gadget",
+    category:"Electric",
+    price:599,
+    oldPrice:799,
+    image:"https://images.unsplash.com/photo-1550009158-9ebf69173e03?auto=format&fit=crop&w=800&q=80",
+    description:"Useful electric gadget for everyday use."
+  },
 
-{
-id:8,
-name:"Portable LED Light",
-category:"Trending",
-price:600,
-oldPrice:899,
-image:"https://images.unsplash.com/photo-1524484485831-a92ffc0de03f?auto=format&fit=crop&w=600&q=80",
-images:[
-"https://images.unsplash.com/photo-1524484485831-a92ffc0de03f?auto=format&fit=crop&w=800&q=80"
-],
-description:"Portable LED lighting for everyday use."
-},
+  {
+    id:8,
+    name:"Trending Home Product",
+    category:"Trending",
+    price:299,
+    oldPrice:499,
+    image:"https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=80",
+    description:"Trending useful product for your home."
+  },
 
-{
-id:9,
-name:"Multipurpose Vegetable Cutter",
-category:"Kitchen",
-price:499,
-oldPrice:799,
-image:"https://images.unsplash.com/photo-1598514983318-2f64f8f4796c?auto=format&fit=crop&w=600&q=
+  {
+    id:9,
+    name:"Kitchen Essentials",
+    category:"Kitchen",
+    price:399,
+    oldPrice:599,
+    image:"https://images.unsplash.com/photo-1556911220-e15b29be8c0f?auto=format&fit=crop&w=800&q=80",
+    description:"Useful kitchen essentials."
+  },
+
+  {
+    id:10,
+    name:"Home Utility Product",
+    category:"Home",
+    price:349,
+    oldPrice:499,
+    image:"https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&w=800&q=80",
+    description:"Smart utility product for everyday life."
+  },
+
+  /* =========================
+     YOUR NEW MACHINE
+     ========================= */
+
+  {
+    id:11,
+
+    name:"Cordless Rechargeable Electric Cleaning Brush",
+
+    category:"Electric",
+
+    price:1300,
+
+    oldPrice:1699,
+
+    image:"images/cleaning-brush-1.jpeg",
+
+    images:[
+      "images/cleaning-brush-1.jpeg",
+      "images/cleaning-brush-2.jpeg",
+      "images/cleaning-brush-3.jpeg"
+    ],
+
+    description:
+    "Cordless rechargeable electric cleaning brush with multiple brush heads. Suitable for bathroom, tiles, sink, kitchen, glass, car and other cleaning areas."
+  }
+
+];
+
+let currentCategory = "All";
+
+let cart = [];
+
+let selectedProduct = null;
+
+
+/* SHOW PRODUCTS */
+
+function renderProducts(){
+
+  const container =
+    document.getElementById("products");
+
+  const search =
+    document
+    .getElementById("search")
+    .value
+    .toLowerCase();
+
+  const filtered =
+    products.filter(product => {
+
+      const categoryMatch =
+        currentCategory === "All" ||
+        product.category === currentCategory;
+
+      const searchMatch =
+        product.name
+        .toLowerCase()
+        .includes(search);
+
+      return categoryMatch && searchMatch;
+
+    });
+
+  container.innerHTML = "";
+
+  filtered.forEach(product => {
+
+    container.innerHTML += `
+
+      <div class="product">
+
+        <div class="product-image">
+
+          <img
+            src="${product.image}"
+            alt="${product.name}"
+            onerror="this.style.display='none'"
+          >
+
+          ${
+            product.id === 11
+            ?
+            `<div class="badge">NEW</div>`
+            :
+            ""
+          }
+
+        </div>
+
+        <div class="product-info">
+
+          <div class="category">
+            ${product.category}
+          </div>
+
+          <h3>
+            ${product.name}
+          </h3>
+
+          <div class="price">
+
+            ₹${product.price}
+
+            <span class="old-price">
+              ₹${product.oldPrice}
+            </span>
+
+          </div>
+
+          <div class="product-buttons">
+
+            <button
+              class="view-btn"
+              onclick="openProduct(${product.id})"
+            >
+              View Product
+            </button>
+
+            <button
+              class="buy-btn"
+              onclick="buyNow(${product.id})"
+            >
+              Buy Now
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    `;
+
+  });
+
+}
+
+
+/* CATEGORY */
+
+function setCategory(category, button){
+
+  currentCategory = category;
+
+  document
+    .querySelectorAll(".filter")
+    .forEach(btn =>
+      btn.classList.remove("active")
+    );
+
+  button.classList.add("active");
+
+  renderProducts();
+
+}
+
+
+/* PRODUCT DETAILS */
+
+function openProduct(id){
+
+  const product =
+    products.find(p => p.id === id);
+
+  if(!product) return;
+
+  selectedProduct = product;
+
+  document.getElementById("detailCategory")
+    .textContent = product.category;
+
+  document.getElementById("detailName")
+    .textContent = product.name;
+
+  document.getElementById("detailPrice")
+    .textContent = product.price;
+
+  document.getElementById("detailOldPrice")
+    .textContent = "₹" + product.oldPrice;
+
+  document.getElementById("detailDescription")
+    .textContent = product.description;
+
+  document.getElementById("detailImage")
+    .src = product.image;
+
+  const thumbs =
+    document.getElementById("thumbs");
+
+  thumbs.innerHTML = "";
+
+  const images =
+    product.images || [product.image];
+
+  images.forEach((img,index) => {
+
+    thumbs.innerHTML += `
+
+      <img
+        class="thumb ${index === 0 ? "active" : ""}"
+        src="${img}"
+        onclick="changeDetailImage('${img}',this)"
+      >
+
+    `;
+
+  });
+
+  document
+    .getElementById("productModal")
+    .classList.add("show");
+
+}
+
+
+function changeDetailImage(src, element){
+
+  document.getElementById("detailImage")
+    .src = src;
+
+  document
+    .querySelectorAll(".thumb")
+    .forEach(t =>
+      t.classList.remove("active")
+    );
+
+  element.classList.add("active");
+
+}
+
+
+function closeProduct(){
+
+  document
+    .getElementById("productModal")
+    .classList.remove("show");
+
+}
+
+
+/* BUY NOW */
+
+function buyNow(id){
+
+  const product =
+    products.find(p => p.id === id);
+
+  if(!product) return;
+
+  const message =
+`Hi Smart Basket, I'm interested in this product.
+
+Product: ${product.name}
+
+Price: ₹${product.price}
+
+Please share order details.`;
+
+  const url =
+    "https://wa.me/918921678447?text=" +
+    encodeURIComponent(message);
+
+  window.open(url,"_blank");
+
+}
+
+
+function detailBuyNow(){
+
+  if(!selectedProduct) return;
+
+  buyNow(selectedProduct.id);
+
+}
+
+
+/* CART */
+
+function addToCart(product){
+
+  const existing =
+    cart.find(item =>
+      item.id === product.id
+    );
+
+  if(existing){
+
+    existing.qty++;
+
+  }else{
+
+    cart.push({
+      ...product,
+      qty:1
+    });
+
+  }
+
+  updateCart();
+
+}
+
+
+function addDetailToCart(){
+
+  if(!selectedProduct) return;
+
+  addToCart(selectedProduct);
+
+  closeProduct();
+
+  openCart();
+
+}
+
+
+function updateCart(){
+
+  const count =
+    cart.reduce(
+      (sum,item) =>
+        sum + item.qty,
+      0
+    );
+
+  document.getElementById("cartCount")
+    .textContent = count;
+
+  const items =
+    document.getElementById("cartItems");
+
+  items.innerHTML = "";
+
+  if(cart.length === 0){
+
+    items.innerHTML =
+      "<p>Your cart is empty.</p>";
+
+  }
+
+  cart.forEach(item => {
+
+    items.innerHTML += `
+
+      <div class="cart-item">
+
+        <img src="${item.image}">
+
+        <div class="cart-item-info">
+
+          <strong>
+            ${item.name}
+          </strong>
+
+          <p>
+            ₹${item.price} × ${item.qty}
+          </p>
+
+          <button
+            class="remove"
+            onclick="removeFromCart(${item.id})"
+          >
+            Remove
+          </button>
+
+        </div>
+
+      </div>
+
+    `;
+
+  });
+
+  const total =
+    cart.reduce(
+      (sum,item) =>
+        sum + item.price * item.qty,
+      0
+    );
+
+  document.getElementById("cartTotal")
+    .textContent =
+    "Total: ₹" + total;
+
+}
+
+
+function removeFromCart(id){
+
+  cart =
+    cart.filter(item =>
+      item.id !== id
+    );
+
+  updateCart();
+
+}
+
+
+function openCart(){
+
+  document
+    .getElementById("cartPanel")
+    .classList.add("open");
+
+}
+
+
+function closeCart(){
+
+  document
+    .getElementById("cartPanel")
+    .classList.remove("open");
+
+}
+
+
+function showCheckout(){
+
+  if(cart.length === 0){
+
+    alert("Your cart is empty.");
+
+    return;
+
+  }
+
+  document
+    .getElementById("checkout")
+    .classList.add("show");
+
+}
+
+
+/* SEND ORDER */
+
+function sendOrder(){
+
+  if(cart.length === 0){
+
+    alert("Cart is empty.");
+
+    return;
+
+  }
+
+  const name =
+    document.getElementById("customerName").value.trim();
+
+  const mobile =
+    document.getElementById("customerMobile").value.trim();
+
+  const address =
+    document.getElementById("customerAddress").value.trim();
+
+  const city =
+    document.getElementById("customerCity").value.trim();
+
+  const state =
+    document.getElementById("customerState").value.trim();
+
+  const pin =
+    document.getElementById("customerPin").value.trim();
+
+  if(!name ||
+     !mobile ||
+     !address ||
+     !city ||
+     !state ||
+     !pin){
+
+    alert("Please fill all customer details.");
+
+    return;
+
+  }
+
+  let orderText =
+`🛍️ NEW SMART BASKET ORDER
+
+👤 Name: ${name}
+
+📱 Mobile: ${mobile}
+
+🏠 Address: ${address}
+
+🏙️ City: ${city}
+
+📍 State: ${state}
+
+📮 PIN: ${pin}
+
+🛒 PRODUCTS:
+`;
+
+  let total = 0;
+
+  cart.forEach(item => {
+
+    const itemTotal =
+      item.price * item.qty;
+
+    total += itemTotal;
+
+    orderText +=
+`\n• ${item.name}
+  Qty: ${item.qty}
+  Price: ₹${itemTotal}
+`;
+
+  });
+
+  orderText +=
+`\n💰 TOTAL: ₹${total}
+
+Payment: COD / UPI
+
+Please confirm my order.`;
+
+  const url =
+    "https://wa.me/918921678447?text=" +
+    encodeURIComponent(orderText);
+
+  window.open(url,"_blank");
+
+}
+
+
+/* INITIAL LOAD */
+
+renderProducts();
+
+updateCart();
+
+</script>
+
+</body>
+</html>
