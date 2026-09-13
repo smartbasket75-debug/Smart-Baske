@@ -4,10 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Smart Baske IN | Shop Smart. Live Better.</title>
+<title>Smart Basket IN | Shop Smart. Live Better.</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
@@ -38,7 +39,8 @@ body{
   overflow-x:hidden;
 }
 
-button,input{
+button,
+input{
   font-family:inherit;
 }
 
@@ -119,9 +121,11 @@ nav{
   justify-content:center;
   text-align:center;
   padding:80px 20px;
+
   background:
     radial-gradient(circle at 10% 20%,#ead9c5,transparent 35%),
     radial-gradient(circle at 90% 80%,#ddd0c0,transparent 35%);
+
   overflow:hidden;
 }
 
@@ -265,6 +269,7 @@ section{
   border-radius:40px;
   outline:none;
   background:#fff;
+  font-size:14px;
 }
 
 /* CATEGORIES */
@@ -318,6 +323,7 @@ section{
   height:260px;
   background:#eee8e0;
   overflow:hidden;
+  position:relative;
 }
 
 .product-image img{
@@ -327,8 +333,22 @@ section{
   transition:.5s;
 }
 
-.product-card:hover img{
+.product-card:hover .product-image img{
   transform:scale(1.07);
+}
+
+.view-product{
+  position:absolute;
+  bottom:12px;
+  left:50%;
+  transform:translateX(-50%);
+  background:#fff;
+  border:0;
+  padding:9px 15px;
+  border-radius:20px;
+  font-size:11px;
+  font-weight:700;
+  box-shadow:0 5px 20px rgba(0,0,0,.15);
 }
 
 .product-info{
@@ -384,6 +404,11 @@ section{
   background:#171717;
   color:#fff;
   font-weight:700;
+  transition:.3s;
+}
+
+.add-cart:hover{
+  opacity:.85;
 }
 
 /* ABOUT */
@@ -536,11 +561,17 @@ footer{
   border-bottom:1px solid #eee;
 }
 
+.cart-item strong{
+  font-size:13px;
+}
+
 .remove-btn{
+  display:block;
   border:0;
   background:none;
   color:#c33;
-  margin-top:5px;
+  margin-top:7px;
+  font-size:12px;
 }
 
 .cart-total{
@@ -621,6 +652,98 @@ footer{
   font-weight:700;
 }
 
+/* PRODUCT DETAIL MODAL */
+
+.product-detail{
+  width:700px;
+}
+
+.main-product-image{
+  width:100%;
+  height:400px;
+  border-radius:18px;
+  overflow:hidden;
+  background:#eee8e0;
+}
+
+.main-product-image img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+}
+
+.product-thumbnails{
+  display:flex;
+  gap:10px;
+  margin-top:12px;
+  overflow-x:auto;
+}
+
+.product-thumbnail{
+  width:75px;
+  height:75px;
+  flex:0 0 75px;
+  border:2px solid transparent;
+  border-radius:10px;
+  overflow:hidden;
+  cursor:pointer;
+}
+
+.product-thumbnail.active{
+  border-color:#171717;
+}
+
+.product-thumbnail img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.detail-info{
+  padding-top:20px;
+}
+
+.detail-info h2{
+  font-family:"Cormorant Garamond",serif;
+  font-size:38px;
+}
+
+.detail-price{
+  font-size:25px;
+  font-weight:700;
+  margin:10px 0;
+}
+
+.detail-description{
+  color:#666;
+  line-height:1.7;
+  font-size:13px;
+  margin:15px 0;
+}
+
+.detail-buttons{
+  display:flex;
+  gap:10px;
+}
+
+.detail-buttons button{
+  flex:1;
+  border:0;
+  padding:14px;
+  border-radius:30px;
+  font-weight:700;
+}
+
+.detail-cart{
+  background:#171717;
+  color:#fff;
+}
+
+.detail-buy{
+  background:#25d366;
+  color:#fff;
+}
+
 /* ANIMATION */
 
 @keyframes fadeUp{
@@ -628,6 +751,7 @@ footer{
     opacity:0;
     transform:translateY(25px);
   }
+
   to{
     opacity:1;
     transform:translateY(0);
@@ -667,6 +791,14 @@ footer{
     grid-template-columns:1fr;
   }
 
+  .about-box h2{
+    font-size:45px;
+  }
+
+  .main-product-image{
+    height:300px;
+  }
+
 }
 
 @media(max-width:480px){
@@ -691,6 +823,18 @@ footer{
     width:100%;
   }
 
+  .product-detail{
+    padding:20px;
+  }
+
+  .main-product-image{
+    height:250px;
+  }
+
+  .detail-info h2{
+    font-size:30px;
+  }
+
 }
 
 </style>
@@ -698,20 +842,33 @@ footer{
 
 <body>
 
+<!-- OFFER BAR -->
+
 <div class="offer-bar">
 FIRST ORDER? GET 20% OFF
 </div>
 
+
+<!-- NAV -->
+
 <nav>
+
 <div class="nav-container">
 
-<a href="#" class="logo">Smart Baske IN</a>
+<a href="#" class="logo">
+Smart Basket IN
+</a>
 
 <div class="nav-links">
+
 <a href="#products">Shop</a>
+
 <a href="#about">About</a>
+
 <a href="#payment">Payment</a>
+
 <a href="#contact">Contact</a>
+
 </div>
 
 <button class="cart-btn" onclick="openCart()">
@@ -719,7 +876,9 @@ Cart (<span id="cartCount">0</span>)
 </button>
 
 </div>
+
 </nav>
+
 
 <!-- HERO -->
 
@@ -727,9 +886,14 @@ Cart (<span id="cartCount">0</span>)
 
 <div class="hero-content">
 
-<div class="hero-tag">PREMIUM EVERYDAY SHOPPING</div>
+<div class="hero-tag">
+PREMIUM EVERYDAY SHOPPING
+</div>
 
-<h1>Shop Smart.<br>Live Better.</h1>
+<h1>
+Shop Smart.<br>
+Live Better.
+</h1>
 
 <p>
 Discover useful products for your home, kitchen and everyday life.
@@ -742,7 +906,11 @@ Premium products, easy ordering and simple payment options.
 Shop Now
 </a>
 
-<a href="https://wa.me/918921678447" class="secondary-btn">
+<a
+href="https://wa.me/918921678447"
+target="_blank"
+class="secondary-btn"
+>
 WhatsApp Us
 </a>
 
@@ -752,6 +920,7 @@ WhatsApp Us
 
 </section>
 
+
 <!-- TRUST -->
 
 <div class="trust">
@@ -759,32 +928,68 @@ WhatsApp Us
 <div class="trust-box">
 
 <div class="trust-item">
+
 <div>🚚</div>
-<h4>Fast Support</h4>
-<p>Easy WhatsApp ordering</p>
+
+<h4>
+Fast Support
+</h4>
+
+<p>
+Easy WhatsApp ordering
+</p>
+
 </div>
 
+
 <div class="trust-item">
+
 <div>💳</div>
-<h4>UPI Payment</h4>
-<p>Quick and secure</p>
+
+<h4>
+UPI Payment
+</h4>
+
+<p>
+Quick and secure
+</p>
+
 </div>
 
+
 <div class="trust-item">
+
 <div>💵</div>
-<h4>Cash on Delivery</h4>
-<p>₹100 advance required</p>
+
+<h4>
+Cash on Delivery
+</h4>
+
+<p>
+₹100 advance required
+</p>
+
 </div>
+
 
 <div class="trust-item">
+
 <div>🎁</div>
-<h4>20% OFF</h4>
-<p>For your first order</p>
-</div>
+
+<h4>
+20% OFF
+</h4>
+
+<p>
+For your first order
+</p>
 
 </div>
 
 </div>
+
+</div>
+
 
 <!-- PRODUCTS -->
 
@@ -793,48 +998,80 @@ WhatsApp Us
 <div class="container">
 
 <div class="section-title">
-<span>SHOP COLLECTION</span>
-<h2>Find Something Useful</h2>
+
+<span>
+SHOP COLLECTION
+</span>
+
+<h2>
+Find Something Useful
+</h2>
+
 </div>
 
+
 <div class="search-box">
+
 <input
 type="text"
 id="searchInput"
 placeholder="Search products..."
 oninput="renderProducts()"
 >
+
 </div>
+
 
 <div class="categories">
 
-<button class="category-btn active" onclick="setCategory('All',this)">
+<button
+class="category-btn active"
+onclick="setCategory('All',this)"
+>
 All
 </button>
 
-<button class="category-btn" onclick="setCategory('Home',this)">
+<button
+class="category-btn"
+onclick="setCategory('Home',this)"
+>
 Home
 </button>
 
-<button class="category-btn" onclick="setCategory('Kitchen',this)">
+<button
+class="category-btn"
+onclick="setCategory('Kitchen',this)"
+>
 Kitchen
 </button>
 
-<button class="category-btn" onclick="setCategory('Electric',this)">
+<button
+class="category-btn"
+onclick="setCategory('Electric',this)"
+>
 Electric
 </button>
 
-<button class="category-btn" onclick="setCategory('Trending',this)">
+<button
+class="category-btn"
+onclick="setCategory('Trending',this)"
+>
 Trending
 </button>
 
 </div>
 
-<div class="product-grid" id="productGrid"></div>
+
+<div
+class="product-grid"
+id="productGrid"
+>
+</div>
 
 </div>
 
 </section>
+
 
 <!-- ABOUT -->
 
@@ -844,10 +1081,13 @@ Trending
 
 <div class="about-box">
 
-<h2>Smart Shopping.<br>Simple Living.</h2>
+<h2>
+Smart Shopping.<br>
+Simple Living.
+</h2>
 
 <p>
-Smart Baske IN brings together useful home, kitchen,
+Smart Basket IN brings together useful home, kitchen,
 electric and trending products in one simple shopping experience.
 </p>
 
@@ -857,6 +1097,7 @@ electric and trending products in one simple shopping experience.
 
 </section>
 
+
 <!-- PAYMENT -->
 
 <section id="payment">
@@ -864,15 +1105,26 @@ electric and trending products in one simple shopping experience.
 <div class="container">
 
 <div class="section-title">
-<span>PAYMENT & DELIVERY</span>
-<h2>Simple Ways To Order</h2>
+
+<span>
+PAYMENT & DELIVERY
+</span>
+
+<h2>
+Simple Ways To Order
+</h2>
+
 </div>
+
 
 <div class="info-grid">
 
+
 <div class="info-card">
 
-<h3>💳 UPI Payment</h3>
+<h3>
+💳 UPI Payment
+</h3>
 
 <p>
 Pay directly using our UPI ID after confirming your order.
@@ -884,9 +1136,12 @@ k63653390@okicici
 
 </div>
 
+
 <div class="info-card">
 
-<h3>💵 Cash On Delivery</h3>
+<h3>
+💵 Cash On Delivery
+</h3>
 
 <p>
 COD is available. A ₹100 advance payment is required
@@ -899,9 +1154,12 @@ to confirm your Cash on Delivery order.
 
 </div>
 
+
 <div class="info-card">
 
-<h3>📱 WhatsApp Order</h3>
+<h3>
+📱 WhatsApp Order
+</h3>
 
 <p>
 Send us your product details on WhatsApp and
@@ -914,18 +1172,20 @@ we will help you complete your order.
 
 </div>
 
+
 </div>
 
 </div>
 
 </section>
 
+
 <!-- FOOTER -->
 
 <footer id="contact">
 
 <div class="footer-logo">
-Smart Baske IN
+Smart Basket IN
 </div>
 
 <p class="footer-text">
@@ -944,6 +1204,7 @@ Owner: irshadiqu@gmail.com
 
 </footer>
 
+
 <!-- WHATSAPP -->
 
 <a
@@ -954,13 +1215,19 @@ target="_blank"
 💬
 </a>
 
+
 <!-- CART -->
 
-<div class="cart-panel" id="cartPanel">
+<div
+class="cart-panel"
+id="cartPanel"
+>
 
 <div class="cart-header">
 
-<h2>Your Cart</h2>
+<h2>
+Your Cart
+</h2>
 
 <button
 class="close-btn"
@@ -971,11 +1238,17 @@ onclick="closeCart()"
 
 </div>
 
-<div id="cartItems"></div>
+
+<div id="cartItems">
+</div>
+
 
 <div class="cart-total">
+
 Total: ₹<span id="cartTotal">0</span>
+
 </div>
+
 
 <button
 class="checkout-btn"
@@ -986,9 +1259,13 @@ Proceed To Checkout
 
 </div>
 
+
 <!-- CHECKOUT MODAL -->
 
-<div class="modal" id="checkoutModal">
+<div
+class="modal"
+id="checkoutModal"
+>
 
 <div class="modal-box">
 
@@ -999,11 +1276,16 @@ onclick="closeCheckout()"
 ×
 </button>
 
-<h2>Checkout</h2>
+<h2>
+Checkout
+</h2>
+
 
 <div class="payment-option">
 
-<h4>💳 Direct UPI Payment</h4>
+<h4>
+💳 Direct UPI Payment
+</h4>
 
 <p>
 After payment, send your order screenshot
@@ -1016,9 +1298,12 @@ UPI: k63653390@okicici
 
 </div>
 
+
 <div class="payment-option">
 
-<h4>💵 Cash On Delivery</h4>
+<h4>
+💵 Cash On Delivery
+</h4>
 
 <p>
 Pay ₹100 advance to confirm your COD order.
@@ -1030,6 +1315,7 @@ COD Advance: ₹100
 </div>
 
 </div>
+
 
 <a
 id="checkoutWhatsApp"
@@ -1043,18 +1329,88 @@ Order on WhatsApp
 
 </div>
 
+
+<!-- PRODUCT DETAIL MODAL -->
+
+<div
+class="modal"
+id="productModal"
+>
+
+<div class="modal-box product-detail">
+
+<button
+class="modal-close"
+onclick="closeProductModal()"
+>
+×
+</button>
+
+
+<div class="main-product-image">
+
+<img
+id="detailMainImage"
+src=""
+alt=""
+>
+
+</div>
+
+
+<div
+class="product-thumbnails"
+id="productThumbnails"
+>
+</div>
+
+
+<div class="detail-info">
+
+<h2 id="detailName">
+</h2>
+
+<div class="detail-price">
+₹<span id="detailPrice"></span>
+</div>
+
+<p
+class="detail-description"
+id="detailDescription"
+>
+</p>
+
+
+<div class="detail-buttons">
+
+<button
+class="detail-cart"
+id="detailCartButton"
+>
+Add To Cart
+</button>
+
+<button
+class="detail-buy"
+id="detailBuyButton"
+>
+Buy Now
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
 <script>
 
 /* =========================================
    PRODUCT DATA
    ========================================= */
-
-/*
-Replace these image URLs with the exact
-Meesho product images after verification.
-
-You can add up to 100 products here.
-*/
 
 const products = [
 
@@ -1064,7 +1420,11 @@ name:"Multipurpose Electric Cooking Pot",
 category:"Electric",
 price:1200,
 oldPrice:1500,
-image:"https://images.unsplash.com/photo-1585515656973-d4b0f7a0a3c4?auto=format&fit=crop&w=600&q=80"
+image:"https://images.unsplash.com/photo-1585515656973-d4b0f7a0a3c4?auto=format&fit=crop&w=600&q=80",
+images:[
+"https://images.unsplash.com/photo-1585515656973-d4b0f7a0a3c4?auto=format&fit=crop&w=800&q=80"
+],
+description:"Useful electric cooking pot for everyday cooking."
 },
 
 {
@@ -1073,7 +1433,11 @@ name:"Mini Electric Kettle",
 category:"Electric",
 price:999,
 oldPrice:1299,
-image:"https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=600&q=80"
+image:"https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=600&q=80",
+images:[
+"https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=800&q=80"
+],
+description:"Compact electric kettle suitable for everyday use."
 },
 
 {
@@ -1082,7 +1446,11 @@ name:"Multipurpose Kitchen Organizer",
 category:"Kitchen",
 price:650,
 oldPrice:899,
-image:"https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=600&q=80"
+image:"https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=600&q=80",
+images:[
+"https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=800&q=80"
+],
+description:"Keep your kitchen organized and clean."
 },
 
 {
@@ -1091,7 +1459,11 @@ name:"Premium Storage Basket",
 category:"Home",
 price:450,
 oldPrice:699,
-image:"https://images.unsplash.com/photo-1556228578-8c89e6adf883?auto=format&fit=crop&w=600&q=80"
+image:"https://images.unsplash.com/photo-1556228578-8c89e6adf883?auto=format&fit=crop&w=600&q=80",
+images:[
+"https://images.unsplash.com/photo-1556228578-8c89e6adf883?auto=format&fit=crop&w=800&q=80"
+],
+description:"Simple and useful storage solution for your home."
 },
 
 {
@@ -1100,7 +1472,11 @@ name:"Useful Home Cleaning Tool",
 category:"Home",
 price:550,
 oldPrice:799,
-image:"https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=600&q=80"
+image:"https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=600&q=80",
+images:[
+"https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=800&q=80"
+],
+description:"Useful cleaning accessory for everyday home cleaning."
 },
 
 {
@@ -1109,7 +1485,11 @@ name:"Electric Egg Cooker",
 category:"Electric",
 price:900,
 oldPrice:1200,
-image:"https://images.unsplash.com/photo-1585238342028-4d4c9f7b3f4d?auto=format&fit=crop&w=600&q=80"
+image:"https://images.unsplash.com/photo-1585238342028-4d4c9f7b3f4d?auto=format&fit=crop&w=600&q=80",
+images:[
+"https://images.unsplash.com/photo-1585238342028-4d4c9f7b3f4d?auto=format&fit=crop&w=800&q=80"
+],
+description:"Convenient electric egg cooker for quick cooking."
 },
 
 {
@@ -1118,7 +1498,11 @@ name:"Modern Kitchen Storage Box",
 category:"Kitchen",
 price:500,
 oldPrice:750,
-image:"https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=600&q=80"
+image:"https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=600&q=80",
+images:[
+"https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=800&q=80"
+],
+description:"Modern storage solution for your kitchen."
 },
 
 {
@@ -1127,7 +1511,11 @@ name:"Portable LED Light",
 category:"Trending",
 price:600,
 oldPrice:899,
-image:"https://images.unsplash.com/photo-1524484485831-a92ffc0de03f?auto=format&fit=crop&w=600&q=80"
+image:"https://images.unsplash.com/photo-1524484485831-a92ffc0de03f?auto=format&fit=crop&w=600&q=80",
+images:[
+"https://images.unsplash.com/photo-1524484485831-a92ffc0de03f?auto=format&fit=crop&w=800&q=80"
+],
+description:"Portable LED lighting for everyday use."
 },
 
 {
@@ -1136,301 +1524,4 @@ name:"Multipurpose Vegetable Cutter",
 category:"Kitchen",
 price:499,
 oldPrice:799,
-image:"https://images.unsplash.com/photo-1598514983318-2f64f8f4796c?auto=format&fit=crop&w=600&q=80"
-},
-
-{
-id:10,
-name:"Smart Home Organizer",
-category:"Trending",
-price:699,
-oldPrice:999,
-image:"https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=600&q=80"
-}
-
-];
-
-
-/* =========================================
-   CATEGORY
-   ========================================= */
-
-let selectedCategory = "All";
-
-function setCategory(category,button){
-
-selectedCategory = category;
-
-document
-.querySelectorAll(".category-btn")
-.forEach(btn=>btn.classList.remove("active"));
-
-button.classList.add("active");
-
-renderProducts();
-
-}
-
-
-/* =========================================
-   RENDER PRODUCTS
-   ========================================= */
-
-function renderProducts(){
-
-const grid =
-document.getElementById("productGrid");
-
-const search =
-document
-.getElementById("searchInput")
-.value
-.toLowerCase();
-
-const filtered =
-products.filter(product=>{
-
-const matchCategory =
-selectedCategory === "All" ||
-product.category === selectedCategory;
-
-const matchSearch =
-product.name
-.toLowerCase()
-.includes(search);
-
-return matchCategory && matchSearch;
-
-});
-
-grid.innerHTML =
-filtered.map(product=>`
-
-<div class="product-card">
-
-<div class="product-image">
-
-<img
-src="${product.image}"
-alt="${product.name}"
-loading="lazy"
->
-
-</div>
-
-<div class="product-info">
-
-<div class="badge">
-${product.category}
-</div>
-
-<h3>
-${product.name}
-</h3>
-
-<div class="product-category">
-Smart Baske IN
-</div>
-
-<div class="price-row">
-
-<div class="price">
-₹${product.price}
-</div>
-
-<div class="old-price">
-₹${product.oldPrice}
-</div>
-
-</div>
-
-<button
-class="add-cart"
-onclick="addToCart(${product.id})"
->
-Add To Cart
-</button>
-
-</div>
-
-</div>
-
-`).join("");
-
-}
-
-
-/* =========================================
-   CART
-   ========================================= */
-
-let cart = [];
-
-function addToCart(id){
-
-const product =
-products.find(p=>p.id === id);
-
-cart.push(product);
-
-updateCart();
-
-openCart();
-
-}
-
-
-function updateCart(){
-
-document
-.getElementById("cartCount")
-.innerText = cart.length;
-
-const cartItems =
-document.getElementById("cartItems");
-
-let total = 0;
-
-cartItems.innerHTML =
-cart.map((item,index)=>{
-
-total += item.price;
-
-return `
-
-<div class="cart-item">
-
-<div>
-
-<strong>
-${item.name}
-</strong>
-
-<br>
-
-₹${item.price}
-
-<button
-class="remove-btn"
-onclick="removeCart(${index})"
->
-Remove
-</button>
-
-</div>
-
-</div>
-
-`;
-
-}).join("");
-
-document
-.getElementById("cartTotal")
-.innerText = total;
-
-}
-
-
-function removeCart(index){
-
-cart.splice(index,1);
-
-updateCart();
-
-}
-
-
-/* =========================================
-   CART PANEL
-   ========================================= */
-
-function openCart(){
-
-document
-.getElementById("cartPanel")
-.classList.add("active");
-
-}
-
-
-function closeCart(){
-
-document
-.getElementById("cartPanel")
-.classList.remove("active");
-
-}
-
-
-/* =========================================
-   CHECKOUT
-   ========================================= */
-
-function openCheckout(){
-
-if(cart.length === 0){
-
-alert("Your cart is empty");
-
-return;
-
-}
-
-let message =
-"Hello Smart Baske IN!%0A%0AI want to order:%0A";
-
-cart.forEach(item=>{
-
-message +=
-"- " +
-item.name +
-" (₹" +
-item.price +
-")%0A";
-
-});
-
-let total =
-cart.reduce(
-(sum,item)=>sum + item.price,
-0
-);
-
-message +=
-"%0ATotal: ₹" +
-total +
-"%0A%0APayment Option: Please guide me.";
-
-document
-.getElementById("checkoutWhatsApp")
-.href =
-"https://wa.me/918921678447?text=" +
-message;
-
-document
-.getElementById("checkoutModal")
-.classList.add("active");
-
-}
-
-
-function closeCheckout(){
-
-document
-.getElementById("checkoutModal")
-.classList.remove("active");
-
-}
-
-
-/* =========================================
-   START
-   ========================================= */
-
-renderProducts();
-
-</script>
-
-</body>
-</html>
+image:"https://images.unsplash.com/photo-1598514983318-2f64f8f4796c?auto=format&fit=crop&w=600&q=
