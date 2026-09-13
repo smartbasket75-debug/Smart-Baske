@@ -15,10 +15,14 @@
   padding:0;
 }
 
+html{
+  scroll-behavior:smooth;
+}
+
 body{
   font-family:"DM Sans",sans-serif;
-  background:#f7f4ee;
-  color:#111;
+  background:#090909;
+  color:#fff;
 }
 
 button{
@@ -34,11 +38,13 @@ a{
 /* TOP BAR */
 
 .topbar{
-  background:#111;
-  color:white;
+  background:#c9a45c;
+  color:#080808;
   text-align:center;
   padding:10px;
-  font-size:13px;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:1px;
 }
 
 /* NAV */
@@ -47,14 +53,15 @@ nav{
   position:sticky;
   top:0;
   z-index:50;
-  background:#f7f4ee;
-  border-bottom:1px solid #ddd;
+  background:rgba(9,9,9,.96);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid #2b2b2b;
 }
 
 .nav-inner{
   max-width:1200px;
   margin:auto;
-  padding:17px 20px;
+  padding:18px 20px;
   display:flex;
   justify-content:space-between;
   align-items:center;
@@ -62,72 +69,87 @@ nav{
 
 .logo{
   font-family:"Cormorant Garamond",serif;
-  font-size:30px;
+  font-size:31px;
   font-weight:700;
+  letter-spacing:.5px;
 }
 
 .logo span{
-  color:#b38a38;
+  color:#d0aa60;
 }
 
 .nav-links{
   display:flex;
-  gap:25px;
-  font-size:14px;
+  gap:28px;
+  font-size:13px;
+  color:#ccc;
+}
+
+.nav-links a:hover{
+  color:#d0aa60;
 }
 
 .cart-btn{
-  background:#111;
-  color:white;
+  background:#d0aa60;
+  color:#090909;
   border:0;
-  padding:11px 17px;
+  padding:11px 18px;
   border-radius:30px;
+  font-weight:700;
 }
 
 /* HERO */
 
 .hero{
-  min-height:500px;
+  min-height:620px;
   display:flex;
   justify-content:center;
   align-items:center;
   text-align:center;
-  padding:60px 20px;
+  padding:70px 20px;
   color:white;
 
   background:
-  linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.65)),
-  url("https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1800&q=85")
+  linear-gradient(rgba(0,0,0,.72),rgba(0,0,0,.82)),
+  url("cleaning-brush-2.jpeg")
   center/cover;
 }
 
 .hero-small{
-  color:#d5b15e;
-  letter-spacing:4px;
-  font-size:13px;
-  margin-bottom:15px;
+  color:#d0aa60;
+  letter-spacing:5px;
+  font-size:12px;
+  margin-bottom:20px;
+  font-weight:700;
 }
 
 .hero h1{
   font-family:"Cormorant Garamond",serif;
-  font-size:70px;
-  line-height:.95;
-  margin-bottom:20px;
+  font-size:82px;
+  line-height:.88;
+  margin-bottom:24px;
+  letter-spacing:2px;
 }
 
 .hero p{
-  font-size:17px;
-  margin-bottom:25px;
-  color:#eee;
+  font-size:16px;
+  margin-bottom:30px;
+  color:#ddd;
 }
 
 .gold-btn{
-  background:#c49a48;
-  color:#111;
+  background:#d0aa60;
+  color:#090909;
   border:0;
-  padding:14px 28px;
+  padding:15px 34px;
   border-radius:30px;
   font-weight:700;
+  transition:.25s;
+}
+
+.gold-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 30px rgba(208,170,96,.25);
 }
 
 /* SECTION */
@@ -135,22 +157,24 @@ nav{
 .section{
   max-width:1100px;
   margin:auto;
-  padding:65px 20px;
+  padding:75px 20px;
 }
 
 .title{
   text-align:center;
-  margin-bottom:35px;
+  margin-bottom:40px;
 }
 
 .title small{
-  color:#b38a38;
-  letter-spacing:3px;
+  color:#d0aa60;
+  letter-spacing:4px;
+  font-size:11px;
 }
 
 .title h2{
   font-family:"Cormorant Garamond",serif;
-  font-size:45px;
+  font-size:50px;
+  margin-top:7px;
 }
 
 /* TRUST */
@@ -158,20 +182,32 @@ nav{
 .trust{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:15px;
+  gap:18px;
 }
 
 .trust-card{
-  background:white;
-  padding:25px;
+  background:#111;
+  padding:28px 20px;
   text-align:center;
-  border:1px solid #e4ded2;
-  border-radius:12px;
+  border:1px solid #292929;
+  border-radius:14px;
+  transition:.25s;
+}
+
+.trust-card:hover{
+  border-color:#b38a38;
+  transform:translateY(-3px);
 }
 
 .trust-card strong{
   display:block;
-  margin-bottom:6px;
+  margin-bottom:8px;
+  color:#fff;
+}
+
+.trust-card span{
+  color:#999;
+  font-size:13px;
 }
 
 /* PRODUCT */
@@ -183,80 +219,168 @@ nav{
 
 .product{
   width:100%;
-  max-width:500px;
-  background:white;
-  border:1px solid #ddd;
-  border-radius:18px;
+  max-width:520px;
+  background:#111;
+  border:1px solid #303030;
+  border-radius:20px;
   overflow:hidden;
-  box-shadow:0 10px 30px rgba(0,0,0,.08);
+  box-shadow:0 20px 60px rgba(0,0,0,.4);
 }
 
 .product-image{
-  height:420px;
-  background:#f1eee8;
+  height:440px;
+  background:#151515;
+  position:relative;
 }
 
 .product-image img{
   width:100%;
   height:100%;
   object-fit:contain;
+  padding:15px;
+}
+
+.sale-badge{
+  position:absolute;
+  left:18px;
+  top:18px;
+  background:#d0aa60;
+  color:#090909;
+  padding:7px 12px;
+  border-radius:20px;
+  font-size:11px;
+  font-weight:700;
 }
 
 .product-info{
-  padding:25px;
+  padding:28px;
 }
 
 .category{
-  color:#a47c30;
-  font-size:12px;
+  color:#d0aa60;
+  font-size:11px;
   text-transform:uppercase;
-  letter-spacing:2px;
+  letter-spacing:3px;
 }
 
 .product h3{
   font-size:22px;
-  margin:10px 0;
+  line-height:1.3;
+  margin:10px 0 15px;
 }
 
 .price{
-  font-size:28px;
+  font-size:30px;
   font-weight:700;
+  color:#d0aa60;
 }
 
 .old-price{
   font-size:15px;
-  color:#999;
+  color:#777;
   text-decoration:line-through;
   margin-left:8px;
+  font-weight:400;
 }
 
 .product-buttons{
   display:flex;
   gap:10px;
-  margin-top:20px;
+  margin-top:22px;
 }
 
 .product-buttons button{
   flex:1;
   padding:14px;
   border-radius:8px;
-  border:0;
   font-weight:700;
 }
 
 .view-btn{
-  background:#eee;
+  background:#222;
+  color:#fff;
+  border:1px solid #444 !important;
 }
 
 .buy-btn{
-  background:#111;
+  background:#d0aa60;
+  color:#090909;
+}
+
+/* PAYMENT */
+
+.payment{
+  background:#101010;
+  border-top:1px solid #292929;
+  border-bottom:1px solid #292929;
+}
+
+.payment-box{
+  max-width:900px;
+  margin:auto;
+  text-align:center;
+}
+
+.payment-box h2{
+  font-family:"Cormorant Garamond",serif;
+  font-size:44px;
+  margin-bottom:12px;
+}
+
+.payment-box p{
+  color:#aaa;
+  margin-bottom:25px;
+}
+
+.upi-box{
+  display:inline-block;
+  border:1px solid #b38a38;
+  padding:18px 25px;
+  border-radius:12px;
+  margin-bottom:22px;
+}
+
+.upi-label{
+  color:#888;
+  font-size:12px;
+  letter-spacing:2px;
+}
+
+.upi-id{
+  color:#d0aa60;
+  font-size:19px;
+  font-weight:700;
+  margin-top:5px;
+}
+
+.payment-buttons{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.payment-buttons a{
+  padding:13px 22px;
+  border-radius:30px;
+  font-weight:700;
+  font-size:13px;
+}
+
+.whatsapp-btn{
+  background:#25d366;
   color:white;
+}
+
+.email-btn{
+  background:#222;
+  border:1px solid #444;
 }
 
 /* ABOUT */
 
 .about{
-  background:#111;
+  background:#050505;
   color:white;
   text-align:center;
 }
@@ -264,16 +388,21 @@ nav{
 .about h2{
   font-family:"Cormorant Garamond",serif;
   color:#d5b15e;
-  font-size:45px;
+  font-size:48px;
   margin-bottom:15px;
+}
+
+.about p{
+  color:#aaa;
 }
 
 /* FOOTER */
 
 footer{
-  background:#080808;
-  color:#bbb;
-  padding:45px 20px;
+  background:#020202;
+  color:#888;
+  padding:50px 20px;
+  border-top:1px solid #222;
 }
 
 .footer-inner{
@@ -281,17 +410,21 @@ footer{
   margin:auto;
   display:grid;
   grid-template-columns:2fr 1fr 1fr;
-  gap:30px;
+  gap:35px;
 }
 
 footer h3{
-  color:white;
-  margin-bottom:12px;
+  color:#fff;
+  margin-bottom:14px;
 }
 
 footer p{
-  margin:7px 0;
-  font-size:14px;
+  margin:8px 0;
+  font-size:13px;
+}
+
+.gold-text{
+  color:#d0aa60;
 }
 
 /* WHATSAPP */
@@ -310,6 +443,7 @@ footer p{
   align-items:center;
   font-size:25px;
   z-index:100;
+  box-shadow:0 8px 25px rgba(0,0,0,.4);
 }
 
 /* MODAL */
@@ -317,7 +451,7 @@ footer p{
 .modal{
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,.75);
+  background:rgba(0,0,0,.86);
   display:none;
   justify-content:center;
   align-items:center;
@@ -333,7 +467,8 @@ footer p{
   width:min(900px,100%);
   max-height:90vh;
   overflow:auto;
-  background:white;
+  background:#111;
+  border:1px solid #333;
   border-radius:18px;
   padding:25px;
   position:relative;
@@ -347,9 +482,10 @@ footer p{
   height:36px;
   border:0;
   border-radius:50%;
-  background:#111;
-  color:white;
+  background:#d0aa60;
+  color:#090909;
   font-size:20px;
+  z-index:5;
 }
 
 .detail{
@@ -361,7 +497,7 @@ footer p{
 
 .detail-main{
   height:420px;
-  background:#f1eee8;
+  background:#171717;
   border-radius:12px;
   overflow:hidden;
 }
@@ -387,7 +523,7 @@ footer p{
 }
 
 .thumb.active{
-  border-color:#b38a38;
+  border-color:#d0aa60;
 }
 
 .detail-info{
@@ -396,19 +532,20 @@ footer p{
 
 .detail-info h2{
   font-family:"Cormorant Garamond",serif;
-  font-size:40px;
+  font-size:42px;
   line-height:1;
   margin:10px 0;
 }
 
 .detail-price{
-  font-size:28px;
+  font-size:29px;
   font-weight:700;
+  color:#d0aa60;
   margin:15px 0;
 }
 
 .description{
-  color:#555;
+  color:#aaa;
   line-height:1.7;
   margin-bottom:25px;
 }
@@ -427,12 +564,14 @@ footer p{
 }
 
 .add{
-  background:#eee;
+  background:#222;
+  color:#fff;
+  border:1px solid #444 !important;
 }
 
 .buy{
-  background:#111;
-  color:white;
+  background:#d0aa60;
+  color:#090909;
 }
 
 /* CART */
@@ -443,11 +582,12 @@ footer p{
   right:-430px;
   width:min(430px,100%);
   height:100vh;
-  background:white;
+  background:#111;
   z-index:300;
   padding:25px;
   transition:.3s;
-  box-shadow:-5px 0 25px rgba(0,0,0,.2);
+  box-shadow:-5px 0 30px rgba(0,0,0,.5);
+  border-left:1px solid #333;
 }
 
 .cart-panel.open{
@@ -457,15 +597,20 @@ footer p{
 .cart-head{
   display:flex;
   justify-content:space-between;
-  border-bottom:1px solid #ddd;
+  border-bottom:1px solid #333;
   padding-bottom:15px;
+}
+
+.cart-head h2{
+  font-family:"Cormorant Garamond",serif;
+  font-size:30px;
 }
 
 .cart-item{
   display:flex;
   gap:12px;
   padding:15px 0;
-  border-bottom:1px solid #eee;
+  border-bottom:1px solid #292929;
 }
 
 .cart-item img{
@@ -473,22 +618,33 @@ footer p{
   height:75px;
   object-fit:cover;
   border-radius:8px;
+  background:#222;
 }
 
 .cart-info{
   flex:1;
 }
 
+.cart-info strong{
+  font-size:13px;
+}
+
+.cart-info p{
+  color:#d0aa60;
+  margin-top:5px;
+}
+
 .remove{
   background:none;
   border:0;
-  color:red;
+  color:#ff5555;
   margin-top:5px;
 }
 
 .total{
   font-size:22px;
   font-weight:700;
+  color:#d0aa60;
   margin:20px 0;
 }
 
@@ -506,20 +662,53 @@ footer p{
 
 @media(max-width:700px){
 
+  .nav-inner{
+    padding:15px;
+  }
+
+  .logo{
+    font-size:25px;
+  }
+
   .nav-links{
     display:none;
   }
 
+  .cart-btn{
+    padding:9px 13px;
+    font-size:12px;
+  }
+
+  .hero{
+    min-height:540px;
+  }
+
   .hero h1{
-    font-size:50px;
+    font-size:58px;
+  }
+
+  .hero p{
+    font-size:14px;
   }
 
   .trust{
     grid-template-columns:1fr;
   }
 
+  .section{
+    padding:55px 16px;
+  }
+
+  .title h2{
+    font-size:40px;
+  }
+
   .product-image{
-    height:330px;
+    height:350px;
+  }
+
+  .product-info{
+    padding:22px;
   }
 
   .detail{
@@ -531,7 +720,7 @@ footer p{
   }
 
   .detail-info h2{
-    font-size:32px;
+    font-size:34px;
   }
 
   .footer-inner{
@@ -539,22 +728,16 @@ footer p{
   }
 
 }
-
 </style>
 </head>
 
 <body>
 
-<!-- TOP -->
-
 <div class="topbar">
-FIRST ORDER? GET 20% OFF
+✦ FIRST ORDER • SPECIAL OFFER ✦
 </div>
 
-<!-- NAV -->
-
 <nav>
-
 <div class="nav-inner">
 
 <a class="logo" href="#">
@@ -572,13 +755,11 @@ Smart <span>Basket</span> IN
 </button>
 
 </div>
-
 </nav>
 
 <!-- HERO -->
 
 <section class="hero">
-
 <div>
 
 <div class="hero-small">
@@ -600,7 +781,6 @@ SHOP NOW
 </a>
 
 </div>
-
 </section>
 
 <!-- TRUST -->
@@ -611,17 +791,17 @@ SHOP NOW
 
 <div class="trust-card">
 <strong>🚚 Fast Delivery</strong>
-Delivery across India
+<span>Delivery across India</span>
 </div>
 
 <div class="trust-card">
 <strong>🔄 Easy Returns</strong>
-7 day return available
+<span>7 day return available</span>
 </div>
 
 <div class="trust-card">
 <strong>⭐ Trusted Store</strong>
-Trusted by 100+ customers
+<span>Trusted by 100+ customers</span>
 </div>
 
 </div>
@@ -633,11 +813,8 @@ Trusted by 100+ customers
 <section class="section" id="shop">
 
 <div class="title">
-
 <small>OUR PRODUCT</small>
-
 <h2>Featured Product</h2>
-
 </div>
 
 <div class="product-area">
@@ -646,8 +823,12 @@ Trusted by 100+ customers
 
 <div class="product-image">
 
+<div class="sale-badge">
+SPECIAL PRICE
+</div>
+
 <img
-src="cleaning-brush-1.jpeg"
+src="cleaning-brush-2.jpeg"
 alt="Cordless Rechargeable Electric Cleaning Brush"
 >
 
@@ -664,34 +845,70 @@ Cordless Rechargeable Electric Cleaning Brush
 </h3>
 
 <div class="price">
-
 ₹1300
-
-<span class="old-price">
-₹1699
-</span>
-
+<span class="old-price">₹1699</span>
 </div>
 
 <div class="product-buttons">
 
 <button
 class="view-btn"
-onclick="openProduct()"
->
+onclick="openProduct()">
 View Product
 </button>
 
 <button
 class="buy-btn"
-onclick="buyNow()"
->
+onclick="buyNow()">
 Buy Now
 </button>
 
 </div>
 
 </div>
+</div>
+</div>
+
+</section>
+
+<!-- PAYMENT -->
+
+<section class="payment">
+
+<div class="section payment-box">
+
+<h2>Easy & Secure Payment</h2>
+
+<p>
+Order through WhatsApp or pay using UPI.
+</p>
+
+<div class="upi-box">
+
+<div class="upi-label">
+UPI ID
+</div>
+
+<div class="upi-id">
+k63653390@okicici
+</div>
+
+</div>
+
+<div class="payment-buttons">
+
+<a
+class="whatsapp-btn"
+href="https://wa.me/918921678447"
+target="_blank">
+💬 WhatsApp Us
+</a>
+
+<a
+class="email-btn"
+href="mailto:smartbasket75@gmail.com">
+✉ Email Us
+</a>
 
 </div>
 
@@ -725,10 +942,14 @@ Useful products. Premium quality. Smart prices.
 
 <div>
 
-<h3>Smart Basket IN</h3>
+<h3>Smart Basket <span class="gold-text">IN</span></h3>
 
 <p>
 Premium quality. Smart choices.
+</p>
+
+<p>
+Made for smarter shopping.
 </p>
 
 </div>
@@ -752,10 +973,9 @@ smartbasket75@gmail.com
 <h3>Policies</h3>
 
 <p>🚚 Shipping: 1–10 days</p>
-
 <p>🔄 Returns: Within 7 days</p>
-
 <p>💳 COD Available</p>
+<p>💰 UPI Available</p>
 
 </div>
 
@@ -768,8 +988,7 @@ smartbasket75@gmail.com
 <a
 class="whatsapp"
 href="https://wa.me/918921678447?text=Hi%20Smart%20Basket%2C%20I%E2%80%99m%20interested%20in%20this%20product"
-target="_blank"
->
+target="_blank">
 ☎
 </a>
 
@@ -781,8 +1000,7 @@ target="_blank"
 
 <button
 class="close"
-onclick="closeProduct()"
->
+onclick="closeProduct()">
 ×
 </button>
 
@@ -794,7 +1012,7 @@ onclick="closeProduct()"
 
 <img
 id="mainImage"
-src="cleaning-brush-1.jpeg"
+src="cleaning-brush-2.jpeg"
 alt="Cleaning Brush"
 >
 
@@ -803,13 +1021,13 @@ alt="Cleaning Brush"
 <div class="thumbs">
 
 <img
-class="thumb active"
+class="thumb"
 src="cleaning-brush-1.jpeg"
 onclick="changeImage(this)"
 >
 
 <img
-class="thumb"
+class="thumb active"
 src="cleaning-brush-2.jpeg"
 onclick="changeImage(this)"
 >
@@ -835,49 +1053,37 @@ Cordless Rechargeable Electric Cleaning Brush
 </h2>
 
 <div class="detail-price">
-
 ₹1300
-
-<span class="old-price">
-₹1699
-</span>
-
+<span class="old-price">₹1699</span>
 </div>
 
 <p class="description">
-
 Cordless rechargeable electric cleaning brush
 with multiple brush heads.
 
 Suitable for bathroom, tiles, sink, kitchen,
 glass, car and other cleaning areas.
-
 </p>
 
 <div class="detail-buttons">
 
 <button
 class="add"
-onclick="addToCart()"
->
+onclick="addToCart()">
 Add To Cart
 </button>
 
 <button
 class="buy"
-onclick="buyNow()"
->
+onclick="buyNow()">
 Buy Now
 </button>
 
 </div>
 
 </div>
-
 </div>
-
 </div>
-
 </div>
 
 <!-- CART -->
@@ -890,15 +1096,13 @@ Buy Now
 
 <button
 class="close"
-onclick="closeCart()"
->
+onclick="closeCart()">
 ×
 </button>
 
 </div>
 
-<div id="cartItems">
-</div>
+<div id="cartItems"></div>
 
 <div class="total" id="cartTotal">
 Total: ₹0
@@ -906,16 +1110,13 @@ Total: ₹0
 
 <button
 class="checkout"
-onclick="sendCartOrder()"
->
-Order on WhatsApp
+onclick="sendCartOrder()">
+💬 Order on WhatsApp
 </button>
 
 </div>
 
 <script>
-
-/* PRODUCT */
 
 const product = {
 
@@ -946,7 +1147,6 @@ document
 
 }
 
-
 function closeProduct(){
 
 document
@@ -954,7 +1154,6 @@ document
 .classList.remove("show");
 
 }
-
 
 function changeImage(element){
 
@@ -1014,7 +1213,6 @@ openCart();
 
 }
 
-
 function renderCart(){
 
 const container =
@@ -1023,7 +1221,7 @@ document.getElementById("cartItems");
 if(cartQty === 0){
 
 container.innerHTML =
-"<p>Your cart is empty.</p>";
+"<p style='color:#888'>Your cart is empty.</p>";
 
 return;
 
@@ -1033,7 +1231,7 @@ container.innerHTML = `
 
 <div class="cart-item">
 
-<img src="${product.images[0]}">
+<img src="${product.images[1]}">
 
 <div class="cart-info">
 
@@ -1047,8 +1245,7 @@ ${product.name}
 
 <button
 class="remove"
-onclick="removeCart()"
->
+onclick="removeCart()">
 Remove
 </button>
 
@@ -1064,7 +1261,6 @@ document
 "Total: ₹" + (product.price * cartQty);
 
 }
-
 
 function removeCart(){
 
@@ -1091,7 +1287,6 @@ renderCart();
 
 }
 
-
 function closeCart(){
 
 document
@@ -1101,7 +1296,7 @@ document
 }
 
 
-/* CART WHATSAPP ORDER */
+/* CART WHATSAPP */
 
 function sendCartOrder(){
 
