@@ -3,24 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Smart Baske IN | Shop Smart. Live Better.</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
+
+:root{
+  --bg:#f7f4ef;
+  --dark:#171717;
+  --muted:#777;
+  --card:#ffffff;
+  --border:#e8e0d7;
+  --accent:#e9d7c4;
+}
+
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
-}
-
-:root{
-  --dark:#171717;
-  --cream:#f7f4ef;
-  --ease:cubic-bezier(.16,1,.3,1);
 }
 
 html{
@@ -29,18 +33,17 @@ html{
 
 body{
   font-family:"DM Sans",sans-serif;
-  background:var(--cream);
+  background:var(--bg);
   color:var(--dark);
   overflow-x:hidden;
 }
 
-button,input,textarea{
-  font:inherit;
+button,input{
+  font-family:inherit;
 }
 
 button{
   cursor:pointer;
-  border:0;
 }
 
 a{
@@ -53,39 +56,38 @@ a{
 .offer-bar{
   background:#171717;
   color:#fff;
-  padding:11px;
   text-align:center;
+  padding:11px;
   font-size:11px;
-  font-weight:600;
+  font-weight:700;
   letter-spacing:2px;
 }
 
-/* NAVBAR */
+/* NAV */
 
 nav{
   position:sticky;
   top:0;
   z-index:1000;
-  background:rgba(247,244,239,.94);
-  backdrop-filter:blur(15px);
-  border-bottom:1px solid #e7e0d8;
+  background:rgba(247,244,239,.92);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--border);
 }
 
 .nav-container{
   max-width:1300px;
   margin:auto;
-  padding:17px 25px;
+  padding:17px 24px;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:18px;
+  gap:20px;
 }
 
 .logo{
   font-family:"Cormorant Garamond",serif;
-  font-size:31px;
+  font-size:32px;
   font-weight:700;
-  white-space:nowrap;
 }
 
 .nav-links{
@@ -100,11 +102,12 @@ nav{
 }
 
 .cart-btn{
-  background:#171717;
+  background:var(--dark);
   color:#fff;
+  border:0;
   padding:11px 18px;
   border-radius:30px;
-  font-weight:600;
+  font-weight:700;
 }
 
 /* HERO */
@@ -117,19 +120,20 @@ nav{
   text-align:center;
   padding:80px 20px;
   background:
-  radial-gradient(circle at 10% 20%,#ead9c5,transparent 32%),
-  radial-gradient(circle at 90% 80%,#ddd0c0,transparent 32%);
+    radial-gradient(circle at 10% 20%,#ead9c5,transparent 35%),
+    radial-gradient(circle at 90% 80%,#ddd0c0,transparent 35%);
   overflow:hidden;
 }
 
 .hero-content{
   max-width:900px;
+  animation:fadeUp 1s ease both;
 }
 
 .hero-tag{
   display:inline-block;
-  border:1px solid #222;
   padding:9px 18px;
+  border:1px solid #222;
   border-radius:30px;
   font-size:10px;
   letter-spacing:2px;
@@ -138,7 +142,7 @@ nav{
 
 .hero h1{
   font-family:"Cormorant Garamond",serif;
-  font-size:clamp(58px,9vw,115px);
+  font-size:clamp(55px,9vw,110px);
   line-height:.9;
   letter-spacing:-3px;
 }
@@ -146,8 +150,8 @@ nav{
 .hero p{
   max-width:600px;
   margin:28px auto;
-  line-height:1.7;
   color:#555;
+  line-height:1.7;
 }
 
 .hero-buttons{
@@ -159,11 +163,10 @@ nav{
 
 .primary-btn,
 .secondary-btn{
-  display:inline-block;
   padding:15px 28px;
   border-radius:30px;
   font-size:14px;
-  font-weight:600;
+  font-weight:700;
   transition:.3s;
 }
 
@@ -176,41 +179,9 @@ nav{
   border:1px solid #171717;
 }
 
-.primary-btn:hover{
-  transform:translateY(-3px);
-}
-
+.primary-btn:hover,
 .secondary-btn:hover{
-  background:#171717;
-  color:#fff;
-}
-
-/* HOME PAGE ANIMATION */
-
-@keyframes rise{
-  from{
-    opacity:0;
-    transform:translate3d(0,18px,0);
-  }
-
-  to{
-    opacity:1;
-    transform:translate3d(0,0,0);
-  }
-}
-
-.home-rise{
-  opacity:0;
-  animation:rise .9s var(--ease) both;
-  animation-delay:calc(var(--i,0)*70ms);
-}
-
-@media(prefers-reduced-motion:reduce){
-  .home-rise{
-    opacity:1;
-    animation:none!important;
-    transform:none!important;
-  }
+  transform:translateY(-3px);
 }
 
 /* TRUST */
@@ -238,7 +209,7 @@ nav{
 }
 
 .trust-item div{
-  font-size:25px;
+  font-size:26px;
 }
 
 .trust-item h4{
@@ -247,9 +218,9 @@ nav{
 }
 
 .trust-item p{
+  margin-top:5px;
   font-size:11px;
   color:#777;
-  margin-top:5px;
 }
 
 /* SECTIONS */
@@ -265,7 +236,7 @@ section{
 
 .section-title{
   text-align:center;
-  margin-bottom:45px;
+  margin-bottom:40px;
 }
 
 .section-title span{
@@ -276,8 +247,24 @@ section{
 
 .section-title h2{
   font-family:"Cormorant Garamond",serif;
-  font-size:55px;
-  margin-top:7px;
+  font-size:clamp(42px,5vw,62px);
+  margin-top:8px;
+}
+
+/* SEARCH */
+
+.search-box{
+  max-width:650px;
+  margin:0 auto 25px;
+}
+
+.search-box input{
+  width:100%;
+  border:1px solid var(--border);
+  padding:17px 20px;
+  border-radius:40px;
+  outline:none;
+  background:#fff;
 }
 
 /* CATEGORIES */
@@ -287,37 +274,22 @@ section{
   flex-wrap:wrap;
   gap:10px;
   justify-content:center;
+  margin-bottom:35px;
 }
 
 .category-btn{
   background:#fff;
-  border:1px solid #ddd6ce;
+  border:1px solid var(--border);
   padding:12px 18px;
   border-radius:30px;
   font-size:12px;
-  font-weight:600;
+  font-weight:700;
 }
 
 .category-btn.active,
 .category-btn:hover{
   background:#171717;
   color:#fff;
-}
-
-/* SEARCH */
-
-.search-box{
-  max-width:650px;
-  margin:0 auto 40px;
-}
-
-.search-box input{
-  width:100%;
-  padding:17px 20px;
-  border-radius:40px;
-  border:1px solid #ddd6ce;
-  outline:none;
-  background:#fff;
 }
 
 /* PRODUCTS */
@@ -330,10 +302,11 @@ section{
 
 .product-card{
   background:#fff;
+  border:1px solid var(--border);
   border-radius:20px;
   overflow:hidden;
-  border:1px solid #ebe5dd;
   transition:.35s;
+  animation:fadeUp .6s ease both;
 }
 
 .product-card:hover{
@@ -342,7 +315,7 @@ section{
 }
 
 .product-image{
-  height:270px;
+  height:260px;
   background:#eee8e0;
   overflow:hidden;
 }
@@ -393,7 +366,7 @@ section{
 }
 
 .price{
-  font-size:18px;
+  font-size:19px;
   font-weight:700;
 }
 
@@ -406,10 +379,11 @@ section{
 .add-cart{
   width:100%;
   padding:13px;
+  border:0;
+  border-radius:30px;
   background:#171717;
   color:#fff;
-  border-radius:30px;
-  font-weight:600;
+  font-weight:700;
 }
 
 /* ABOUT */
@@ -429,12 +403,12 @@ section{
 
 .about-box p{
   max-width:650px;
-  margin:20px auto 0;
+  margin:20px auto;
   color:#bbb;
   line-height:1.8;
 }
 
-/* PAYMENT */
+/* INFO */
 
 .info-grid{
   display:grid;
@@ -445,8 +419,8 @@ section{
 .info-card{
   background:#fff;
   padding:28px;
+  border:1px solid var(--border);
   border-radius:20px;
-  border:1px solid #e5ddd5;
 }
 
 .info-card h3{
@@ -454,18 +428,18 @@ section{
 }
 
 .info-card p{
+  color:#666;
   font-size:13px;
   line-height:1.7;
-  color:#666;
 }
 
 .info-value{
   margin-top:15px;
-  background:#f3eee8;
   padding:13px;
+  background:#f3eee8;
   border-radius:10px;
   font-size:13px;
-  font-weight:600;
+  font-weight:700;
   word-break:break-word;
 }
 
@@ -474,13 +448,13 @@ section{
 footer{
   background:#fff;
   padding:60px 20px 30px;
-  border-top:1px solid #e5ddd5;
+  border-top:1px solid var(--border);
   text-align:center;
 }
 
 .footer-logo{
   font-family:"Cormorant Garamond",serif;
-  font-size:38px;
+  font-size:40px;
   font-weight:700;
 }
 
@@ -510,8 +484,8 @@ footer{
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:25px;
-  z-index:2000;
+  font-size:26px;
+  z-index:5000;
   box-shadow:0 10px 30px rgba(0,0,0,.2);
 }
 
@@ -519,13 +493,13 @@ footer{
 
 .cart-panel{
   position:fixed;
-  right:-450px;
   top:0;
+  right:-450px;
   width:420px;
   max-width:100%;
   height:100vh;
   background:#fff;
-  z-index:3000;
+  z-index:4000;
   padding:25px;
   transition:.4s;
   box-shadow:-20px 0 60px rgba(0,0,0,.15);
@@ -538,8 +512,8 @@ footer{
 
 .cart-header{
   display:flex;
-  justify-content:space-between;
   align-items:center;
+  justify-content:space-between;
   margin-bottom:20px;
 }
 
@@ -549,19 +523,24 @@ footer{
 }
 
 .close-btn{
+  border:0;
   background:none;
   font-size:30px;
 }
 
 .cart-item{
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
   padding:15px 0;
   border-bottom:1px solid #eee;
 }
 
 .remove-btn{
-  margin-top:6px;
+  border:0;
   background:none;
   color:#c33;
+  margin-top:5px;
 }
 
 .cart-total{
@@ -572,14 +551,15 @@ footer{
 
 .checkout-btn{
   width:100%;
-  padding:15px;
+  border:0;
   background:#171717;
   color:#fff;
+  padding:15px;
   border-radius:30px;
-  font-weight:600;
+  font-weight:700;
 }
 
-/* CHECKOUT */
+/* CHECKOUT MODAL */
 
 .modal{
   position:fixed;
@@ -589,7 +569,7 @@ footer{
   align-items:center;
   justify-content:center;
   padding:20px;
-  z-index:4000;
+  z-index:6000;
 }
 
 .modal.active{
@@ -602,168 +582,115 @@ footer{
   max-height:90vh;
   overflow-y:auto;
   background:#fff;
-  border-radius:22px;
-  padding:28px;
+  padding:30px;
+  border-radius:25px;
 }
 
 .modal-box h2{
   font-family:"Cormorant Garamond",serif;
-  font-size:42px;
-  margin-bottom:10px;
-}
-
-.modal-box p{
-  color:#666;
-  font-size:13px;
-  line-height:1.6;
-  margin-bottom:18px;
-}
-
-.form-group{
-  margin:12px 0;
-}
-
-.form-group label{
-  display:block;
-  font-size:12px;
-  font-weight:700;
-  margin-bottom:6px;
-}
-
-.form-group input,
-.form-group textarea{
-  width:100%;
-  padding:13px;
-  border:1px solid #ddd6ce;
-  border-radius:10px;
-  outline:none;
+  font-size:40px;
+  margin-bottom:20px;
 }
 
 .payment-option{
-  border:1px solid #e5ddd5;
-  border-radius:14px;
-  padding:14px;
-  margin-top:12px;
+  border:1px solid var(--border);
+  padding:17px;
+  border-radius:15px;
+  margin-bottom:12px;
 }
 
-.payment-option strong{
-  display:block;
-  margin-bottom:5px;
-}
-
-.payment-option span{
-  font-size:12px;
-  color:#666;
-}
-
-.order-btn{
-  width:100%;
-  margin-top:18px;
-  padding:15px;
-  background:#171717;
-  color:#fff;
-  border-radius:30px;
-  font-weight:600;
+.payment-option h4{
+  margin-bottom:7px;
 }
 
 .modal-close{
   float:right;
+  border:0;
   background:none;
   font-size:25px;
 }
 
+.whatsapp-order{
+  display:block;
+  margin-top:20px;
+  text-align:center;
+  background:#25d366;
+  color:#fff;
+  padding:15px;
+  border-radius:30px;
+  font-weight:700;
+}
+
+/* ANIMATION */
+
+@keyframes fadeUp{
+  from{
+    opacity:0;
+    transform:translateY(25px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
 /* RESPONSIVE */
 
-@media(max-width:900px){
+@media(max-width:1000px){
+
   .product-grid{
     grid-template-columns:repeat(3,1fr);
   }
 
-  .trust-box{
-    grid-template-columns:repeat(2,1fr);
-  }
 }
 
-@media(max-width:700px){
+@media(max-width:750px){
 
   .nav-links{
     display:none;
   }
 
-  .nav-container{
-    padding:15px 16px;
-  }
-
-  .logo{
-    font-size:27px;
-  }
-
-  .cart-btn{
-    padding:10px 14px;
-    font-size:12px;
-  }
-
-  .hero{
-    min-height:560px;
-    padding:65px 18px;
-  }
-
-  .hero h1{
-    font-size:clamp(52px,17vw,82px);
-  }
-
-  section{
-    padding:65px 16px;
-  }
-
-  .section-title h2{
-    font-size:44px;
+  .trust-box{
+    grid-template-columns:repeat(2,1fr);
   }
 
   .product-grid{
     grid-template-columns:repeat(2,1fr);
-    gap:13px;
+    gap:14px;
   }
 
   .product-image{
-    height:190px;
-  }
-
-  .product-info{
-    padding:13px;
+    height:210px;
   }
 
   .info-grid{
     grid-template-columns:1fr;
   }
 
-  .about-box h2{
-    font-size:48px;
+}
+
+@media(max-width:480px){
+
+  .logo{
+    font-size:26px;
   }
 
-  .trust{
-    padding:0 12px;
+  .hero h1{
+    font-size:58px;
   }
 
-  .trust-box{
-    padding:20px 12px;
-    gap:14px;
+  .product-image{
+    height:180px;
+  }
+
+  .product-info{
+    padding:13px;
   }
 
   .cart-panel{
     width:100%;
   }
-}
 
-@media(max-width:390px){
-
-  .product-grid{
-    grid-template-columns:1fr;
-  }
-
-  .hero h1{
-    font-size:55px;
-  }
 }
 
 </style>
@@ -776,152 +703,152 @@ FIRST ORDER? GET 20% OFF
 </div>
 
 <nav>
-  <div class="nav-container">
+<div class="nav-container">
 
-    <a href="#" class="logo">
-      Smart Baske IN
-    </a>
+<a href="#" class="logo">Smart Baske IN</a>
 
-    <div class="nav-links">
-      <a href="#home">Home</a>
-      <a href="#products">Shop</a>
-      <a href="#payment">Payment</a>
-      <a href="#contact">Contact</a>
-    </div>
+<div class="nav-links">
+<a href="#products">Shop</a>
+<a href="#about">About</a>
+<a href="#payment">Payment</a>
+<a href="#contact">Contact</a>
+</div>
 
-    <button class="cart-btn" onclick="openCart()">
-      Cart (<span id="cartCount">0</span>)
-    </button>
+<button class="cart-btn" onclick="openCart()">
+Cart (<span id="cartCount">0</span>)
+</button>
 
-  </div>
+</div>
 </nav>
 
-<main id="home">
+<!-- HERO -->
 
 <section class="hero">
 
-  <div class="hero-content">
+<div class="hero-content">
 
-    <span class="hero-tag">
-      SMART SHOPPING • BETTER LIVING
-    </span>
+<div class="hero-tag">PREMIUM EVERYDAY SHOPPING</div>
 
-    <h1>
-      Shop Smart.<br>
-      Live Better.
-    </h1>
+<h1>Shop Smart.<br>Live Better.</h1>
 
-    <p>
-      Discover useful everyday products, premium finds and trending essentials at Smart Baske IN.
-    </p>
+<p>
+Discover useful products for your home, kitchen and everyday life.
+Premium products, easy ordering and simple payment options.
+</p>
 
-    <div class="hero-buttons">
+<div class="hero-buttons">
 
-      <a class="primary-btn" href="#products">
-        Shop Now
-      </a>
+<a href="#products" class="primary-btn">
+Shop Now
+</a>
 
-      <a class="secondary-btn" href="#payment">
-        Payment Info
-      </a>
+<a href="https://wa.me/918921678447" class="secondary-btn">
+WhatsApp Us
+</a>
 
-    </div>
+</div>
 
-  </div>
+</div>
 
 </section>
 
+<!-- TRUST -->
+
 <div class="trust">
 
-  <div class="trust-box">
+<div class="trust-box">
 
-    <div class="trust-item">
-      <div>🚚</div>
-      <h4>Fast Support</h4>
-      <p>Quick order assistance</p>
-    </div>
+<div class="trust-item">
+<div>🚚</div>
+<h4>Fast Support</h4>
+<p>Easy WhatsApp ordering</p>
+</div>
 
-    <div class="trust-item">
-      <div>💵</div>
-      <h4>COD Available</h4>
-      <p>₹100 advance for COD</p>
-    </div>
+<div class="trust-item">
+<div>💳</div>
+<h4>UPI Payment</h4>
+<p>Quick and secure</p>
+</div>
 
-    <div class="trust-item">
-      <div>💳</div>
-      <h4>UPI Payment</h4>
-      <p>Simple & secure payment</p>
-    </div>
+<div class="trust-item">
+<div>💵</div>
+<h4>Cash on Delivery</h4>
+<p>₹100 advance required</p>
+</div>
 
-    <div class="trust-item">
-      <div>💬</div>
-      <h4>WhatsApp Order</h4>
-      <p>Easy direct ordering</p>
-    </div>
-
-  </div>
+<div class="trust-item">
+<div>🎁</div>
+<h4>20% OFF</h4>
+<p>For your first order</p>
+</div>
 
 </div>
+
+</div>
+
+<!-- PRODUCTS -->
 
 <section id="products">
 
 <div class="container">
 
-  <div class="section-title">
-    <span>SHOP THE COLLECTION</span>
-    <h2>Trending Products</h2>
-  </div>
+<div class="section-title">
+<span>SHOP COLLECTION</span>
+<h2>Find Something Useful</h2>
+</div>
 
-  <div class="categories">
+<div class="search-box">
+<input
+type="text"
+id="searchInput"
+placeholder="Search products..."
+oninput="renderProducts()"
+>
+</div>
 
-    <button class="category-btn active" onclick="filterProducts('all',this)">
-      All
-    </button>
+<div class="categories">
 
-    <button class="category-btn" onclick="filterProducts('Home',this)">
-      Home
-    </button>
+<button class="category-btn active" onclick="setCategory('All',this)">
+All
+</button>
 
-    <button class="category-btn" onclick="filterProducts('Beauty',this)">
-      Beauty
-    </button>
+<button class="category-btn" onclick="setCategory('Home',this)">
+Home
+</button>
 
-    <button class="category-btn" onclick="filterProducts('Fashion',this)">
-      Fashion
-    </button>
+<button class="category-btn" onclick="setCategory('Kitchen',this)">
+Kitchen
+</button>
 
-    <button class="category-btn" onclick="filterProducts('Electronics',this)">
-      Electronics
-    </button>
+<button class="category-btn" onclick="setCategory('Electric',this)">
+Electric
+</button>
 
-  </div>
+<button class="category-btn" onclick="setCategory('Trending',this)">
+Trending
+</button>
 
-  <div class="search-box">
+</div>
 
-    <input
-      id="searchInput"
-      oninput="renderProducts()"
-      placeholder="Search products..."
-    >
-
-  </div>
-
-  <div class="product-grid" id="productGrid"></div>
+<div class="product-grid" id="productGrid"></div>
 
 </div>
 
 </section>
 
-<section>
+<!-- ABOUT -->
+
+<section id="about">
 
 <div class="container">
 
 <div class="about-box">
 
-<h2>Everything You Need, In One Basket.</h2>
+<h2>Smart Shopping.<br>Simple Living.</h2>
 
 <p>
-Smart Baske IN brings together useful and trending products with simple ordering through WhatsApp and flexible payment options.
+Smart Baske IN brings together useful home, kitchen,
+electric and trending products in one simple shopping experience.
 </p>
 
 </div>
@@ -930,13 +857,15 @@ Smart Baske IN brings together useful and trending products with simple ordering
 
 </section>
 
+<!-- PAYMENT -->
+
 <section id="payment">
 
 <div class="container">
 
 <div class="section-title">
-<span>ORDER & PAYMENT</span>
-<h2>Simple Checkout</h2>
+<span>PAYMENT & DELIVERY</span>
+<h2>Simple Ways To Order</h2>
 </div>
 
 <div class="info-grid">
@@ -946,7 +875,7 @@ Smart Baske IN brings together useful and trending products with simple ordering
 <h3>💳 UPI Payment</h3>
 
 <p>
-Pay directly using the UPI ID below after confirming your order.
+Pay directly using our UPI ID after confirming your order.
 </p>
 
 <div class="info-value">
@@ -957,24 +886,26 @@ k63653390@okicici
 
 <div class="info-card">
 
-<h3>💵 Cash on Delivery</h3>
+<h3>💵 Cash On Delivery</h3>
 
 <p>
-Cash on Delivery is available with a ₹100 advance payment to confirm the order.
+COD is available. A ₹100 advance payment is required
+to confirm your Cash on Delivery order.
 </p>
 
 <div class="info-value">
-COD Advance: ₹100
+₹100 COD Advance
 </div>
 
 </div>
 
 <div class="info-card">
 
-<h3>💬 WhatsApp Order</h3>
+<h3>📱 WhatsApp Order</h3>
 
 <p>
-For quick ordering and support, contact us directly on WhatsApp.
+Send us your product details on WhatsApp and
+we will help you complete your order.
 </p>
 
 <div class="info-value">
@@ -989,7 +920,7 @@ For quick ordering and support, contact us directly on WhatsApp.
 
 </section>
 
-</main>
+<!-- FOOTER -->
 
 <footer id="contact">
 
@@ -1003,23 +934,24 @@ Shop Smart. Live Better.
 
 <div class="footer-contact">
 
+WhatsApp: 8921678447<br>
+
 Support: smartbasket75@gmail.com<br>
 
-Owner: irshadiqu@gmail.com<br>
-
-WhatsApp: 8921678447
+Owner: irshadiqu@gmail.com
 
 </div>
 
 </footer>
 
+<!-- WHATSAPP -->
+
 <a
 class="whatsapp"
 href="https://wa.me/918921678447"
 target="_blank"
-aria-label="WhatsApp"
 >
-☏
+💬
 </a>
 
 <!-- CART -->
@@ -1030,102 +962,82 @@ aria-label="WhatsApp"
 
 <h2>Your Cart</h2>
 
-<button class="close-btn" onclick="closeCart()">
+<button
+class="close-btn"
+onclick="closeCart()"
+>
 ×
 </button>
 
 </div>
 
-<div id="cartItems">
-<p>Your cart is empty.</p>
-</div>
+<div id="cartItems"></div>
 
 <div class="cart-total">
 Total: ₹<span id="cartTotal">0</span>
 </div>
 
-<button class="checkout-btn" onclick="openCheckout()">
-Proceed to Checkout
+<button
+class="checkout-btn"
+onclick="openCheckout()"
+>
+Proceed To Checkout
 </button>
 
 </div>
 
-<!-- CHECKOUT -->
+<!-- CHECKOUT MODAL -->
 
 <div class="modal" id="checkoutModal">
 
 <div class="modal-box">
 
-<button class="modal-close" onclick="closeCheckout()">
+<button
+class="modal-close"
+onclick="closeCheckout()"
+>
 ×
 </button>
 
 <h2>Checkout</h2>
 
+<div class="payment-option">
+
+<h4>💳 Direct UPI Payment</h4>
+
 <p>
-Enter your details. You can complete payment and confirm your order through WhatsApp.
+After payment, send your order screenshot
+and product details on WhatsApp.
 </p>
 
-<div class="form-group">
-
-<label>Name</label>
-
-<input
-id="customerName"
-placeholder="Your name"
->
-
+<div class="info-value">
+UPI: k63653390@okicici
 </div>
-
-<div class="form-group">
-
-<label>Phone</label>
-
-<input
-id="customerPhone"
-placeholder="Phone number"
->
-
-</div>
-
-<div class="form-group">
-
-<label>Address</label>
-
-<textarea
-id="customerAddress"
-rows="3"
-placeholder="Delivery address"
-></textarea>
 
 </div>
 
 <div class="payment-option">
 
-<strong>UPI Payment</strong>
+<h4>💵 Cash On Delivery</h4>
 
-<span>
-UPI ID: k63653390@okicici
-</span>
+<p>
+Pay ₹100 advance to confirm your COD order.
+Remaining amount can be paid on delivery.
+</p>
+
+<div class="info-value">
+COD Advance: ₹100
+</div>
 
 </div>
 
-<div class="payment-option">
-
-<strong>Cash on Delivery</strong>
-
-<span>
-₹100 advance payment required for COD confirmation.
-</span>
-
-</div>
-
-<button
-class="order-btn"
-onclick="sendWhatsAppOrder()"
+<a
+id="checkoutWhatsApp"
+class="whatsapp-order"
+target="_blank"
 >
-Confirm Order on WhatsApp
-</button>
+Order on WhatsApp
+</a>
 
 </div>
 
@@ -1133,153 +1045,174 @@ Confirm Order on WhatsApp
 
 <script>
 
+/* =========================================
+   PRODUCT DATA
+   ========================================= */
+
+/*
+Replace these image URLs with the exact
+Meesho product images after verification.
+
+You can add up to 100 products here.
+*/
+
 const products = [
 
 {
 id:1,
-name:"Multipurpose Storage Organizer",
-category:"Home",
-price:599,
-old:799,
-img:"https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=700&q=80"
+name:"Multipurpose Electric Cooking Pot",
+category:"Electric",
+price:1200,
+oldPrice:1500,
+image:"https://images.unsplash.com/photo-1585515656973-d4b0f7a0a3c4?auto=format&fit=crop&w=600&q=80"
 },
 
 {
 id:2,
-name:"Portable Mini Fan",
-category:"Electronics",
-price:649,
-old:899,
-img:"https://images.unsplash.com/photo-1585338107529-13afc5f4a52b?auto=format&fit=crop&w=700&q=80"
+name:"Mini Electric Kettle",
+category:"Electric",
+price:999,
+oldPrice:1299,
+image:"https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=600&q=80"
 },
 
 {
 id:3,
-name:"Premium Water Bottle",
-category:"Home",
-price:449,
-old:699,
-img:"https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=700&q=80"
+name:"Multipurpose Kitchen Organizer",
+category:"Kitchen",
+price:650,
+oldPrice:899,
+image:"https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=600&q=80"
 },
 
 {
 id:4,
-name:"Wireless Earbuds Case",
-category:"Electronics",
-price:499,
-old:799,
-img:"https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?auto=format&fit=crop&w=700&q=80"
+name:"Premium Storage Basket",
+category:"Home",
+price:450,
+oldPrice:699,
+image:"https://images.unsplash.com/photo-1556228578-8c89e6adf883?auto=format&fit=crop&w=600&q=80"
 },
 
 {
 id:5,
-name:"Everyday Tote Bag",
-category:"Fashion",
-price:549,
-old:899,
-img:"https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=700&q=80"
+name:"Useful Home Cleaning Tool",
+category:"Home",
+price:550,
+oldPrice:799,
+image:"https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=600&q=80"
 },
 
 {
 id:6,
-name:"Skincare Essentials Set",
-category:"Beauty",
-price:699,
-old:1099,
-img:"https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=700&q=80"
+name:"Electric Egg Cooker",
+category:"Electric",
+price:900,
+oldPrice:1200,
+image:"https://images.unsplash.com/photo-1585238342028-4d4c9f7b3f4d?auto=format&fit=crop&w=600&q=80"
 },
 
 {
 id:7,
-name:"LED Desk Lamp",
-category:"Home",
-price:749,
-old:1199,
-img:"https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=700&q=80"
+name:"Modern Kitchen Storage Box",
+category:"Kitchen",
+price:500,
+oldPrice:750,
+image:"https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=600&q=80"
 },
 
 {
 id:8,
-name:"Smart Phone Stand",
-category:"Electronics",
-price:399,
-old:649,
-img:"https://images.unsplash.com/photo-1512428559087-560fa5ceab42?auto=format&fit=crop&w=700&q=80"
+name:"Portable LED Light",
+category:"Trending",
+price:600,
+oldPrice:899,
+image:"https://images.unsplash.com/photo-1524484485831-a92ffc0de03f?auto=format&fit=crop&w=600&q=80"
 },
 
 {
 id:9,
-name:"Minimal Wrist Watch",
-category:"Fashion",
-price:899,
-old:1499,
-img:"https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=700&q=80"
+name:"Multipurpose Vegetable Cutter",
+category:"Kitchen",
+price:499,
+oldPrice:799,
+image:"https://images.unsplash.com/photo-1598514983318-2f64f8f4796c?auto=format&fit=crop&w=600&q=80"
 },
 
 {
 id:10,
-name:"Travel Cosmetic Pouch",
-category:"Beauty",
-price:479,
-old:749,
-img:"https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=700&q=80"
-},
-
-{
-id:11,
-name:"Kitchen Storage Jar Set",
-category:"Home",
+name:"Smart Home Organizer",
+category:"Trending",
 price:699,
-old:999,
-img:"https://images.unsplash.com/photo-1583845112203-454c2f8c0b3f?auto=format&fit=crop&w=700&q=80"
-},
-
-{
-id:12,
-name:"Bluetooth Speaker",
-category:"Electronics",
-price:799,
-old:1299,
-img:"https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?auto=format&fit=crop&w=700&q=80"
+oldPrice:999,
+image:"https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=600&q=80"
 }
 
 ];
 
-let selectedCategory = "all";
 
-let cart = [];
+/* =========================================
+   CATEGORY
+   ========================================= */
 
-/* RENDER PRODUCTS */
+let selectedCategory = "All";
+
+function setCategory(category,button){
+
+selectedCategory = category;
+
+document
+.querySelectorAll(".category-btn")
+.forEach(btn=>btn.classList.remove("active"));
+
+button.classList.add("active");
+
+renderProducts();
+
+}
+
+
+/* =========================================
+   RENDER PRODUCTS
+   ========================================= */
 
 function renderProducts(){
 
-const q = document
+const grid =
+document.getElementById("productGrid");
+
+const search =
+document
 .getElementById("searchInput")
 .value
 .toLowerCase();
 
-const list = products.filter(p =>
+const filtered =
+products.filter(product=>{
 
-(selectedCategory === "all" ||
-p.category === selectedCategory)
+const matchCategory =
+selectedCategory === "All" ||
+product.category === selectedCategory;
 
-&&
+const matchSearch =
+product.name
+.toLowerCase()
+.includes(search);
 
-p.name.toLowerCase().includes(q)
+return matchCategory && matchSearch;
 
-);
+});
 
-document.getElementById("productGrid").innerHTML =
+grid.innerHTML =
+filtered.map(product=>`
 
-list.map(p => `
-
-<article class="product-card">
+<div class="product-card">
 
 <div class="product-image">
 
 <img
-src="${p.img}"
-alt="${p.name}"
+src="${product.image}"
+alt="${product.name}"
 loading="lazy"
 >
 
@@ -1287,328 +1220,213 @@ loading="lazy"
 
 <div class="product-info">
 
-<span class="badge">
-TRENDING
-</span>
+<div class="badge">
+${product.category}
+</div>
 
 <h3>
-${p.name}
+${product.name}
 </h3>
 
 <div class="product-category">
-${p.category}
+Smart Baske IN
 </div>
 
 <div class="price-row">
 
-<span class="price">
-₹${p.price}
-</span>
+<div class="price">
+₹${product.price}
+</div>
 
-<span class="old-price">
-₹${p.old}
-</span>
+<div class="old-price">
+₹${product.oldPrice}
+</div>
 
 </div>
 
 <button
 class="add-cart"
-onclick="addToCart(${p.id})"
+onclick="addToCart(${product.id})"
 >
-Add to Cart
+Add To Cart
 </button>
 
 </div>
 
-</article>
+</div>
 
-`).join("")
-
-||
-
-"<p>No products found.</p>";
+`).join("");
 
 }
 
-/* FILTER */
 
-function filterProducts(cat,btn){
+/* =========================================
+   CART
+   ========================================= */
 
-selectedCategory = cat;
-
-document
-.querySelectorAll(".category-btn")
-.forEach(b => b.classList.remove("active"));
-
-btn.classList.add("active");
-
-renderProducts();
-
-}
-
-/* ADD CART */
+let cart = [];
 
 function addToCart(id){
 
-const p = products.find(x => x.id === id);
+const product =
+products.find(p=>p.id === id);
 
-const item = cart.find(x => x.id === id);
-
-if(item){
-
-item.qty++;
-
-}else{
-
-cart.push({
-...p,
-qty:1
-});
-
-}
+cart.push(product);
 
 updateCart();
 
+openCart();
+
 }
 
-/* UPDATE CART */
 
 function updateCart(){
 
 document
 .getElementById("cartCount")
-.textContent = cart.reduce(
-(a,b) => a + b.qty,
-0
-);
+.innerText = cart.length;
 
-document
-.getElementById("cartItems")
-.innerHTML = cart.length
+const cartItems =
+document.getElementById("cartItems");
 
-?
+let total = 0;
 
-cart.map(i => `
+cartItems.innerHTML =
+cart.map((item,index)=>{
+
+total += item.price;
+
+return `
 
 <div class="cart-item">
 
+<div>
+
 <strong>
-${i.name}
+${item.name}
 </strong>
 
 <br>
 
-₹${i.price} × ${i.qty}
-
-<br>
+₹${item.price}
 
 <button
 class="remove-btn"
-onclick="removeCart(${i.id})"
+onclick="removeCart(${index})"
 >
 Remove
 </button>
 
 </div>
 
-`).join("")
+</div>
 
-:
+`;
 
-"<p>Your cart is empty.</p>";
+}).join("");
 
 document
 .getElementById("cartTotal")
-.textContent = cart.reduce(
-(a,b) => a + b.price * b.qty,
-0
-);
+.innerText = total;
 
 }
 
-/* REMOVE CART */
 
-function removeCart(id){
+function removeCart(index){
 
-cart = cart.filter(
-x => x.id !== id
-);
+cart.splice(index,1);
 
 updateCart();
 
 }
 
-/* CART OPEN */
+
+/* =========================================
+   CART PANEL
+   ========================================= */
 
 function openCart(){
 
 document
 .getElementById("cartPanel")
-.classList
-.add("active");
+.classList.add("active");
 
 }
+
 
 function closeCart(){
 
 document
 .getElementById("cartPanel")
-.classList
-.remove("active");
+.classList.remove("active");
 
 }
 
-/* CHECKOUT */
+
+/* =========================================
+   CHECKOUT
+   ========================================= */
 
 function openCheckout(){
 
-if(!cart.length){
+if(cart.length === 0){
 
-alert("Your cart is empty.");
+alert("Your cart is empty");
 
 return;
 
 }
 
+let message =
+"Hello Smart Baske IN!%0A%0AI want to order:%0A";
+
+cart.forEach(item=>{
+
+message +=
+"- " +
+item.name +
+" (₹" +
+item.price +
+")%0A";
+
+});
+
+let total =
+cart.reduce(
+(sum,item)=>sum + item.price,
+0
+);
+
+message +=
+"%0ATotal: ₹" +
+total +
+"%0A%0APayment Option: Please guide me.";
+
+document
+.getElementById("checkoutWhatsApp")
+.href =
+"https://wa.me/918921678447?text=" +
+message;
+
 document
 .getElementById("checkoutModal")
-.classList
-.add("active");
+.classList.add("active");
 
 }
+
 
 function closeCheckout(){
 
 document
 .getElementById("checkoutModal")
-.classList
-.remove("active");
+.classList.remove("active");
 
 }
 
-/* WHATSAPP ORDER */
 
-function sendWhatsAppOrder(){
-
-const name =
-document
-.getElementById("customerName")
-.value
-.trim();
-
-const phone =
-document
-.getElementById("customerPhone")
-.value
-.trim();
-
-const address =
-document
-.getElementById("customerAddress")
-.value
-.trim();
-
-if(!name || !phone || !address){
-
-alert("Please fill all delivery details.");
-
-return;
-
-}
-
-const items = cart.map(i =>
-
-`${i.name} x${i.qty} - ₹${i.price * i.qty}`
-
-).join("\n");
-
-const total = cart.reduce(
-
-(a,b) => a + b.price * b.qty,
-
-0
-
-);
-
-const message =
-
-`Hello Smart Baske IN!
-
-Name: ${name}
-Phone: ${phone}
-Address: ${address}
-
-Order:
-${items}
-
-Total: ₹${total}
-
-Payment options:
-UPI: k63653390@okicici
-
-OR
-
-COD with ₹100 advance.`;
-
-const url =
-
-"https://wa.me/918921678447?text="
-
-+
-
-encodeURIComponent(message);
-
-window.open(
-url,
-"_blank"
-);
-
-}
-
-/* HOME PAGE ENTRANCE ANIMATION */
-
-(function(){
-
-const groups = [
-
-[".offer-bar",0],
-
-[".logo",1],
-
-[".nav-links a",2],
-
-[".cart-btn",6],
-
-[".hero-tag",8],
-
-[".hero h1",10],
-
-[".hero p",12],
-
-[".hero-buttons",14]
-
-];
-
-groups.forEach(([selector,start]) => {
-
-document
-.querySelectorAll(selector)
-.forEach((element,index) => {
-
-element.classList.add("home-rise");
-
-element.style.setProperty(
-"--i",
-start + index
-);
-
-});
-
-});
-
-})();
-
-/* START */
+/* =========================================
+   START
+   ========================================= */
 
 renderProducts();
 
