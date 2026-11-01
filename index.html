@@ -1,213 +1,205 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Smart Basket Color Game</title>
-<style>
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #101018;
-  color: white;
-  text-align: center;
-}
-header {
-  padding: 20px;
-  font-size: 25px;
-  font-weight: bold;
-  background: #191923;
-}
-header span { color: #ff4c62; }
-.container {
-  max-width: 500px;
-  margin: 25px auto;
-  padding: 20px;
-}
-.card {
-  background: #1d1d2a;
-  border: 1px solid #303041;
-  border-radius: 18px;
-  padding: 20px;
-  margin-bottom: 18px;
-}
-.timer {
-  font-size: 45px;
-  font-weight: bold;
-  margin: 15px;
-}
-.buttons {
-  display: flex;
-  gap: 10px;
-}
-button {
-  flex: 1;
-  padding: 15px 5px;
-  border: none;
-  border-radius: 12px;
-  color: white;
-  font-size: 15px;
-  font-weight: bold;
-  cursor: pointer;
-}
-.red { background: #e83250; }
-.green { background: #07975c; }
-.violet { background: #773de0; }
-button:disabled { opacity: 0.5; }
-.balance {
-  font-size: 28px;
-  font-weight: bold;
-  color: #ffe28a;
-}
-.result {
-  font-size: 22px;
-  margin: 15px;
-}
-.history {
-  line-height: 2;
-  color: #ddd;
-}
-.note {
-  font-size: 12px;
-  color: #aaa;
-  line-height: 1.6;
-}
-</style>
-</head>
-<body>
-
-<header>Smart <span>Basket</span></header>
-
-<div class="container">
-  <div class="card">
-    <h2>🎮 Color Prediction</h2>
-    <p>Next Result In</p>
-    <div class="timer" id="timer">15</div>
-    <p id="round">Round #1</p>
-
-    <div class="buttons">
-      <button class="red" onclick="choose('Red')">🔴 Red</button>
-      <button class="green" onclick="choose('Green')">🟢 Green</button>
-      <button class="violet" onclick="choose('Violet')">🟣 Violet</button>
-    </div>
-
-    <p id="message">Choose a color to play!</p>
-  </div>
-
-  <div class="card">
-    <h3>🪙 Demo Wallet</h3>
-    <div class="balance" id="balance">1000</div>
-    <p>Virtual Coins Only</p>
-    <div class="result" id="result">Waiting for result...</div>
-    <button style="background:#38384b;width:100%" onclick="resetGame()">
-      Reset Game
-    </button>
-  </div>
-
-  <div class="card">
-    <h3>📜 Game History</h3>
-    <div class="history" id="history">No results yet</div>
-  </div>
-
-  <p class="note">
-    Demo game only. Virtual coins have no real-money value.
-    No deposits or withdrawals.
-  </p>
+<div id="firstPart">
+    <p id="title">COLOR GUESSİNG GAME</p>    
+    <p id = "text"></p>  
 </div>
-
-<script>
-let balance = 1000;
-let round = 1;
-let time = 15;
-let choice = null;
-let locked = false;
-let history = [];
-
-const colors = ["Red", "Green", "Violet"];
-
-function choose(color) {
-  if (locked || choice !== null || balance < 10) return;
-
-  balance -= 10;
-  choice = color;
-
-  document.getElementById("balance").textContent = balance;
-  document.getElementById("message").textContent =
-    "You selected " + color + "!";
-}
-
-function updateGame() {
-  if (locked) return;
-
-  time--;
-
-  document.getElementById("timer").textContent = time;
-
-  if (time <= 0) {
-    locked = true;
-
-    const result = colors[
-      Math.floor(Math.random() * colors.length)
-    ];
-
-    document.getElementById("result").textContent =
-      "Result: " + result;
-
-    if (choice === result) {
-      balance += 25;
-      document.getElementById("message").textContent =
-        "Correct! +25 virtual coins";
-    } else if (choice !== null) {
-      document.getElementById("message").textContent =
-        "Wrong result. Try next round!";
-    } else {
-      document.getElementById("message").textContent =
-        "Round completed!";
+<div id="secondPart">
+  <div id="score">
+    <p id="scoreTable">Score: 0</p>
+  </div>
+  <div>
+    <p id="statement">Pick the right color</p>
+  <canvas id="canvas1" class="canvas" onclick="checkAnswer(canvas1)"></canvas>
+  <canvas id="canvas2" class="canvas" onclick="checkAnswer(canvas2)"></canvas>
+  <canvas id="canvas3" class="canvas" onclick="checkAnswer(canvas3)"></canvas><br>
+  <canvas id="canvas4" class="canvas" onclick="checkAnswer(canvas4)"></canvas>
+  <canvas id="canvas5" class="canvas" onclick="checkAnswer(canvas5)"></canvas>
+  <canvas id="canvas6" class="canvas" onclick="checkAnswer(canvas6)"></canvas>
+  </div>
+  <div id="x"</div>
+</div> var canvas1 = document.getElementById("canvas1"), canvas2 = document.getElementById("canvas2"), canvas3 = document.getElementById("canvas3"), canvas4 = document.getElementById("canvas4"), canvas5 = document.getElementById("canvas5"), canvas6 = document.getElementById("canvas6"), scoreTable = document.getElementById("scoreTable"), randomRGB, start, score = 0, count = 6, multiplier = 10, falseAnswers = 0, colors = [canvas1,canvas2,canvas3,canvas4,canvas5,canvas6];
+function drawCanvas() {
+  var randomCanvas = Math.floor(Math.random()*6);  
+  for(i=0; i<colors.length; i++){
+    var ctx = colors[i].getContext("2d");
+    colors[i].style.border = "6px solid white";
+    if(i != randomCanvas){
+     ctx.fillStyle = rgbGenerator();
+     ctx.fillRect(0,0,canvas1.width,canvas1.height);
     }
-
-    document.getElementById("balance").textContent = balance;
-
-    history.unshift("Round " + round + ": " + result);
-    history = history.slice(0, 10);
-
-    document.getElementById("history").innerHTML =
-      history.join("<br>");
-
-    setTimeout(() => {
-      round++;
-      time = 15;
-      choice = null;
-      locked = false;
-
-      document.getElementById("round").textContent =
-        "Round #" + round;
-
-      document.getElementById("timer").textContent = time;
-
-      document.getElementById("message").textContent =
-        "Choose a color to play!";
-    }, 1800);
+    else{
+     ctx.fillStyle = start;
+     ctx.fillRect(0,0,canvas1.width,canvas1.height);      
+    }
   }
 }
 
-function resetGame() {
-  balance = 1000;
-  round = 1;
-  time = 15;
-  choice = null;
-  locked = false;
-  history = [];
-
-  document.getElementById("balance").textContent = balance;
-  document.getElementById("timer").textContent = time;
-  document.getElementById("round").textContent = "Round #1";
-  document.getElementById("result").textContent = "Waiting for result...";
-  document.getElementById("message").textContent = "Choose a color to play!";
-  document.getElementById("history").textContent = "No results yet";
+function random() {
+  var number = Math.random() * 256;
+  return number;
 }
 
-setInterval(updateGame, 1000);
-</script>
+function rgbGenerator() {
+  var red = Math.floor(random());
+  var green = Math.floor(random());
+  var blue = Math.floor(random());
+  randomRGB = "rgb("+red+","+green+","+blue+")";
+  return randomRGB;
+} 
 
-</body>
-</html>
+function startRGB() { 
+  document.getElementById("text").innerHTML = rgbGenerator();
+  start = document.getElementById("text").innerHTML;
+  falseAnswers = 0;
+  count = 6;
+}
+
+function checkAnswer(element) {
+  var context = element.getContext("2d");
+  var data = context.getImageData(0,0,1,1);
+  var control = "rgb("+data.data[0]+","+data.data[1]+","+data.data[2]+")";
+  if(control == start){
+    element.style.border = "6px solid green";
+    writeScore();
+    scoreTable.innerHTML = "Score: " + score + " +" + multiplier * count;
+    setTimeout(startRGB,2000);
+    setTimeout(drawCanvas,2000);
+  }
+  else{
+     context.clearRect(0,0,element.width,element.height);
+     element.style.border = "6px solid red";
+     falseAnswers = falseAnswers + 1;
+  }
+}
+
+function writeScore() {
+  count = count - falseAnswers;
+  score = score + multiplier * count;
+}
+
+window.onload = startRGB();var canvas1 = document.getElementById("canvas1"), canvas2 = document.getElementById("canvas2"), canvas3 = document.getElementById("canvas3"), canvas4 = document.getElementById("canvas4"), canvas5 = document.getElementById("canvas5"), canvas6 = document.getElementById("canvas6"), scoreTable = document.getElementById("scoreTable"), randomRGB, start, score = 0, count = 6, multiplier = 10, falseAnswers = 0, colors = [canvas1,canvas2,canvas3,canvas4,canvas5,canvas6];
+function drawCanvas() {
+  var randomCanvas = Math.floor(Math.random()*6);  
+  for(i=0; i<colors.length; i++){
+    var ctx = colors[i].getContext("2d");
+    colors[i].style.border = "6px solid white";
+    if(i != randomCanvas){
+     ctx.fillStyle = rgbGenerator();
+     ctx.fillRect(0,0,canvas1.width,canvas1.height);
+    }
+    else{
+     ctx.fillStyle = start;
+     ctx.fillRect(0,0,canvas1.width,canvas1.height);      
+    }
+  }
+}
+
+function random() {
+  var number = Math.random() * 256;
+  return number;
+}
+
+function rgbGenerator() {
+  var red = Math.floor(random());
+  var green = Math.floor(random());
+  var blue = Math.floor(random());
+  randomRGB = "rgb("+red+","+green+","+blue+")";
+  return randomRGB;
+} 
+
+function startRGB() { 
+  document.getElementById("text").innerHTML = rgbGenerator();
+  start = document.getElementById("text").innerHTML;
+  falseAnswers = 0;
+  count = 6;
+}
+
+function checkAnswer(element) {
+  var context = element.getContext("2d");
+  var data = context.getImageData(0,0,1,1);
+  var control = "rgb("+data.data[0]+","+data.data[1]+","+data.data[2]+")";
+  if(control == start){
+    element.style.border = "6px solid green";
+    writeScore();
+    scoreTable.innerHTML = "Score: " + score + " +" + multiplier * count;
+    setTimeout(startRGB,2000);
+    setTimeout(drawCanvas,2000);
+  }
+  else{
+     context.clearRect(0,0,element.width,element.height);
+     element.style.border = "6px solid red";
+     falseAnswers = falseAnswers + 1;
+  }
+}
+
+function writeScore() {
+  count = count - falseAnswers;
+  score = score + multiplier * count;
+}
+
+window.onload = startRGB();
+window.onload = drawCanvas(); 
+window.onload = drawCanvas();  body {
+  background-color:rgb(41, 112, 145);
+  text-align:center;
+  font-family:monospace;
+}
+
+#firstPart {
+  background-color:rgb(49, 166, 220);
+  height:300px;
+  border:solid 1px gray;
+}
+
+#secondPart {
+  display:flex;
+  justify-content:center;
+}
+
+#text {
+  font-size:60px;
+  color:rgb(233, 248, 245); 
+}
+
+#title {
+  font-size:50px;
+  margin-top:5px;
+  color:white;
+  text-shadow:4px 2px rgb(3, 239, 193);
+}
+
+#statement {
+  font-size:25px;
+  margin-top:6px;
+  color:white;
+  text-shadow:1px 1px rgb(3, 239, 193);  
+}
+
+.canvas {
+  border:6px solid white;
+  width:200px;
+  height:200px;
+  border-radius:13px;
+  transition:0.3s;
+  margin:15px;
+}
+
+canvas:hover {
+  box-shadow:10px 10px 30px rgb(3, 239, 193);
+  cursor:pointer;
+}
+
+#scoreTable {
+  text-align:left;
+  font-size: 25px;
+  color:white;
+  margin-left:7px;
+  text-shadow:1px 1px rgb(3, 239, 193);  
+}
+
+#score {
+  width:570px;
+}
+
+#x {
+  width:570px;
+}
