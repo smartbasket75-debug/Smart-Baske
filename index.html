@@ -1,14 +1,358 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BigPay | Official Links</title>
 
-const CONFIG = {
-  iframeLink: "https://example.com/",
-  appName: "Smart Baske Demo",
-  telegramLink: "https://t.me/",
-  appLogoUrl: "https://placehold.co/200x200/111111/ffffff?text=SB",
+<link rel="stylesheet" href="https://db.onlinewebfonts.com/c/5ac3fe7c6abd2f62067f266d89671492?family=HelveticaNowDisplay-Medium">
+<link rel="stylesheet" href="https://db.onlinewebfonts.com/c/1aa3377e489837a26d019bba501e779d?family=HelveticaNowDisplayW01-Rg">
 
-  primary: "#ff3333",
-  secondary: "#dc143c",
-  tertiary: "#8b0000",
-  pageBackground: "#050505",
+<style>
+:root {
+  --font-heading: 'HelveticaNowDisplay-Medium', Arial, sans-serif;
+  --font-body: 'HelveticaNowDisplayW01-Rg', Arial, sans-serif;
+}
 
-  roundSeconds: 60
-};
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family:var(--font-body);
+  background:#000;
+  color:white;
+  overflow:hidden;
+}
+
+video {
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:70% center;
+  z-index:0;
+}
+
+.overlay {
+  position:fixed;
+  inset:0;
+  z-index:1;
+  background:linear-gradient(90deg,rgba(0,0,0,.65),rgba(0,0,0,.1));
+}
+
+header {
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  padding:22px 30px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  z-index:10;
+}
+
+.logo {
+  font-family:var(--font-heading);
+  font-size:27px;
+  letter-spacing:-1px;
+}
+
+.logo span { color:#aaa; }
+
+nav {
+  display:flex;
+  gap:25px;
+}
+
+nav a {
+  color:white;
+  text-decoration:none;
+  font-size:17px;
+  transition:.3s;
+}
+
+nav a:hover { opacity:.5; }
+
+.menu {
+  display:none;
+  background:none;
+  border:0;
+  color:white;
+  font-size:28px;
+}
+
+.hero {
+  position:relative;
+  z-index:2;
+  height:100vh;
+  display:flex;
+  align-items:center;
+  padding:30px 8%;
+}
+
+.content {
+  max-width:650px;
+}
+
+.tag {
+  color:#aaa;
+  font-size:14px;
+  letter-spacing:4px;
+  margin-bottom:20px;
+  text-transform:uppercase;
+}
+
+h1 {
+  font-family:var(--font-heading);
+  font-size:clamp(45px,8vw,85px);
+  line-height:1;
+  margin-bottom:25px;
+  letter-spacing:-3px;
+}
+
+.description {
+  font-size:clamp(17px,3vw,23px);
+  line-height:1.5;
+  color:#ddd;
+  margin-bottom:35px;
+}
+
+.buttons {
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+}
+
+.btn {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:13px 22px;
+  border:1px solid white;
+  border-radius:50px;
+  text-decoration:none;
+  color:white;
+  font-size:14px;
+  transition:.3s;
+  cursor:pointer;
+  background:transparent;
+}
+
+.btn.primary {
+  background:white;
+  color:black;
+}
+
+.btn:hover {
+  background:white;
+  color:black;
+}
+
+.copy-message {
+  margin-top:15px;
+  color:#ddd;
+  font-size:13px;
+  min-height:18px;
+}
+
+footer {
+  position:fixed;
+  bottom:20px;
+  left:0;
+  width:100%;
+  text-align:center;
+  z-index:2;
+  color:#aaa;
+  font-size:12px;
+}
+
+.mobile-nav {
+  display:none;
+}
+
+@media(max-width:768px) {
+  header { padding:20px; }
+  .logo { font-size:24px; }
+  nav { display:none; }
+  .menu { display:block; }
+  .hero {
+    align-items:flex-end;
+    padding:30px 22px 100px;
+  }
+  h1 { letter-spacing:-2px; }
+  .buttons { gap:9px; }
+  .btn { padding:12px 17px; font-size:13px; }
+  .mobile-nav {
+    position:fixed;
+    inset:0;
+    z-index:8;
+    background:rgba(0,0,0,.95);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:30px;
+    opacity:0;
+    pointer-events:none;
+    transition:.3s;
+  }
+  .mobile-nav.open {
+    opacity:1;
+    pointer-events:auto;
+  }
+  .mobile-nav a {
+    color:white;
+    font-size:27px;
+    text-decoration:none;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<video id="bgVideo" muted playsinline preload="auto">
+  <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260826_041744_63efcd78-bf7d-4039-99e2-2461e8a61903.mp4">
+</video>
+
+<div class="overlay"></div>
+
+<header>
+  <div class="logo">BigPay<span>®</span> ✳</div>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="https://t.me/+-BD8O-QEVv00ZTE1" target="_blank">Updates</a>
+    <a href="https://t.me/F0641" target="_blank">Contact</a>
+  </nav>
+
+  <button class="menu" onclick="toggleMenu()">☰</button>
+</header>
+
+<div class="mobile-nav" id="mobileNav">
+  <a href="#home" onclick="toggleMenu()">Home</a>
+  <a href="https://t.me/+-BD8O-QEVv00ZTE1" target="_blank">Updates</a>
+  <a href="https://t.me/F0641" target="_blank">Contact</a>
+</div>
+
+<section class="hero" id="home">
+  <div class="content">
+
+    <div class="tag">WELCOME TO BIGPAY</div>
+
+    <h1>Everything<br>In One Place.</h1>
+
+    <p class="description">
+      Access the app, connect with us and stay updated.
+      All important links in one place.
+    </p>
+
+    <div class="buttons">
+
+      <a class="btn primary"
+         href="https://t.me/c/3448486720/156"
+         target="_blank">
+         Download App ↗
+      </a>
+
+      <a class="btn"
+         href="https://t.me/F0641"
+         target="_blank">
+         Telegram ID ↗
+      </a>
+
+      <a class="btn"
+         href="https://t.me/+-BD8O-QEVv00ZTE1"
+         target="_blank">
+         Join Updates ↗
+      </a>
+
+      <button class="btn" onclick="copyLinks()">
+        Copy All Links
+      </button>
+
+    </div>
+
+    <div class="copy-message" id="message"></div>
+
+  </div>
+</section>
+
+<footer>
+  © 2026 BigPay. All rights reserved.
+</footer>
+
+<script>
+const video = document.getElementById("bgVideo");
+
+let prevX = null;
+let targetTime = 0;
+let seeking = false;
+
+window.addEventListener("mousemove", function(e) {
+
+  if (!video.duration || !isFinite(video.duration)) return;
+
+  if (prevX === null) {
+    prevX = e.clientX;
+    return;
+  }
+
+  const delta = e.clientX - prevX;
+  prevX = e.clientX;
+
+  targetTime += (delta / window.innerWidth) * 0.8 * video.duration;
+
+  targetTime = Math.max(0, Math.min(video.duration, targetTime));
+
+  seekVideo();
+});
+
+video.addEventListener("loadedmetadata", () => {
+  targetTime = video.currentTime;
+});
+
+function seekVideo() {
+  if (seeking || !video.duration) return;
+
+  if (Math.abs(video.currentTime - targetTime) < 0.015) return;
+
+  seeking = true;
+  video.currentTime = targetTime;
+}
+
+video.addEventListener("seeked", () => {
+  if (Math.abs(video.currentTime - targetTime) > 0.03) {
+    seeking = false;
+    seekVideo();
+  } else {
+    seeking = false;
+  }
+});
+
+function toggleMenu() {
+  document.getElementById("mobileNav").classList.toggle("open");
+}
+
+async function copyLinks() {
+  const links =
+`Telegram ID: https://t.me/F0641
+Updates Channel: https://t.me/+-BD8O-QEVv00ZTE1
+App Link: https://t.me/c/3448486720/156`;
+
+  try {
+    await navigator.clipboard.writeText(links);
+    document.getElementById("message").textContent =
+      "All links copied successfully!";
+  } catch {
+    document.getElementById("message").textContent =
+      "Copy unavailable. Please copy the links manually.";
+  }
+}
+</script>
+
+</body>
+</html>
+```
