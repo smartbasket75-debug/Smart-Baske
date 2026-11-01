@@ -1,358 +1,172 @@
-```html
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BigPay | Official Links</title>
-
-<link rel="stylesheet" href="https://db.onlinewebfonts.com/c/5ac3fe7c6abd2f62067f266d89671492?family=HelveticaNowDisplay-Medium">
-<link rel="stylesheet" href="https://db.onlinewebfonts.com/c/1aa3377e489837a26d019bba501e779d?family=HelveticaNowDisplayW01-Rg">
-
-<style>
-:root {
-  --font-heading: 'HelveticaNowDisplay-Medium', Arial, sans-serif;
-  --font-body: 'HelveticaNowDisplayW01-Rg', Arial, sans-serif;
-}
-
-* { margin:0; padding:0; box-sizing:border-box; }
-
-body {
-  font-family:var(--font-body);
-  background:#000;
-  color:white;
-  overflow:hidden;
-}
-
-video {
-  position:fixed;
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  object-position:70% center;
-  z-index:0;
-}
-
-.overlay {
-  position:fixed;
-  inset:0;
-  z-index:1;
-  background:linear-gradient(90deg,rgba(0,0,0,.65),rgba(0,0,0,.1));
-}
-
-header {
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  padding:22px 30px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  z-index:10;
-}
-
-.logo {
-  font-family:var(--font-heading);
-  font-size:27px;
-  letter-spacing:-1px;
-}
-
-.logo span { color:#aaa; }
-
-nav {
-  display:flex;
-  gap:25px;
-}
-
-nav a {
-  color:white;
-  text-decoration:none;
-  font-size:17px;
-  transition:.3s;
-}
-
-nav a:hover { opacity:.5; }
-
-.menu {
-  display:none;
-  background:none;
-  border:0;
-  color:white;
-  font-size:28px;
-}
-
-.hero {
-  position:relative;
-  z-index:2;
-  height:100vh;
-  display:flex;
-  align-items:center;
-  padding:30px 8%;
-}
-
-.content {
-  max-width:650px;
-}
-
-.tag {
-  color:#aaa;
-  font-size:14px;
-  letter-spacing:4px;
-  margin-bottom:20px;
-  text-transform:uppercase;
-}
-
-h1 {
-  font-family:var(--font-heading);
-  font-size:clamp(45px,8vw,85px);
-  line-height:1;
-  margin-bottom:25px;
-  letter-spacing:-3px;
-}
-
-.description {
-  font-size:clamp(17px,3vw,23px);
-  line-height:1.5;
-  color:#ddd;
-  margin-bottom:35px;
-}
-
-.buttons {
-  display:flex;
-  flex-wrap:wrap;
-  gap:12px;
-}
-
-.btn {
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  padding:13px 22px;
-  border:1px solid white;
-  border-radius:50px;
-  text-decoration:none;
-  color:white;
-  font-size:14px;
-  transition:.3s;
-  cursor:pointer;
-  background:transparent;
-}
-
-.btn.primary {
-  background:white;
-  color:black;
-}
-
-.btn:hover {
-  background:white;
-  color:black;
-}
-
-.copy-message {
-  margin-top:15px;
-  color:#ddd;
-  font-size:13px;
-  min-height:18px;
-}
-
-footer {
-  position:fixed;
-  bottom:20px;
-  left:0;
-  width:100%;
-  text-align:center;
-  z-index:2;
-  color:#aaa;
-  font-size:12px;
-}
-
-.mobile-nav {
-  display:none;
-}
-
-@media(max-width:768px) {
-  header { padding:20px; }
-  .logo { font-size:24px; }
-  nav { display:none; }
-  .menu { display:block; }
-  .hero {
-    align-items:flex-end;
-    padding:30px 22px 100px;
-  }
-  h1 { letter-spacing:-2px; }
-  .buttons { gap:9px; }
-  .btn { padding:12px 17px; font-size:13px; }
-  .mobile-nav {
-    position:fixed;
-    inset:0;
-    z-index:8;
-    background:rgba(0,0,0,.95);
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    gap:30px;
-    opacity:0;
-    pointer-events:none;
-    transition:.3s;
-  }
-  .mobile-nav.open {
-    opacity:1;
-    pointer-events:auto;
-  }
-  .mobile-nav a {
-    color:white;
-    font-size:27px;
-    text-decoration:none;
-  }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080912">
+  <meta name="description" content="BIG PAY — official links, updates and app access.">
+  <title>BIG PAY | Official Hub</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap');
+    :root{--gold:#ffd45b;--gold2:#ff9f1c;--blue:#2b8cff;--bg:#070811;--panel:rgba(13,19,39,.82);--white:#f7f8ff}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--white);font-family:Inter,Arial,sans-serif;overflow-x:hidden}
+    a{color:inherit;text-decoration:none}
+    .scene{position:fixed;inset:0;z-index:-2;overflow:hidden;background:radial-gradient(ellipse at 50% 18%,#17254b 0%,#0b1021 40%,#05060c 78%)}
+    .scene:before,.scene:after{content:"";position:absolute;width:65vw;height:65vw;border-radius:50%;filter:blur(90px);opacity:.22;animation:drift 12s ease-in-out infinite alternate}
+    .scene:before{background:#146cff;top:-35vw;left:-15vw}
+    .scene:after{background:#ff9e18;right:-25vw;bottom:-45vw;animation-delay:-5s}
+    #particles{position:absolute;inset:0;width:100%;height:100%;opacity:.75}
+    .grid-glow{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:48px 48px;mask-image:linear-gradient(to bottom,black,transparent 88%)}
+    header{position:fixed;top:0;left:0;right:0;z-index:10;padding:17px 6%;display:flex;align-items:center;justify-content:space-between;background:linear-gradient(180deg,rgba(4,6,14,.88),rgba(4,6,14,.12));backdrop-filter:blur(10px)}
+    .brand{font:900 22px Orbitron,sans-serif;letter-spacing:1.5px;color:var(--gold);text-shadow:0 0 18px #ffb52c77}
+    .brand span{color:white}
+    nav{display:flex;gap:28px;align-items:center;font-size:13px;font-weight:700;color:#d5d9e8}
+    nav a:hover{color:var(--gold)}
+    .nav-cta,.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border-radius:999px;font-weight:900;letter-spacing:.3px;transition:.25s ease}
+    .nav-cta{padding:11px 18px;background:linear-gradient(100deg,var(--gold),var(--gold2));color:#17100a;box-shadow:0 0 24px #ffb52c38}
+    .menu{display:none;background:none;border:1px solid #ffffff30;color:white;border-radius:10px;padding:9px 12px;font-size:20px}
+    main{width:min(1120px,90%);margin:auto}
+    .hero{min-height:100vh;display:grid;place-items:center;text-align:center;padding:125px 0 70px;position:relative}
+    .hero-inner{max-width:900px;animation:rise 1s both}
+    .eyebrow{display:inline-flex;align-items:center;gap:9px;padding:9px 15px;border:1px solid #ffd45b55;border-radius:999px;background:#ffcf4b0d;color:#ffe49a;font-size:11px;font-weight:900;letter-spacing:2px;text-transform:uppercase;box-shadow:0 0 24px #ffb52c12}
+    .live-dot{width:7px;height:7px;border-radius:50%;background:#5dff9b;box-shadow:0 0 12px #5dff9b;animation:pulse 1.5s infinite}
+    h1{font:900 clamp(48px,9vw,104px)/.98 Orbitron,sans-serif;letter-spacing:-4px;margin:28px 0 15px;background:linear-gradient(180deg,#fff9d9 5%,#ffd45b 47%,#ff981c 100%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 8px 25px #ffad2740)}
+    .subtitle{font-size:clamp(16px,2.2vw,21px);color:#d5d9e8;line-height:1.7;max-width:650px;margin:0 auto}
+    .hero-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:32px}
+    .btn{padding:15px 24px;font-size:13px;min-width:190px}
+    .btn-primary{background:linear-gradient(105deg,#ffe27b,#ff9d1b);color:#17100a;box-shadow:0 10px 35px #ffad273b}
+    .btn-secondary{border:1px solid #7ab5ff88;background:#10203d9c;color:#eaf3ff}
+    .btn:hover,.nav-cta:hover{transform:translateY(-4px);box-shadow:0 0 30px #ffbd4b77}
+    .scroll-hint{position:absolute;bottom:28px;color:#9ba7c2;font-size:10px;letter-spacing:2px;text-transform:uppercase;animation:bob 2s infinite}
+    section{padding:78px 0}
+    .section-head{text-align:center;margin-bottom:32px}
+    .section-head .kicker{font-size:11px;letter-spacing:3px;color:var(--gold);font-weight:900}
+    h2{font:800 clamp(27px,4vw,42px) Orbitron,sans-serif;margin:12px 0;color:#fff}
+    .section-head p{color:#aeb8cf;line-height:1.7;margin:0}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{position:relative;overflow:hidden;border:1px solid #ffffff18;border-radius:22px;padding:27px;background:linear-gradient(145deg,rgba(21,31,57,.9),rgba(8,12,25,.9));box-shadow:0 18px 55px #0005;transition:.35s;opacity:0;transform:translateY(28px)}
+    .card.visible{opacity:1;transform:translateY(0)}
+    .card:before{content:"";position:absolute;inset:-1px;background:linear-gradient(120deg,transparent,#ffd45b20,transparent);transform:translateX(-100%);transition:.7s}
+    .card:hover:before{transform:translateX(100%)}
+    .card:hover{transform:translateY(-8px);border-color:#ffd45b77;box-shadow:0 22px 60px #0008,0 0 28px #ffbd4b17}
+    .icon{width:54px;height:54px;display:grid;place-items:center;border-radius:16px;background:linear-gradient(145deg,#ffdb72,#e88916);color:#17100a;font-size:25px;box-shadow:0 8px 25px #ffad2735}
+    .card h3{font:700 17px Orbitron,sans-serif;margin:22px 0 9px}
+    .card p{font-size:13px;line-height:1.7;color:#aeb8cf;min-height:44px}
+    .card a{display:inline-flex;margin-top:15px;color:var(--gold);font-weight:900;font-size:12px;letter-spacing:.7px}
+    .notice{max-width:780px;margin:0 auto;border:1px solid #ffd45b45;border-radius:18px;padding:20px 24px;text-align:center;background:#ffcf4b0b;color:#cbd3e6;line-height:1.7;font-size:13px}
+    footer{border-top:1px solid #ffffff14;padding:28px 6%;text-align:center;color:#8f9bb5;font-size:12px}
+    footer strong{color:var(--gold);font-family:Orbitron,sans-serif;letter-spacing:1px}
+    .reveal{opacity:0;transform:translateY(25px);transition:opacity .8s,transform .8s}
+    .reveal.visible{opacity:1;transform:none}
+    @keyframes rise{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+    @keyframes pulse{50%{opacity:.35;transform:scale(.7)}}
+    @keyframes drift{to{transform:translate(8vw,6vw) scale(1.15)}}
+    @keyframes bob{50%{transform:translateY(7px);opacity:.55}}
+    @media(max-width:760px){
+      header{padding:14px 5%}.menu{display:block}
+      nav{display:none;position:absolute;top:65px;left:5%;right:5%;padding:20px;border:1px solid #ffffff20;border-radius:18px;background:#080d1cf5;flex-direction:column;gap:20px}
+      nav.open{display:flex}.cards{grid-template-columns:1fr}
+      .hero{min-height:92vh;padding-top:110px}h1{letter-spacing:-2px}
+      section{padding:58px 0}.card p{min-height:0}
+    }
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+  </style>
 </head>
-
 <body>
+  <div class="scene"><canvas id="particles"></canvas><div class="grid-glow"></div></div>
+  <header>
+    <a class="brand" href="#home">BIG <span>PAY</span></a>
+    <button class="menu" id="menu" aria-label="Open menu">☰</button>
+    <nav id="nav">
+      <a href="#home">HOME</a><a href="#links">OFFICIAL LINKS</a><a href="#about">ABOUT</a>
+      <a class="nav-cta" href="https://t.me/F0641" target="_blank" rel="noopener">CONTACT ON TELEGRAM ↗</a>
+    </nav>
+  </header>
 
-<video id="bgVideo" muted playsinline preload="auto">
-  <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260826_041744_63efcd78-bf7d-4039-99e2-2461e8a61903.mp4">
-</video>
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-inner">
+        <div class="eyebrow"><span class="live-dot"></span> WELCOME TO THE OFFICIAL HUB</div>
+        <h1>BIG PAY</h1>
+        <p class="subtitle">Your central place for BIG PAY updates, direct contact and app access. Stay connected through the official Telegram links below.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://t.me/+-BD8O-QEVv00ZTE1" target="_blank" rel="noopener">JOIN UPDATES CHANNEL ↗</a>
+          <a class="btn btn-secondary" href="https://t.me/c/3448486720/156" target="_blank" rel="noopener">OPEN APP LINK ↗</a>
+        </div>
+      </div>
+      <div class="scroll-hint">SCROLL TO EXPLORE ↓</div>
+    </section>
 
-<div class="overlay"></div>
+    <section id="links">
+      <div class="section-head reveal">
+        <div class="kicker">STAY CONNECTED</div>
+        <h2>OFFICIAL TELEGRAM LINKS</h2>
+        <p>Choose the link you need and connect with BIG PAY.</p>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <div class="icon">✉</div>
+          <h3>PERSONAL CONTACT</h3>
+          <p>Reach the BIG PAY contact directly through Telegram.</p>
+          <a href="https://t.me/F0641" target="_blank" rel="noopener">OPEN TELEGRAM ↗</a>
+        </article>
+        <article class="card">
+          <div class="icon">◉</div>
+          <h3>UPDATES CHANNEL</h3>
+          <p>Visit the Telegram channel for updates and information.</p>
+          <a href="https://t.me/+-BD8O-QEVv00ZTE1" target="_blank" rel="noopener">JOIN CHANNEL ↗</a>
+        </article>
+        <article class="card">
+          <div class="icon">▣</div>
+          <h3>APP / TELEGRAM POST</h3>
+          <p>Open the Telegram app link shared by BIG PAY.</p>
+          <a href="https://t.me/c/3448486720/156" target="_blank" rel="noopener">OPEN LINK ↗</a>
+        </article>
+      </div>
+    </section>
 
-<header>
-  <div class="logo">BigPay<span>®</span> ✳</div>
+    <section id="about">
+      <div class="section-head reveal">
+        <div class="kicker">BIG PAY</div>
+        <h2>ONE PLACE. ALL YOUR LINKS.</h2>
+      </div>
+      <div class="notice reveal">Use the official links on this page to reach BIG PAY. Telegram invite and private-post links may require you to sign in or have access to the relevant channel.</div>
+    </section>
+  </main>
+  <footer>© <span id="year"></span> <strong>BIG PAY</strong>. All rights reserved.</footer>
 
-  <nav>
-    <a href="#home">Home</a>
-    <a href="https://t.me/+-BD8O-QEVv00ZTE1" target="_blank">Updates</a>
-    <a href="https://t.me/F0641" target="_blank">Contact</a>
-  </nav>
+  <script>
+    const menu=document.getElementById('menu'),nav=document.getElementById('nav');
+    menu.addEventListener('click',()=>nav.classList.toggle('open'));
+    nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
+    document.getElementById('year').textContent=new Date().getFullYear();
 
-  <button class="menu" onclick="toggleMenu()">☰</button>
-</header>
+    const observer=new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}});
+    },{threshold:.14});
+    document.querySelectorAll('.reveal,.card').forEach(el=>observer.observe(el));
 
-<div class="mobile-nav" id="mobileNav">
-  <a href="#home" onclick="toggleMenu()">Home</a>
-  <a href="https://t.me/+-BD8O-QEVv00ZTE1" target="_blank">Updates</a>
-  <a href="https://t.me/F0641" target="_blank">Contact</a>
-</div>
-
-<section class="hero" id="home">
-  <div class="content">
-
-    <div class="tag">WELCOME TO BIGPAY</div>
-
-    <h1>Everything<br>In One Place.</h1>
-
-    <p class="description">
-      Access the app, connect with us and stay updated.
-      All important links in one place.
-    </p>
-
-    <div class="buttons">
-
-      <a class="btn primary"
-         href="https://t.me/c/3448486720/156"
-         target="_blank">
-         Download App ↗
-      </a>
-
-      <a class="btn"
-         href="https://t.me/F0641"
-         target="_blank">
-         Telegram ID ↗
-      </a>
-
-      <a class="btn"
-         href="https://t.me/+-BD8O-QEVv00ZTE1"
-         target="_blank">
-         Join Updates ↗
-      </a>
-
-      <button class="btn" onclick="copyLinks()">
-        Copy All Links
-      </button>
-
-    </div>
-
-    <div class="copy-message" id="message"></div>
-
-  </div>
-</section>
-
-<footer>
-  © 2026 BigPay. All rights reserved.
-</footer>
-
-<script>
-const video = document.getElementById("bgVideo");
-
-let prevX = null;
-let targetTime = 0;
-let seeking = false;
-
-window.addEventListener("mousemove", function(e) {
-
-  if (!video.duration || !isFinite(video.duration)) return;
-
-  if (prevX === null) {
-    prevX = e.clientX;
-    return;
-  }
-
-  const delta = e.clientX - prevX;
-  prevX = e.clientX;
-
-  targetTime += (delta / window.innerWidth) * 0.8 * video.duration;
-
-  targetTime = Math.max(0, Math.min(video.duration, targetTime));
-
-  seekVideo();
-});
-
-video.addEventListener("loadedmetadata", () => {
-  targetTime = video.currentTime;
-});
-
-function seekVideo() {
-  if (seeking || !video.duration) return;
-
-  if (Math.abs(video.currentTime - targetTime) < 0.015) return;
-
-  seeking = true;
-  video.currentTime = targetTime;
-}
-
-video.addEventListener("seeked", () => {
-  if (Math.abs(video.currentTime - targetTime) > 0.03) {
-    seeking = false;
-    seekVideo();
-  } else {
-    seeking = false;
-  }
-});
-
-function toggleMenu() {
-  document.getElementById("mobileNav").classList.toggle("open");
-}
-
-async function copyLinks() {
-  const links =
-`Telegram ID: https://t.me/F0641
-Updates Channel: https://t.me/+-BD8O-QEVv00ZTE1
-App Link: https://t.me/c/3448486720/156`;
-
-  try {
-    await navigator.clipboard.writeText(links);
-    document.getElementById("message").textContent =
-      "All links copied successfully!";
-  } catch {
-    document.getElementById("message").textContent =
-      "Copy unavailable. Please copy the links manually.";
-  }
-}
-</script>
-
+    const canvas=document.getElementById('particles'),ctx=canvas.getContext('2d');
+    let w,h,dpr,stars=[];
+    function resize(){
+      dpr=Math.min(window.devicePixelRatio||1,2);w=innerWidth;h=innerHeight;
+      canvas.width=w*dpr;canvas.height=h*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);
+      stars=Array.from({length:Math.min(115,Math.floor(w/9))},()=>({x:Math.random()*w,y:Math.random()*h,r:Math.random()*1.6+.3,s:Math.random()*.35+.08,a:Math.random()*.65+.15,tw:Math.random()*6}));
+    }
+    function draw(){
+      ctx.clearRect(0,0,w,h);
+      stars.forEach(p=>{
+        p.y-=p.s;if(p.y<0){p.y=h;p.x=Math.random()*w}
+        p.tw+=.025;const alpha=p.a*(.65+.35*Math.sin(p.tw));
+        ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+        ctx.fillStyle=`rgba(255,211,105,${alpha})`;ctx.shadowBlur=9;ctx.shadowColor='#ffbd4b';ctx.fill();
+      });
+      requestAnimationFrame(draw);
+    }
+    addEventListener('resize',resize);resize();draw();
+  </script>
 </body>
 </html>
-```
