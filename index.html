@@ -1,205 +1,159 @@
-<div id="firstPart">
-    <p id="title">COLOR GUESSİNG GAME</p>    
-    <p id = "text"></p>  
-</div>
-<div id="secondPart">
-  <div id="score">
-    <p id="scoreTable">Score: 0</p>
-  </div>
-  <div>
-    <p id="statement">Pick the right color</p>
-  <canvas id="canvas1" class="canvas" onclick="checkAnswer(canvas1)"></canvas>
-  <canvas id="canvas2" class="canvas" onclick="checkAnswer(canvas2)"></canvas>
-  <canvas id="canvas3" class="canvas" onclick="checkAnswer(canvas3)"></canvas><br>
-  <canvas id="canvas4" class="canvas" onclick="checkAnswer(canvas4)"></canvas>
-  <canvas id="canvas5" class="canvas" onclick="checkAnswer(canvas5)"></canvas>
-  <canvas id="canvas6" class="canvas" onclick="checkAnswer(canvas6)"></canvas>
-  </div>
-  <div id="x"</div>
-</div> var canvas1 = document.getElementById("canvas1"), canvas2 = document.getElementById("canvas2"), canvas3 = document.getElementById("canvas3"), canvas4 = document.getElementById("canvas4"), canvas5 = document.getElementById("canvas5"), canvas6 = document.getElementById("canvas6"), scoreTable = document.getElementById("scoreTable"), randomRGB, start, score = 0, count = 6, multiplier = 10, falseAnswers = 0, colors = [canvas1,canvas2,canvas3,canvas4,canvas5,canvas6];
-function drawCanvas() {
-  var randomCanvas = Math.floor(Math.random()*6);  
-  for(i=0; i<colors.length; i++){
-    var ctx = colors[i].getContext("2d");
-    colors[i].style.border = "6px solid white";
-    if(i != randomCanvas){
-     ctx.fillStyle = rgbGenerator();
-     ctx.fillRect(0,0,canvas1.width,canvas1.height);
+;
+
+namespace COLORPREDICTION
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            string inputPlayer, randomcolor;
+            int randomInt;
+            int limit = 1;
+            bool playAgain = true;
+
+            while (playAgain)
+            {
+                int score = 0;
+
+                while (limit <= 20)
+                {
+                    Console.Write("Choose between RED, GREEN, BLUE, ORANGE, YELLOW, PINK and VIOLET: ");
+                    inputPlayer = Console.ReadLine();
+                    inputPlayer = inputPlayer.ToUpper();
+
+                    Random rnd = new Random();
+                    randomInt = rnd.Next(1, 8);
+
+                    switch (randomInt)
+                    {
+                        case 1:
+                            randomcolor = "RED";
+                            limit++;
+                            Console.WriteLine("Color is Red");
+                            if (inputPlayer == "RED")
+                            {
+                                Console.WriteLine("Your Prediction Is Correct");
+                                score++;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Your Prediction Is Incorrect");
+                            }
+                            break;
+
+                        case 2:
+                            randomcolor = "GREEN";
+                            limit++;
+                            Console.WriteLine("Color Is Green");
+                            if (inputPlayer == "GREEN")
+                            {
+                                Console.WriteLine("Your Prediction Is Correct");
+                                score++;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Your Prediction Is Incorrect");
+                            }
+                            break;
+
+                        case 3:
+                            randomcolor = "BLUE";
+                            limit++;
+                            Console.WriteLine("Color Is Blue");
+                            if (inputPlayer == "BLUE")
+                            {
+                                Console.WriteLine("Your Prediction Is Correct");
+                                score++;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Your Prediction Is Incorrect");
+                            }
+                            break;
+
+                        case 4:
+                            randomcolor = "ORANGE";
+                            limit++;
+                            Console.WriteLine("Color Is Orange");
+                            if (inputPlayer == "ORANGE")
+                            {
+                                Console.WriteLine("Your Prediction Is Correct");
+                                score++;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Your Prediction Is Incorrect");
+                            }
+                            break;
+
+                        case 5:
+                            randomcolor = "YELLOW";
+                            limit++;
+                            Console.WriteLine("Color Is Yellow");
+                            if (inputPlayer == "YELLOW")
+                            {
+                                Console.WriteLine("Your Prediction Is Correct");
+                                score++;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Your Prediction Is Incorrect");
+                            }
+                            break;
+
+                        case 6:
+                            randomcolor = "PINK";
+                            limit++;
+                            Console.WriteLine("Color Is Pink");
+                            if (inputPlayer == "PINK")
+                            {
+                                Console.WriteLine("Your Prediction Is Correct");
+                                score++;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Your Prediction Is Incorrect");
+                            }
+                            break;
+
+                        case 7:
+                            randomcolor = "VIOLET";
+                            limit++;
+                            Console.WriteLine("Color Is Violet");
+                            if (inputPlayer == "VIOLET")
+                            {
+                                Console.WriteLine("Your Prediction Is Correct");
+                                score++;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Your Prediction Is Incorrect");
+                            }
+                            break;
+
+                        default:
+                            Console.WriteLine("Invalid entry!");
+                            break;
+                    }
+
+                    Console.WriteLine("\n\nSCORES:\tPLAYERSCORE:\t{0}", score);
+                }
+
+                Console.WriteLine("Your Score Is {0} Out Of 20", score);
+
+                Console.WriteLine("Do you want to play again? (y/n)");
+                string loop = Console.ReadLine();
+                if (loop == "y")
+                {
+                    limit = 1;
+                    playAgain = true;
+                    Console.Clear();
+                }
+                else if (loop == "n")
+                {
+                    playAgain = false;
+                }
+            }
+        }
     }
-    else{
-     ctx.fillStyle = start;
-     ctx.fillRect(0,0,canvas1.width,canvas1.height);      
-    }
-  }
-}
-
-function random() {
-  var number = Math.random() * 256;
-  return number;
-}
-
-function rgbGenerator() {
-  var red = Math.floor(random());
-  var green = Math.floor(random());
-  var blue = Math.floor(random());
-  randomRGB = "rgb("+red+","+green+","+blue+")";
-  return randomRGB;
-} 
-
-function startRGB() { 
-  document.getElementById("text").innerHTML = rgbGenerator();
-  start = document.getElementById("text").innerHTML;
-  falseAnswers = 0;
-  count = 6;
-}
-
-function checkAnswer(element) {
-  var context = element.getContext("2d");
-  var data = context.getImageData(0,0,1,1);
-  var control = "rgb("+data.data[0]+","+data.data[1]+","+data.data[2]+")";
-  if(control == start){
-    element.style.border = "6px solid green";
-    writeScore();
-    scoreTable.innerHTML = "Score: " + score + " +" + multiplier * count;
-    setTimeout(startRGB,2000);
-    setTimeout(drawCanvas,2000);
-  }
-  else{
-     context.clearRect(0,0,element.width,element.height);
-     element.style.border = "6px solid red";
-     falseAnswers = falseAnswers + 1;
-  }
-}
-
-function writeScore() {
-  count = count - falseAnswers;
-  score = score + multiplier * count;
-}
-
-window.onload = startRGB();var canvas1 = document.getElementById("canvas1"), canvas2 = document.getElementById("canvas2"), canvas3 = document.getElementById("canvas3"), canvas4 = document.getElementById("canvas4"), canvas5 = document.getElementById("canvas5"), canvas6 = document.getElementById("canvas6"), scoreTable = document.getElementById("scoreTable"), randomRGB, start, score = 0, count = 6, multiplier = 10, falseAnswers = 0, colors = [canvas1,canvas2,canvas3,canvas4,canvas5,canvas6];
-function drawCanvas() {
-  var randomCanvas = Math.floor(Math.random()*6);  
-  for(i=0; i<colors.length; i++){
-    var ctx = colors[i].getContext("2d");
-    colors[i].style.border = "6px solid white";
-    if(i != randomCanvas){
-     ctx.fillStyle = rgbGenerator();
-     ctx.fillRect(0,0,canvas1.width,canvas1.height);
-    }
-    else{
-     ctx.fillStyle = start;
-     ctx.fillRect(0,0,canvas1.width,canvas1.height);      
-    }
-  }
-}
-
-function random() {
-  var number = Math.random() * 256;
-  return number;
-}
-
-function rgbGenerator() {
-  var red = Math.floor(random());
-  var green = Math.floor(random());
-  var blue = Math.floor(random());
-  randomRGB = "rgb("+red+","+green+","+blue+")";
-  return randomRGB;
-} 
-
-function startRGB() { 
-  document.getElementById("text").innerHTML = rgbGenerator();
-  start = document.getElementById("text").innerHTML;
-  falseAnswers = 0;
-  count = 6;
-}
-
-function checkAnswer(element) {
-  var context = element.getContext("2d");
-  var data = context.getImageData(0,0,1,1);
-  var control = "rgb("+data.data[0]+","+data.data[1]+","+data.data[2]+")";
-  if(control == start){
-    element.style.border = "6px solid green";
-    writeScore();
-    scoreTable.innerHTML = "Score: " + score + " +" + multiplier * count;
-    setTimeout(startRGB,2000);
-    setTimeout(drawCanvas,2000);
-  }
-  else{
-     context.clearRect(0,0,element.width,element.height);
-     element.style.border = "6px solid red";
-     falseAnswers = falseAnswers + 1;
-  }
-}
-
-function writeScore() {
-  count = count - falseAnswers;
-  score = score + multiplier * count;
-}
-
-window.onload = startRGB();
-window.onload = drawCanvas(); 
-window.onload = drawCanvas();  body {
-  background-color:rgb(41, 112, 145);
-  text-align:center;
-  font-family:monospace;
-}
-
-#firstPart {
-  background-color:rgb(49, 166, 220);
-  height:300px;
-  border:solid 1px gray;
-}
-
-#secondPart {
-  display:flex;
-  justify-content:center;
-}
-
-#text {
-  font-size:60px;
-  color:rgb(233, 248, 245); 
-}
-
-#title {
-  font-size:50px;
-  margin-top:5px;
-  color:white;
-  text-shadow:4px 2px rgb(3, 239, 193);
-}
-
-#statement {
-  font-size:25px;
-  margin-top:6px;
-  color:white;
-  text-shadow:1px 1px rgb(3, 239, 193);  
-}
-
-.canvas {
-  border:6px solid white;
-  width:200px;
-  height:200px;
-  border-radius:13px;
-  transition:0.3s;
-  margin:15px;
-}
-
-canvas:hover {
-  box-shadow:10px 10px 30px rgb(3, 239, 193);
-  cursor:pointer;
-}
-
-#scoreTable {
-  text-align:left;
-  font-size: 25px;
-  color:white;
-  margin-left:7px;
-  text-shadow:1px 1px rgb(3, 239, 193);  
-}
-
-#score {
-  width:570px;
-}
-
-#x {
-  width:570px;
 }
