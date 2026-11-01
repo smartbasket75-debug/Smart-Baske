@@ -1,23 +1,213 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no,initial-scale=1,viewport-fit=cover" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <meta name="theme-color" content="#000000" />
-    <meta name="description" content="Online Sports and Casino Betting Platform" />
-    <link rel="apple-touch-icon" href="/logo192.png" />
-    <link rel="manifest" href="/manifest.json" />
-    <title>Betthrob</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Basket Color Game</title>
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #101018;
+  color: white;
+  text-align: center;
+}
+header {
+  padding: 20px;
+  font-size: 25px;
+  font-weight: bold;
+  background: #191923;
+}
+header span { color: #ff4c62; }
+.container {
+  max-width: 500px;
+  margin: 25px auto;
+  padding: 20px;
+}
+.card {
+  background: #1d1d2a;
+  border: 1px solid #303041;
+  border-radius: 18px;
+  padding: 20px;
+  margin-bottom: 18px;
+}
+.timer {
+  font-size: 45px;
+  font-weight: bold;
+  margin: 15px;
+}
+.buttons {
+  display: flex;
+  gap: 10px;
+}
+button {
+  flex: 1;
+  padding: 15px 5px;
+  border: none;
+  border-radius: 12px;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.red { background: #e83250; }
+.green { background: #07975c; }
+.violet { background: #773de0; }
+button:disabled { opacity: 0.5; }
+.balance {
+  font-size: 28px;
+  font-weight: bold;
+  color: #ffe28a;
+}
+.result {
+  font-size: 22px;
+  margin: 15px;
+}
+.history {
+  line-height: 2;
+  color: #ddd;
+}
+.note {
+  font-size: 12px;
+  color: #aaa;
+  line-height: 1.6;
+}
+</style>
 </head>
-
 <body>
-    <div id="root"></div>
-    <script type="module" src="/src/index.tsx"></script>
-</body>
 
+<header>Smart <span>Basket</span></header>
+
+<div class="container">
+  <div class="card">
+    <h2>🎮 Color Prediction</h2>
+    <p>Next Result In</p>
+    <div class="timer" id="timer">15</div>
+    <p id="round">Round #1</p>
+
+    <div class="buttons">
+      <button class="red" onclick="choose('Red')">🔴 Red</button>
+      <button class="green" onclick="choose('Green')">🟢 Green</button>
+      <button class="violet" onclick="choose('Violet')">🟣 Violet</button>
+    </div>
+
+    <p id="message">Choose a color to play!</p>
+  </div>
+
+  <div class="card">
+    <h3>🪙 Demo Wallet</h3>
+    <div class="balance" id="balance">1000</div>
+    <p>Virtual Coins Only</p>
+    <div class="result" id="result">Waiting for result...</div>
+    <button style="background:#38384b;width:100%" onclick="resetGame()">
+      Reset Game
+    </button>
+  </div>
+
+  <div class="card">
+    <h3>📜 Game History</h3>
+    <div class="history" id="history">No results yet</div>
+  </div>
+
+  <p class="note">
+    Demo game only. Virtual coins have no real-money value.
+    No deposits or withdrawals.
+  </p>
+</div>
+
+<script>
+let balance = 1000;
+let round = 1;
+let time = 15;
+let choice = null;
+let locked = false;
+let history = [];
+
+const colors = ["Red", "Green", "Violet"];
+
+function choose(color) {
+  if (locked || choice !== null || balance < 10) return;
+
+  balance -= 10;
+  choice = color;
+
+  document.getElementById("balance").textContent = balance;
+  document.getElementById("message").textContent =
+    "You selected " + color + "!";
+}
+
+function updateGame() {
+  if (locked) return;
+
+  time--;
+
+  document.getElementById("timer").textContent = time;
+
+  if (time <= 0) {
+    locked = true;
+
+    const result = colors[
+      Math.floor(Math.random() * colors.length)
+    ];
+
+    document.getElementById("result").textContent =
+      "Result: " + result;
+
+    if (choice === result) {
+      balance += 25;
+      document.getElementById("message").textContent =
+        "Correct! +25 virtual coins";
+    } else if (choice !== null) {
+      document.getElementById("message").textContent =
+        "Wrong result. Try next round!";
+    } else {
+      document.getElementById("message").textContent =
+        "Round completed!";
+    }
+
+    document.getElementById("balance").textContent = balance;
+
+    history.unshift("Round " + round + ": " + result);
+    history = history.slice(0, 10);
+
+    document.getElementById("history").innerHTML =
+      history.join("<br>");
+
+    setTimeout(() => {
+      round++;
+      time = 15;
+      choice = null;
+      locked = false;
+
+      document.getElementById("round").textContent =
+        "Round #" + round;
+
+      document.getElementById("timer").textContent = time;
+
+      document.getElementById("message").textContent =
+        "Choose a color to play!";
+    }, 1800);
+  }
+}
+
+function resetGame() {
+  balance = 1000;
+  round = 1;
+  time = 15;
+  choice = null;
+  locked = false;
+  history = [];
+
+  document.getElementById("balance").textContent = balance;
+  document.getElementById("timer").textContent = time;
+  document.getElementById("round").textContent = "Round #1";
+  document.getElementById("result").textContent = "Waiting for result...";
+  document.getElementById("message").textContent = "Choose a color to play!";
+  document.getElementById("history").textContent = "No results yet";
+}
+
+setInterval(updateGame, 1000);
+</script>
+
+</body>
 </html>
