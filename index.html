@@ -3,250 +3,159 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#080d0b">
-
-<title>BIG EXCHANGE | USDT Portal</title>
+<title>BIG EXCHANGE | USDT Sell</title>
 
 <style>
-:root {
-  --bg: #080d0b;
-  --panel: #111914;
-  --green: #35e879;
-  --muted: #9aaba0;
-  --border: #26392d;
-}
-
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  background: var(--bg);
-  color: white;
-  font-family: Arial, sans-serif;
+    font-family: Arial, sans-serif;
+    background: #080d0b;
+    color: white;
 }
 
 header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 16px;
-  border-bottom: 1px solid var(--border);
+    padding: 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #20352a;
 }
 
 .logo {
-  color: var(--green);
-  font-size: 20px;
-  font-weight: 900;
-  letter-spacing: 1px;
-}
-
-.status {
-  color: var(--green);
-  background: #14291b;
-  border: 1px solid #245a36;
-  padding: 7px 10px;
-  border-radius: 20px;
-  font-size: 10px;
-}
-
-main {
-  width: min(100% - 28px, 510px);
-  margin: 25px auto;
-}
-
-.hero {
-  padding: 12px 0;
-}
-
-.hero h1 {
-  font-size: 30px;
-  margin-bottom: 9px;
-}
-
-.green {
-  color: var(--green);
-}
-
-.muted {
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.6;
-}
-
-.card {
-  background: linear-gradient(145deg, #131d16, #0d130f);
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  padding: 20px;
-  margin-top: 18px;
-}
-
-.rate-card {
-  background: linear-gradient(135deg, #143a23, #0b130d);
-  border-color: #2b7545;
-  box-shadow: 0 10px 35px #0005;
-}
-
-.rate-label {
-  color: #c2d5c7;
-  font-size: 12px;
-  letter-spacing: 1px;
-}
-
-.rate {
-  color: var(--green);
-  font-size: 36px;
-  font-weight: 900;
-  margin: 13px 0;
-}
-
-.rate span {
-  font-size: 14px;
-  font-weight: normal;
-}
-
-.badges {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  margin-top: 14px;
+    font-size: 22px;
+    font-weight: bold;
+    color: #32e875;
 }
 
 .badge {
-  background: #1a2b20;
-  color: #b9f5cb;
-  border: 1px solid #345840;
-  padding: 8px 10px;
-  border-radius: 8px;
-  font-size: 11px;
+    background: #123522;
+    color: #52f58c;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 12px;
 }
 
-h2 {
-  font-size: 19px;
-  margin-bottom: 8px;
+.container {
+    max-width: 480px;
+    margin: 35px auto;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 30px;
+    margin-bottom: 12px;
+}
+
+.subtitle {
+    color: #9ba9a0;
+    margin-bottom: 25px;
+    line-height: 1.6;
+}
+
+.rate-card {
+    background: linear-gradient(135deg, #123722, #101c15);
+    border: 1px solid #287b48;
+    border-radius: 18px;
+    padding: 22px;
+    margin-bottom: 25px;
+}
+
+.rate-label {
+    color: #b7c8bc;
+    font-size: 14px;
+}
+
+.rate {
+    font-size: 32px;
+    font-weight: bold;
+    color: #42ef83;
+    margin: 12px 0;
+}
+
+.small {
+    font-size: 13px;
+    color: #b7c8bc;
+}
+
+.box {
+    background: #101713;
+    border: 1px solid #26372d;
+    padding: 22px;
+    border-radius: 18px;
 }
 
 label {
-  display: block;
-  font-size: 13px;
-  font-weight: bold;
-  margin: 16px 0 7px;
+    display: block;
+    margin: 17px 0 9px;
+    color: #d5e0d8;
+    font-size: 14px;
 }
 
-input {
-  display: block;
-  width: 100%;
-  background: #080d0b;
-  color: white;
-  border: 1px solid #304337;
-  border-radius: 10px;
-  padding: 13px;
-  font-size: 15px;
+input, select {
+    width: 100%;
+    padding: 14px;
+    border-radius: 10px;
+    border: 1px solid #304437;
+    background: #080d0b;
+    color: white;
+    font-size: 16px;
 }
 
-input:focus {
-  outline: 1px solid var(--green);
-  border-color: var(--green);
+input:focus, select:focus {
+    outline: 1px solid #36e879;
 }
 
 .result {
-  background: #19291e;
-  border: 1px solid #2c4d35;
-  border-radius: 12px;
-  padding: 16px;
-  margin-top: 16px;
+    background: #16271c;
+    padding: 18px;
+    border-radius: 12px;
+    margin-top: 20px;
 }
 
-.result strong {
-  display: block;
-  color: var(--green);
-  font-size: 27px;
-  margin-top: 5px;
+.result span {
+    color: #b7c8bc;
+    font-size: 14px;
 }
 
-.address {
-  background: #080d0b;
-  border: 1px solid #2a4030;
-  border-radius: 10px;
-  color: var(--green);
-  padding: 13px;
-  overflow-wrap: anywhere;
-  font-size: 13px;
-  margin-top: 12px;
+.result h2 {
+    color: #42ef83;
+    margin-top: 8px;
 }
 
-button, .telegram {
-  display: block;
-  width: 100%;
-  padding: 14px;
-  margin-top: 12px;
-  border: none;
-  border-radius: 10px;
-  font-size: 14px;
-  font-weight: bold;
-  text-align: center;
-  cursor: pointer;
-  text-decoration: none;
+button {
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    background: #32e875;
+    color: #07140b;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 16px;
+    margin-top: 22px;
+    cursor: pointer;
 }
 
-.primary {
-  background: var(--green);
-  color: #07120a;
+button:hover {
+    background: #20ce60;
 }
 
-.secondary {
-  background: #1a2a20;
-  color: var(--green);
-  border: 1px solid #35543d;
-}
-
-.telegram {
-  background: #153c2a;
-  color: #69f6a0;
-  border: 1px solid #286044;
-}
-
-.info {
-  padding: 12px 0;
-  border-bottom: 1px solid var(--border);
-  overflow-wrap: anywhere;
-}
-
-.info:last-child {
-  border-bottom: none;
-}
-
-#preview {
-  display: none;
-  width: 100%;
-  max-height: 320px;
-  object-fit: contain;
-  margin-top: 12px;
-  border-radius: 10px;
-  border: 1px solid var(--border);
-}
-
-.message {
-  color: var(--green);
-  font-size: 13px;
-  margin-top: 12px;
-  overflow-wrap: anywhere;
+.notice {
+    color: #9ba9a0;
+    font-size: 12px;
+    line-height: 1.7;
+    margin-top: 20px;
 }
 
 footer {
-  border-top: 1px solid var(--border);
-  padding: 23px 15px;
-  text-align: center;
-  color: var(--muted);
-  font-size: 12px;
-}
-
-@media(max-width: 360px) {
-  .logo { font-size: 16px; }
-  .rate { font-size: 30px; }
+    text-align: center;
+    color: #839188;
+    padding: 25px 15px;
+    font-size: 12px;
 }
 </style>
 </head>
@@ -254,151 +163,113 @@ footer {
 <body>
 
 <header>
-  <div class="logo">◆ BIG EXCHANGE</div>
-  <div class="status">USDT PORTAL</div>
+    <div class="logo">◆ BIG EXCHANGE</div>
+    <div class="badge">USDT SELL</div>
 </header>
 
-<main>
+<div class="container">
 
-  <section class="hero">
-    <h1>USDT <span class="green">Exchange</span></h1>
-    <p class="muted">
-      Enter your details and calculate the value at the displayed rate.
+    <h1>Sell USDT</h1>
+
+    <p class="subtitle">
+        Submit a USDT sell request.
+        Review the exchange rate and estimated payout below.
     </p>
-  </section>
 
-  <!-- YOUR SELL RATE -->
-  <section class="card rate-card">
-    <div class="rate-label">BIG EXCHANGE SELL RATE</div>
-
-    <div class="rate">
-      ₹113.20 <span>/ USDT</span>
+    <div class="rate-card">
+        <div class="rate-label">Current displayed rate</div>
+        <div class="rate">₹113.20 <span style="font-size:15px">/ USDT</span></div>
+        <div class="small">Minimum sell amount: 10 USDT</div>
+        <div class="small" style="margin-top:8px">
+            Network: TRC20
+        </div>
     </div>
 
-    <p class="muted">Your displayed rate</p>
+    <div class="box">
 
-    <div class="badges">
-      <span class="badge">Minimum: 10 USDT</span>
-      <span class="badge">Network: TRC20</span>
-    </div>
-  </section>
+        <h2>Sell Calculator</h2>
 
-  <!-- CALCULATOR -->
-  <section class="card">
-    <h2>USDT Calculator</h2>
-    <p class="muted">Calculate using the displayed exchange rate.</p>
+        <label for="amount">USDT Amount</label>
+        <input
+            type="number"
+            id="amount"
+            min="10"
+            step="any"
+            placeholder="Enter at least 10 USDT"
+            oninput="calculate()"
+        >
 
-    <label for="calcAmount">USDT Amount</label>
+        <div class="result">
+            <span>Estimated INR value</span>
+            <h2 id="total">₹0.00</h2>
+        </div>
 
-    <input
-      type="number"
-      id="calcAmount"
-      min="0"
-      step="any"
-      placeholder="Enter USDT amount"
-    >
+        <p class="notice">
+            This is an estimate using the displayed rate.
+            Fees or rate changes may affect the final payout.
+        </p>
 
-    <div class="result">
-      <span class="muted">Estimated INR Value</span>
-      <strong id="total">₹0.00</strong>
-    </div>
-  </section>
+        <button onclick="submitRequest()">
+            Submit Sell Request
+        </button>
 
-  <!-- WALLET -->
-  <section class="card">
-    <h2>TRC20 Wallet Address</h2>
+        <p id="message" class="notice" role="status"></p>
 
-    <div class="address" id="walletAddress">TZ6CzWC7kiSb5Uz2Ad5NbmWSR3Nto8MGAg</div>
-
-    <button class="secondary" type="button" id="copyWallet">
-      Copy Wallet Address
-    </button>
-
-    <p class="message" id="copyMessage"></p>
-  </section>
-
-  <!-- SELLER BANK DETAILS -->
-  <section class="card">
-    <h2>Seller Bank Details</h2>
-
-    <div class="info">
-      <span class="muted">Seller / Account Holder Name</span>
-      <br>
-      <strong id="sellerName">ADD SELLER NAME</strong>
     </div>
 
-    <div class="info">
-      <span class="muted">Bank Account Number</span>
-      <br>
-      <strong id="accountNumber">ADD ACCOUNT NUMBER</strong>
-    </div>
+    <p class="notice">
+        Submitting a request does not mean that a transaction
+        has been completed. Orders require verification.
+        Do not send cryptocurrency until the transaction
+        instructions and recipient details have been verified.
+    </p>
 
-    <div class="info">
-      <span class="muted">IFSC Code</span>
-      <br>
-      <strong id="ifscCode">ADD IFSC CODE</strong>
-    </div>
+</div>
 
-    <div class="info">
-      <span class="muted">Payment Method</span>
-      <br>
-      <strong>IMPS / Bank Transfer</strong>
-    </div>
-  </section>
+<footer>
+    BIG EXCHANGE · USDT Sell Portal<br>
+    Informational demo — no transactions are processed here.
+</footer>
 
-  <!-- REQUEST FORM -->
-  <section class="card">
-    <h2>Sell Request</h2>
+<script>
+const RATE = 113.20;
+const MINIMUM = 10;
 
-    <form id="sellForm">
+function calculate() {
+    const amount = Number(
+        document.getElementById("amount").value
+    );
 
-      <label for="customerName">Customer Name</label>
-      <input
-        id="customerName"
-        type="text"
-        maxlength="100"
-        required
-        placeholder="Enter your name"
-      >
+    const total = amount * RATE;
 
-      <label for="contact">Contact Information</label>
-      <input
-        id="contact"
-        type="text"
-        maxlength="100"
-        required
-        placeholder="Phone or email"
-      >
+    document.getElementById("total").textContent =
+        Number.isFinite(total) && amount > 0
+        ? total.toLocaleString("en-IN", {
+            style: "currency",
+            currency: "INR",
+            minimumFractionDigits: 2
+        })
+        : "₹0.00";
+}
 
-      <label for="sellAmount">USDT Amount</label>
-      <input
-        id="sellAmount"
-        type="number"
-        min="10"
-        step="any"
-        required
-        placeholder="Minimum 10 USDT"
-      >
+function submitRequest() {
+    const amount = Number(
+        document.getElementById("amount").value
+    );
 
-      <label for="txid">Transaction ID</label>
-      <input
-        id="txid"
-        type="text"
-        maxlength="200"
-        placeholder="Enter transaction ID"
-      >
+    const message = document.getElementById("message");
 
-      <label for="screenshot">Transaction Screenshot</label>
-      <input
-        id="screenshot"
-        type="file"
-        accept="image/jpeg,image/png,image/webp"
-      >
+    if (!Number.isFinite(amount) || amount < MINIMUM) {
+        message.textContent =
+            "Minimum sell amount is 10 USDT.";
+        return;
+    }
 
-      <img id="preview" alt="Screenshot preview">
+    message.textContent =
+        "Demo only: no order has been sent or saved. " +
+        "A secure backend is required to process sell requests.";
+}
+</script>
 
-      <p class="muted" id="fileInfo">
-        JPG, PNG or WEBP · Maximum 5 MB
-      </p>
-
-      <button type="button" class="secondary" id="removeImage
+</body>
+</html>
