@@ -1,275 +1,65 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BIG EXCHANGE | USDT Sell</title>
-
-<style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
-    font-family: Arial, sans-serif;
-    background: #080d0b;
-    color: white;
+  background-color:rgb(41, 112, 145);
+  text-align:center;
+  font-family:monospace;
 }
 
-header {
-    padding: 22px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #20352a;
+#firstPart {
+  background-color:rgb(49, 166, 220);
+  height:300px;
+  border:solid 1px gray;
 }
 
-.logo {
-    font-size: 22px;
-    font-weight: bold;
-    color: #32e875;
+#secondPart {
+  display:flex;
+  justify-content:center;
 }
 
-.badge {
-    background: #123522;
-    color: #52f58c;
-    padding: 8px 12px;
-    border-radius: 20px;
-    font-size: 12px;
+#text {
+  font-size:60px;
+  color:rgb(233, 248, 245); 
 }
 
-.container {
-    max-width: 480px;
-    margin: 35px auto;
-    padding: 20px;
+#title {
+  font-size:50px;
+  margin-top:5px;
+  color:white;
+  text-shadow:4px 2px rgb(3, 239, 193);
 }
 
-h1 {
-    font-size: 30px;
-    margin-bottom: 12px;
+#statement {
+  font-size:25px;
+  margin-top:6px;
+  color:white;
+  text-shadow:1px 1px rgb(3, 239, 193);  
 }
 
-.subtitle {
-    color: #9ba9a0;
-    margin-bottom: 25px;
-    line-height: 1.6;
+.canvas {
+  border:6px solid white;
+  width:200px;
+  height:200px;
+  border-radius:13px;
+  transition:0.3s;
+  margin:15px;
 }
 
-.rate-card {
-    background: linear-gradient(135deg, #123722, #101c15);
-    border: 1px solid #287b48;
-    border-radius: 18px;
-    padding: 22px;
-    margin-bottom: 25px;
+canvas:hover {
+  box-shadow:10px 10px 30px rgb(3, 239, 193);
+  cursor:pointer;
 }
 
-.rate-label {
-    color: #b7c8bc;
-    font-size: 14px;
+#scoreTable {
+  text-align:left;
+  font-size: 25px;
+  color:white;
+  margin-left:7px;
+  text-shadow:1px 1px rgb(3, 239, 193);  
 }
 
-.rate {
-    font-size: 32px;
-    font-weight: bold;
-    color: #42ef83;
-    margin: 12px 0;
+#score {
+  width:570px;
 }
 
-.small {
-    font-size: 13px;
-    color: #b7c8bc;
+#x {
+  width:570px;
 }
-
-.box {
-    background: #101713;
-    border: 1px solid #26372d;
-    padding: 22px;
-    border-radius: 18px;
-}
-
-label {
-    display: block;
-    margin: 17px 0 9px;
-    color: #d5e0d8;
-    font-size: 14px;
-}
-
-input, select {
-    width: 100%;
-    padding: 14px;
-    border-radius: 10px;
-    border: 1px solid #304437;
-    background: #080d0b;
-    color: white;
-    font-size: 16px;
-}
-
-input:focus, select:focus {
-    outline: 1px solid #36e879;
-}
-
-.result {
-    background: #16271c;
-    padding: 18px;
-    border-radius: 12px;
-    margin-top: 20px;
-}
-
-.result span {
-    color: #b7c8bc;
-    font-size: 14px;
-}
-
-.result h2 {
-    color: #42ef83;
-    margin-top: 8px;
-}
-
-button {
-    width: 100%;
-    border: none;
-    border-radius: 10px;
-    background: #32e875;
-    color: #07140b;
-    font-size: 16px;
-    font-weight: bold;
-    padding: 16px;
-    margin-top: 22px;
-    cursor: pointer;
-}
-
-button:hover {
-    background: #20ce60;
-}
-
-.notice {
-    color: #9ba9a0;
-    font-size: 12px;
-    line-height: 1.7;
-    margin-top: 20px;
-}
-
-footer {
-    text-align: center;
-    color: #839188;
-    padding: 25px 15px;
-    font-size: 12px;
-}
-</style>
-</head>
-
-<body>
-
-<header>
-    <div class="logo">◆ BIG EXCHANGE</div>
-    <div class="badge">USDT SELL</div>
-</header>
-
-<div class="container">
-
-    <h1>Sell USDT</h1>
-
-    <p class="subtitle">
-        Submit a USDT sell request.
-        Review the exchange rate and estimated payout below.
-    </p>
-
-    <div class="rate-card">
-        <div class="rate-label">Current displayed rate</div>
-        <div class="rate">₹113.20 <span style="font-size:15px">/ USDT</span></div>
-        <div class="small">Minimum sell amount: 10 USDT</div>
-        <div class="small" style="margin-top:8px">
-            Network: TRC20
-        </div>
-    </div>
-
-    <div class="box">
-
-        <h2>Sell Calculator</h2>
-
-        <label for="amount">USDT Amount</label>
-        <input
-            type="number"
-            id="amount"
-            min="10"
-            step="any"
-            placeholder="Enter at least 10 USDT"
-            oninput="calculate()"
-        >
-
-        <div class="result">
-            <span>Estimated INR value</span>
-            <h2 id="total">₹0.00</h2>
-        </div>
-
-        <p class="notice">
-            This is an estimate using the displayed rate.
-            Fees or rate changes may affect the final payout.
-        </p>
-
-        <button onclick="submitRequest()">
-            Submit Sell Request
-        </button>
-
-        <p id="message" class="notice" role="status"></p>
-
-    </div>
-
-    <p class="notice">
-        Submitting a request does not mean that a transaction
-        has been completed. Orders require verification.
-        Do not send cryptocurrency until the transaction
-        instructions and recipient details have been verified.
-    </p>
-
-</div>
-
-<footer>
-    BIG EXCHANGE · USDT Sell Portal<br>
-    Informational demo — no transactions are processed here.
-</footer>
-
-<script>
-const RATE = 113.20;
-const MINIMUM = 10;
-
-function calculate() {
-    const amount = Number(
-        document.getElementById("amount").value
-    );
-
-    const total = amount * RATE;
-
-    document.getElementById("total").textContent =
-        Number.isFinite(total) && amount > 0
-        ? total.toLocaleString("en-IN", {
-            style: "currency",
-            currency: "INR",
-            minimumFractionDigits: 2
-        })
-        : "₹0.00";
-}
-
-function submitRequest() {
-    const amount = Number(
-        document.getElementById("amount").value
-    );
-
-    const message = document.getElementById("message");
-
-    if (!Number.isFinite(amount) || amount < MINIMUM) {
-        message.textContent =
-            "Minimum sell amount is 10 USDT.";
-        return;
-    }
-
-    message.textContent =
-        "Demo only: no order has been sent or saved. " +
-        "A secure backend is required to process sell requests.";
-}
-</script>
-
-</body>
-</html>
