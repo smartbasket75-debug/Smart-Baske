@@ -1,1265 +1,275 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#030718">
-  <title>BIG PAY | Smarter Money, Simpler Future</title>
-  
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-  
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-            display: ['"Space Grotesk"', 'sans-serif'],
-          },
-          colors: {
-            brand: {
-              dark: '#030718',
-              navy: '#060f2e',
-              deep: '#0a1744',
-              blue: '#1665ff',
-              cyan: '#00e1ff',
-              purple: '#8435ff',
-              gold: '#ffb31a',
-              amber: '#ffd24d'
-            }
-          }
-        }
-      }
-    }
-  </script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BIG EXCHANGE | USDT Sell</title>
 
-  <style>
-    /* Custom Glow & Neon Effects */
-    body {
-      background-color: #030718;
-      color: #eaf1ff;
-      overflow-x: hidden;
-    }
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    /* Ambient Background Gradients */
-    .ambient-glow-1 {
-      position: absolute;
-      width: 650px;
-      height: 650px;
-      background: radial-gradient(circle, rgba(22, 101, 255, 0.28) 0%, rgba(132, 53, 255, 0.12) 50%, transparent 70%);
-      top: -150px;
-      right: -100px;
-      filter: blur(80px);
-      z-index: 0;
-      pointer-events: none;
-      animation: floatAura 12s ease-in-out infinite alternate;
-    }
+body {
+    font-family: Arial, sans-serif;
+    background: #080d0b;
+    color: white;
+}
 
-    .ambient-glow-2 {
-      position: absolute;
-      width: 550px;
-      height: 550px;
-      background: radial-gradient(circle, rgba(0, 225, 255, 0.18) 0%, rgba(22, 101, 255, 0.08) 50%, transparent 70%);
-      top: 25%;
-      left: -120px;
-      filter: blur(90px);
-      z-index: 0;
-      pointer-events: none;
-      animation: floatAura 15s ease-in-out infinite alternate-reverse;
-    }
+header {
+    padding: 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #20352a;
+}
 
-    @keyframes floatAura {
-      0% { transform: translateY(0) scale(1); }
-      100% { transform: translateY(40px) scale(1.1); }
-    }
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+    color: #32e875;
+}
 
-    /* Glassmorphism Classes */
-    .glass-panel {
-      background: rgba(10, 23, 68, 0.45);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(80, 140, 255, 0.18);
-    }
+.badge {
+    background: #123522;
+    color: #52f58c;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+}
 
-    .glass-panel-hover {
-      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .glass-panel-hover:hover {
-      transform: translateY(-5px);
-      border-color: rgba(0, 225, 255, 0.45);
-      box-shadow: 0 15px 35px -10px rgba(0, 120, 255, 0.35), 0 0 20px rgba(0, 225, 255, 0.15);
-    }
+.container {
+    max-width: 480px;
+    margin: 35px auto;
+    padding: 20px;
+}
 
-    /* Glowing Pill Buttons */
-    .btn-neon-glow {
-      background: linear-gradient(90deg, #1665ff 0%, #00d2ff 100%);
-      box-shadow: 0 0 25px rgba(0, 210, 255, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.4);
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .btn-neon-glow:hover {
-      box-shadow: 0 0 35px rgba(0, 210, 255, 0.85), 0 0 12px rgba(255, 255, 255, 0.7);
-      transform: translateY(-2px) scale(1.02);
-    }
+h1 {
+    font-size: 30px;
+    margin-bottom: 12px;
+}
 
-    .btn-outline-glow {
-      background: rgba(16, 32, 85, 0.6);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(100, 160, 255, 0.4);
-      box-shadow: 0 0 15px rgba(22, 101, 255, 0.2);
-      transition: all 0.3s ease;
-    }
-    .btn-outline-glow:hover {
-      border-color: #00e1ff;
-      box-shadow: 0 0 25px rgba(0, 225, 255, 0.45);
-      transform: translateY(-2px);
-      color: #ffffff;
-    }
+.subtitle {
+    color: #9ba9a0;
+    margin-bottom: 25px;
+    line-height: 1.6;
+}
 
-    /* Floating Coin Graphic Animations */
-    .floating-element {
-      animation: floatSmooth 4.5s ease-in-out infinite;
-    }
-    .floating-delay {
-      animation: floatSmooth 5.2s ease-in-out infinite 1.2s;
-    }
-    .floating-light {
-      animation: floatSmooth 3.8s ease-in-out infinite 0.6s;
-    }
+.rate-card {
+    background: linear-gradient(135deg, #123722, #101c15);
+    border: 1px solid #287b48;
+    border-radius: 18px;
+    padding: 22px;
+    margin-bottom: 25px;
+}
 
-    @keyframes floatSmooth {
-      0%, 100% { transform: translateY(0px) rotate(0deg); }
-      50% { transform: translateY(-12px) rotate(1deg); }
-    }
+.rate-label {
+    color: #b7c8bc;
+    font-size: 14px;
+}
 
-    /* Light ring rotation */
-    .rotating-rings {
-      animation: ringRotate 28s linear infinite;
-      transform-origin: center center;
-    }
-    @keyframes ringRotate {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
+.rate {
+    font-size: 32px;
+    font-weight: bold;
+    color: #42ef83;
+    margin: 12px 0;
+}
 
-    /* Canvas background layer */
-    #ambientCanvas {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 1;
-    }
-  </style>
+.small {
+    font-size: 13px;
+    color: #b7c8bc;
+}
+
+.box {
+    background: #101713;
+    border: 1px solid #26372d;
+    padding: 22px;
+    border-radius: 18px;
+}
+
+label {
+    display: block;
+    margin: 17px 0 9px;
+    color: #d5e0d8;
+    font-size: 14px;
+}
+
+input, select {
+    width: 100%;
+    padding: 14px;
+    border-radius: 10px;
+    border: 1px solid #304437;
+    background: #080d0b;
+    color: white;
+    font-size: 16px;
+}
+
+input:focus, select:focus {
+    outline: 1px solid #36e879;
+}
+
+.result {
+    background: #16271c;
+    padding: 18px;
+    border-radius: 12px;
+    margin-top: 20px;
+}
+
+.result span {
+    color: #b7c8bc;
+    font-size: 14px;
+}
+
+.result h2 {
+    color: #42ef83;
+    margin-top: 8px;
+}
+
+button {
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    background: #32e875;
+    color: #07140b;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 16px;
+    margin-top: 22px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #20ce60;
+}
+
+.notice {
+    color: #9ba9a0;
+    font-size: 12px;
+    line-height: 1.7;
+    margin-top: 20px;
+}
+
+footer {
+    text-align: center;
+    color: #839188;
+    padding: 25px 15px;
+    font-size: 12px;
+}
+</style>
 </head>
-<body class="relative min-h-screen selection:bg-brand-cyan selection:text-black">
 
-  <!-- Ambient Light Orbs -->
-  <div class="ambient-glow-1"></div>
-  <div class="ambient-glow-2"></div>
-  <canvas id="ambientCanvas"></canvas>
+<body>
 
-  <!-- Navigation Bar -->
-  <header class="relative z-20 w-full max-w-7xl mx-auto px-6 py-6 flex items-center justify-between">
-    <a href="#home" class="flex items-center gap-2 group">
-      <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-blue via-brand-cyan to-brand-amber p-[2px] shadow-[0_0_20px_rgba(0,225,255,0.4)]">
-        <div class="w-full h-full bg-[#04081c] rounded-[10px] flex items-center justify-center font-display font-black text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan to-brand-amber text-lg">
-          BP
+<header>
+    <div class="logo">◆ BIG EXCHANGE</div>
+    <div class="badge">USDT SELL</div>
+</header>
+
+<div class="container">
+
+    <h1>Sell USDT</h1>
+
+    <p class="subtitle">
+        Submit a USDT sell request.
+        Review the exchange rate and estimated payout below.
+    </p>
+
+    <div class="rate-card">
+        <div class="rate-label">Current displayed rate</div>
+        <div class="rate">₹113.20 <span style="font-size:15px">/ USDT</span></div>
+        <div class="small">Minimum sell amount: 10 USDT</div>
+        <div class="small" style="margin-top:8px">
+            Network: TRC20
         </div>
-      </div>
-      <span class="font-display font-bold text-2xl tracking-wider text-white">
-        BIG <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-yellow-400 to-amber-500">PAY</span>
-      </span>
-    </a>
-
-    <!-- Desktop Menu -->
-    <nav class="hidden md:flex items-center gap-8 text-xs font-semibold tracking-wider text-gray-300 uppercase">
-      <a href="#home" class="hover:text-brand-cyan transition-colors">Home</a>
-      <a href="#telegram" class="hover:text-brand-cyan transition-colors">Telegram</a>
-      <a href="#earnings" class="hover:text-brand-cyan transition-colors">Earnings</a>
-      <a href="#about" class="hover:text-brand-cyan transition-colors">About</a>
-    </nav>
-
-    <!-- Nav Contact Button -->
-    <div class="hidden md:flex items-center">
-      <a href="https://t.me/F0641" target="_blank" rel="noopener" class="btn-outline-glow text-xs uppercase font-bold tracking-widest px-7 py-3 rounded-full text-blue-100 flex items-center gap-2">
-        <span>Contact</span>
-        <svg class="w-3.5 h-3.5 text-brand-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-      </a>
     </div>
 
-    <!-- Mobile Menu Hamburger -->
-    <button id="mobileMenuBtn" class="md:hidden text-gray-300 hover:text-white p-2 rounded-lg bg-white/5 border border-white/10" aria-label="Toggle navigation menu">
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
-    </button>
-  </header>
+    <div class="box">
 
-  <!-- Mobile Dropdown -->
-  <div id="mobileMenu" class="md:hidden hidden relative z-30 px-6 pb-6 pt-2">
-    <div class="glass-panel p-5 rounded-2xl flex flex-col gap-4 text-sm font-semibold">
-      <a href="#home" class="mobile-link py-2 text-gray-200 hover:text-brand-cyan">Home</a>
-      <a href="#telegram" class="mobile-link py-2 text-gray-200 hover:text-brand-cyan">Telegram</a>
-      <a href="#earnings" class="mobile-link py-2 text-gray-200 hover:text-brand-cyan">Earnings</a>
-      <a href="#reviews" class="mobile-link py-2 text-gray-200 hover:text-brand-cyan">Reviews & Proofs</a>
-      <a href="#about" class="mobile-link py-2 text-gray-200 hover:text-brand-cyan">About</a>
-      <a href="https://t.me/F0641" target="_blank" rel="noopener" class="btn-neon-glow text-center text-xs font-black uppercase tracking-wider py-3 rounded-full text-[#04081c]">
-        Contact on Telegram ↗
-      </a>
+        <h2>Sell Calculator</h2>
+
+        <label for="amount">USDT Amount</label>
+        <input
+            type="number"
+            id="amount"
+            min="10"
+            step="any"
+            placeholder="Enter at least 10 USDT"
+            oninput="calculate()"
+        >
+
+        <div class="result">
+            <span>Estimated INR value</span>
+            <h2 id="total">₹0.00</h2>
+        </div>
+
+        <p class="notice">
+            This is an estimate using the displayed rate.
+            Fees or rate changes may affect the final payout.
+        </p>
+
+        <button onclick="submitRequest()">
+            Submit Sell Request
+        </button>
+
+        <p id="message" class="notice" role="status"></p>
+
     </div>
-  </div>
 
-  <main class="relative z-10 max-w-7xl mx-auto px-6 pt-4 pb-20">
-    
-    <!-- Hero Section (Reference Style match) -->
-    <section id="home" class="grid lg:grid-cols-12 gap-10 items-center min-h-[75vh] pt-6 lg:pt-12">
-      
-      <!-- Left Column: Big Headlines & CTAs -->
-      <div class="lg:col-span-7 flex flex-col items-start text-left">
-        
-        <!-- Modern Pill Tag -->
-        <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-blue-400/30 bg-blue-500/10 mb-7 shadow-[0_0_15px_rgba(0,225,255,0.15)]">
-          <span class="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399] animate-pulse"></span>
-          <span class="text-xs uppercase font-extrabold tracking-widest text-blue-200">Official Web Portal</span>
-        </div>
-
-        <h1 class="font-display font-black text-5xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight leading-[0.98] text-white">
-          SMARTER MONEY <br>
-          <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 via-brand-cyan to-white">
-            SIMPLER FUTURE
-          </span>
-        </h1>
-
-        <p class="mt-6 text-base sm:text-lg text-blue-100/70 max-w-xl font-normal leading-relaxed">
-          Your central ecosystem for BIG PAY updates, daily rewards structure, real-time channel announcements, and verified Telegram contact.
-        </p>
-
-        <!-- CTA Action Buttons -->
-        <div class="mt-9 flex flex-wrap items-center gap-4 w-full sm:w-auto">
-          <a href="#earnings" class="btn-neon-glow w-full sm:w-auto px-9 py-4 rounded-full font-display font-bold text-sm tracking-widest text-[#030718] uppercase text-center">
-            START EARNING
-          </a>
-          <a href="https://t.me/+-BD8O-QEVv00ZTE1" target="_blank" rel="noopener" class="btn-outline-glow w-full sm:w-auto px-8 py-4 rounded-full font-display font-semibold text-sm tracking-wider text-blue-100 hover:text-white uppercase flex items-center justify-center gap-2">
-            <span>Join Updates Channel</span>
-            <svg class="w-4 h-4 text-brand-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-          </a>
-        </div>
-
-        <!-- Telegram Verification Badges -->
-        <div class="mt-8 flex items-center gap-6 text-xs text-blue-300/60 font-medium">
-          <div class="flex items-center gap-1.5">
-            <svg class="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-            <span>Direct Telegram Verified</span>
-          </div>
-          <div class="flex items-center gap-1.5">
-            <svg class="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-            <span>Zero Joining Deposit</span>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Right Column: Glowing 3D Money & Digital Currency Stack Art (NO HUMAN FACES) -->
-      <div class="lg:col-span-5 relative flex items-center justify-center py-6">
-        
-        <!-- Multi-layer Circular Light Glow & Orbit Trails -->
-        <div class="relative w-full max-w-[480px] aspect-square flex items-center justify-center">
-          
-          <!-- Outer Neon Swirl Paths SVG -->
-          <svg class="absolute inset-0 w-full h-full rotating-rings" viewBox="0 0 500 500" fill="none">
-            <defs>
-              <linearGradient id="orbitGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#00e1ff" stop-opacity="0.9"/>
-                <stop offset="50%" stop-color="#8435ff" stop-opacity="0.4"/>
-                <stop offset="100%" stop-color="#1665ff" stop-opacity="0"/>
-              </linearGradient>
-              <linearGradient id="orbitGrad2" x1="100%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stop-color="#ffb31a" stop-opacity="0.8"/>
-                <stop offset="60%" stop-color="#1665ff" stop-opacity="0.2"/>
-                <stop offset="100%" stop-color="#00e1ff" stop-opacity="0"/>
-              </linearGradient>
-              <filter id="neonBlur" x="-20%" y="-20%" width="140%" height="140%">
-                <feGaussianBlur stdDeviation="6" result="blur" />
-                <feComposite in="SourceGraphic" in2="blur" operator="over" />
-              </filter>
-            </defs>
-
-            <!-- Elliptical Light Bands -->
-            <ellipse cx="250" cy="250" rx="215" ry="110" transform="rotate(-30 250 250)" stroke="url(#orbitGrad1)" stroke-width="3" filter="url(#neonBlur)" stroke-dasharray="8 6"/>
-            <ellipse cx="250" cy="250" rx="215" ry="110" transform="rotate(-30 250 250)" stroke="#00e1ff" stroke-width="1.2"/>
-            <ellipse cx="250" cy="250" rx="180" ry="85" transform="rotate(35 250 250)" stroke="url(#orbitGrad2)" stroke-width="2.5" filter="url(#neonBlur)"/>
-            <ellipse cx="250" cy="250" rx="180" ry="85" transform="rotate(35 250 250)" stroke="#ffd24d" stroke-width="1"/>
-          </svg>
-
-          <!-- Core Isometric 3D Cash & Coin Stack SVG -->
-          <div class="relative z-10 w-full h-full flex items-center justify-center floating-element">
-            <svg class="w-[88%] h-[88%] drop-shadow-[0_20px_45px_rgba(0,180,255,0.45)]" viewBox="0 0 460 460" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="goldTop" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0%" stop-color="#fff1b8"/>
-                  <stop offset="45%" stop-color="#ffb82e"/>
-                  <stop offset="100%" stop-color="#c97b00"/>
-                </linearGradient>
-                <linearGradient id="goldSide" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#e89814"/>
-                  <stop offset="100%" stop-color="#703f00"/>
-                </linearGradient>
-
-                <linearGradient id="cyberBlueNote" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0%" stop-color="#143474"/>
-                  <stop offset="60%" stop-color="#0a1d47"/>
-                  <stop offset="100%" stop-color="#040b1e"/>
-                </linearGradient>
-                <linearGradient id="noteBorder" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0%" stop-color="#00e1ff"/>
-                  <stop offset="100%" stop-color="#2a75ff"/>
-                </linearGradient>
-
-                <radialGradient id="centerBurst" cx="50%" cy="50%" r="50%">
-                  <stop offset="0%" stop-color="#00e1ff" stop-opacity="0.4"/>
-                  <stop offset="50%" stop-color="#1665ff" stop-opacity="0.15"/>
-                  <stop offset="100%" stop-color="#030718" stop-opacity="0"/>
-                </radialGradient>
-              </defs>
-
-              <!-- Radial glow backdrop -->
-              <circle cx="230" cy="230" r="160" fill="url(#centerBurst)" />
-
-              <!-- Futuristic Holographic Base Platform -->
-              <g transform="translate(0, 50)">
-                <ellipse cx="230" cy="275" rx="140" ry="50" fill="#040e2b" stroke="#00e1ff" stroke-width="2" stroke-dasharray="14 8" opacity="0.8"/>
-                <ellipse cx="230" cy="275" rx="100" ry="34" fill="#071947" stroke="#1665ff" stroke-width="1.5" opacity="0.6"/>
-              </g>
-
-              <!-- Isometric Cash Note Stacks (Digital Money) -->
-              <g transform="translate(180, 195) scale(0.95)" class="floating-light">
-                <!-- Bottom Note Stack -->
-                <polygon points="40,90 150,30 220,70 110,130" fill="url(#cyberBlueNote)" stroke="url(#noteBorder)" stroke-width="1.5"/>
-                <polygon points="40,90 40,105 110,145 110,130" fill="#071944" stroke="url(#noteBorder)" stroke-width="1"/>
-                <polygon points="110,130 110,145 220,85 220,70" fill="#040e2b" stroke="url(#noteBorder)" stroke-width="1"/>
-                <!-- Top Note Stack Details -->
-                <polygon points="40,75 150,15 220,55 110,115" fill="url(#cyberBlueNote)" stroke="url(#noteBorder)" stroke-width="1.5"/>
-                <!-- Currency Badge on Note -->
-                <ellipse cx="130" cy="65" rx="22" ry="12" fill="#0a2560" stroke="#00e1ff" stroke-width="1.2"/>
-                <text x="125" y="70" font-family="'Space Grotesk', sans-serif" font-weight="bold" font-size="14" fill="#00e1ff">₹</text>
-              </g>
-
-              <!-- Main Gold Coin Stack 1 (Rupee & Digital Symbol) -->
-              <g transform="translate(110, 130)">
-                <!-- Coin 1 (Base) -->
-                <path d="M 50 170 C 50 185, 120 185, 120 170 L 120 185 C 120 200, 50 200, 50 185 Z" fill="url(#goldSide)"/>
-                <ellipse cx="85" cy="170" rx="35" ry="14" fill="url(#goldTop)"/>
-
-                <!-- Coin 2 -->
-                <path d="M 50 152 C 50 167, 120 167, 120 152 L 120 167 C 120 182, 50 182, 50 167 Z" fill="url(#goldSide)"/>
-                <ellipse cx="85" cy="152" rx="35" ry="14" fill="url(#goldTop)"/>
-
-                <!-- Coin 3 -->
-                <path d="M 50 134 C 50 149, 120 149, 120 134 L 120 149 C 120 164, 50 164, 50 149 Z" fill="url(#goldSide)"/>
-                <ellipse cx="85" cy="134" rx="35" ry="14" fill="url(#goldTop)"/>
-
-                <!-- Coin 4 (Top active coin with Rupee Emblem) -->
-                <path d="M 50 116 C 50 131, 120 131, 120 116 L 120 131 C 120 146, 50 146, 50 131 Z" fill="url(#goldSide)"/>
-                <ellipse cx="85" cy="116" rx="35" ry="14" fill="url(#goldTop)"/>
-                <ellipse cx="85" cy="116" rx="27" ry="10" fill="none" stroke="#ffe394" stroke-width="1.2"/>
-                <text x="80" y="121" font-family="'Space Grotesk', sans-serif" font-weight="900" font-size="16" fill="#693700">₹</text>
-              </g>
-
-              <!-- Taller Center Gold Stack -->
-              <g transform="translate(170, 75)" class="floating-delay">
-                <!-- Stack layers -->
-                <path d="M 40 180 C 40 197, 130 197, 130 180 L 130 195 C 130 212, 40 212, 40 195 Z" fill="url(#goldSide)"/>
-                <ellipse cx="85" cy="180" rx="45" ry="17" fill="url(#goldTop)"/>
-
-                <path d="M 40 160 C 40 177, 130 177, 130 160 L 130 175 C 130 192, 40 192, 40 175 Z" fill="url(#goldSide)"/>
-                <ellipse cx="85" cy="160" rx="45" ry="17" fill="url(#goldTop)"/>
-
-                <path d="M 40 140 C 40 157, 130 157, 130 140 L 130 155 C 130 172, 40 172, 40 155 Z" fill="url(#goldSide)"/>
-                <ellipse cx="85" cy="140" rx="45" ry="17" fill="url(#goldTop)"/>
-
-                <!-- Top Master Coin -->
-                <path d="M 40 120 C 40 137, 130 137, 130 120 L 130 135 C 130 152, 40 152, 40 135 Z" fill="url(#goldSide)"/>
-                <ellipse cx="85" cy="120" rx="45" ry="17" fill="url(#goldTop)"/>
-                <ellipse cx="85" cy="120" rx="36" ry="13" fill="none" stroke="#fff0ba" stroke-width="1.8"/>
-                <text x="78" y="127" font-family="'Space Grotesk', sans-serif" font-weight="900" font-size="22" fill="#5c2e00">₹</text>
-              </g>
-
-              <!-- Floating Cyber Coin Tokens -->
-              <g transform="translate(300, 100)" class="floating-light">
-                <circle cx="20" cy="20" r="18" fill="url(#goldTop)" stroke="#fff" stroke-width="1"/>
-                <text x="14" y="27" font-family="sans-serif" font-weight="bold" font-size="18" fill="#5c2e00">$</text>
-              </g>
-              <g transform="translate(60, 210)" class="floating-delay">
-                <circle cx="16" cy="16" r="14" fill="#00e1ff" opacity="0.85"/>
-                <text x="11" y="21" font-family="sans-serif" font-weight="bold" font-size="14" fill="#030718">₹</text>
-              </g>
-
-              <!-- Neon Sparkle Points -->
-              <polygon points="340,65 344,75 354,79 344,83 340,93 336,83 326,79 336,75" fill="#00e1ff"/>
-              <polygon points="120,50 123,58 131,61 123,64 120,72 117,64 109,61 117,58" fill="#ffd24d"/>
-            </svg>
-          </div>
-
-          <!-- Bottom floating indicator -->
-          <div class="absolute -bottom-2 right-4 glass-panel px-4 py-2 rounded-xl flex items-center gap-3 border border-cyan-400/30 shadow-[0_0_20px_rgba(0,225,255,0.2)]">
-            <div class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></div>
-            <span class="text-xs font-mono font-semibold text-cyan-200">24/7 Earning Active</span>
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-    <!-- Financial Future Glass Bar (Reference: "TAKE CONTROL OF YOUR FINANCIAL FUTURE" + Metric Cards) -->
-    <section class="mt-14 mb-20">
-      <div class="glass-panel rounded-3xl p-6 sm:p-8 relative overflow-hidden border border-blue-500/20 shadow-2xl">
-        <div class="grid lg:grid-cols-12 gap-8 items-center">
-          
-          <!-- Take Control Column -->
-          <div class="lg:col-span-4 border-b lg:border-b-0 lg:border-r border-blue-400/20 pb-6 lg:pb-0 lg:pr-6">
-            <span class="text-[11px] font-mono uppercase tracking-widest text-brand-cyan">Guaranteed Opportunity</span>
-            <h3 class="font-display font-bold text-2xl sm:text-3xl text-white mt-1 leading-tight">
-              TAKE CONTROL <br class="hidden sm:inline">OF YOUR FINANCIAL FUTURE.
-            </h3>
-            <p class="text-xs text-blue-200/60 mt-2">
-              Transparent wage criteria with fast Telegram support directly on your mobile device.
-            </p>
-          </div>
-
-          <!-- Quick Metrics Preview Matching Reference Image -->
-          <div class="lg:col-span-8 grid grid-cols-2 sm:grid-cols-4 gap-4">
-            
-            <div class="glass-panel glass-panel-hover p-4 rounded-2xl border-cyan-400/20 bg-blue-950/30">
-              <span class="text-[10px] font-mono text-cyan-300 uppercase tracking-wider block">Daily Payout</span>
-              <div class="font-display font-black text-2xl sm:text-3xl text-white mt-1">₹50</div>
-              <span class="text-[11px] text-blue-200/70 font-medium">Daily Wage*</span>
-            </div>
-
-            <div class="glass-panel glass-panel-hover p-4 rounded-2xl border-purple-400/20 bg-purple-950/20">
-              <span class="text-[10px] font-mono text-purple-300 uppercase tracking-wider block">Share Rate</span>
-              <div class="font-display font-black text-2xl sm:text-3xl text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-pink-300 mt-1">2%</div>
-              <span class="text-[11px] text-purple-200/70 font-medium">Commission</span>
-            </div>
-
-            <div class="glass-panel glass-panel-hover p-4 rounded-2xl border-amber-400/20 bg-amber-950/20">
-              <span class="text-[10px] font-mono text-amber-300 uppercase tracking-wider block">Zero Risk</span>
-              <div class="font-display font-black text-2xl sm:text-3xl text-amber-300 mt-1">₹0</div>
-              <span class="text-[11px] text-amber-100/70 font-medium">No Deposit</span>
-            </div>
-
-            <div class="glass-panel glass-panel-hover p-4 rounded-2xl border-emerald-400/20 bg-emerald-950/20">
-              <span class="text-[10px] font-mono text-emerald-300 uppercase tracking-wider block">Extra</span>
-              <div class="font-display font-black text-2xl sm:text-3xl text-emerald-300 mt-1">+TEAM</div>
-              <span class="text-[11px] text-emerald-100/70 font-medium">Wage Bonus</span>
-            </div>
-
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- Official Telegram Channels & Access Links Section -->
-    <section id="telegram" class="py-12">
-      <div class="text-center max-w-2xl mx-auto mb-12">
-        <span class="text-xs font-mono font-bold uppercase tracking-widest text-brand-cyan">Stay Connected</span>
-        <h2 class="font-display font-black text-3xl sm:text-4xl text-white mt-2">OFFICIAL TELEGRAM LINKS</h2>
-        <p class="text-sm text-blue-200/70 mt-3">Choose the link you need to get help, track updates, or access the shared portal.</p>
-      </div>
-
-      <div class="grid md:grid-cols-3 gap-6">
-        
-        <!-- Personal Contact -->
-        <div class="glass-panel glass-panel-hover p-7 rounded-3xl relative flex flex-col justify-between">
-          <div>
-            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500/20 to-cyan-500/20 border border-cyan-400/30 flex items-center justify-center text-2xl text-cyan-300 shadow-[0_0_15px_rgba(0,225,255,0.2)]">
-              ✉
-            </div>
-            <h3 class="font-display font-bold text-xl text-white mt-5">Personal Contact</h3>
-            <p class="text-xs text-blue-200/70 mt-2 leading-relaxed">
-              Reach the direct BIG PAY coordinator through Telegram for personalized guidance.
-            </p>
-          </div>
-          <div class="pt-6">
-            <a href="https://t.me/F0641" target="_blank" rel="noopener" class="w-full btn-neon-glow py-3 px-5 rounded-full text-xs font-black tracking-wider uppercase text-[#030718] flex items-center justify-center gap-2">
-              <span>Open Telegram</span>
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-            </a>
-          </div>
-        </div>
-
-        <!-- Updates Channel -->
-        <div class="glass-panel glass-panel-hover p-7 rounded-3xl relative flex flex-col justify-between border-cyan-400/30 shadow-[0_0_30px_rgba(0,140,255,0.15)]">
-          <div>
-            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-500/20 to-yellow-500/20 border border-amber-400/30 flex items-center justify-center text-2xl text-amber-300 shadow-[0_0_15px_rgba(255,180,0,0.2)]">
-              ◈
-            </div>
-            <h3 class="font-display font-bold text-xl text-white mt-5">Updates Channel</h3>
-            <p class="text-xs text-blue-200/70 mt-2 leading-relaxed">
-              Join the official announcement stream for notices, payment proof releases, and guides.
-            </p>
-          </div>
-          <div class="pt-6">
-            <a href="https://t.me/+-BD8O-QEVv00ZTE1" target="_blank" rel="noopener" class="w-full btn-outline-glow py-3 px-5 rounded-full text-xs font-black tracking-wider uppercase text-cyan-200 hover:text-white flex items-center justify-center gap-2">
-              <span>Join Channel</span>
-              <svg class="w-4 h-4 text-brand-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-            </a>
-          </div>
-        </div>
-
-        <!-- App / Post Link -->
-        <div class="glass-panel glass-panel-hover p-7 rounded-3xl relative flex flex-col justify-between">
-          <div>
-            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-500/20 to-blue-500/20 border border-purple-400/30 flex items-center justify-center text-2xl text-purple-300 shadow-[0_0_15px_rgba(132,53,255,0.2)]">
-              ▣
-            </div>
-            <h3 class="font-display font-bold text-xl text-white mt-5">App / Post Link</h3>
-            <p class="text-xs text-blue-200/70 mt-2 leading-relaxed">
-              Open the dedicated Telegram app and task instructions shared by BIG PAY.
-            </p>
-          </div>
-          <div class="pt-6">
-            <a href="https://t.me/c/3448486720/156" target="_blank" rel="noopener" class="w-full btn-outline-glow py-3 px-5 rounded-full text-xs font-black tracking-wider uppercase text-blue-200 hover:text-white flex items-center justify-center gap-2">
-              <span>Open Link</span>
-              <svg class="w-4 h-4 text-brand-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-            </a>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- Comprehensive Earnings Details Grid -->
-    <section id="earnings" class="py-12">
-      <div class="text-center max-w-2xl mx-auto mb-12">
-        <span class="text-xs font-mono font-bold uppercase tracking-widest text-brand-cyan">Opportunity & Payouts</span>
-        <h2 class="font-display font-black text-3xl sm:text-4xl text-white mt-2">WORK & EARNING DETAILS</h2>
-        <p class="text-sm text-blue-200/70 mt-3">Full breakdown of all compensation structures, commissions, and eligibility.</p>
-      </div>
-
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-        
-        <div class="glass-panel glass-panel-hover p-6 rounded-2xl">
-          <div class="font-display font-black text-3xl text-brand-cyan">2%</div>
-          <h4 class="font-display font-bold text-base text-white mt-2">Commission</h4>
-          <p class="text-xs text-blue-200/70 mt-1">Structured commission percentage as outlined by the BIG PAY system.</p>
-        </div>
-
-        <div class="glass-panel glass-panel-hover p-6 rounded-2xl">
-          <div class="font-display font-black text-3xl text-amber-400">₹50</div>
-          <h4 class="font-display font-bold text-base text-white mt-2">Daily Wage</h4>
-          <p class="text-xs text-blue-200/70 mt-1">Daily earning allocation, subject to applicable work completion and terms.</p>
-        </div>
-
-        <div class="glass-panel glass-panel-hover p-6 rounded-2xl">
-          <div class="font-display font-black text-3xl text-emerald-400">LONG</div>
-          <h4 class="font-display font-bold text-base text-white mt-2">Long-Term</h4>
-          <p class="text-xs text-blue-200/70 mt-1">Ongoing, continuous earning opportunity designed for steady participation.</p>
-        </div>
-
-        <div class="glass-panel glass-panel-hover p-6 rounded-2xl">
-          <div class="font-display font-black text-3xl text-cyan-300">₹0</div>
-          <h4 class="font-display font-bold text-base text-white mt-2">No Deposit</h4>
-          <p class="text-xs text-blue-200/70 mt-1">No mandatory joining deposit fee is required to review or begin.</p>
-        </div>
-
-        <div class="glass-panel glass-panel-hover p-6 rounded-2xl">
-          <div class="font-display font-black text-3xl text-purple-400">TEAM</div>
-          <h4 class="font-display font-bold text-base text-white mt-2">Team Wage</h4>
-          <p class="text-xs text-blue-200/70 mt-1">Team-based multiplier and collaborative bonus rewards.</p>
-        </div>
-
-        <div class="glass-panel glass-panel-hover p-6 rounded-2xl">
-          <div class="font-display font-black text-3xl text-amber-300">BONUS</div>
-          <h4 class="font-display font-bold text-base text-white mt-2">Activation Bonus</h4>
-          <p class="text-xs text-blue-200/70 mt-1">Welcome incentive awarded upon initial qualification and verified setup.</p>
-        </div>
-
-        <div class="glass-panel glass-panel-hover p-6 rounded-2xl">
-          <div class="font-display font-black text-3xl text-pink-400">EXTRA</div>
-          <h4 class="font-display font-bold text-base text-white mt-2">Referral Income</h4>
-          <p class="text-xs text-blue-200/70 mt-1">Additional earning potential for referring authentic network contributors.</p>
-        </div>
-
-        <div class="glass-panel glass-panel-hover p-6 rounded-2xl">
-          <div class="font-display font-black text-3xl text-blue-400">REMOTE</div>
-          <h4 class="font-display font-bold text-base text-white mt-2">Work From Anywhere</h4>
-          <p class="text-xs text-blue-200/70 mt-1">Flexibility to execute tasks with just an internet-connected smartphone.</p>
-        </div>
-
-        <div class="glass-panel glass-panel-hover p-6 rounded-2xl">
-          <div class="font-display font-black text-3xl text-teal-300">BANK</div>
-          <h4 class="font-display font-bold text-base text-white mt-2">Payment Account</h4>
-          <p class="text-xs text-blue-200/70 mt-1">Direct withdrawal capabilities to your verified bank account.</p>
-        </div>
-
-      </div>
-
-      <!-- Banner Strip -->
-      <div class="mt-8 glass-panel p-8 rounded-3xl border border-cyan-500/30 text-center relative overflow-hidden">
-        <div class="relative z-10 max-w-2xl mx-auto">
-          <h3 class="font-display font-black text-2xl sm:text-3xl text-white">YOUR WORK. YOUR LOCATION.</h3>
-          <p class="text-xs sm:text-sm text-blue-200/70 mt-2 leading-relaxed">
-            All that is required is a smartphone and dependable data connection. Always inspect qualification requirements and confirm policies directly with the BIG PAY handle.
-          </p>
-          <div class="mt-6">
-            <a href="https://t.me/F0641" target="_blank" rel="noopener" class="btn-neon-glow inline-flex items-center gap-2 px-8 py-3.5 rounded-full font-display font-bold text-xs uppercase tracking-widest text-[#030718]">
-              <span>Contact BIG PAY Direct</span>
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- REVIEWS & LIVE VERIFICATION SECTION (20 USER REVIEWS) -->
-    <section id="reviews" class="py-12">
-      <div class="text-center max-w-3xl mx-auto mb-10">
-        <div class="inline-flex items-center gap-2 px-4 py-1 rounded-full border border-emerald-400/30 bg-emerald-500/10 mb-3 shadow-[0_0_15px_rgba(52,211,153,0.2)]">
-          <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-          <span class="text-[11px] font-mono uppercase tracking-widest text-emerald-300">100% Tested • No Freeze • Smooth Payouts</span>
-        </div>
-        <h2 class="font-display font-black text-3xl sm:text-4xl text-white">USER REVIEWS & PROOFS</h2>
-        <p class="text-xs sm:text-sm text-blue-200/70 mt-2">
-          Genuine member experiences confirming long-term panel uptime, immediate daily wage credits, and zero account freezes.
-        </p>
-
-        <!-- Filter Controls -->
-        <div class="flex flex-wrap items-center justify-center gap-2 mt-6" id="reviewFilterBtns">
-          <button data-filter="all" class="filter-btn active-filter px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider transition bg-cyan-500 text-black shadow-[0_0_15px_rgba(0,225,255,0.4)]">
-            All Reviews (20)
-          </button>
-          <button data-filter="panel" class="filter-btn px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider transition bg-blue-950/60 border border-blue-400/30 text-blue-200 hover:text-white">
-            Good Panel (6)
-          </button>
-          <button data-filter="nofreeze" class="filter-btn px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider transition bg-blue-950/60 border border-blue-400/30 text-blue-200 hover:text-white">
-            No Freeze (8)
-          </button>
-          <button data-filter="longterm" class="filter-btn px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider transition bg-blue-950/60 border border-blue-400/30 text-blue-200 hover:text-white">
-            Long-Term (6)
-          </button>
-        </div>
-      </div>
-
-      <!-- Reviews 3-Column Grid -->
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5" id="reviewsContainer">
-        
-        <!-- Review 1 -->
-        <div class="review-card glass-panel glass-panel-hover p-5 rounded-2xl flex flex-col justify-between" data-category="nofreeze">
-          <div>
-            <div class="flex items-center justify-between">
-              <div class="flex items-center gap-2.5">
-                <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center font-bold text-black text-xs">RK</div>
-                <div>
-                  <h5 class="text-sm font-bold text-white leading-none">Rahul Krishnan</h5>
-                  <span class="text-[10px] text-emerald-400 font-mono">Verified Member • Kerala</span>
-                </div>
-              </div>
-              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">NO FREEZE</span>
-            </div>
-            <div class="flex text-amber-400 text-xs my-2.5">★★★★★</div>
-            <p class="text-xs text-blue-100/80 leading-relaxed font-light">
-              "Working smoothly since day 1! No freeze issue at all in the system, and daily ₹50 wage credited straight to bank without delay."
-            </p>
-          </div>
-          <div class="mt-4 pt-3 border-t border-white/5 flex items-center justify-between text-[10px] text-blue-300/50 font-mono">
-            <span>22 mins ago</span>
-            <span class="text-cyan-400 font-semibold">₹50 Received</span>
-          </div>
-        </div>
-
-        <!-- Review 2 -->
-        <div class="review-card glass-panel glass-panel-hover p-5 rounded-2xl flex flex-col justify-between" data-category="panel">
-          <div>
-            <div class="flex items-center justify-between">
-              <div class="flex items-center gap-2.5">
-                <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-purple-500 to-indigo-600 flex items-center justify-center font-bold text-white text-xs">AM</div>
-                <div>
-                  <h5 class="text-sm font-bold text-white leading-none">Anand Mohan</h5>
-                  <span class="text-[10px] text-emerald-400 font-mono">Verified Member • Kochi</span>
-                </div>
-              </div>
-              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-cyan-500/10 text-cyan-300 border border-cyan-500/20">GOOD PANEL</span>
-            </div>
-            <div class="flex text-amber-400 text-xs my-2.5">★★★★★</div>
-            <p class="text-xs text-blue-100/80 leading-relaxed font-light">
-              "Really good panel interface! Super clean, no lag while submitting work, and the 2% commission gets reflected instantly."
-            </p>
-          </div>
-          <div class="mt-4 pt-3 border-t border-white/5 flex items-center justify-between text-[10px] text-blue-300/50 font-mono">
-            <span>1 hour ago</span>
-            <span class="text-cyan-400 font-semibold">Panel Tested</span>
-          </div>
-        </div>
-
-        <!-- Review 3 -->
-        <div class="review-card glass-panel glass-panel-hover p-5 rounded-2xl flex flex-col justify-between" data-category="longterm">
-          <div>
-            <div class="flex items-center justify-between">
-              <div class="flex items-center gap-2.5">
-                <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-amber-400 to-yellow-600 flex items-center justify-center font-bold text-black text-xs">SV</div>
-                <div>
-                  <h5 class="text-sm font-bold text-white leading-none">Suresh Verma</h5>
-                  <span class="text-[10px] text-emerald-400 font-mono">Verified Member • Bangalore</span>
-                </div>
-              </div>
-              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-purple-500/10 text-purple-300 border border-purple-500/20">LONG TERM</span>
-            </div>
-            <div class="flex text-amber-400 text-xs my-2.5">★★★★★</div>
-            <p class="text-xs text-blue-100/80 leading-relaxed font-light">
-              "Best long-term working platform I've found. Zero deposit required and stable payouts week after week. Truly reliable."
-            </p>
-          </div>
-          <div class="mt-4 pt-3 border-t border-white/5 flex items-center justify-between text-[10px] text-blue-300/50 font-mono">
-            <span>2 hours ago</span>
-            <span class="text-cyan-400 font-semibold">3 Months Active</span>
-          </div>
-        </div>
-
-        <!-- Review 4 -->
-        <div class="review-card glass-panel glass-panel-hover p-5 rounded-2xl flex flex-col justify-between" data-category="nofreeze">
-          <div>
-            <div class="flex items-center justify-between">
-              <div class="flex items-center gap-2.5">
-                <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-emerald-500 to-teal-600 flex items-center justify-center font-bold text-black text-xs">MN</div>
-                <div>
-                  <h5 class="text-sm font-bold text-white leading-none">Muhammed Niyas</h5>
-                  <span class="text-[10px] text-emerald-400 font-mono">Verified Member • Kozhikode</span>
-                </div>
-              </div>
-              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">NO FREEZE</span>
-            </div>
-            <div class="flex text-amber-400 text-xs my-2.5">★★★★★</div>
-            <p class="text-xs text-blue-100/80 leading-relaxed font-light">
-              "Very smooth experience. No account freeze or fund hold. Contacted Telegram @F0641 and got full clearance right away."
-            </p>
-          </div>
-          <div class="mt-4 pt-3 border-t border-white/5 flex items-center justify-between text-[10px] text-blue-300/50 font-mono">
-            <span>3 hours ago</span>
-            <span class="text-cyan-400 font-semibold">₹150 Withdrawn</span>
-          </div>
-        </div>
-
-        <!-- Review 5 -->
-        <div class="review-card glass-panel glass-panel-hover p-5 rounded-2xl flex flex-col justify-between" data-category="panel">
-          <div>
-            <div class="flex items-center justify-between">
-              <div class="flex items-center gap-2.5">
-                <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-pink-500 to-rose-600 flex items-center justify-center font-bold text-white text-xs">DA</div>
-                <div>
-                  <h5 class="text-sm font-bold text-white leading-none">Divya Acharya</h5>
-                  <span class="text-[10px] text-emerald-400 font-mono">Verified Member • Mangalore</span>
-                </div>
-              </div>
-              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-cyan-500/10 text-cyan-300 border border-cyan-500/20">GOOD PANEL</span>
-            </div>
-            <div class="flex text-amber-400 text-xs my-2.5">★★★★★</div>
-            <p class="text-xs text-blue-100/80 leading-relaxed font-light">
-              "The web app panel is very fast on mobile browsers. Easy to submit tasks and review live balance. Good panel overall!"
-            </p>
-          </div>
-          <div class="mt-4 pt-3 border-t border-white/5 flex items-center justify-between text-[10px] text-blue-300/50 font-mono">
-            <span>4 hours ago</span>
-            <span class="text-cyan-400 font-semibold">Fast UI</span>
-          </div>
-        </div>
-
-        <!-- Review 6 -->
-        <div class="review-card glass-panel glass-panel-hover p-5 rounded-2xl flex flex-col justify-between" data-category="longterm">
-          <div>
-            <div class="flex items-center justify-between">
-              <div class="flex items-center gap-2.5">
-                <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-cyan-400 to-teal-500 flex items-center justify-center font-bold text-black text-xs">JR</div>
-                <div>
-                  <h5 class="text-sm font-bold text-white leading-none">Jithin Raj</h5>
-                  <span class="text-[10px] text-emerald-400 font-mono">Verified Member • Thrissur</span>
-                </div>
-              </div>
-              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-purple-500/10 text-purple-300 border border-purple-500/20">LONG TERM</span>
-            </div>
-            <div class="flex text-amber-400 text-xs my-2.5">★★★★★</div>
-            <p class="text-xs text-blue-100/80 leading-relaxed font-light">
-              "Working daily for the last 45 days. Genuine long-term project with dedicated support channel updates. Completely legit."
-            </p>
-          </div>
-          <div class="mt-4 pt-3 border-t border-white/5 flex items-center justify-between text-[10px] text-blue-300/50 font-mono">
-            <span>5 hours ago</span>
-            <span class="text-cyan-400 font-semibold">Daily Active</span>
-          </div>
-        </div>
-
-        <!-- Review 7 -->
-        <div class="review-card glass-panel glass-panel-hover p-5 rounded-2xl flex flex-col justify-between" data-category="nofreeze">
-          <div>
-            <div class="flex items-center justify-between">
-              <div class="flex items-center gap-2.5">
-                <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-indigo-500 to-cyan-500 flex items-center justify-center font-bold text-white text-xs">PK</div>
-                <div>
-                  <h5 class="text-sm font-bold text-white leading-none">Praveen Kumar</h5>
-                  <span class="text-[10px] text-emerald-400 font-mono">Verified Member • Chennai</span>
-                </div>
-              </div>
-              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">NO FREEZE</span>
-            </div>
-            <div class="flex text-amber-400 text-xs my-2.5">★★★★★</div>
-            <p class="text-xs text-blue-100/80 leading-relaxed font-light">
-              "Most systems freeze after 2-3 withdrawals, but BIG PAY has zero freeze issues. Clean direct payout to my bank account."
-            </p>
-          </div>
-          <div class="mt-4 pt-3 border-t border-white/5 flex items-center justify-between text-[10px] text-blue-300/50 font-mono">
-            <span>6 hours ago</span>
-            <span class="text-cyan-400 font-semibold">₹350 Settled</span>
-          </div>
-        </div>
-
-        <!-- Review 8 -->
-        <div class="review-card glass-panel glass-panel-hover p-5 rounded-2xl flex flex-col justify-between" data-category="panel">
-          <div>
-            <div class="flex items-center justify-between">
-              <div class="flex items-center gap-2.5">
-                <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-amber-500 to-orange-600 flex items-center justify-center font-bold text-black text-xs">SS</div>
-                <div>
-                  <h5 class="text-sm font-bold text-white leading-none">Sandeep Sharma</h5>
-                  <span class="text-[10px] text-emerald-400 font-mono">Verified Member • Delhi</span>
-                </div>
-              </div>
-              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-cyan-500/10 text-cyan-300 border border-cyan-500/20">GOOD PANEL</span>
-            </div>
-            <div class="flex text-amber-400 text-xs my-2.5">★★★★★</div>
-            <p class="text-xs text-blue-100/80 leading-relaxed font-light">
-              "Top notch dashboard and panel responsiveness. Even with slow mobile network, the task submission is buttery smooth."
-            </p>
-          </div>
-          <div class="mt-4 pt-3 border-t border-white/5 flex items-center justify-between text-[10px] text-blue-300/50 font-mono">
-            <span>7 hours ago</span>
-            <span class="text-cyan-400 font-semibold">Smooth Dashboard</span>
-          </div>
-        </div>
-
-        <!-- Review 9 -->
-        <div class="review-card glass-panel glass-panel-hover p-5 rounded-2xl flex flex-col justify-between" data-category="nofreeze">
-          <div>
-            <div class="flex items-center justify-between">
-              <div class="flex items-center gap-2.5">
-                <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-700 flex items-center justify-center font-bold text-white text-xs">FA</div>
-                <div>
-                  <h5 class="text-sm font-bold text-white leading-none">Faisal Ahmed</h5>
-                  <span class="text-[10px] text-emerald-400 font-mono">Verified Member • Malappuram</span>
-                </div>
-              </div>
-              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">NO FREEZE</span>
-            </div>
-            <div class="flex text-amber-400 text-xs my-2.5">★★★★★</div>
-            <p class="text-xs text-blue-100/80 leading-relaxed font-light">
-              "No lock period and no freeze policy. Earned my daily ₹50 and got instant activation bonus as described."
-            </p>
-          </div>
-          <div class="mt-4 pt-3 border-t border-white/5 flex items-center justify-between text-[10px] text-blue-300/50 font-mono">
-            <span>8 hours ago</span>
-            <span class="text-cyan-400 font-semibold">Instant Credit</span>
-          </div>
-        </div>
-
-        <!-- Review 10 -->
-        <div class="review-card glass-panel glass-panel-hover p-5 rounded-2xl flex flex-col justify-between" data-category="longterm">
-          <div>
-            <div class="flex items-center justify-between">
-              <div class="flex items-center gap-2.5">
-                <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-cyan-500 to-emerald-500 flex items-center justify-center font-bold text-black text-xs">VG</div>
-                <div>
-                  <h5 class="text-sm font-bold text-white leading-none">Vishnu G. Nair</h5>
-                  <span class="text-[10px] text-emerald-400 font-mono">Verified Member • Kollam</span>
-                </div>
-              </div>
-              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-purple-500/10 text-purple-300 border border-purple-500/20">LONG TERM</span>
-            </div>
-            <div class="flex text-amber-400 text-xs my-2.5">★★★★★</div>
-            <p class="text-xs text-blue-100/80 leading-relaxed font-light">
-              "If you are seeking a long-term working opportunity from your phone, this is genuine. 2 months completed without any downtime."
-            </p>
-          </div>
-          <div class="mt-4 pt-3 border-t border-white/5 flex items-center justify-between text-[10px] text-blue-300/50 font-mono">
-            <span>9 hours ago</span>
-            <span class="text-cyan-400 font-semibold">Long Term OK</span>
-          </div>
-        </div>
-
-        <!-- Review 11 -->
-        <div class="review-card glass-panel glass-panel-hover p-5 rounded-2xl flex flex-col justify-between" data-category="panel">
-          <div>
-            <div class="flex items-center justify-between">
-              <div class="flex items-center gap-2.5">
-                <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-teal-400 to-cyan-600 flex items-center justify-center font-bold text-black text-xs">KM</div>
-                <div>
-                  <h5 class="text-sm font-bold text-white leading-none">Kavitha Menon</h5>
-                  <span class="text-[10px] text-emerald-400 font-mono">Verified Member • Palakkad</span>
-                </div>
-              </div>
-              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-cyan-500/10 text-cyan-300 border border-cyan-500/20">GOOD PANEL</span>
-            </div>
-            <div class="flex text-amber-400 text-xs my-2.5">★★★★★</div>
-            <p class="text-xs text-blue-100/80 leading-relaxed font-light">
-              "Clear instructions inside the panel and all Telegram link updates are organized properly. Great experience."
-            </p>
-          </div>
-          <div class="mt-4 pt-3 border-t border-white/5 flex items-center justify-between text-[10px] text-blue-300/50 font-mono">
-            <span>10 hours ago</span>
-            <span class="text-cyan-400 font-semibold">Organized System</span>
-          </div>
-        </div>
-
-        <!-- Review 12 -->
-        <div class="review-card glass-panel glass-panel-hover p-5 rounded-2xl flex flex-col justify-between" data-category="nofreeze">
-          <div>
-            <div class="flex items-center justify-between">
-              <div class="flex items-center gap-2.5">
-                <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-yellow-500 to-amber-600 flex items-center justify-center font-bold text-black text-xs">RS</div>
-                <div>
-                  <h5 class="text-sm font-bold text-white leading-none">Rohit Singhania</h5>
-                  <span class="text-[10px] text-emerald-400 font-mono">Verified Member • Mumbai</span>
-                </div>
-              </div>
-              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">NO FREEZE</span>
-            </div>
-            <div class="flex text-amber-400 text-xs my-2.5">★★★★★</div>
-            <p class="text-xs text-blue-100/80 leading-relaxed font-light">
-              "Zero deposit, 100% no freeze. I referred 5 team members and we all receive our daily wages without issues."
-            </p>
-          </div>
-          <div class="mt-4 pt-3 border-t border-white/5 flex items-center justify-between text-[10px] text-blue-300/50 font-mono">
-            <span>11 hours ago</span>
-            <span class="text-cyan-400 font-semibold">Team Bonus OK</span>
-          </div>
-        </div>
-
-        <!-- Review 13 -->
-        <div class="review-card glass-panel glass-panel-hover p-5 rounded-2xl flex flex-col justify-between" data-category="longterm">
-          <div>
-            <div class="flex items-center justify-between">
-              <div class="flex items-center gap-2.5">
-                <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-violet-500 to-fuchsia-600 flex items-center justify-center font-bold text-white text-xs">AK</div>
-                <div>
-                  <h5 class="text-sm font-bold text-white leading-none">Ajith K.</h5>
-                  <span class="text-[10px] text-emerald-400 font-mono">Verified Member • Kannur</span>
-                </div>
-              </div>
-              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-purple-500/10 text-purple-300 border border-purple-500/20">LONG TERM</span>
-            </div>
-            <div class="flex text-amber-400 text-xs my-2.5">★★★★★</div>
-            <p class="text-xs text-blue-100/80 leading-relaxed font-light">
-              "Long term work opportunity with legitimate team commission. Very consistent channel updates every single day."
-            </p>
-          </div>
-          <div class="mt-4 pt-3 border-t border-white/5 flex items-center justify-between text-[10px] text-blue-300/50 font-mono">
-            <span>12 hours ago</span>
-            <span class="text-cyan-400 font-semibold">Verified Daily</span>
-          </div>
-        </div>
-
-        <!-- Review 14 -->
-        <div class="review-card glass-panel glass-panel-hover p-5 rounded-2xl flex flex-col justify-between" data-category="nofreeze">
-          <div>
-            <div class="flex items-center justify-between">
-              <div class="flex items-center gap-2.5">
-                <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-rose-500 to-red-600 flex items-center justify-center font-bold text-white text-xs">NS</div>
-                <div>
-                  <h5 class="text-sm font-bold text-white leading-none">Nikhil S.</h5>
-                  <span class="text-[10px] text-emerald-400 font-mono">Verified Member • Trivandrum</span>
-                </div>
-              </div>
-              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">NO FREEZE</span>
-            </div>
-            <div class="flex text-amber-400 text-xs my-2.5">★★★★★</div>
-            <p class="text-xs text-blue-100/80 leading-relaxed font-light">
-              "No freeze at all! Joined through the official Telegram update link, and received payments continuously."
-            </p>
-          </div>
-          <div class="mt-4 pt-3 border-t border-white/5 flex items-center justify-between text-[10px] text-blue-300/50 font-mono">
-            <span>14 hours ago</span>
-            <span class="text-cyan-400 font-semibold">100% Payout Rate</span>
-          </div>
-        </div>
-
-        <!-- Review 15 -->
-        <div class="review-card glass-panel glass-panel-hover p-5 rounded-2xl flex flex-col justify-between" data-category="panel">
-          <div>
-            <div class="flex items-center justify-between">
-              <div class="flex items-center gap-2.5">
-                <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-cyan-600 to-blue-800 flex items-center justify-center font-bold text-white text-xs">BR</div>
-                <div>
-                  <h5 class="text-sm font-bold text-white leading-none">Bipin Rawat</h5>
-                  <span class="text-[10px] text-emerald-400 font-mono">Verified Member • Pune</span>
-                </div>
-              </div>
-              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-cyan-500/10 text-cyan-300 border border-cyan-500/20">GOOD PANEL</span>
-            </div>
-            <div class="flex text-amber-400 text-xs my-2.5">★★★★★</div>
-            <p class="text-xs text-blue-100/80 leading-relaxed font-light">
-              "Fast execution and good panel performance. Doesn't crash even during peak traffic hours."
-            </p>
-          </div>
-          <div class="mt-4 pt-3 border-t border-white/5 flex items-center justify-between text-[10px] text-blue-300/50 font-mono">
-            <span>16 hours ago</span>
-            <span class="text-cyan-400 font-semibold">Server Fast</span>
-          </div>
-        </div>
-
-        <!-- Review 16 -->
-        <div class="review-card glass-panel glass-panel-hover p-5 rounded-2xl flex flex-col justify-between" data-category="nofreeze">
-          <div>
-            <div class="flex items-center justify-between">
-              <div class="flex items-center gap-2.5">
-                <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-emerald-400 to-green-600 flex items-center justify-center font-bold text-black text-xs">SK</div>
-                <div>
-                  <h5 class="text-sm font-bold text-white leading-none">Sajid Khan</h5>
-                  <span class="text-[10px] text-emerald-400 font-mono">Verified Member • Hyderabad</span>
-                </div>
-              </div>
-              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">NO FREEZE</span>
-            </div>
-            <div class="flex text-amber-400 text-xs my-2.5">★★★★★</div>
-            <p class="text-xs text-blue-100/80 leading-relaxed font-light">
-              "Bank account received the full sum with no freeze or deductions. Safe and direct."
-            </p>
-          </div>
-          <div class="mt-4 pt-3 border-t border-white/5 flex items-center justify-between text-[10px] text-blue-300/50 font-mono">
-            <span>18 hours ago</span>
-            <span class="text-cyan-400 font-semibold">₹50 Credited</span>
-          </div>
-        </div>
-
-        <!-- Review 17 -->
-        <div class="review-card glass-panel glass-panel-hover p-5 rounded-2xl flex flex-col justify-between" data-category="longterm">
-          <div>
-            <div class="flex items-center justify-between">
-              <div class="flex items-center gap-2.5">
-                <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-amber-300 to-yellow-500 flex items-center justify-center font-bold text-black text-xs">MA</div>
-                <div>
-                  <h5 class="text-sm font-bold text-white leading-none">Manu Anthony</h5>
-                  <span class="text-[10px] text-emerald-400 font-mono">Verified Member • Ernakulam</span>
-                </div>
-              </div>
-              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-purple-500/10 text-purple-300 border border-purple-500/20">LONG TERM</span>
-            </div>
-            <div class="flex text-amber-400 text-xs my-2.5">★★★★★</div>
-            <p class="text-xs text-blue-100/80 leading-relaxed font-light">
-              "Tested for weeks. Long-term reliability is 10/10. Admin in Telegram is responsive whenever required."
-            </p>
-          </div>
-          <div class="mt-4 pt-3 border-t border-white/5 flex items-center justify-between text-[10px] text-blue-300/50 font-mono">
-            <span>20 hours ago</span>
-            <span class="text-cyan-400 font-semibold">Trusted Admin</span>
-          </div>
-        </div>
-
-        <!-- Review 18 -->
-        <div class="review-card glass-panel glass-panel-hover p-5 rounded-2xl flex flex-col justify-between" data-category="panel">
-          <div>
-            <div class="flex items-center justify-between">
-              <div class="flex items-center gap-2.5">
-                <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-400 to-indigo-600 flex items-center justify-center font-bold text-white text-xs">HB</div>
-                <div>
-                  <h5 class="text-sm font-bold text-white leading-none">Harish Babu</h5>
-                  <span class="text-[10px] text-emerald-400 font-mono">Verified Member • Alappuzha</span>
-                </div>
-              </div>
-              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-cyan-500/10 text-cyan-300 border border-cyan-500/20">GOOD PANEL</span>
-            </div>
-            <div class="flex text-amber-400 text-xs my-2.5">★★★★★</div>
-            <p class="text-xs text-blue-100/80 leading-relaxed font-light">
-              "Good panel design, works flawlessly on any Android phone. 2% referral tracking is crystal clear."
-            </p>
-          </div>
-          <div class="mt-4 pt-3 border-t border-white/5 flex items-center justify-between text-[10px] text-blue-300/50 font-mono">
-            <span>1 day ago</span>
-            <span class="text-cyan-400 font-semibold">100% Uptime</span>
-          </div>
-        </div>
-
-        <!-- Review 19 -->
-        <div class="review-card glass-panel glass-panel-hover p-5 rounded-2xl flex flex-col justify-between" data-category="nofreeze">
-          <div>
-            <div class="flex items-center justify-between">
-              <div class="flex items-center gap-2.5">
-                <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-purple-400 to-pink-600 flex items-center justify-center font-bold text-white text-xs">PS</div>
-                <div>
-                  <h5 class="text-sm font-bold text-white leading-none">Pranav S.</h5>
-                  <span class="text-[10px] text-emerald-400 font-mono">Verified Member • Kottayam</span>
-                </div>
-              </div>
-              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">NO FREEZE</span>
-            </div>
-            <div class="flex text-amber-400 text-xs my-2.5">★★★★★</div>
-            <p class="text-xs text-blue-100/80 leading-relaxed font-light">
-              "No freeze, no hidden deposit asks. Transparent system that works straight through official channels."
-            </p>
-          </div>
-          <div class="mt-4 pt-3 border-t border-white/5 flex items-center justify-between text-[10px] text-blue-300/50 font-mono">
-            <span>1 day ago</span>
-            <span class="text-cyan-400 font-semibold">Verified Safe</span>
-          </div>
-        </div>
-
-        <!-- Review 20 -->
-        <div class="review-card glass-panel glass-panel-hover p-5 rounded-2xl flex flex-col justify-between" data-category="longterm">
-          <div>
-            <div class="flex items-center justify-between">
-              <div class="flex items-center gap-2.5">
-                <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-emerald-400 to-cyan-500 flex items-center justify-center font-bold text-black text-xs">TJ</div>
-                <div>
-                  <h5 class="text-sm font-bold text-white leading-none">Toby Joseph</h5>
-                  <span class="text-[10px] text-emerald-400 font-mono">Verified Member • Idukki</span>
-                </div>
-              </div>
-              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-purple-500/10 text-purple-300 border border-purple-500/20">LONG TERM</span>
-            </div>
-            <div class="flex text-amber-400 text-xs my-2.5">★★★★★</div>
-            <p class="text-xs text-blue-100/80 leading-relaxed font-light">
-              "Long-term stability is confirmed! Good panel, no freeze issues, and ₹50 daily wage arrives consistently."
-            </p>
-          </div>
-          <div class="mt-4 pt-3 border-t border-white/5 flex items-center justify-between text-[10px] text-blue-300/50 font-mono">
-            <span>2 days ago</span>
-            <span class="text-cyan-400 font-semibold">Recommended</span>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="py-12 border-t border-blue-500/10">
-      <div class="glass-panel p-6 sm:p-8 rounded-3xl max-w-3xl mx-auto text-center border-amber-400/20 bg-gradient-to-b from-blue-950/20 to-blue-900/10">
-        <div class="w-10 h-10 mx-auto rounded-full bg-amber-400/20 flex items-center justify-center text-amber-300 font-bold mb-3">
-          ⓘ
-        </div>
-        <h4 class="font-display font-bold text-lg text-white">Important Notice & Access Info</h4>
-        <p class="text-xs text-blue-200/80 mt-2 leading-relaxed">
-          This portal acts as your centralized navigation directory to BIG PAY's official Telegram links. Ensure you have the Telegram app installed. Private post or group links require channel membership authorization.
-        </p>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- Footer -->
-  <footer class="relative z-10 border-t border-blue-500/20 py-8 text-center text-xs text-blue-300/50">
-    <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-      <div>
-        © <span id="year"></span> <strong class="text-white font-display">BIG PAY</strong>. All official rights reserved.
-      </div>
-      <div class="flex gap-6 text-[11px] font-mono">
-        <a href="#home" class="hover:text-cyan-300 transition-colors">Home</a>
-        <a href="#telegram" class="hover:text-cyan-300 transition-colors">Telegram</a>
-        <a href="#earnings" class="hover:text-cyan-300 transition-colors">Earnings</a>
-        <a href="https://t.me/F0641" target="_blank" rel="noopener" class="hover:text-cyan-300 transition-colors">Support</a>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Light Particle Animation Script -->
-  <script>
-    // Set Year
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Mobile Menu Toggle
-    const mobileBtn = document.getElementById('mobileMenuBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    mobileBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-    });
-    document.querySelectorAll('.mobile-link').forEach(link => {
-      link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
-    });
-
-    // Review Filtering Interaction
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const reviewCards = document.querySelectorAll('.review-card');
-
-    filterButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        // Active button styles
-        filterButtons.forEach(b => {
-          b.classList.remove('active-filter', 'bg-cyan-500', 'text-black', 'shadow-[0_0_15px_rgba(0,225,255,0.4)]');
-          b.classList.add('bg-blue-950/60', 'text-blue-200');
-        });
-        btn.classList.add('active-filter', 'bg-cyan-500', 'text-black', 'shadow-[0_0_15px_rgba(0,225,255,0.4)]');
-        btn.classList.remove('bg-blue-950/60', 'text-blue-200');
-
-        const filterValue = btn.getAttribute('data-filter');
-
-        reviewCards.forEach(card => {
-          if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
-            card.style.display = 'flex';
-          } else {
-            card.style.display = 'none';
-          }
-        });
-      });
-    });
-
-    // Ambient Star / Digital Glow Canvas Animation
-    const canvas = document.getElementById('ambientCanvas');
-    const ctx = canvas.getContext('2d');
-    let width, height, dpr, particles = [];
-
-    function setupCanvas() {
-      dpr = Math.min(window.devicePixelRatio || 1, 2);
-      width = canvas.parentElement.offsetWidth;
-      height = canvas.parentElement.offsetHeight;
-      canvas.width = width * dpr;
-      canvas.height = height * dpr;
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
-      const count = Math.min(75, Math.floor(width / 16));
-      particles = Array.from({ length: count }, () => ({
-        x: Math.random() * width,
-        y: Math.random() * height,
-        radius: Math.random() * 1.5 + 0.4,
-        speedY: Math.random() * 0.4 + 0.1,
-        alpha: Math.random() * 0.6 + 0.2,
-        pulseSpeed: Math.random() * 0.03 + 0.01,
-        phase: Math.random() * Math.PI * 2,
-        color: Math.random() > 0.4 ? 'rgba(0, 225, 255,' : 'rgba(255, 210, 77,'
-      }));
+    <p class="notice">
+        Submitting a request does not mean that a transaction
+        has been completed. Orders require verification.
+        Do not send cryptocurrency until the transaction
+        instructions and recipient details have been verified.
+    </p>
+
+</div>
+
+<footer>
+    BIG EXCHANGE · USDT Sell Portal<br>
+    Informational demo — no transactions are processed here.
+</footer>
+
+<script>
+const RATE = 113.20;
+const MINIMUM = 10;
+
+function calculate() {
+    const amount = Number(
+        document.getElementById("amount").value
+    );
+
+    const total = amount * RATE;
+
+    document.getElementById("total").textContent =
+        Number.isFinite(total) && amount > 0
+        ? total.toLocaleString("en-IN", {
+            style: "currency",
+            currency: "INR",
+            minimumFractionDigits: 2
+        })
+        : "₹0.00";
+}
+
+function submitRequest() {
+    const amount = Number(
+        document.getElementById("amount").value
+    );
+
+    const message = document.getElementById("message");
+
+    if (!Number.isFinite(amount) || amount < MINIMUM) {
+        message.textContent =
+            "Minimum sell amount is 10 USDT.";
+        return;
     }
 
-    function renderParticles() {
-      ctx.clearRect(0, 0, width, height);
+    message.textContent =
+        "Demo only: no order has been sent or saved. " +
+        "A secure backend is required to process sell requests.";
+}
+</script>
 
-      particles.forEach(p => {
-        p.y -= p.speedY;
-        if (p.y < 0) {
-          p.y = height;
-          p.x = Math.random() * width;
-        }
-
-        p.phase += p.pulseSpeed;
-        const currentAlpha = p.alpha * (0.6 + 0.4 * Math.sin(p.phase));
-
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `${p.color} ${currentAlpha})`;
-        ctx.shadowBlur = 6;
-        ctx.shadowColor = '#00e1ff';
-        ctx.fill();
-      });
-
-      requestAnimationFrame(renderParticles);
-    }
-
-    window.addEventListener('resize', setupCanvas);
-    window.addEventListener('load', () => {
-      setupCanvas();
-      renderParticles();
-    });
-  </script>
 </body>
 </html>
