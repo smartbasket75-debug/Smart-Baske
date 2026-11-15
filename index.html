@@ -1,121 +1,149 @@
-const catalog = {
-"Home & Living": [
-"Minimal Ceramic Vase","Soft Knit Cushion Cover","LED Sunset Lamp","Aroma Diffuser","Foldable Storage Basket",
-"Modern Wall Clock","Decorative Table Lamp","Cotton Throw Blanket","Desk Organiser","Artificial Plant Pot",
-"Sofa Armrest Organizer","Non-Slip Door Mat","Decorative Storage Tray","Bedside Organizer","Wall-Mounted Key Holder",
-"Laundry Storage Hamper","Closet Divider Set","Decorative Cushion Set","Foldable Shoe Rack","LED Motion Sensor Light"
-],
 
-"Kitchen": [
-"Rotating Spice Rack","Stainless Steel Chopper","Oil Spray Dispenser","Digital Kitchen Scale","Silicone Cooking Set",
-"Portable Mini Blender","Vegetable Peeler Set","Chapati Storage Box","Measuring Cup Set","Electric Milk Frother",
-"Kitchen Scissors","Silicone Sink Strainer","Steel Lunch Box","Manual Hand Juicer","Oil Dispenser Bottle",
-"Food Storage Bags","Kitchen Tissue Holder","Dishwashing Brush Set","Measuring Spoon Set","Microwave Cover Lid"
-],
 
-"Gadgets": [
-"Portable Bluetooth Speaker","Wireless Charging Stand","Mini Projector","LED Desk Light","USB Rechargeable Fan",
-"Smart Tracker Tag","Phone Camera Lens Kit","Pocket Photo Printer","Cable Organiser Set","Bluetooth Remote Shutter",
-"Mini Desk Vacuum","Rechargeable Book Light","Bluetooth Music Receiver","Flexible Phone Holder","USB LED Strip",
-"Mini Desktop Fan","Portable Phone Stand","Digital Counter","Wireless Presenter","LED Message Board"
-],
+<!DOCTYPE html>
 
-"Electronics": [
-"Wireless Earbuds","Fast Charging Adapter","Braided USB Cable","Power Bank 10000mAh","LED Night Light",
-"Laptop Cooling Pad","Smart LED Strip","Mini USB Humidifier","Portable Reading Light","Digital Alarm Clock",
-"USB-C Hub Adapter","Foldable Mobile Stand","Rechargeable Emergency Light","Bluetooth Keyboard","Wireless Mouse",
-"Cable Protector Set","Dual USB Charger","Clip-On Reading Lamp","Power Extension Board","Phone Cleaning Kit"
-],
+<html lang="en">
 
-"Fashion": [
-"Everyday Crossbody Bag","Classic Sunglasses","Minimalist Watch","Canvas Tote Bag","Unisex Baseball Cap",
-"Travel Wallet","Everyday Sling Bag","Classic Leather Belt","Soft Cotton Scarf","Compact Card Holder",
-"Everyday Backpack","Printed Cotton Stole","Casual Waist Bag","Classic Bucket Hat","Travel Makeup Sling",
-"Cotton Socks Set","Foldable Shopping Tote","Hair Band Set","Compact Travel Pouch","Everyday Zip Wallet"
-],
+<head>
 
-"Beauty": [
-"Makeup Brush Set","Facial Cleansing Brush","Travel Makeup Mirror","Cosmetic Organiser","Hair Styling Comb",
-"Reusable Makeup Pads","Silicone Face Mask Brush","Nail Care Kit","Beauty Blender Set","Makeup Storage Pouch",
-"Makeup Sponge Set","Facial Ice Roller","Hair Scalp Massager","Travel Perfume Atomizer","Makeup Brush Cleaner",
-"Silicone Bath Brush","Compact Hair Comb","Cosmetic Travel Case","Cotton Face Towels","Nail Art Kit"
-],
+<meta charset="UTF-8">
 
-"Fitness": [
-"Resistance Band Set","Stainless Steel Water Bottle","Skipping Rope","Yoga Stretch Strap","Hand Grip Strengthener",
-"Sports Waist Pouch","Fitness Shaker Bottle","Workout Towel","Massage Roller","Running Armband",
-"Adjustable Jump Rope","Yoga Knee Pad","Resistance Loop Bands","Sports Water Bottle","Exercise Grip Ring",
-"Yoga Block","Running Reflective Band","Fitness Hand Towel","Stretching Strap","Massage Ball"
-],
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-"Travel": [
-"Packing Cube Set","Travel Neck Pillow","Compact Toiletry Bag","Luggage Tag Set","Passport Organiser",
-"Foldable Travel Bottle","Mini Digital Luggage Scale","Universal Travel Pouch","Travel Shoe Bags","Compact Umbrella",
-"Travel Laundry Bag","Foldable Hanger Set","Waterproof Toiletry Pouch","Digital Travel Clock","Luggage Handle Wrap",
-"Travel Document Wallet","Travel Cutlery Set","Compact Shoe Organizer","Travel Bottle Set","Travel Organizer"
-],
+<title>Smart Basket | Under Maintenance</title>
 
-"Accessories": [
-"Minimal Pendant Necklace","Everyday Hoop Earrings","Phone Grip Stand","Reusable Shopping Bag","Keychain Organiser",
-"Laptop Sleeve","Woven Bracelet Set","Compact Coin Purse","Watch Storage Case","Decorative Hair Clips",
-"Phone Lanyard","Desk Cable Clips","Eyeglass Storage Case","Decorative Key Holder","Jewellery Organizer",
-"Laptop Privacy Cover","Card Holder","Bag Organizer Insert","Watch Strap","Magnetic Phone Ring"
-],
+<style>
 
-"Kids": [
-"Colourful Building Blocks","Kids Water Bottle","Cute Pencil Case","Animal Night Light","Kids Drawing Set",
-"Mini Backpack","Educational Flash Cards","Soft Plush Toy","Kids Lunch Box","Creative Craft Kit",
-"Kids Colouring Book","Animal Shape Puzzle","Kids Snack Container","Sticker Activity Book","Kids Pencil Set",
-"Kids Travel Pillow","Building Blocks Storage Bag","Kids Art Apron","Kids Desk Organizer","Kids Bath Toy Set"
-]
-};
+*{margin:0;padding:0;box-sizing:border-box}
 
-const imageIds = [
-"photo-1490312278390-ab64016e0aa9",
-"photo-1600210492486-724fe5c67fb0",
-"photo-1556228720-195a672e8a03",
-"photo-1542291026-7eec264c27ff",
-"photo-1505740420928-5e560c06d30e",
-"photo-1523275335684-37898b6baf30",
-"photo-1512499617640-c74ae3a79d37",
-"photo-1526170375885-4d8ecf77b99f",
-"photo-1544816155-12df9643f363",
-"photo-1523275335684-37898b6baf30",
-"photo-1503602642458-232111445657",
-"photo-1529139574466-a303027c1d8b",
-"photo-1585386959984-a4155224a1ad",
-"photo-1572635196237-14b3f281503f",
-"photo-1583394838336-acd977736f90",
-"photo-1584917865442-de89df76afd3",
-"photo-1608571423902-eed4a5ad8108",
-"photo-1540555700478-4be289fbeefa",
-"photo-1515886657613-9f3515b0c78f",
-"photo-1553062407-98eeb64c6a62"
-];
+body{
 
-const products = [];
-let idx = 0;
+  min-height:100vh;
 
-const prices = [
-129,159,189,219,249,279,299,329,359,399,
-449,499,549,599,649,699,749,799,899,999,
-1099,1199,1299,1399,1499
-];
+  display:flex;
 
-Object.entries(catalog).forEach(([cat,names]) => {
- names.forEach(name => {
-  const price = prices[Math.floor(Math.random() * prices.length)];
+  align-items:center;
 
-  products.push({
-   id: ++idx,
-   name,
-   cat,
-   price,
-   old: Math.round(price * 1.25 / 10) * 10,
-   tag: idx % 9 === 0 ? "BESTSELLER" :
-        idx % 7 === 0 ? "NEW" :
-        idx % 4 === 0 ? "POPULAR" : "",
-   image: `https://images.unsplash.com/${imageIds[(idx-1) % imageIds.length]}?auto=format&fit=crop&w=700&q=80`
-  });
- });
-});
+  justify-content:center;
+
+  background:#f7f4ef;
+
+  color:#191917;
+
+  font-family:Arial,sans-serif;
+
+  text-align:center;
+
+  padding:20px;
+
+}
+
+.container{max-width:520px}
+
+.logo{
+
+  font-family:Georgia,serif;
+
+  font-size:32px;
+
+  font-weight:bold;
+
+  letter-spacing:2px;
+
+  margin-bottom:55px;
+
+}
+
+.logo span{color:#b18a50}
+
+.icon{font-size:65px;margin-bottom:25px}
+
+h1{
+
+  font-family:Georgia,serif;
+
+  font-size:42px;
+
+  font-weight:500;
+
+  margin-bottom:18px;
+
+}
+
+p{
+
+  color:#77756f;
+
+  font-size:15px;
+
+  line-height:1.8;
+
+}
+
+.line{
+
+  width:55px;
+
+  height:3px;
+
+  background:#b18a50;
+
+  margin:25px auto;
+
+}
+
+.small{
+
+  font-size:11px;
+
+  letter-spacing:2px;
+
+  color:#b18a50;
+
+  font-weight:bold;
+
+  margin-top:35px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="logo">SMART <span>BASKET.</span></div>
+
+  <div class="icon">⚙️</div>
+
+  <h1>We'll Be Back Soon!</h1>
+
+  <div class="line"></div>
+
+  <p>
+
+    Our website is currently undergoing scheduled maintenance.
+
+    We're working hard to improve your shopping experience.
+
+  </p>
+
+  <p style="margin-top:15px">
+
+    Thank you for your patience and understanding.
+
+  </p>
+
+  <div class="small">
+
+    SMART BASKET · SHOP SMART. LIVE BETTER.
+
+  </div>
+
+</div>
+
+</body>
+
+</html>
